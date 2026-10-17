@@ -2,9 +2,6 @@
 (() => {
   'use strict';
   const { $, esc, toast } = FM;
-  // Same character set as the desktop app: digits, A-Z without O and Q, dash, underscore.
-  const CODE_WHITELIST = '0123456789ABCDEFGHIJKLMNPRSTUVWXYZ-_';
-  const MAX_OCR_PIXELS = 40e6;
 
   const state = {
     files: [],          // {id, file, status, statusClass}
@@ -104,92 +101,6 @@
     el.scrollTop = el.scrollHeight;
   }
 
-  function clean(text) {
-    let t = String(text ?? '')
-      .replace(/[‐-—]/g, '-')
-      .replace(/ /g, ' ')
-      .replace(/[​-‍﻿]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-    if ($('optUpper').checked) t = t.toUpperCase();
-    if ($('optDedupe').checked) t = FM.removeDuplicateWords(t);
-    return t;
-  }
-
-  /** Renders one area at the OCR DPI and returns a black/white canvas (Otsu threshold). */
-  function renderArea(m, page, pageRect, dpi) {
-    let scale = dpi / 72;
-    const [x0, y0, x1, y1] = pageRect;
-    const area = (x1 - x0) * (y1 - y0) * scale * scale;
-    if (area > MAX_OCR_PIXELS) scale *= Math.sqrt(MAX_OCR_PIXELS / area);
-    const bbox = [Math.floor(x0 * scale), Math.floor(y0 * scale), Math.ceil(x1 * scale), Math.ceil(y1 * scale)];
-    const pix = new m.Pixmap(m.ColorSpace.DeviceGray, bbox, false);
-    pix.clear(255);
-    // The pixmap's bbox already selects the area; the page is scaled once, by run().
-    const dev = new m.DrawDevice(m.Matrix.identity, pix);
-    page.run(dev, m.Matrix.scale(scale, scale));
-    dev.close();
-    const w = pix.getWidth();
-    const h = pix.getHeight();
-    const gray = pix.getPixels();
-    const stride = pix.getStride();
-
-    // Otsu threshold
-    const hist = new Array(256).fill(0);
-    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) hist[gray[y * stride + x]]++;
-    const total = w * h;
-    let sum = 0;
-    for (let i = 0; i < 256; i++) sum += i * hist[i];
-    let sumB = 0, wB = 0, best = 0, threshold = 128;
-    for (let i = 0; i < 256; i++) {
-      wB += hist[i];
-      if (!wB) continue;
-      const wF = total - wB;
-      if (!wF) break;
-      sumB += i * hist[i];
-      const mB = sumB / wB, mF = (sum - sumB) / wF;
-      const between = wB * wF * (mB - mF) ** 2;
-      if (between > best) { best = between; threshold = i; }
-    }
-
-    const canvas = document.createElement('canvas');
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext('2d');
-    const img = ctx.createImageData(w, h);
-    for (let y = 0; y < h; y++) {
-      for (let x = 0; x < w; x++) {
-        const v = gray[y * stride + x] > threshold ? 255 : 0;
-        const j = (y * w + x) * 4;
-        img.data[j] = img.data[j + 1] = img.data[j + 2] = v;
-        img.data[j + 3] = 255;
-      }
-    }
-    ctx.putImageData(img, 0, 0);
-    pix.destroy?.();
-    return canvas;
-  }
-
-  let ocrWorker = null;
-  let ocrKey = '';
-  async function getOcrWorker() {
-    const lang = $('ocrLang').value;
-    const mode = $('ocrMode').value;
-    const key = lang + '|' + mode;
-    if (ocrWorker && ocrKey === key) return ocrWorker;
-    if (ocrWorker) await ocrWorker.terminate();
-    log(`Loading OCR (${lang})… first time can take a minute.`);
-    const Tesseract = await FM.tesseract();
-    ocrWorker = await Tesseract.createWorker(lang, 1);
-    await ocrWorker.setParameters({
-      tessedit_pageseg_mode: '6',
-      tessedit_char_whitelist: mode === 'codes' ? CODE_WHITELIST : '',
-      preserve_interword_spaces: '1',
-    });
-    ocrKey = key;
-    return ocrWorker;
-  }
-
   $('processBtn').onclick = async () => {
     const rects = view.rects.slice();
     if (!rects.length) { toast('Draw at least one area first.'); return; }
@@ -203,32 +114,20 @@
     $('progress').value = 0;
     state.labels = rects.map((r, i) => r.label.trim() || `Rectangle ${i + 1}`);
     state.results = [];
-    const dpi = Number($('ocrDpi').value);
+    const opts = {
+      pageIndex: pageIndex(),
+      lang: $('ocrLang').value,
+      dpi: Number($('ocrDpi').value),
+      mode: $('ocrMode').value,
+      upper: $('optUpper').checked,
+      dedupe: $('optDedupe').checked,
+      onOcrLoading: (lang) => log(`Loading OCR (${lang})… first time can take a minute.`),
+    };
     try {
-      const m = await FM.mupdf();
       for (const [n, f] of state.files.entries()) {
         btn.textContent = `Processing… ${n + 1}/${state.files.length}`;
         try {
-          const doc = await FM.openPdf(f.file);
-          if (pageIndex() >= doc.countPages()) throw new Error(`has only ${doc.countPages()} page(s)`);
-          const page = doc.loadPage(pageIndex());
-          const chars = PdfView.pageChars(page);
-          const values = [];
-          const ocr = [];
-          for (const r of rects) {
-            const pageRect = PdfView.toPageRect(page, r);
-            let text = clean(PdfView.textInRect(chars, pageRect));
-            let usedOcr = false;
-            if (!text) {
-              const worker = await getOcrWorker();
-              const canvas = renderArea(m, page, pageRect, dpi);
-              const { data } = await worker.recognize(canvas);
-              text = clean(data.text);
-              usedOcr = true;
-            }
-            values.push(text);
-            ocr.push(usedOcr);
-          }
+          const { values, ocr } = await PdfRead.readAreas(f.file, rects, opts);
           state.results.push({ fileId: f.id, name: f.file.name, values, ocr });
           f.status = '✓';
           f.statusClass = 'ok';

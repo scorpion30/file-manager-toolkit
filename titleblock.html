@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rename from Title Block</title>
+  <meta name="description" content="Rename PDF drawings automatically using the drawing number and title read from their title block. Reads real PDF text or scanned sheets with OCR.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js"></script>
+  <script src="assets/i18n.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+      <nav>
+        <a href="./#files" class="hide-sm">File tools</a>
+        <a href="./#pdf" class="hide-sm">PDF tools</a>
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
+        <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <div class="crumb"><a href="./">All tools</a> / <a href="./#pdf">PDF tools</a></div>
+        <div class="tool-title">
+          <span class="tool-icon cat-pdf"><svg viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+          <div><h1>Rename from Title Block</h1><p>Name every PDF after what's written in its title block, like the drawing number and title.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice" id="fallbackNotice" hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      <div><b>This browser can't rename files on your computer.</b> You'll get a ZIP with the renamed copies instead. To rename in place, use Google Chrome or Microsoft Edge on a computer.</div>
+    </div>
+
+    <div class="two-col">
+      <div class="side">
+        <div class="op">
+          <h3>1 · Folder of PDFs</h3>
+          <div class="row">
+            <button class="btn primary" id="pickBtn">Select Folder</button>
+            <label class="check"><input type="checkbox" id="optSub"> Include subfolders</label>
+          </div>
+          <ul class="pdf-files" id="fileList"></ul>
+          <p class="hint" id="filesHint">Choose the folder with your drawings.</p>
+          <div class="row tight">
+            <div class="field"><label for="pageNo">Page to read</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>2 · Areas to read</h3>
+          <div class="row">
+            <button class="btn primary" id="drawBtn">+ Draw area</button>
+            <span style="flex:1"></span>
+            <button class="btn ghost" id="clearRectsBtn">Clear areas</button>
+          </div>
+          <ul class="rect-list" id="rectList"></ul>
+          <p class="hint">Draw a box around the drawing number, then (optionally) the title or revision.</p>
+        </div>
+
+        <div class="op">
+          <h3>3 · New name</h3>
+          <div class="field"><label for="pattern">Name pattern</label><input type="text" id="pattern" value="{1}"></div>
+          <div class="row tight" id="tokens"></div>
+          <p class="hint">{1}, {2}… are the areas. {name} is the current file name. Example: <code>{1} - {2}</code></p>
+          <label class="check"><input type="checkbox" id="optUpper"> Convert to UPPER CASE</label>
+          <label class="check"><input type="checkbox" id="optDupes" checked> If two files get the same name, add (2), (3)…</label>
+          <details class="more-opts">
+            <summary>OCR settings (for scanned drawings)</summary>
+            <div class="row tight">
+              <div class="field"><label for="ocrLang">OCR language</label>
+                <select id="ocrLang"><option value="eng">English</option><option value="ara">Arabic</option><option value="eng+ara">English + Arabic</option></select>
+              </div>
+              <div class="field"><label for="ocrDpi">OCR DPI</label>
+                <select id="ocrDpi"><option>300</option><option selected>600</option><option>800</option></select>
+              </div>
+            </div>
+            <div class="row tight">
+              <div class="field"><label for="ocrMode">OCR reads</label>
+                <select id="ocrMode"><option value="any">Any text</option><option value="codes">Codes only (A–Z, 0–9, - _)</option></select>
+              </div>
+            </div>
+          </details>
+          <button class="btn success lg" id="readBtn">Read names</button>
+          <progress id="progress" value="0" max="1" hidden></progress>
+          <pre class="log" id="log" hidden></pre>
+        </div>
+      </div>
+
+      <div id="viewer"></div>
+    </div>
+
+    <section class="panel" id="resultsPanel" hidden style="margin-top:16px">
+      <div class="actions">
+        <button class="btn success lg" id="applyBtn">Apply Rename</button>
+        <button class="btn" id="undoBtn" hidden>Undo last rename</button>
+        <span class="spacer"></span>
+        <button class="btn" id="exportBtn">Export list to Excel</button>
+      </div>
+      <div class="status" id="status"></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="sel"><input type="checkbox" id="headCheck" aria-label="Select all"></th><th>Current name</th><th>New name</th><th>Folder</th><th>Note</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="f-brand">
+        <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+        <p>Free file and PDF tools that run in your browser.</p>
+      </div>
+      <div class="f-col"><h4>File tools</h4><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="titleblock.html">Rename from Title Block</a><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="extract.html">PDF to Excel</a><a href="edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
+    </div>
+    <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/pdfview.js"></script>
+  <script src="assets/pdfread.js"></script>
+  <script src="assets/titleblock.js"></script>
+</body>
+</html>
