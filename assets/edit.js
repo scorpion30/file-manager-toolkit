@@ -14,7 +14,7 @@
 
   const state = { files: [], viewingId: null, fontFile: null, busy: false };
   let nextId = 1;
-  const view = new PdfView($('viewer'), { maxRects: 1, onRectsChange: renderArea });
+  const view = new PdfView($('viewer'), { maxRects: 1, onRectsChange: renderArea, dragDraws: true, newLabel: () => 'Area' });
 
   // ---------- files ----------
   function addEntries(entries) {
@@ -25,10 +25,13 @@
   }
 
   function renderFiles() {
-    $('fileList').innerHTML = state.files.map((f) => `<li data-id="${f.id}" class="${f.id === state.viewingId ? 'viewing' : ''}">
+    $('fileList').innerHTML = state.files.map((f) => `<li data-id="${f.id}">
       <span class="fname">${esc(f.file.name)}</span><span class="st ${f.statusClass}">${esc(f.status)}</span>
       <button class="icon-btn danger" data-act="remove" title="Remove">✕</button></li>`).join('');
-    $('filesHint').textContent = state.files.length ? `${state.files.length} file(s). Click one to show it.` : 'Click a file to show it on the right.';
+    $('filesCard').hidden = state.files.length === 0;
+    $('fileCount').textContent = state.files.length;
+    $('previewFile').innerHTML = state.files.map((f) =>
+      `<option value="${f.id}" ${f.id === state.viewingId ? 'selected' : ''}>${esc(f.file.name)}</option>`).join('');
     $('saveOverwrite').disabled = !state.files.length || state.files.some((f) => !f.handle);
     if ($('saveOverwrite').disabled && $('saveOverwrite').checked) document.querySelector('input[name="save"][value="download"]').checked = true;
   }
@@ -60,16 +63,15 @@
       state.files = state.files.filter((f) => f.id !== id);
       if (state.viewingId === id) { state.viewingId = null; if (state.files.length) showFile(state.files[0].id); else view.clear(); }
       renderFiles();
-      return;
     }
-    showFile(id);
   });
-  $('pageNo').addEventListener('change', () => state.viewingId !== null && showFile(state.viewingId));
+  $('previewFile').addEventListener('change', (e) => showFile(Number(e.target.value)));
+  $('pageNo').addEventListener('change', () => { if (state.viewingId !== null) showFile(state.viewingId); scheduleCheck(); });
 
   function renderArea() {
-    $('areaLabel').textContent = view.rects.length ? 'Area set. Draw again to change it.' : 'No area yet.';
+    $('areaLabel').textContent = view.rects.length ? 'Box set. Drag again to move it.' : 'No box yet. Drag on the drawing.';
+    scheduleCheck();
   }
-  $('drawBtn').onclick = () => view.startDraw();
 
   // ---------- matching ----------
   /** Matches inside the area, line by line in reading order (spaces ignored). */
@@ -139,21 +141,60 @@
       : '0 match(es). NO TEXT LAYER in this box (likely an outline/image field, not editable text)';
   }
 
-  $('previewBtn').onclick = async () => {
-    if (!checkInputs() || state.busy) return;
-    state.busy = true;
+  // ---------- live check: how many files contain the text ----------
+  let checkTimer = null;
+  let checkRun = 0;
+  function scheduleCheck() {
+    clearTimeout(checkTimer);
+    checkTimer = setTimeout(checkMatches, 450);
+  }
+
+  async function checkMatches() {
+    const box = $('found');
+    const find = $('findText').value;
+    if (!view.rects.length || !find.trim() || !state.files.length) {
+      box.className = 'found';
+      box.textContent = 'Draw a box and type the text to find.';
+      return;
+    }
+    const run = ++checkRun;
+    box.className = 'found';
+    box.textContent = 'Checking…';
+    let filesFound = 0;
     let total = 0;
-    await forEachPage((f, doc, page, area, i) => {
-      const chars = PdfView.pageChars(page);
-      const n = findMatches(chars, $('findText').value, $('matchCase').checked, area).length;
-      total += n;
-      f.status = n ? `${n} match` : '0';
-      f.statusClass = n ? 'ok' : 'bad';
-      log(`(${i + 1}/${state.files.length}) ${f.file.name}: ${n ? n + ' match(es)' : noMatchMessage(chars, area)}`, n ? '' : 'bad');
-    });
-    log(`Preview complete — ${total} total match(es) across ${state.files.length} file(s).`, 'good');
-    state.busy = false;
-  };
+    const missing = [];
+    let shownText = null;
+    for (const f of state.files) {
+      try {
+        const doc = await FM.openPdf(await currentFile(f));
+        if (pageIndex() >= doc.countPages()) { missing.push(f.file.name); continue; }
+        const page = doc.loadPage(pageIndex());
+        const area = PdfView.toPageRect(page, view.rects[0]);
+        const chars = PdfView.pageChars(page);
+        const n = findMatches(chars, find, $('matchCase').checked, area).length;
+        if (f.id === state.viewingId) shownText = PdfView.textInRect(chars, area).trim();
+        if (n) { filesFound++; total += n; } else missing.push(f.file.name);
+        f.status = n ? `${n} match` : '0';
+        f.statusClass = n ? 'ok' : 'bad';
+      } catch { missing.push(f.file.name); }
+      if (run !== checkRun) return; // the user changed something; a newer check is running
+    }
+    renderFiles();
+    if (filesFound === state.files.length) {
+      box.className = 'found ok';
+      box.textContent = `✓ Found in all ${state.files.length} file(s).`;
+    } else if (filesFound) {
+      box.className = 'found bad';
+      box.textContent = `Found in ${filesFound} of ${state.files.length} file(s). Not found in: ${missing.slice(0, 3).join(', ')}${missing.length > 3 ? '…' : ''}`;
+    } else {
+      box.className = 'found bad';
+      box.textContent = shownText
+        ? `Not found. The box on this drawing contains: "${shownText}"`
+        : 'Not found. There is no editable text in this box (it may be a drawing or an image).';
+    }
+  }
+  $('findText').addEventListener('input', scheduleCheck);
+  $('matchCase').addEventListener('change', scheduleCheck);
 
   // ---------- replacing ----------
   function pdfNum(n) { return (Math.round(n * 10000) / 10000).toString(); }
@@ -409,5 +450,21 @@
   if (!FM.canDirectAccess) $('saveFolder').disabled = true;
   renderFiles();
 
-  window.__fmEdit = { addEntries, view, state };
+  const steps = FM.wizard({
+    canEnter: (i) => {
+      if (i >= 1 && !state.files.length) return 'Add at least one PDF first.';
+      if (i >= 2 && !view.rects.length) return 'Drag a box around the text first.';
+      if (i >= 2 && !$('findText').value.trim()) return 'Type the text to find.';
+      return true;
+    },
+    onEnter: (i) => {
+      if (i === 1) { view.layout(); scheduleCheck(); }
+      if (i === 2) {
+        $('applyBtn').textContent = `Replace in ${state.files.length} file(s)`;
+        $('applySummary').textContent = `“${$('findText').value}” → “${$('replaceText').value}”`;
+      }
+    },
+  });
+
+  window.__fmEdit = { addEntries, view, state, steps, checkMatches };
 })();

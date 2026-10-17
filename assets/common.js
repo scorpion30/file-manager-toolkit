@@ -370,7 +370,44 @@
     return Promise.all(pdfs.map((f) => fileOf(f)));
   }
 
+  /**
+   * Step-by-step pages: `.stepper .step` buttons and `.step-panel` sections in the
+   * same order. canEnter(i) returns true, or a message explaining what is missing.
+   * Buttons with data-next / data-back move forward and back.
+   */
+  function wizard({ canEnter = () => true, onEnter = () => {} } = {}) {
+    const tabs = [...document.querySelectorAll('.stepper .step')];
+    const panels = [...document.querySelectorAll('.step-panel')];
+    let current = 0;
+    const paint = () => {
+      tabs.forEach((t, i) => {
+        t.classList.toggle('active', i === current);
+        t.classList.toggle('done', i < current);
+      });
+      panels.forEach((p, i) => { p.hidden = i !== current; });
+    };
+    const go = (i) => {
+      if (i < 0 || i >= panels.length || i === current) return;
+      for (let k = current + 1; k <= i; k++) {
+        const ok = canEnter(k);
+        if (ok !== true) { toast(ok); return; }
+      }
+      current = i;
+      paint();
+      // Bring the step bar to the top so the whole step (and the drawing) fits on screen.
+      const top = document.querySelector('.stepper').getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      onEnter(i);
+    };
+    tabs.forEach((t, i) => t.addEventListener('click', () => go(i)));
+    document.querySelectorAll('[data-next]').forEach((b) => b.addEventListener('click', () => go(current + 1)));
+    document.querySelectorAll('[data-back]').forEach((b) => b.addEventListener('click', () => go(current - 1)));
+    paint();
+    return { go, get current() { return current; } };
+  }
+
   window.FM = {
+    wizard,
     openPdf, wireDropzone, choosePdfFiles, choosePdfFolder,
     $, esc, collator, canDirectAccess, splitName, formatBytes,
     toast, dialog, loadScript, excel, jszip, mupdf, tesseract, downloadBlob,

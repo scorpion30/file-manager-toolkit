@@ -37,82 +37,107 @@
       </div>
     </div>
 
-    <div class="two-col">
-      <div class="side">
-        <div class="op">
-          <h3>1 · PDF files</h3>
-          <div class="row">
-            <button class="btn primary" id="addFilesBtn">Add PDFs</button>
-            <button class="btn" id="addFolderBtn">Add folder</button>
-            <span style="flex:1"></span>
-            <button class="btn ghost" id="clearBtn">Clear</button>
+    <nav class="stepper">
+      <button class="step" type="button"><span class="n">1</span><span><b>Add PDFs</b><small>The drawings to read</small></span></button>
+      <button class="step" type="button"><span class="n">2</span><span><b>Mark the areas</b><small>Draw a box around each value</small></span></button>
+      <button class="step" type="button"><span class="n">3</span><span><b>Get the Excel</b><small>Check the results and download</small></span></button>
+    </nav>
+
+    <!-- Step 1: files -->
+    <section class="step-panel">
+      <div class="dropzone" id="dropzone">
+        <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M12 11v6M9 14h6"/></svg>
+        <h2>Add the PDFs you want to read</h2>
+        <p>Drop them here, or choose files or a whole folder.</p>
+        <div class="btn-row">
+          <button class="btn primary lg" id="addFilesBtn">Choose PDF files</button>
+          <button class="btn lg" id="addFolderBtn">Choose a folder</button>
+        </div>
+      </div>
+      <div class="card" id="filesCard" hidden style="margin-top:16px">
+        <div class="count-line"><span class="num" id="fileCount">0</span><span>PDF files added</span><span class="spacer" style="flex:1"></span><button class="btn ghost" id="clearBtn">Remove all</button></div>
+        <ul class="pdf-files files-big" id="fileList"></ul>
+      </div>
+      <div class="step-foot"><span class="spacer"></span><button class="btn primary lg" data-next>Next: mark the areas →</button></div>
+    </section>
+
+    <!-- Step 2: areas -->
+    <section class="step-panel" hidden>
+      <div class="work">
+        <div id="viewer"></div>
+        <div class="side">
+          <div class="howto"><span class="big">✍</span><span><b>Drag on the drawing</b> to draw a box around each value you want, for example the drawing number and the title. Each box becomes a column in Excel.</span></div>
+          <div class="card">
+            <h2>Areas</h2>
+            <ul class="rect-list" id="rectList"></ul>
+            <p class="hint" id="noAreas">No areas yet. Drag on the drawing to add one.</p>
+            <button class="btn ghost" id="clearRectsBtn">Remove all areas</button>
           </div>
-          <ul class="pdf-files" id="fileList"></ul>
-          <p class="hint" id="filesHint">Click a file to show it on the right. Drop PDFs anywhere on this page.</p>
-          <div class="row tight">
+          <div class="card">
+            <div class="field"><label for="previewFile">Showing</label><select id="previewFile"></select></div>
             <div class="field"><label for="pageNo">Page to read</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
           </div>
+          <div class="step-foot"><button class="btn" data-back>← Back</button><span class="spacer"></span><button class="btn primary lg" data-next>Next: read →</button></div>
         </div>
+      </div>
+    </section>
 
-        <div class="op">
-          <h3>2 · Areas to read</h3>
-          <div class="row">
-            <button class="btn primary" id="drawBtn">+ Draw area</button>
-            <span style="flex:1"></span>
-            <button class="btn ghost" id="clearRectsBtn">Clear areas</button>
-          </div>
-          <ul class="rect-list" id="rectList"></ul>
-          <p class="hint">Each area becomes a column in Excel. Rename the column here. Zoom with the mouse wheel.</p>
+    <!-- Step 3: results -->
+    <section class="step-panel" hidden>
+      <section class="panel">
+        <div class="result-bar">
+          <button class="btn success lg" id="exportBtn">⬇ Download Excel</button>
+          <button class="btn" id="processBtn">Read again</button>
+          <span class="spacer"></span>
+          <span class="hint">Click any cell to fix it before downloading.</span>
         </div>
+        <div style="padding:0 14px"><progress id="progress" value="0" max="1" hidden></progress></div>
+        <div class="table-wrap"><table class="results-table"><thead id="resHead"></thead><tbody id="resBody"></tbody></table></div>
+        <div id="resultsPanel"></div>
+      </section>
 
-        <div class="op">
-          <h3>3 · Read the text</h3>
-          <p class="hint">Real PDF text is read directly. If an area has no text (scanned or outlined), OCR is used.</p>
-          <div class="row tight">
-            <div class="field"><label for="ocrLang">OCR language</label>
-              <select id="ocrLang"><option value="eng">English</option><option value="ara">Arabic</option><option value="eng+ara">English + Arabic</option></select>
+      <div class="two-equal">
+        <details class="more">
+          <summary>Excel options</summary>
+          <div class="stack">
+            <div class="row tight" style="display:flex;gap:8px">
+              <div class="field"><label for="sheetName">Sheet name</label><input type="text" id="sheetName" value="Sheet1"></div>
+              <div class="field"><label for="startCell">Start cell</label><input type="text" id="startCell" value="A1"></div>
             </div>
-            <div class="field"><label for="ocrDpi">OCR DPI</label>
-              <select id="ocrDpi"><option>300</option><option selected>600</option><option>800</option><option>1200</option></select>
+            <label class="check"><input type="checkbox" id="optHeader" checked> Include header</label>
+            <label class="check"><input type="checkbox" id="optFilename" checked> Include file name</label>
+            <label class="check"><input type="checkbox" id="optCompare"> Compare area 1 with the file name</label>
+            <div class="row" style="display:flex;gap:8px;align-items:center">
+              <button class="btn" id="existingBtn">Add to an existing Excel…</button>
+              <button class="icon-btn danger" id="existingClear" title="Use a new file instead" hidden>✕</button>
             </div>
+            <p class="hint" id="existingLabel">A new Excel file will be created.</p>
+            <label class="check" id="insertWrap" hidden><input type="checkbox" id="optInsert"> Insert mode (write into the sheet without clearing it)</label>
           </div>
-          <div class="row tight">
+        </details>
+        <details class="more">
+          <summary>Reading options (OCR for scanned drawings)</summary>
+          <div class="stack">
+            <p class="hint">Real PDF text is read directly. If an area has no text (scanned or outlined), OCR is used.</p>
+            <div class="row tight" style="display:flex;gap:8px">
+              <div class="field"><label for="ocrLang">OCR language</label>
+                <select id="ocrLang"><option value="eng">English</option><option value="ara">Arabic</option><option value="eng+ara">English + Arabic</option></select>
+              </div>
+              <div class="field"><label for="ocrDpi">OCR DPI</label>
+                <select id="ocrDpi"><option>300</option><option selected>600</option><option>800</option><option>1200</option></select>
+              </div>
+            </div>
             <div class="field"><label for="ocrMode">OCR reads</label>
               <select id="ocrMode"><option value="codes">Codes only (A–Z, 0–9, - _) like the old app</option><option value="any">Any text</option></select>
             </div>
+            <label class="check"><input type="checkbox" id="optUpper" checked> Convert to UPPER CASE</label>
+            <label class="check"><input type="checkbox" id="optDedupe" checked> Remove repeated words</label>
+            <p class="hint">Changed something? Click “Read again”.</p>
           </div>
-          <label class="check"><input type="checkbox" id="optUpper" checked> Convert to UPPER CASE</label>
-          <label class="check"><input type="checkbox" id="optDedupe" checked> Remove repeated words</label>
-          <button class="btn success lg" id="processBtn">Process PDFs</button>
-          <progress id="progress" value="0" max="1" hidden></progress>
-          <pre class="log" id="log" hidden></pre>
-        </div>
-
-        <div class="op">
-          <h3>4 · Export to Excel</h3>
-          <div class="row tight">
-            <div class="field"><label for="sheetName">Sheet name</label><input type="text" id="sheetName" value="Sheet1"></div>
-            <div class="field"><label for="startCell">Start cell</label><input type="text" id="startCell" value="A1"></div>
-          </div>
-          <label class="check"><input type="checkbox" id="optHeader" checked> Include header</label>
-          <label class="check"><input type="checkbox" id="optFilename" checked> Include file name</label>
-          <label class="check"><input type="checkbox" id="optCompare"> Compare area 1 with the file name</label>
-          <div class="row">
-            <button class="btn" id="existingBtn">Add to an existing Excel…</button>
-            <button class="icon-btn danger" id="existingClear" title="Use a new file instead" hidden>✕</button>
-          </div>
-          <p class="hint" id="existingLabel">A new Excel file will be created.</p>
-          <label class="check" id="insertWrap" hidden><input type="checkbox" id="optInsert"> Insert mode (write into the sheet without clearing it)</label>
-          <button class="btn success" id="exportBtn">Export to Excel</button>
-        </div>
+        </details>
       </div>
-
-      <div id="viewer"></div>
-    </div>
-
-    <section class="panel" id="resultsPanel" hidden style="margin-top:16px">
-      <div class="toolbar"><b>Results</b><span class="hint">You can click a cell to fix it before exporting.</span></div>
-      <div class="table-wrap"><table class="results-table"><thead id="resHead"></thead><tbody id="resBody"></tbody></table></div>
+      <pre class="log" id="log" hidden style="margin-top:16px"></pre>
+      <div class="step-foot"><button class="btn" data-back>← Back to the areas</button></div>
     </section>
   </main>
 

@@ -16,7 +16,8 @@
     busy: false,
   };
   let nextId = 1;
-  const view = new PdfView($('viewer'), { onRectsChange: renderRects });
+  const AREA_NAMES = ['Drawing No', 'Title', 'Revision'];
+  const view = new PdfView($('viewer'), { onRectsChange: renderRects, dragDraws: true, newLabel: (i) => AREA_NAMES[i] || `Area ${i + 1}` });
   const folderLabel = (path) => (path ? state.rootName + '/' + path : state.rootName);
 
   // ---------- folder ----------
@@ -42,11 +43,13 @@
   }
 
   function renderFiles() {
-    $('fileList').innerHTML = state.files.slice(0, 500).map((f) => `<li data-id="${f.id}" class="${f.id === state.viewingId ? 'viewing' : ''}">
+    $('filesCard').hidden = !state.source;
+    $('fileCount').textContent = state.files.length;
+    $('filesHint').textContent = `PDF files found in “${state.rootName}”`;
+    $('fileList').innerHTML = state.files.slice(0, 500).map((f) => `<li data-id="${f.id}">
       <span class="fname">${esc(f.folder ? f.folder + '/' + f.name : f.name)}</span></li>`).join('');
-    $('filesHint').textContent = state.source
-      ? `${state.files.length} PDF file(s) in “${state.rootName}”. Click one to show it.`
-      : 'Choose the folder with your drawings.';
+    $('previewFile').innerHTML = state.files.slice(0, 500).map((f) =>
+      `<option value="${f.id}" ${f.id === state.viewingId ? 'selected' : ''}>${esc(f.folder ? f.folder + '/' + f.name : f.name)}</option>`).join('');
   }
 
   const pageIndex = () => Math.max(0, (parseInt($('pageNo').value, 10) || 1) - 1);
@@ -63,22 +66,21 @@
     } catch (e) { toast(`${f.name}: ${e.message}`, 'error'); }
   }
 
-  $('fileList').addEventListener('click', (e) => {
-    const li = e.target.closest('li');
-    if (li) showFile(Number(li.dataset.id));
-  });
+  $('previewFile').addEventListener('change', (e) => showFile(Number(e.target.value)));
   $('optSub').addEventListener('change', () => state.source && applyScope());
   $('pageNo').addEventListener('change', () => state.viewingId !== null && showFile(state.viewingId));
 
   // ---------- areas & pattern ----------
   function renderRects() {
+    $('noAreas').hidden = view.rects.length > 0;
+    $('clearRectsBtn').hidden = view.rects.length === 0;
     $('rectList').innerHTML = view.rects.map((r, i) => `<li data-i="${i}">
       <span class="num">${i + 1}</span>
       <input type="text" value="${esc(r.label)}" aria-label="Name for area ${i + 1}">
       <button class="icon-btn" data-act="redraw" title="Draw again">✎</button>
       <button class="icon-btn danger" data-act="remove" title="Remove">✕</button></li>`).join('');
-    $('tokens').innerHTML = view.rects.map((r, i) => `<button class="chip" data-token="{${i + 1}}">{${i + 1}} ${esc(r.label)}</button>`).join('') +
-      '<button class="chip" data-token="{name}">{name}</button>';
+    $('tokens').innerHTML = view.rects.map((r, i) => `<button class="chip" data-token="{${i + 1}}">+ ${esc(r.label || `{${i + 1}}`)}</button>`).join('') +
+      '<button class="chip" data-token="{name}">+ {name}</button>';
   }
   $('rectList').addEventListener('input', (e) => {
     view.rects[Number(e.target.closest('li').dataset.i)].label = e.target.value;
@@ -100,7 +102,6 @@
     input.focus();
     rebuildNames();
   });
-  $('drawBtn').onclick = () => view.startDraw();
   $('clearRectsBtn').onclick = () => { view.setRects([]); renderRects(); };
   $('pattern').addEventListener('input', rebuildNames);
   $('optUpper').addEventListener('change', rebuildNames);
@@ -115,10 +116,12 @@
     el.scrollTop = el.scrollHeight;
   }
 
-  $('readBtn').onclick = async () => {
-    if (!state.files.length) { toast('Select a folder with PDF files first.'); return; }
-    if (!view.rects.length) { toast('Draw at least one area first.'); return; }
-    if (state.busy) return;
+  // What the current names were read from; reading again is needed when this changes.
+  const signature = () => JSON.stringify([state.files.map((f) => f.id), view.rects.map((r) => [r.x1, r.y1, r.x2, r.y2]), pageIndex()]);
+  let lastRead = '';
+
+  async function readNames() {
+    if (!state.files.length || !view.rects.length || state.busy) return;
     state.busy = true;
     const btn = $('readBtn');
     btn.disabled = true;
@@ -138,6 +141,7 @@
     state.rows = [];
     for (const [n, f] of state.files.entries()) {
       btn.textContent = `Reading… ${n + 1}/${state.files.length}`;
+      state.progressText = `Reading… ${n + 1}/${state.files.length}`;
       const row = { f, values: [], ocr: [], error: '', newBase: '', checked: true, note: '' };
       try {
         Object.assign(row, await PdfRead.readAreas(await FM.fileOf(f), rects, opts));
@@ -153,9 +157,12 @@
     log(`Read ${state.rows.length} file(s).`, 'good');
     state.busy = false;
     btn.disabled = false;
-    btn.textContent = 'Read names';
+    btn.textContent = 'Read again';
+    state.progressText = '';
+    lastRead = signature();
     renderResults();
-  };
+  }
+  $('readBtn').onclick = readNames;
 
   // ---------- names ----------
   function buildBase(row) {
@@ -202,20 +209,22 @@
     !['error', 'nothing read', 'reserved name', 'duplicate', 'same name'].includes(row.note);
 
   function renderResults() {
-    $('resultsPanel').hidden = state.rows.length === 0;
     $('rows').innerHTML = state.rows.map((row, i) => {
       const ok = willRename(row);
       const noteClass = ok ? (row.note === 'renumbered' ? 'warn' : '') : 'bad';
       return `<tr data-i="${i}" class="${ok ? 'changed' : ''}">
         <td class="sel"><input type="checkbox" data-act="check" ${row.checked ? 'checked' : ''}></td>
-        <td class="orig">${esc(row.f.name)}</td>
+        <td class="cur-name">${esc(row.f.name)}</td>
         <td class="name" data-act="edit">${esc(row.final || '')}${row.f.ext ? `<span class="ext-tail">${esc(row.f.ext)}</span>` : ''}<button class="edit-btn" data-act="edit" title="Edit name">✎</button></td>
         <td class="folder">${esc(folderLabel(row.f.folder))}</td>
         <td class="note ${noteClass}">${row.ocr.some(Boolean) ? '<span class="tag">OCR</span>' : ''}${esc(row.note)}</td>
       </tr>`;
     }).join('');
     const count = state.rows.filter(willRename).length;
-    $('status').innerHTML = `<span>Files read: <b>${state.rows.length}</b></span><span class="pending">Will be renamed: <b>${count}</b></span>`;
+    $('status').innerHTML = (state.progressText ? `<span><b>${esc(state.progressText)}</b></span>` : '') +
+      `<span>Files read: <b>${state.rows.length}</b></span><span class="pending">Will be renamed: <b>${count}</b></span>`;
+    const first = state.rows.find((r) => r.final);
+    $('examplePreview').textContent = first ? first.final + first.f.ext : '—';
     $('applyBtn').disabled = !count || state.busy;
     $('applyBtn').textContent = state.source && state.source.mode !== 'fs' ? 'Download renamed (ZIP)' : 'Apply Rename';
     $('undoBtn').hidden = !state.undo;
@@ -404,5 +413,21 @@
   };
   if (!FM.canDirectAccess) $('fallbackNotice').hidden = false;
 
-  window.__fmTitleblock = { load: (handle) => load({ mode: 'fs', handle }), view, state, rebuildNames };
+  const steps = FM.wizard({
+    canEnter: (i) => {
+      if (i >= 1 && !state.files.length) return 'Choose a folder with PDF files first.';
+      if (i >= 2 && !view.rects.length) return 'Draw a box around the drawing number first.';
+      return true;
+    },
+    onEnter: (i) => {
+      if (i === 1) view.layout();
+      if (i === 2) {
+        renderRects();
+        if (signature() !== lastRead) readNames(); else rebuildNames();
+      }
+    },
+  });
+  renderFiles();
+
+  window.__fmTitleblock = { load: (handle) => load({ mode: 'fs', handle }), view, state, rebuildNames, steps };
 })();

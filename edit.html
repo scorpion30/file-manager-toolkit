@@ -37,87 +37,109 @@
       </div>
     </div>
 
-    <div class="two-col">
-      <div class="side">
-        <div class="op">
-          <h3>1 · PDF files</h3>
-          <div class="row">
-            <button class="btn primary" id="addFilesBtn">Add PDFs</button>
-            <button class="btn" id="addFolderBtn">Add folder</button>
-            <span style="flex:1"></span>
-            <button class="btn ghost" id="clearBtn">Clear</button>
-          </div>
-          <ul class="pdf-files" id="fileList"></ul>
-          <p class="hint" id="filesHint">Click a file to show it on the right.</p>
-          <div class="row tight">
-            <div class="field"><label for="pageNo">Page</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
-          </div>
-        </div>
+    <nav class="stepper">
+      <button class="step" type="button"><span class="n">1</span><span><b>Add PDFs</b><small>The files to change</small></span></button>
+      <button class="step" type="button"><span class="n">2</span><span><b>What to change</b><small>Draw a box, type old and new text</small></span></button>
+      <button class="step" type="button"><span class="n">3</span><span><b>Save</b><small>Choose how to save, then replace</small></span></button>
+    </nav>
 
-        <div class="op">
-          <h3>2 · Area</h3>
-          <div class="row">
-            <button class="btn primary" id="drawBtn">Draw area</button>
-            <span class="hint" id="areaLabel">No area yet.</span>
-          </div>
-          <p class="hint">Only text inside this area is changed. Works where the PDF has real (selectable) text.</p>
-        </div>
-
-        <div class="op">
-          <h3>3 · Find &amp; replace</h3>
-          <div class="field"><label for="findText">Find</label><input type="text" id="findText"></div>
-          <div class="field"><label for="replaceText">Replace with</label><input type="text" id="replaceText"></div>
-          <label class="check"><input type="checkbox" id="matchCase"> Match case</label>
-          <div class="row tight">
-            <div class="field"><label for="angle">Text angle</label>
-              <select id="angle">
-                <option value="auto">Auto-detect</option>
-                <option value="0">0° (normal)</option>
-                <option value="90">90° (reads upward)</option>
-                <option value="180">180° (upside down)</option>
-                <option value="270">270° (reads downward)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="op">
-          <h3>Font</h3>
-          <div class="row tight">
-            <div class="field"><label for="font">Font</label>
-              <select id="font">
-                <option value="auto">Auto (closest to the original)</option>
-                <option value="Helvetica">Helvetica / Arial</option>
-                <option value="Times">Times New Roman</option>
-                <option value="Courier">Courier New</option>
-                <option value="file">Font file (.ttf / .otf)…</option>
-              </select>
-            </div>
-            <div class="field"><label for="size">Size</label><input type="text" id="size" value="Auto"></div>
-          </div>
-          <p class="hint" id="fontFileLabel" hidden></p>
-          <label class="check"><input type="checkbox" id="forceBold"> Force bold</label>
-          <label class="check"><input type="checkbox" id="forceItalic"> Force italic</label>
-          <p class="hint">Tip: to match Calibri or another Windows font, choose “Font file” and pick it from C:\Windows\Fonts.</p>
-        </div>
-
-        <div class="op">
-          <h3>4 · Save</h3>
-          <label class="check"><input type="radio" name="save" value="download" checked> Download copies with suffix</label>
-          <div class="row tight"><div class="field"><label for="suffix">Suffix</label><input type="text" id="suffix" value="_edited"></div></div>
-          <label class="check"><input type="radio" name="save" value="folder" id="saveFolder"> Save copies into a folder</label>
-          <label class="check"><input type="radio" name="save" value="overwrite" id="saveOverwrite"> Overwrite the original files (no undo)</label>
-          <div class="row">
-            <button class="btn" id="previewBtn">Preview matches</button>
-            <button class="btn success" id="applyBtn">Apply replace</button>
-          </div>
-          <progress id="progress" value="0" max="1" hidden></progress>
-          <pre class="log" id="log" hidden></pre>
+    <!-- Step 1: files -->
+    <section class="step-panel">
+      <div class="dropzone" id="dropzone">
+        <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M12 11v6M9 14h6"/></svg>
+        <h2>Add the PDFs you want to change</h2>
+        <p>Drop them here, or choose files or a whole folder.</p>
+        <div class="btn-row">
+          <button class="btn primary lg" id="addFilesBtn">Choose PDF files</button>
+          <button class="btn lg" id="addFolderBtn">Choose a folder</button>
         </div>
       </div>
+      <div class="card" id="filesCard" hidden style="margin-top:16px">
+        <div class="count-line"><span class="num" id="fileCount">0</span><span>PDF files added</span><span class="spacer" style="flex:1"></span><button class="btn ghost" id="clearBtn">Remove all</button></div>
+        <ul class="pdf-files files-big" id="fileList"></ul>
+      </div>
+      <div class="step-foot"><span class="spacer"></span><button class="btn primary lg" data-next>Next: what to change →</button></div>
+    </section>
 
-      <div id="viewer"></div>
-    </div>
+    <!-- Step 2: area + find/replace -->
+    <section class="step-panel" hidden>
+      <div class="work">
+        <div id="viewer"></div>
+        <div class="side">
+          <div class="howto"><span class="big">✍</span><span><b>Drag a box</b> around the text you want to change, for example a field in the title block. Only text inside the box is changed.</span></div>
+          <div class="card">
+            <p class="hint" id="areaLabel">No box yet. Drag on the drawing.</p>
+            <div class="match-box">
+              <div class="field"><label for="findText">Find</label><input type="text" id="findText" placeholder="e.g. PL"></div>
+              <span class="arrow">→</span>
+              <div class="field"><label for="replaceText">Replace with</label><input type="text" id="replaceText" placeholder="e.g. AR"></div>
+            </div>
+            <label class="check"><input type="checkbox" id="matchCase"> Match case</label>
+            <div class="found" id="found">Draw a box and type the text to find.</div>
+          </div>
+          <div class="card">
+            <div class="field"><label for="previewFile">Showing</label><select id="previewFile"></select></div>
+            <div class="field"><label for="pageNo">Page</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
+          </div>
+          <div class="step-foot"><button class="btn" data-back>← Back</button><span class="spacer"></span><button class="btn primary lg" data-next>Next: save →</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: save -->
+    <section class="step-panel" hidden>
+      <div class="two-equal" style="margin-top:0">
+        <div class="card">
+          <h2>How to save</h2>
+          <label class="choice"><input type="radio" name="save" value="download" checked><span><b>Download copies</b><small>The originals stay as they are. Copies get a suffix:</small>
+            <span class="field" style="margin-top:6px;max-width:200px"><input type="text" id="suffix" value="_edited" aria-label="Suffix"></span></span></label>
+          <label class="choice"><input type="radio" name="save" value="folder" id="saveFolder"><span><b>Save copies into a folder</b><small>You choose the folder. Chrome or Edge.</small></span></label>
+          <label class="choice"><input type="radio" name="save" value="overwrite" id="saveOverwrite"><span><b>Overwrite the original files</b><small>No undo. Only for files added with Chrome or Edge.</small></span></label>
+        </div>
+        <div class="card">
+          <h2>Text style</h2>
+          <p class="hint">By default the new text copies the original font size, width and position. Change these only if the result looks wrong.</p>
+          <details class="more">
+            <summary>Font and angle (optional)</summary>
+            <div class="stack">
+              <div class="row tight" style="display:flex;gap:8px">
+                <div class="field"><label for="font">Font</label>
+                  <select id="font">
+                    <option value="auto">Auto (closest to the original)</option>
+                    <option value="Helvetica">Helvetica / Arial</option>
+                    <option value="Times">Times New Roman</option>
+                    <option value="Courier">Courier New</option>
+                    <option value="file">Font file (.ttf / .otf)…</option>
+                  </select>
+                </div>
+                <div class="field" style="max-width:110px"><label for="size">Size</label><input type="text" id="size" value="Auto"></div>
+              </div>
+              <p class="hint" id="fontFileLabel" hidden></p>
+              <label class="check"><input type="checkbox" id="forceBold"> Force bold</label>
+              <label class="check"><input type="checkbox" id="forceItalic"> Force italic</label>
+              <div class="field"><label for="angle">Text angle</label>
+                <select id="angle">
+                  <option value="auto">Auto-detect</option>
+                  <option value="0">0° (normal)</option>
+                  <option value="90">90° (reads upward)</option>
+                  <option value="180">180° (upside down)</option>
+                  <option value="270">270° (reads downward)</option>
+                </select>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <div class="result-bar" style="padding:0;border:0">
+          <button class="btn success lg" id="applyBtn">Replace</button>
+          <span class="hint" id="applySummary"></span>
+        </div>
+        <progress id="progress" value="0" max="1" hidden></progress>
+        <pre class="log" id="log" hidden></pre>
+      </div>
+      <div class="step-foot"><button class="btn" data-back>← Back</button></div>
+    </section>
   </main>
 
   <footer class="site-footer">

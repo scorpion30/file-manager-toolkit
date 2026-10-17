@@ -13,7 +13,7 @@
   };
   let nextId = 1;
 
-  const view = new PdfView($('viewer'), { onRectsChange: renderRects });
+  const view = new PdfView($('viewer'), { onRectsChange: renderRects, dragDraws: true, newLabel: (i) => `Column ${i + 1}` });
 
   // ---------- files ----------
   function addFiles(files) {
@@ -24,13 +24,14 @@
   }
 
   function renderFiles() {
-    $('fileList').innerHTML = state.files.map((f) => `<li data-id="${f.id}" class="${f.id === state.viewingId ? 'viewing' : ''}">
+    $('fileList').innerHTML = state.files.map((f) => `<li data-id="${f.id}">
       <span class="fname">${esc(f.file.name)}</span>
       <span class="st ${f.statusClass}">${esc(f.status)}</span>
       <button class="icon-btn danger" data-act="remove" title="Remove">✕</button></li>`).join('');
-    $('filesHint').textContent = state.files.length
-      ? `${state.files.length} file(s). Click a file to show it on the right.`
-      : 'Click a file to show it on the right. Drop PDFs anywhere on this page.';
+    $('filesCard').hidden = state.files.length === 0;
+    $('fileCount').textContent = state.files.length;
+    $('previewFile').innerHTML = state.files.map((f) =>
+      `<option value="${f.id}" ${f.id === state.viewingId ? 'selected' : ''}>${esc(f.file.name)}</option>`).join('');
   }
 
   function pageIndex() {
@@ -64,18 +65,19 @@
         if (state.files.length) showFile(state.files[0].id); else view.clear();
       }
       renderFiles();
-      return;
     }
-    showFile(id);
   });
+  $('previewFile').addEventListener('change', (e) => showFile(Number(e.target.value)));
 
   $('pageNo').addEventListener('change', () => { if (state.viewingId !== null) showFile(state.viewingId); });
 
   // ---------- areas ----------
   function renderRects() {
+    $('noAreas').hidden = view.rects.length > 0;
+    $('clearRectsBtn').hidden = view.rects.length === 0;
     $('rectList').innerHTML = view.rects.map((r, i) => `<li data-i="${i}">
       <span class="num">${i + 1}</span>
-      <input type="text" value="${esc(r.label)}" aria-label="Column name for area ${i + 1}">
+      <input type="text" value="${esc(r.label)}" placeholder="Column name, e.g. Drawing No" aria-label="Column name for area ${i + 1}">
       <button class="icon-btn" data-act="redraw" title="Draw again">✎</button>
       <button class="icon-btn danger" data-act="remove" title="Remove">✕</button></li>`).join('');
   }
@@ -90,7 +92,6 @@
     if (act === 'remove') { view.rects.splice(i, 1); view.drawRects(); renderRects(); }
     if (act === 'redraw') view.startDraw(i);
   });
-  $('drawBtn').onclick = () => view.startDraw();
   $('clearRectsBtn').onclick = () => { view.setRects([]); renderRects(); };
 
   // ---------- reading ----------
@@ -101,7 +102,12 @@
     el.scrollTop = el.scrollHeight;
   }
 
-  $('processBtn').onclick = async () => {
+  // What the current results were read from; reading again is needed when this changes.
+  const signature = () => JSON.stringify([state.files.map((f) => f.id), view.rects.map((r) => [r.x1, r.y1, r.x2, r.y2]), pageIndex()]);
+  let lastRead = '';
+
+  async function process() {
+    if (state.busy) return;
     const rects = view.rects.slice();
     if (!rects.length) { toast('Draw at least one area first.'); return; }
     if (!state.files.length) { toast('Add PDF files first.'); return; }
@@ -149,9 +155,11 @@
     } finally {
       state.busy = false;
       btn.disabled = false;
-      btn.textContent = 'Process PDFs';
+      btn.textContent = 'Read again';
+      lastRead = signature();
     }
-  };
+  }
+  $('processBtn').onclick = process;
 
   // ---------- results ----------
   const baseName = (name) => FM.splitName(name).base;
@@ -159,7 +167,6 @@
 
   function renderResults() {
     const compare = $('optCompare').checked;
-    $('resultsPanel').hidden = state.results.length === 0;
     $('resHead').innerHTML = `<tr><th>#</th><th>File</th>${state.labels.map((l) => `<th>${esc(l)}</th>`).join('')}${compare ? '<th>Match</th>' : ''}</tr>`;
     $('resBody').innerHTML = state.results.map((r, i) => `<tr data-i="${i}">
       <td class="ext">${i + 1}</td>
@@ -325,6 +332,24 @@
   };
   FM.wireDropzone(document.querySelector('main'), addFiles);
   renderFiles();
+  renderRects();
 
-  window.__fmExtract = { addFiles, view, state };
+  const steps = FM.wizard({
+    canEnter: (i) => {
+      if (i >= 1 && !state.files.length) return 'Add at least one PDF first.';
+      if (i >= 2 && !view.rects.length) return 'Draw at least one area on the drawing first.';
+      return true;
+    },
+    onEnter: (i) => {
+      if (i === 1 && state.viewingId === null && state.files.length) showFile(state.files[0].id);
+      if (i === 1) view.layout();
+      if (i === 2) {
+        // Column names may have changed without needing a new read.
+        state.labels = view.rects.map((r, k) => r.label.trim() || `Column ${k + 1}`);
+        if (signature() !== lastRead) process(); else renderResults();
+      }
+    },
+  });
+
+  window.__fmExtract = { addFiles, view, state, steps };
 })();

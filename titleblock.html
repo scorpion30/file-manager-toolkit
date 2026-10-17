@@ -42,78 +42,101 @@
       <div><b>This browser can't rename files on your computer.</b> You'll get a ZIP with the renamed copies instead. To rename in place, use Google Chrome or Microsoft Edge on a computer.</div>
     </div>
 
-    <div class="two-col">
-      <div class="side">
-        <div class="op">
-          <h3>1 · Folder of PDFs</h3>
-          <div class="row">
-            <button class="btn primary" id="pickBtn">Select Folder</button>
-            <label class="check"><input type="checkbox" id="optSub"> Include subfolders</label>
+    <nav class="stepper">
+      <button class="step" type="button"><span class="n">1</span><span><b>Choose folder</b><small>Where your drawings are</small></span></button>
+      <button class="step" type="button"><span class="n">2</span><span><b>Mark the drawing number</b><small>Draw a box on one drawing</small></span></button>
+      <button class="step" type="button"><span class="n">3</span><span><b>Check &amp; rename</b><small>See the new names, then apply</small></span></button>
+    </nav>
+
+    <!-- Step 1: folder -->
+    <section class="step-panel">
+      <div class="dropzone">
+        <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+        <h2>Choose the folder with your drawings</h2>
+        <p>Every PDF in it will be renamed after what's written in its title block.</p>
+        <button class="btn primary lg" id="pickBtn">Select Folder</button>
+        <p style="margin:14px 0 0"><label class="check" style="justify-content:center"><input type="checkbox" id="optSub"> Include subfolders</label></p>
+      </div>
+      <div class="card" id="filesCard" hidden style="margin-top:16px">
+        <div class="count-line"><span class="num" id="fileCount">0</span><span id="filesHint">PDF files found</span></div>
+        <ul class="pdf-files files-big" id="fileList"></ul>
+      </div>
+      <div class="step-foot"><span class="spacer"></span><button class="btn primary lg" data-next>Next: mark the drawing number →</button></div>
+    </section>
+
+    <!-- Step 2: areas -->
+    <section class="step-panel" hidden>
+      <div class="work">
+        <div id="viewer"></div>
+        <div class="side">
+          <div class="howto"><span class="big">✍</span><span><b>Drag a box around the drawing number</b> on the drawing. You can add more boxes (title, revision) to use them in the name too.</span></div>
+          <div class="card">
+            <h2>Areas</h2>
+            <ul class="rect-list" id="rectList"></ul>
+            <p class="hint" id="noAreas">No areas yet. Drag on the drawing to add one.</p>
+            <button class="btn ghost" id="clearRectsBtn">Remove all areas</button>
           </div>
-          <ul class="pdf-files" id="fileList"></ul>
-          <p class="hint" id="filesHint">Choose the folder with your drawings.</p>
-          <div class="row tight">
+          <div class="card">
+            <div class="field"><label for="previewFile">Showing</label><select id="previewFile"></select></div>
             <div class="field"><label for="pageNo">Page to read</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
           </div>
+          <div class="step-foot"><button class="btn" data-back>← Back</button><span class="spacer"></span><button class="btn primary lg" data-next>Next: read names →</button></div>
         </div>
+      </div>
+    </section>
 
-        <div class="op">
-          <h3>2 · Areas to read</h3>
-          <div class="row">
-            <button class="btn primary" id="drawBtn">+ Draw area</button>
-            <span style="flex:1"></span>
-            <button class="btn ghost" id="clearRectsBtn">Clear areas</button>
-          </div>
-          <ul class="rect-list" id="rectList"></ul>
-          <p class="hint">Draw a box around the drawing number, then (optionally) the title or revision.</p>
-        </div>
-
-        <div class="op">
-          <h3>3 · New name</h3>
+    <!-- Step 3: names -->
+    <section class="step-panel" hidden>
+      <div class="two-equal" style="margin-top:0">
+        <div class="card">
+          <h2>New file name</h2>
           <div class="field"><label for="pattern">Name pattern</label><input type="text" id="pattern" value="{1}"></div>
-          <div class="row tight" id="tokens"></div>
-          <p class="hint">{1}, {2}… are the areas. {name} is the current file name. Example: <code>{1} - {2}</code></p>
+          <div class="chips" id="tokens"></div>
+          <p class="hint">Click a box name above to add it. Example: <code>{1} - {2}</code></p>
+          <div class="field"><label>Example</label><div class="preview-name" id="examplePreview">—</div></div>
+        </div>
+        <div class="card">
+          <h2>Options</h2>
           <label class="check"><input type="checkbox" id="optUpper"> Convert to UPPER CASE</label>
           <label class="check"><input type="checkbox" id="optDupes" checked> If two files get the same name, add (2), (3)…</label>
-          <details class="more-opts">
-            <summary>OCR settings (for scanned drawings)</summary>
-            <div class="row tight">
-              <div class="field"><label for="ocrLang">OCR language</label>
-                <select id="ocrLang"><option value="eng">English</option><option value="ara">Arabic</option><option value="eng+ara">English + Arabic</option></select>
+          <details class="more">
+            <summary>Reading options (OCR for scanned drawings)</summary>
+            <div class="stack">
+              <div class="row tight" style="display:flex;gap:8px">
+                <div class="field"><label for="ocrLang">OCR language</label>
+                  <select id="ocrLang"><option value="eng">English</option><option value="ara">Arabic</option><option value="eng+ara">English + Arabic</option></select>
+                </div>
+                <div class="field"><label for="ocrDpi">OCR DPI</label>
+                  <select id="ocrDpi"><option>300</option><option selected>600</option><option>800</option></select>
+                </div>
               </div>
-              <div class="field"><label for="ocrDpi">OCR DPI</label>
-                <select id="ocrDpi"><option>300</option><option selected>600</option><option>800</option></select>
-              </div>
-            </div>
-            <div class="row tight">
               <div class="field"><label for="ocrMode">OCR reads</label>
                 <select id="ocrMode"><option value="any">Any text</option><option value="codes">Codes only (A–Z, 0–9, - _)</option></select>
               </div>
+              <button class="btn" id="readBtn">Read again</button>
             </div>
           </details>
-          <button class="btn success lg" id="readBtn">Read names</button>
-          <progress id="progress" value="0" max="1" hidden></progress>
-          <pre class="log" id="log" hidden></pre>
         </div>
       </div>
 
-      <div id="viewer"></div>
-    </div>
-
-    <section class="panel" id="resultsPanel" hidden style="margin-top:16px">
-      <div class="actions">
-        <button class="btn success lg" id="applyBtn">Apply Rename</button>
-        <button class="btn" id="undoBtn" hidden>Undo last rename</button>
-        <span class="spacer"></span>
-        <button class="btn" id="exportBtn">Export list to Excel</button>
-      </div>
-      <div class="status" id="status"></div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th class="sel"><input type="checkbox" id="headCheck" aria-label="Select all"></th><th>Current name</th><th>New name</th><th>Folder</th><th>Note</th></tr></thead>
-          <tbody id="rows"></tbody>
-        </table>
-      </div>
+      <section class="panel" id="resultsPanel" style="margin-top:16px">
+        <div class="result-bar">
+          <button class="btn success lg" id="applyBtn">Apply Rename</button>
+          <button class="btn" id="undoBtn" hidden>Undo last rename</button>
+          <span class="spacer"></span>
+          <button class="btn" id="exportBtn">Export list to Excel</button>
+        </div>
+        <div style="padding:0 14px"><progress id="progress" value="0" max="1" hidden></progress></div>
+        <div class="status" id="status"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="sel"><input type="checkbox" id="headCheck" aria-label="Select all"></th><th>Current name</th><th>New name</th><th>Folder</th><th>Note</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+      <pre class="log" id="log" hidden style="margin-top:16px"></pre>
+      <div class="step-foot"><button class="btn" data-back>← Back to the areas</button></div>
     </section>
   </main>
 

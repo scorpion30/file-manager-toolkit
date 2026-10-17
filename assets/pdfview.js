@@ -6,10 +6,12 @@
   const MAX_PIXELS = 36e6;
 
   class PdfView {
-    constructor(container, { onRectsChange = () => {}, maxRects = Infinity } = {}) {
+    constructor(container, { onRectsChange = () => {}, maxRects = Infinity, dragDraws = false, newLabel = (i) => `Rectangle ${i + 1}` } = {}) {
       this.el = container;
       this.onRectsChange = onRectsChange;
       this.maxRects = maxRects;
+      this.dragDraws = dragDraws; // plain drag on the page draws an area (shift-drag pans)
+      this.newLabel = newLabel;
       this.rects = [];          // {x1,y1,x2,y2,label}
       this.page = null;
       this.zoom = 1;
@@ -24,6 +26,7 @@
           <button class="icon-btn" data-z="in" title="Zoom in">+</button>
           <button class="btn ghost" data-z="fit">Fit</button>
           <span class="pv-hint"></span>
+          <span class="pv-tip">${dragDraws ? 'Drag on the drawing to mark an area · Mouse wheel to zoom · Shift + drag to move' : ''}</span>
         </div>
         <div class="pv-scroll"><div class="pv-stage"><canvas></canvas><div class="pv-layer"></div></div>
           <div class="pv-empty">Add a PDF to see it here</div></div>`;
@@ -33,6 +36,7 @@
       this.layer = container.querySelector('.pv-layer');
       this.hint = container.querySelector('.pv-hint');
       this.stage.hidden = true;
+      if (dragDraws) this.stage.classList.add('drawing');
 
       container.querySelector('.pv-bar').addEventListener('click', (e) => {
         const z = e.target.dataset.z;
@@ -69,8 +73,11 @@
       this.el.querySelector('.pv-empty').hidden = false;
     }
 
+    /** Width at 100%: the whole page fits in the view, so the title block is visible straight away. */
     baseWidth() {
-      return Math.max(200, this.scroll.clientWidth - 24);
+      const byWidth = this.scroll.clientWidth - 24;
+      const byHeight = (this.scroll.clientHeight - 24) * (this.pageW / this.pageH);
+      return Math.max(200, Math.min(byWidth, byHeight > 100 ? byHeight : byWidth));
     }
 
     layout() {
@@ -149,7 +156,7 @@
 
     cancelDraw() {
       this.drawing = null;
-      this.stage.classList.remove('drawing');
+      if (!this.dragDraws) this.stage.classList.remove('drawing');
       this.hint.textContent = '';
       this.drawRects();
     }
@@ -160,6 +167,9 @@
       const fx = (cx) => Math.min(1, Math.max(0, (cx - box.left) / box.width));
       const fy = (cy) => Math.min(1, Math.max(0, (cy - box.top) / box.height));
 
+      if (this.drawing === null && this.dragDraws && e.button === 0 && !e.shiftKey) {
+        this.drawing = this.rects.length >= this.maxRects ? this.rects.length - 1 : 'new';
+      }
       if (this.drawing === null) {
         // Pan with the mouse.
         const sx = e.clientX, sy = e.clientY, sl = this.scroll.scrollLeft, st = this.scroll.scrollTop;
@@ -190,7 +200,7 @@
         if (Math.abs(x1 - x0) < 0.002 || Math.abs(y1 - y0) < 0.002) return; // a click, keep waiting
         const rect = { x1: Math.min(x0, x1), y1: Math.min(y0, y1), x2: Math.max(x0, x1), y2: Math.max(y0, y1) };
         if (this.drawing === 'new') {
-          rect.label = `Rectangle ${this.rects.length + 1}`;
+          rect.label = this.newLabel(this.rects.length);
           this.rects.push(rect);
         } else {
           rect.label = this.rects[this.drawing].label;
