@@ -256,7 +256,17 @@
       g.items.push(ch);
     }
     groups.sort((a, b) => a.base - b.base);
-    return groups.map((g) => g.items.sort((a, b) => a.along - b.along));
+    return groups.map((g) => {
+      // CAD/Revit exports often draw the same text twice on top of itself (to look
+      // bolder, or as two layers). A letter sitting on an identical letter counts once.
+      const out = [];
+      for (const ch of g.items.sort((a, b) => a.along - b.along)) {
+        const dup = out.slice(-4).some((o) => o.c === ch.c &&
+          Math.abs(o.along - ch.along) < Math.max(o.width, ch.width, (ch.size || 10) * 0.2) * 0.4);
+        if (!dup) out.push(ch);
+      }
+      return out;
+    });
   };
 
   /** Text inside rect [x0,y0,x1,y1] in reading order; lines joined by a space. */
