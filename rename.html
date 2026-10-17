@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rename Files</title>
+  <meta name="description" content="Rename many files at once: prefix, suffix, find and replace, manual edits, delete, and export the file list to Excel. Runs fully in your browser.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager Toolkit</a>
+      <nav>
+        <a href="./" class="hide-sm">All tools</a>
+        <a href="rename.html" class="active hide-sm">Rename Files</a>
+        <a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate ❤️</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <h1>Rename Files</h1>
+        <p>Pick a folder, preview the new names, then apply. Nothing is uploaded.</p>
+      </div>
+    </div>
+
+    <div class="notice" id="fallbackNotice" hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      <div>
+        <b>This browser can't rename files directly on your computer.</b>
+        You can still preview the new names, export to Excel, and download the renamed files as a ZIP.
+        For direct renaming, open this page in <b>Google Chrome</b> or <b>Microsoft Edge</b> on a computer.
+      </div>
+    </div>
+
+    <!-- Start screen -->
+    <section class="dropzone" id="startScreen">
+      <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M12 10v6M9 13h6"/></svg>
+      <h2>Select a folder to start</h2>
+      <p id="startHint">Your browser will ask for permission to view and edit files in that folder.</p>
+      <button class="btn primary lg" id="pickBtn">Select Folder</button>
+      <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+    </section>
+
+    <section class="panel" id="scanning" hidden>
+      <div class="progress"><span class="spinner"></span><span id="scanText">Reading folder…</span></div>
+    </section>
+
+    <!-- Workspace -->
+    <section class="panel" id="workspace" hidden>
+      <div class="toolbar">
+        <div class="folder-name">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+          <span id="folderName"></span>
+        </div>
+        <button class="btn ghost" id="changeFolderBtn">Change</button>
+        <button class="btn ghost" id="rescanBtn" title="Read the folder again">↻ Refresh</button>
+        <span class="spacer"></span>
+        <select id="includeMode" aria-label="Which folders to include">
+          <option value="current">Current folder only</option>
+          <option value="all">All subfolders</option>
+          <option value="select">Select subfolders…</option>
+        </select>
+        <div class="popover-wrap">
+          <button class="btn" id="extBtn">File types: <span id="extLabel">All</span> ▾</button>
+          <div class="popover" id="extPopover" hidden></div>
+        </div>
+      </div>
+
+      <div class="ops">
+        <div class="op">
+          <h3>Prefix / Suffix</h3>
+          <div class="row">
+            <div class="field"><label for="psFind">Only names containing</label><input type="text" id="psFind" placeholder="(optional)"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="prefix">Prefix</label><input type="text" id="prefix" placeholder="e.g. 2026_"></div>
+            <div class="field"><label for="suffix">Suffix</label><input type="text" id="suffix" placeholder="e.g. _final"></div>
+            <button class="btn primary" id="applyPsBtn">Apply</button>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>Find / Replace</h3>
+          <div class="row">
+            <div class="field"><label for="frFind">Find</label><input type="text" id="frFind" placeholder="text to find"></div>
+            <div class="field"><label for="frReplace">Replace with</label><input type="text" id="frReplace" placeholder="(empty = remove)"></div>
+          </div>
+          <div class="row">
+            <label class="check"><input type="checkbox" id="frCase"> Match case</label>
+            <span class="spacer" style="flex:1"></span>
+            <button class="btn primary" id="applyFrBtn">Replace</button>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>Delete files</h3>
+          <div class="row">
+            <div class="field"><label for="delFind">Show names containing</label><input type="text" id="delFind" placeholder="(optional)"></div>
+          </div>
+          <div class="row">
+            <button class="btn" id="selAllBtn">Select all</button>
+            <button class="btn" id="unselAllBtn">Unselect all</button>
+            <span class="spacer" style="flex:1"></span>
+            <button class="btn danger" id="deleteBtn" disabled>Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn success lg" id="applyRenameBtn" disabled>Apply Rename</button>
+        <button class="btn" id="resetBtn" disabled>Discard changes</button>
+        <button class="btn" id="undoBtn" hidden>Undo last rename</button>
+        <span class="spacer"></span>
+        <button class="btn" id="exportBtn">Export to Excel</button>
+      </div>
+
+      <div class="status" id="status"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="sel"><input type="checkbox" id="headCheck" aria-label="Select all shown"></th>
+              <th>New name</th>
+              <th>Ext</th>
+              <th class="orig">Original name</th>
+              <th>Folder</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty" id="emptyMsg" hidden>No files match the current filters.</div>
+        <div class="more" id="moreWrap" hidden><button class="btn" id="moreBtn"></button></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="dlg">
+    <div class="d-head"><h2 id="dlgTitle"></h2></div>
+    <div class="d-body" id="dlgBody"></div>
+    <div class="d-foot">
+      <button type="button" class="btn" id="dlgCancel">Cancel</button>
+      <button type="button" class="btn primary" id="dlgOk">OK</button>
+    </div>
+  </dialog>
+
+  <div class="toasts" id="toasts"></div>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>© File Manager Toolkit · Free forever</span>
+      <span>All processing happens locally in your browser.</span>
+    </div>
+  </footer>
+
+  <script src="assets/rename.js"></script>
+</body>
+</html>
