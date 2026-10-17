@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF to Excel</title>
+  <meta name="description" content="Draw boxes on a PDF and read the text inside them from many PDFs into Excel. Uses the PDF text, or OCR for scanned files (English and Arabic).">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager Toolkit</a>
+      <nav>
+        <a href="./" class="hide-sm">All tools</a>
+        <a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate ❤️</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <h1>PDF to Excel</h1>
+        <p>Draw boxes on one PDF, then read the text in the same boxes from all your PDFs into Excel.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="side">
+        <div class="op">
+          <h3>1 · PDF files</h3>
+          <div class="row">
+            <button class="btn primary" id="addFilesBtn">Add PDFs</button>
+            <button class="btn" id="addFolderBtn">Add folder</button>
+            <span style="flex:1"></span>
+            <button class="btn ghost" id="clearBtn">Clear</button>
+          </div>
+          <ul class="pdf-files" id="fileList"></ul>
+          <p class="hint" id="filesHint">Click a file to show it on the right. Drop PDFs anywhere on this page.</p>
+          <div class="row tight">
+            <div class="field"><label for="pageNo">Page to read</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>2 · Areas to read</h3>
+          <div class="row">
+            <button class="btn primary" id="drawBtn">+ Draw area</button>
+            <span style="flex:1"></span>
+            <button class="btn ghost" id="clearRectsBtn">Clear areas</button>
+          </div>
+          <ul class="rect-list" id="rectList"></ul>
+          <p class="hint">Each area becomes a column in Excel. Rename the column here. Zoom with the mouse wheel.</p>
+        </div>
+
+        <div class="op">
+          <h3>3 · Read the text</h3>
+          <p class="hint">Real PDF text is read directly. If an area has no text (scanned or outlined), OCR is used.</p>
+          <div class="row tight">
+            <div class="field"><label for="ocrLang">OCR language</label>
+              <select id="ocrLang"><option value="eng">English</option><option value="ara">Arabic</option><option value="eng+ara">English + Arabic</option></select>
+            </div>
+            <div class="field"><label for="ocrDpi">OCR DPI</label>
+              <select id="ocrDpi"><option>300</option><option selected>600</option><option>800</option><option>1200</option></select>
+            </div>
+          </div>
+          <div class="row tight">
+            <div class="field"><label for="ocrMode">OCR reads</label>
+              <select id="ocrMode"><option value="codes">Codes only (A–Z, 0–9, - _) like the old app</option><option value="any">Any text</option></select>
+            </div>
+          </div>
+          <label class="check"><input type="checkbox" id="optUpper" checked> Convert to UPPER CASE</label>
+          <label class="check"><input type="checkbox" id="optDedupe" checked> Remove repeated words</label>
+          <button class="btn success lg" id="processBtn">Process PDFs</button>
+          <progress id="progress" value="0" max="1" hidden></progress>
+          <pre class="log" id="log" hidden></pre>
+        </div>
+
+        <div class="op">
+          <h3>4 · Export to Excel</h3>
+          <div class="row tight">
+            <div class="field"><label for="sheetName">Sheet name</label><input type="text" id="sheetName" value="Sheet1"></div>
+            <div class="field"><label for="startCell">Start cell</label><input type="text" id="startCell" value="A1"></div>
+          </div>
+          <label class="check"><input type="checkbox" id="optHeader" checked> Include header</label>
+          <label class="check"><input type="checkbox" id="optFilename" checked> Include file name</label>
+          <label class="check"><input type="checkbox" id="optCompare"> Compare area 1 with the file name</label>
+          <div class="row">
+            <button class="btn" id="existingBtn">Add to an existing Excel…</button>
+            <button class="icon-btn danger" id="existingClear" title="Use a new file instead" hidden>✕</button>
+          </div>
+          <p class="hint" id="existingLabel">A new Excel file will be created.</p>
+          <label class="check" id="insertWrap" hidden><input type="checkbox" id="optInsert"> Insert mode (write into the sheet without clearing it)</label>
+          <button class="btn success" id="exportBtn">Export to Excel</button>
+        </div>
+      </div>
+
+      <div id="viewer"></div>
+    </div>
+
+    <section class="panel" id="resultsPanel" hidden style="margin-top:16px">
+      <div class="toolbar"><b>Results</b><span class="hint">You can click a cell to fix it before exporting.</span></div>
+      <div class="table-wrap"><table class="results-table"><thead id="resHead"></thead><tbody id="resBody"></tbody></table></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>© File Manager Toolkit · Free forever</span>
+      <span>All processing happens locally in your browser.</span>
+    </div>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/pdfview.js"></script>
+  <script src="assets/extract.js"></script>
+</body>
+</html>

@@ -4,13 +4,17 @@ Free online file tools that run entirely in the browser. Files are never uploade
 
 ## Tools
 
-| Tool | Status |
+| Tool | What it does |
 |---|---|
-| Rename Files: prefix/suffix, find & replace, manual edit, delete, undo, export to Excel | ✅ Ready |
-| Organize Files | Coming soon |
-| Merge PDF / Split PDF | Coming soon |
-| PDF to Excel (OCR, Arabic & English) | Coming soon |
-| Edit PDF Text | Coming soon |
+| Rename Files | Prefix/suffix, find & replace, manual edit, delete, undo, export to Excel |
+| Files to Excel | List every file in a folder tree; sheets per folder or per type, summary counts |
+| Organize Files | Move/copy files into folders by type or keyword, with a log file |
+| Merge PDF | Combine PDFs in a chosen order |
+| Split PDF | Page ranges (1-3,5,8-10), every page, or picked pages into one file |
+| PDF to Excel | Draw areas, read their text from many PDFs (OCR for scanned, English/Arabic), export or insert into an existing workbook |
+| Edit PDF Text | Find & replace text inside an area across many PDFs, keeping font, size and angle |
+
+PDF work uses [MuPDF.js](https://mupdf.com/) (AGPL) and OCR uses [Tesseract.js](https://tesseract.projectnaptha.com/).
 
 ## Browser support
 

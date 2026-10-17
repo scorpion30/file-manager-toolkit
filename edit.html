@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit PDF Text</title>
+  <meta name="description" content="Find and replace text inside an area of many PDFs at once, such as a title block field. Runs in your browser.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager Toolkit</a>
+      <nav>
+        <a href="./" class="hide-sm">All tools</a>
+        <a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate ❤️</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <h1>Edit PDF Text</h1>
+        <p>Replace a value inside one area (for example a title block field) in many PDFs at once.</p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="side">
+        <div class="op">
+          <h3>1 · PDF files</h3>
+          <div class="row">
+            <button class="btn primary" id="addFilesBtn">Add PDFs</button>
+            <button class="btn" id="addFolderBtn">Add folder</button>
+            <span style="flex:1"></span>
+            <button class="btn ghost" id="clearBtn">Clear</button>
+          </div>
+          <ul class="pdf-files" id="fileList"></ul>
+          <p class="hint" id="filesHint">Click a file to show it on the right.</p>
+          <div class="row tight">
+            <div class="field"><label for="pageNo">Page</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>2 · Area</h3>
+          <div class="row">
+            <button class="btn primary" id="drawBtn">Draw area</button>
+            <span class="hint" id="areaLabel">No area yet.</span>
+          </div>
+          <p class="hint">Only text inside this area is changed. Works where the PDF has real (selectable) text.</p>
+        </div>
+
+        <div class="op">
+          <h3>3 · Find &amp; replace</h3>
+          <div class="field"><label for="findText">Find</label><input type="text" id="findText"></div>
+          <div class="field"><label for="replaceText">Replace with</label><input type="text" id="replaceText"></div>
+          <label class="check"><input type="checkbox" id="matchCase"> Match case</label>
+          <div class="row tight">
+            <div class="field"><label for="angle">Text angle</label>
+              <select id="angle">
+                <option value="auto">Auto-detect</option>
+                <option value="0">0° (normal)</option>
+                <option value="90">90° (reads upward)</option>
+                <option value="180">180° (upside down)</option>
+                <option value="270">270° (reads downward)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>Font</h3>
+          <div class="row tight">
+            <div class="field"><label for="font">Font</label>
+              <select id="font">
+                <option value="auto">Auto (closest to the original)</option>
+                <option value="Helvetica">Helvetica / Arial</option>
+                <option value="Times">Times New Roman</option>
+                <option value="Courier">Courier New</option>
+                <option value="file">Font file (.ttf / .otf)…</option>
+              </select>
+            </div>
+            <div class="field"><label for="size">Size</label><input type="text" id="size" value="Auto"></div>
+          </div>
+          <p class="hint" id="fontFileLabel" hidden></p>
+          <label class="check"><input type="checkbox" id="forceBold"> Force bold</label>
+          <label class="check"><input type="checkbox" id="forceItalic"> Force italic</label>
+          <p class="hint">Tip: to match Calibri or another Windows font, choose “Font file” and pick it from C:\Windows\Fonts.</p>
+        </div>
+
+        <div class="op">
+          <h3>4 · Save</h3>
+          <label class="check"><input type="radio" name="save" value="download" checked> Download copies with suffix</label>
+          <div class="row tight"><div class="field"><label for="suffix">Suffix</label><input type="text" id="suffix" value="_edited"></div></div>
+          <label class="check"><input type="radio" name="save" value="folder" id="saveFolder"> Save copies into a folder</label>
+          <label class="check"><input type="radio" name="save" value="overwrite" id="saveOverwrite"> Overwrite the original files (no undo)</label>
+          <div class="row">
+            <button class="btn" id="previewBtn">Preview matches</button>
+            <button class="btn success" id="applyBtn">Apply replace</button>
+          </div>
+          <progress id="progress" value="0" max="1" hidden></progress>
+          <pre class="log" id="log" hidden></pre>
+        </div>
+      </div>
+
+      <div id="viewer"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>© File Manager Toolkit · Free forever</span>
+      <span>All processing happens locally in your browser.</span>
+    </div>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/pdfview.js"></script>
+  <script src="assets/edit.js"></script>
+</body>
+</html>
