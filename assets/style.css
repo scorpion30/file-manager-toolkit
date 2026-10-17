@@ -203,7 +203,7 @@ input[type="text"], select {
   min-width: 0;
 }
 input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
-input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; margin: 0; }
+input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; margin: 0; flex: none; }
 
 .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 120px; }
 .field label { font-size: 12px; font-weight: 600; color: var(--muted); }
@@ -344,3 +344,28 @@ dialog .d-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 12
   .ops { grid-template-columns: 1fr; }
   .table-wrap { max-height: none; }
 }
+
+/* ---------- PDF file lists ---------- */
+.dropzone.dragover { border-color: var(--accent); background: var(--accent-soft); }
+.dropzone .btn-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.file-list { list-style: none; margin: 0; padding: 8px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+.file-list li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
+}
+.file-list li.dragging { opacity: .4; }
+.file-list li.drop-before { box-shadow: 0 -3px 0 var(--accent); }
+.file-list .grip { cursor: grab; color: var(--muted); user-select: none; padding: 0 2px; }
+.file-list .idx { color: var(--muted); font-size: 13px; width: 22px; text-align: right; flex: none; }
+.file-list .fname { flex: 1; min-width: 0; word-break: break-all; }
+.file-list .meta { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.file-list .err { color: var(--danger); font-size: 13px; }
+.icon-btn { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 6px; width: 30px; height: 30px; cursor: pointer; flex: none; font-size: 14px; }
+.icon-btn:hover:not(:disabled) { background: var(--surface-2); }
+.icon-btn:disabled { opacity: .35; cursor: not-allowed; }
+.icon-btn.danger:hover { color: var(--danger); border-color: var(--danger); }
+.hint { color: var(--muted); font-size: 13px; margin: 0; }
+.log { font: 13px/1.5 ui-monospace, Consolas, monospace; background: var(--surface-2); border-radius: 8px; padding: 10px; max-height: 240px; overflow: auto; white-space: pre-wrap; margin: 0; }
+.log .bad { color: var(--danger); }
+.log .good { color: var(--success); }
+progress { width: 100%; height: 8px; accent-color: var(--accent); }

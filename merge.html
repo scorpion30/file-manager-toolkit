@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Merge PDF</title>
+  <meta name="description" content="Combine several PDF files into one, in the order you choose. Free and private: runs in your browser.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager Toolkit</a>
+      <nav>
+        <a href="./" class="hide-sm">All tools</a>
+        <a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate ❤️</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <h1>Merge PDF</h1>
+        <p>Combine PDFs into one file, in the order you want.</p>
+      </div>
+    </div>
+
+    <section class="dropzone" id="dropzone">
+      <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/></svg>
+      <h2>Select PDF files</h2>
+      <p>or drop them here</p>
+      <div class="btn-row">
+        <button class="btn primary lg" id="addFilesBtn">Add PDF files</button>
+        <button class="btn lg" id="addFolderBtn">Add a folder</button>
+      </div>
+    </section>
+
+    <section class="panel" id="workspace" hidden style="margin-top:16px">
+      <div class="toolbar">
+        <b id="countLabel"></b>
+        <span class="spacer"></span>
+        <button class="btn" id="moreFilesBtn">+ Add files</button>
+        <button class="btn" id="sortBtn">Sort A→Z</button>
+        <button class="btn ghost" id="clearBtn">Clear all</button>
+      </div>
+      <p class="hint" style="padding:10px 14px 0">Drag the rows, or use the arrows, to set the order.</p>
+      <ul class="file-list" id="fileList"></ul>
+      <div class="actions">
+        <div class="field" style="max-width:320px"><label for="outName">File name</label><input type="text" id="outName" value="combined.pdf"></div>
+        <span class="spacer"></span>
+        <button class="btn success lg" id="mergeBtn">Merge PDF</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>© File Manager Toolkit · Free forever</span>
+      <span>All processing happens locally in your browser.</span>
+    </div>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/merge.js"></script>
+</body>
+</html>

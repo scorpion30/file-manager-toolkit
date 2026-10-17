@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Files to Excel</title>
+  <meta name="description" content="List every file in a folder and all its subfolders, filter by type, and export the list to Excel with a sheet per folder or per file type.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager Toolkit</a>
+      <nav>
+        <a href="./" class="hide-sm">All tools</a>
+        <a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate ❤️</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <h1>Files to Excel</h1>
+        <p>List every file in a folder, including folders inside folders, and export the list to Excel.</p>
+      </div>
+    </div>
+
+    <section class="dropzone" id="startScreen">
+      <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M8 12h8M8 15h8M8 18h5"/></svg>
+      <h2>Select a folder to list</h2>
+      <p>The folder is only read. Nothing is changed or uploaded.</p>
+      <button class="btn primary lg" id="pickBtn">Select Folder</button>
+    </section>
+
+    <section class="panel" id="scanning" hidden>
+      <div class="progress"><span class="spinner"></span><span id="scanText">Reading folder…</span></div>
+    </section>
+
+    <section class="panel" id="workspace" hidden>
+      <div class="toolbar">
+        <div class="folder-name">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>
+          <span id="folderName"></span>
+        </div>
+        <button class="btn ghost" id="changeFolderBtn">Change</button>
+        <button class="btn ghost" id="rescanBtn" title="Read the folder again">↻ Refresh</button>
+        <span class="spacer"></span>
+        <select id="includeMode" aria-label="Which folders to include">
+          <option value="all">All subfolders</option>
+          <option value="current">Current folder only</option>
+          <option value="select">Select subfolders…</option>
+        </select>
+        <div class="popover-wrap">
+          <button class="btn" id="extBtn">File types: <span id="extLabel">All</span> ▾</button>
+          <div class="popover" id="extPopover" hidden></div>
+        </div>
+      </div>
+
+      <div class="ops">
+        <div class="op">
+          <h3>Filter</h3>
+          <div class="row">
+            <div class="field"><label for="nameFind">Name contains</label><input type="text" id="nameFind" placeholder="(optional)"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="pathPrefix">Folder location on your computer (optional)</label><input type="text" id="pathPrefix" placeholder="e.g. D:\Projects"></div>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>Excel sheets</h3>
+          <label class="check"><input type="checkbox" id="optSummary" checked> Summary (count of each file type per folder)</label>
+          <label class="check"><input type="checkbox" id="optAll" checked> One sheet with all files</label>
+          <div class="row">
+            <div class="field"><label for="splitBy">Also split into sheets by</label>
+              <select id="splitBy">
+                <option value="folder">Folder (a sheet for each folder)</option>
+                <option value="type">File type (a sheet for each type)</option>
+                <option value="none">Don't split</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="op">
+          <h3>Columns</h3>
+          <label class="check"><input type="checkbox" id="colSize" checked> Size</label>
+          <label class="check"><input type="checkbox" id="colDate" checked> Date modified</label>
+          <label class="check"><input type="checkbox" id="colPath" checked> Full path</label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn success lg" id="exportBtn">Export to Excel</button>
+        <span class="spacer"></span>
+      </div>
+
+      <div class="status" id="status"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Ext</th><th>Folder</th><th>Size</th><th class="orig">Modified</th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+        <div class="empty" id="emptyMsg" hidden>No files match the current filters.</div>
+        <div class="more" id="moreWrap" hidden><button class="btn" id="moreBtn"></button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>© File Manager Toolkit · Free forever</span>
+      <span>All processing happens locally in your browser.</span>
+    </div>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/list.js"></script>
+</body>
+</html>
