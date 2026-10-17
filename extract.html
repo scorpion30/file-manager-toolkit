@@ -6,15 +6,21 @@
   <title>PDF to Excel</title>
   <meta name="description" content="Draw boxes on a PDF and read the text inside them from many PDFs into Excel. Uses the PDF text, or OCR for scanned files (English and Arabic).">
   <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="inner">
-      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager Toolkit</a>
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
       <nav>
-        <a href="./" class="hide-sm">All tools</a>
-        <a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate ❤️</a>
+        <a href="./#files" class="hide-sm">File tools</a>
+        <a href="./#pdf" class="hide-sm">PDF tools</a>
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
+        <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
       </nav>
     </div>
   </header>
@@ -22,8 +28,11 @@
   <main>
     <div class="tool-head">
       <div>
-        <h1>PDF to Excel</h1>
-        <p>Draw boxes on one PDF, then read the text in the same boxes from all your PDFs into Excel.</p>
+        <div class="crumb"><a href="./">All tools</a> / <a href="./#pdf">PDF tools</a></div>
+        <div class="tool-title">
+          <span class="tool-icon cat-pdf"><svg viewBox="0 0 24 24"><path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span>
+          <div><h1>PDF to Excel</h1><p>Draw boxes on one PDF, then read the text in the same boxes from all your PDFs into Excel.</p></div>
+        </div>
       </div>
     </div>
 
@@ -108,9 +117,15 @@
 
   <footer class="site-footer">
     <div class="inner">
-      <span>© File Manager Toolkit · Free forever</span>
-      <span>All processing happens locally in your browser.</span>
+      <div class="f-brand">
+        <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+        <p>Free file and PDF tools that run in your browser.</p>
+      </div>
+      <div class="f-col"><h4>File tools</h4><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="extract.html">PDF to Excel</a><a href="edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
     </div>
+    <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
   </footer>
 
   <script src="assets/common.js"></script>

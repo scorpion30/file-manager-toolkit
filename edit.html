@@ -6,15 +6,21 @@
   <title>Edit PDF Text</title>
   <meta name="description" content="Find and replace text inside an area of many PDFs at once, such as a title block field. Runs in your browser.">
   <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="inner">
-      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager Toolkit</a>
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
       <nav>
-        <a href="./" class="hide-sm">All tools</a>
-        <a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate ❤️</a>
+        <a href="./#files" class="hide-sm">File tools</a>
+        <a href="./#pdf" class="hide-sm">PDF tools</a>
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
+        <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
       </nav>
     </div>
   </header>
@@ -22,8 +28,11 @@
   <main>
     <div class="tool-head">
       <div>
-        <h1>Edit PDF Text</h1>
-        <p>Replace a value inside one area (for example a title block field) in many PDFs at once.</p>
+        <div class="crumb"><a href="./">All tools</a> / <a href="./#pdf">PDF tools</a></div>
+        <div class="tool-title">
+          <span class="tool-icon cat-pdf"><svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>
+          <div><h1>Edit PDF Text</h1><p>Replace a value inside one area (for example a title block field) in many PDFs at once.</p></div>
+        </div>
       </div>
     </div>
 
@@ -112,9 +121,15 @@
 
   <footer class="site-footer">
     <div class="inner">
-      <span>© File Manager Toolkit · Free forever</span>
-      <span>All processing happens locally in your browser.</span>
+      <div class="f-brand">
+        <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+        <p>Free file and PDF tools that run in your browser.</p>
+      </div>
+      <div class="f-col"><h4>File tools</h4><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="extract.html">PDF to Excel</a><a href="edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
     </div>
+    <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
   </footer>
 
   <script src="assets/common.js"></script>
