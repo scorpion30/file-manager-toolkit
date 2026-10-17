@@ -72,25 +72,27 @@
   $('drawBtn').onclick = () => view.startDraw();
 
   // ---------- matching ----------
+  /** Matches inside the area, line by line in reading order (spaces ignored). */
   function findMatches(chars, find, matchCase, area) {
-    const norm = (s) => (matchCase ? s : s.toLowerCase());
+    const norm = (t) => (matchCase ? t : t.toLowerCase());
     const target = norm(find).replace(/\s+/g, '');
     if (!target) return [];
-    const compact = chars.filter((c) => !/\s/.test(c.c));
-    const str = compact.map((c) => norm(c.c)).join('');
-    const [ax0, ay0, ax1, ay1] = area;
     const out = [];
-    let from = 0;
-    for (;;) {
-      const idx = str.indexOf(target, from);
-      if (idx === -1) break;
-      const span = compact.slice(idx, idx + target.length);
-      const r = [
-        Math.min(...span.map((c) => c.x0)), Math.min(...span.map((c) => c.y0)),
-        Math.max(...span.map((c) => c.x1)), Math.max(...span.map((c) => c.y1)),
-      ];
-      if (r[0] < ax1 && r[2] > ax0 && r[1] < ay1 && r[3] > ay0) out.push({ rect: r, first: span[0] });
-      from = idx + 1;
+    for (const line of PdfView.linesInRect(chars, area)) {
+      const compact = line.filter((c) => !/\s/.test(c.c));
+      const str = compact.map((c) => norm(c.c)).join('');
+      let from = 0;
+      for (;;) {
+        const idx = str.indexOf(target, from);
+        if (idx === -1) break;
+        const span = compact.slice(idx, idx + target.length);
+        const rect = [
+          Math.min(...span.map((c) => c.x0)), Math.min(...span.map((c) => c.y0)),
+          Math.max(...span.map((c) => c.x1)), Math.max(...span.map((c) => c.y1)),
+        ];
+        out.push({ rect, first: span[0], last: span[span.length - 1], text: span.map((c) => c.c).join('') });
+        from = idx + target.length;
+      }
     }
     return out;
   }
@@ -199,17 +201,37 @@
     return w;
   }
 
+  function colorOps(color) {
+    if (Array.isArray(color)) {
+      if (color.length === 3) return `${color.map(pdfNum).join(' ')} rg`;
+      if (color.length === 1) return `${pdfNum(color[0])} g`;
+      if (color.length === 4) return `${color.map(pdfNum).join(' ')} k`;
+    }
+    return '0 g';
+  }
+
   function replaceOnPage(m, doc, page, matches, replace) {
-    // Work out fonts and sizes before the old text is removed.
+    // Work out fonts, sizes and positions before the old text is removed.
     const cache = {};
+    const manual = parseFloat($('size').value);
+    const angle = $('angle').value;
     const plans = matches.map((mt) => {
       const fontInfo = resolveFont(m, doc, cache, mt.first);
-      const manual = parseFloat($('size').value);
-      const angle = $('angle').value;
       let u = angle === 'auto' ? mt.first.dir : ANGLE_DIR[angle];
       const len = Math.hypot(u[0], u[1]) || 1;
       u = [u[0] / len, u[1] / len];
-      return { mt, fontInfo, size: Number.isFinite(manual) && manual > 0 ? manual : mt.first.size, u };
+      const v = [-u[1], u[0]]; // "down" for the text, in page coordinates
+      // Where the old text started and ended along its line, and its baseline.
+      const start = (mt.first.along ?? mt.first.cx * u[0] + mt.first.cy * u[1]) - (mt.first.width ?? 0) / 2;
+      const end = (mt.last.along ?? mt.last.cx * u[0] + mt.last.cy * u[1]) + (mt.last.width ?? 0) / 2;
+      const baseline = mt.first.origin[0] * v[0] + mt.first.origin[1] * v[1];
+      const size = Number.isFinite(manual) && manual > 0 ? manual : mt.first.size;
+      // How much narrower (or wider) the original font is than the font we draw with,
+      // so e.g. Arial Narrow is matched by squeezing Helvetica horizontally.
+      const natural = textWidth(fontInfo, mt.text) * mt.first.size;
+      let hscale = natural > 0 ? (end - start) / natural : 1;
+      if (!(hscale > 0.5 && hscale < 1.3) || Math.abs(hscale - 1) < 0.04) hscale = 1;
+      return { mt, fontInfo, size, u, v, start, end, baseline, hscale };
     });
 
     for (const { mt } of plans) {
@@ -234,25 +256,32 @@
     let ops = '';
     let n = 0;
     const keys = new Map();
-    for (const { mt, fontInfo, size: startSize, u } of plans) {
-      if (!keys.has(fontInfo)) {
+    for (const p of plans) {
+      if (!keys.has(p.fontInfo)) {
         let key;
         do { key = `FMEd${++n}`; } while (!fonts.get(key).isNull());
-        fonts.put(key, fontInfo.ref);
-        keys.set(fontInfo, key);
+        fonts.put(key, p.fontInfo.ref);
+        keys.set(p.fontInfo, key);
       }
-      const v = [-u[1], u[0]]; // "down" for the text, in page coordinates
-      const [x0, y0, x1, y1] = mt.rect;
-      const along = Math.abs(u[0]) * (x1 - x0) + Math.abs(u[1]) * (y1 - y0);
-      const em = textWidth(fontInfo, replace);
-      let size = startSize;
-      while (em * size > along * 1.02 && size > 4) size -= 0.25; // shrink to fit, like the desktop app
-      const width = em * size;
-      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-      const ox = cx - u[0] * width / 2 + v[0] * size * 0.35;
-      const oy = cy - u[1] * width / 2 + v[1] * size * 0.35;
-      const tm = m.Matrix.concat([u[0], u[1], -v[0], -v[1], ox, oy], inv);
-      ops += `BT /${keys.get(fontInfo)} ${pdfNum(size)} Tf ${tm.map(pdfNum).join(' ')} Tm 0 g ${encodeText(fontInfo, replace)} Tj ET\n`;
+      const room = p.end - p.start;
+      const em = textWidth(p.fontInfo, replace);
+      let { size, hscale } = p;
+      // Longer text: first squeeze it a little more (keeps the letter height), then shrink.
+      if (em * size * hscale > room * 1.02) {
+        const squeezed = room / (em * size);
+        if (squeezed >= p.hscale * 0.7) hscale = squeezed;
+        else {
+          hscale = p.hscale * 0.7;
+          while (em * size * hscale > room * 1.02 && size > 4) size -= 0.25;
+        }
+      }
+      const width = em * size * hscale;
+      const along = (p.start + p.end) / 2 - width / 2; // centred where the old text was
+      const ox = p.u[0] * along + p.v[0] * p.baseline;
+      const oy = p.u[1] * along + p.v[1] * p.baseline;
+      const tm = m.Matrix.concat([p.u[0], p.u[1], -p.v[0], -p.v[1], ox, oy], inv);
+      ops += `BT /${keys.get(p.fontInfo)} ${pdfNum(size)} Tf ${pdfNum(hscale * 100)} Tz ${tm.map(pdfNum).join(' ')} Tm ` +
+        `${colorOps(p.mt.first.color)} ${encodeText(p.fontInfo, replace)} Tj ET\n`;
     }
 
     // Wrap the existing content in q/Q so its graphics state can't affect the new text.

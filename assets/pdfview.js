@@ -221,11 +221,11 @@
     let dir = [1, 0];
     page.toStructuredText('preserve-whitespace').walk({
       beginLine(bbox, wmode, direction) { line++; dir = direction; },
-      onChar(c, origin, font, size, q) {
+      onChar(c, origin, font, size, q, color) {
         const xs = [q[0], q[2], q[4], q[6]];
         const ys = [q[1], q[3], q[5], q[7]];
         chars.push({
-          c, line, dir, size, origin,
+          c, line, dir, size, origin, color,
           font: font.getName(), bold: font.isBold(), italic: font.isItalic(), serif: font.isSerif(), mono: font.isMono(),
           x0: Math.min(...xs), y0: Math.min(...ys), x1: Math.max(...xs), y1: Math.max(...ys),
           cx: (q[0] + q[2] + q[4] + q[6]) / 4, cy: (q[1] + q[3] + q[5] + q[7]) / 4,
@@ -235,18 +235,43 @@
     return chars;
   };
 
-  /** Text whose character centres fall inside rect [x0,y0,x1,y1]; lines joined by a space. */
-  PdfView.textInRect = (chars, [x0, y0, x1, y1]) => {
-    let out = '';
-    let lastLine = null;
+  /**
+   * Characters whose centres fall inside rect, grouped into lines by where they sit
+   * on the page (not by their order inside the file), each line ordered along its
+   * reading direction. Text added later (e.g. by an edit) lands in its visual place.
+   */
+  PdfView.linesInRect = (chars, [x0, y0, x1, y1]) => {
+    const groups = [];
     for (const ch of chars) {
       if (ch.cx < x0 || ch.cx > x1 || ch.cy < y0 || ch.cy > y1) continue;
-      if (lastLine !== null && ch.line !== lastLine) out += ' ';
-      out += ch.c;
-      lastLine = ch.line;
+      const len = Math.hypot(ch.dir[0], ch.dir[1]) || 1;
+      const ux = ch.dir[0] / len, uy = ch.dir[1] / len;
+      const base = ch.origin[0] * -uy + ch.origin[1] * ux; // distance across the text direction
+      const size = ch.size || 10;
+      let g = groups.find((gr) => Math.abs(gr.ux - ux) < 0.2 && Math.abs(gr.uy - uy) < 0.2 &&
+        Math.abs(gr.base - base) < Math.max(gr.size, size) * 0.5);
+      if (!g) { g = { ux, uy, base, size, items: [] }; groups.push(g); }
+      ch.along = ch.cx * ux + ch.cy * uy;
+      ch.width = Math.abs(ch.x1 - ch.x0) * Math.abs(ux) + Math.abs(ch.y1 - ch.y0) * Math.abs(uy);
+      g.items.push(ch);
     }
-    return out;
+    groups.sort((a, b) => a.base - b.base);
+    return groups.map((g) => g.items.sort((a, b) => a.along - b.along));
   };
+
+  /** Text inside rect [x0,y0,x1,y1] in reading order; lines joined by a space. */
+  PdfView.textInRect = (chars, rect) => PdfView.linesInRect(chars, rect).map((line) => {
+    let out = '';
+    let prev = null;
+    for (const ch of line) {
+      // A visible gap with no space character between two letters is a word break.
+      if (prev && !/\s/.test(ch.c) && !/\s/.test(prev.c) &&
+        (ch.along - ch.width / 2) - (prev.along + prev.width / 2) > (ch.size || 10) * 0.3) out += ' ';
+      out += ch.c;
+      prev = ch;
+    }
+    return out.trim();
+  }).filter(Boolean).join(' ');
 
   window.PdfView = PdfView;
 })();
