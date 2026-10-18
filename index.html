@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="assets/style.css">
   <script src="assets/theme.js"></script>
   <script src="assets/i18n.js"></script>
+  <script src="assets/home.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -48,17 +49,18 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-text">
-        <span class="eyebrow">Free · Private · No sign-up</span>
-        <h1>Handle thousands of files <em>in seconds</em></h1>
-        <p class="lead">Rename, list and organize whole folders. Merge, split, read and edit PDFs. Made for engineers, architects and anyone who lives in folders full of drawings.</p>
+        <span class="eyebrow"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Free · Private · No sign-up</span>
+        <h1>Drawing and file tools that <em>never upload your files</em></h1>
+        <p class="lead">Rename hundreds of drawings from their title block, list folders to Excel, merge, split and check PDFs. All inside your browser, on your own computer.</p>
         <div class="hero-cta">
-          <a class="btn primary lg" href="#tools">Explore the tools</a>
-          <a class="btn lg" href="rename.html">Rename files now</a>
+          <a class="btn primary lg" href="titleblock.html">Rename drawings from title block</a>
+          <a class="btn lg" href="#tools">See all 10 tools</a>
         </div>
-        <ul class="trust">
-          <li><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Files never leave your device</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>100% free</li>
-          <li><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>Nothing to install</li>
+        <ul class="proof">
+          <li><b>0</b><span>files uploaded</span></li>
+          <li><b>10</b><span>free tools</span></li>
+          <li><b translate="no">عربي + EN</b><span>OCR for scans</span></li>
+          <li><b>100%</b><span>free, no account</span></li>
         </ul>
       </div>
 
@@ -72,6 +74,10 @@
           <div class="mock-row"><span>IMG_4471.jpg</span><b>→</b><span class="new">Site Photo 01.jpg</span></div>
           <div class="mock-foot"><span class="pill ok">4 files ready</span><span class="mock-btn">Apply Rename</span></div>
         </div>
+        <div class="mock-chip safe">
+          <span class="safe-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><strong>Processed on this computer</strong><small>0 bytes sent to any server</small></div>
+        </div>
         <div class="mock-chip excel">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 8l8 8M16 8l-8 8"/></svg>
           <div><b>files.xlsx</b><small>Summary · 12 folders · 1,284 files</small></div>
@@ -80,7 +86,97 @@
     </div>
   </section>
 
+  <section class="why" id="privacy">
+    <div class="why-inner">
+      <div class="section-head">
+        <span class="eyebrow">Why use this instead of AI chats or upload sites?</span>
+        <h2>Your files never leave your computer</h2>
+      </div>
+
+      <div class="why-flow">
+        <div class="lane lane-other">
+          <span class="lane-tag bad">✕</span>
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <path class="wire" d="M120 72 C 200 72, 260 60, 352 60"/>
+            <g class="doc travel"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="cloud"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/></g>
+            <g class="doc stored"><rect x="398" y="52" width="16" height="20" rx="2"/></g>
+            <g class="eye"><path d="M392 112c10-12 26-12 36 0-10 12-26 12-36 0Z"/><circle cx="410" cy="112" r="4"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="bad">AI chats and online file sites</b>
+            <span>Your drawings are uploaded and processed on someone else's servers.</span>
+          </div>
+        </div>
+        <span class="vs" aria-hidden="true" translate="no">VS</span>
+        <div class="lane lane-ours">
+          <span class="lane-tag good">✓</span>
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="cloud off"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/><path class="strike" d="M366 30l84 70"/></g>
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <g class="doc spin"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="shield"><path d="M200 34l34 12v24c0 22-15 34-34 40-19-6-34-18-34-40V46Z"/><path class="tick" d="M186 72l10 10 20-22"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="good">File Manager Toolkit</b>
+            <span>Your browser does the work on your own computer. Nothing is uploaded.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-art art-volume" aria-hidden="true">
+            <div class="pile"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <svg viewBox="0 0 64 52" class="folder"><path d="M2 10a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/></svg>
+          </div>
+          <h3>Whole folders at once</h3>
+          <p>Hundreds of drawings in one go, not a few files per chat.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-accuracy" aria-hidden="true">
+            <div class="tblock"><span class="lbl" translate="no">DWG NO.</span><span class="val" translate="no">A-102</span><i class="scan"></i></div>
+            <div class="reads">
+              <span class="guess"><s translate="no">A-120</s> ✕</span>
+              <span class="exact" translate="no">A-102 ✓</span>
+            </div>
+          </div>
+          <h3>Exact, not a guess</h3>
+          <p>Reads the real text from the title block. You see every result first, and can undo.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-steps" aria-hidden="true">
+            <span class="st s1">1</span><i class="ln"></i><span class="st s2">2</span><i class="ln"></i><span class="st s3">3</span>
+          </div>
+          <h3>Three clicks, no prompts</h3>
+          <p>Pick the folder, check the preview, apply. Nothing to explain or retry.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-rename" aria-hidden="true" translate="no">
+            <div class="row"><span class="old">scan_0012.pdf</span><span class="new">A-101 Ground Floor.pdf</span></div>
+            <div class="row"><span class="old">scan_0013.pdf</span><span class="new">A-102 First Floor.pdf</span></div>
+            <div class="row"><span class="old">Sheet3.pdf</span><span class="new">A-201 Sections.pdf</span></div>
+          </div>
+          <h3>Done in your folder</h3>
+          <p>Files are renamed and saved where they are. No downloading and sorting afterwards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main id="tools">
+    <div class="section-head tools-head">
+      <span class="eyebrow">10 free tools</span>
+      <h2>Pick a tool and start</h2>
+      <div class="filter" role="group" aria-label="Show tools">
+        <button type="button" class="on" data-filter="all">All</button>
+        <button type="button" data-filter="files">File tools</button>
+        <button type="button" data-filter="pdf">PDF tools</button>
+        <button type="button" data-filter="review">Review</button>
+      </div>
+    </div>
+
     <section class="tool-group" id="files">
       <div class="group-head">
         <span class="group-icon cat-files"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span>
@@ -114,11 +210,15 @@
         <div><h2>PDF tools</h2><p>Built on the same PDF engine as professional desktop software. Works with CAD and Revit exports.</p></div>
       </div>
       <div class="tool-grid">
-        <a class="tool-card cat-pdf" href="titleblock.html">
+        <a class="tool-card cat-pdf featured" href="titleblock.html">
           <span class="badge new-badge">New</span>
           <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
           <h3>Rename from Title Block</h3>
           <p>Read the drawing number and title from each PDF and name the file after them.</p>
+          <div class="feat-demo" aria-hidden="true" translate="no">
+            <div><span>Sheet1.pdf</span><b>→</b><span class="new">A-101 Ground Floor Plan.pdf</span></div>
+            <div><span>Sheet2.pdf</span><b>→</b><span class="new">A-102 First Floor Plan.pdf</span></div>
+          </div>
           <span class="go">Open tool →</span>
         </a>
         <a class="tool-card cat-pdf" href="merge.html">
@@ -169,11 +269,20 @@
           <p>Before sending an issue: duplicate numbers, wrong file names, missing drawings and revisions that don't match the list.</p>
           <span class="go">Open tool →</span>
         </a>
+        <a class="tool-card request" href="#feedback" data-feedback="idea">
+          <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+          <h3>Need another tool?</h3>
+          <p>Tell us what you still do by hand every week. The most requested tools get built next.</p>
+          <span class="go">Suggest a tool →</span>
+        </a>
       </div>
     </section>
 
     <section class="how">
-      <h2>How it works</h2>
+      <div class="section-head">
+        <span class="eyebrow">Simple by design</span>
+        <h2>How it works</h2>
+      </div>
       <ol class="steps">
         <li><span>1</span><h3>Pick your files</h3><p>Choose a folder or drop PDFs. Your browser opens them on your own computer.</p></li>
         <li><span>2</span><h3>Preview the result</h3><p>See every new name, sheet or page before anything changes.</p></li>
@@ -181,120 +290,32 @@
       </ol>
     </section>
 
-    <section class="why" id="privacy">
-      <div class="why-head">
-        <span class="eyebrow">Why use this instead of AI chats or upload sites?</span>
-        <h2>Your files never leave your computer</h2>
+    <section class="cta-pair">
+      <div class="office">
+        <span class="eyebrow light">For offices</span>
+        <h2>Need a tool for your office?</h2>
+        <p>Every office has its own drawing lists, title blocks and naming rules. Tell us what takes your team hours, and we can build a tool for it.</p>
+        <a class="btn lg light-btn" href="#feedback" data-feedback="office">Tell us what you need</a>
       </div>
-
-      <div class="why-flow">
-        <div class="lane lane-other">
-          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
-            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
-            <path class="wire" d="M120 72 C 200 72, 260 60, 352 60"/>
-            <g class="doc travel"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
-            <g class="cloud"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/></g>
-            <g class="doc stored"><rect x="398" y="52" width="16" height="20" rx="2"/></g>
-            <g class="eye"><path d="M392 112c10-12 26-12 36 0-10 12-26 12-36 0Z"/><circle cx="410" cy="112" r="4"/></g>
-          </svg>
-          <div class="lane-text">
-            <b class="bad">AI chats and online file sites</b>
-            <span>Your drawings are uploaded and processed on someone else's servers.</span>
-          </div>
-        </div>
-        <div class="lane lane-ours">
-          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
-            <g class="cloud off"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/><path class="strike" d="M366 30l84 70"/></g>
-            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
-            <g class="doc spin"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
-            <g class="shield"><path d="M200 34l34 12v24c0 22-15 34-34 40-19-6-34-18-34-40V46Z"/><path class="tick" d="M186 72l10 10 20-22"/></g>
-          </svg>
-          <div class="lane-text">
-            <b class="good">File Manager Toolkit</b>
-            <span>Your browser does the work on your own computer. Nothing is uploaded.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-art art-volume" aria-hidden="true">
-            <div class="pile"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <svg viewBox="0 0 64 52" class="folder"><path d="M2 10a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/></svg>
-          </div>
-          <h3>Whole folders at once</h3>
-          <p>Hundreds of drawings in one go, not a few files per chat.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-accuracy" aria-hidden="true">
-            <div class="tblock"><span class="lbl">DWG NO.</span><span class="val" translate="no">A-102</span><i class="scan"></i></div>
-            <div class="reads">
-              <span class="guess"><s translate="no">A-120</s> ✕</span>
-              <span class="exact" translate="no">A-102 ✓</span>
-            </div>
-          </div>
-          <h3>Exact, not a guess</h3>
-          <p>Reads the real text from the title block. You see every result first, and can undo.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-steps" aria-hidden="true">
-            <span class="st s1">1</span><i class="ln"></i><span class="st s2">2</span><i class="ln"></i><span class="st s3">3</span>
-          </div>
-          <h3>Three clicks, no prompts</h3>
-          <p>Pick the folder, check the preview, apply. Nothing to explain or retry.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-rename" aria-hidden="true" translate="no">
-            <div class="row"><span class="old">scan_0012.pdf</span><span class="new">A-101 Ground Floor.pdf</span></div>
-            <div class="row"><span class="old">scan_0013.pdf</span><span class="new">A-102 First Floor.pdf</span></div>
-            <div class="row"><span class="old">Sheet3.pdf</span><span class="new">A-201 Sections.pdf</span></div>
-          </div>
-          <h3>Done in your folder</h3>
-          <p>Files are renamed and saved where they are. No downloading and sorting afterwards.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="features">
-      <div class="feature">
-        <span class="f-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-        <h3>Private by design</h3>
-        <p>There is no server that receives your files. Everything is processed inside your browser.</p>
-      </div>
-      <div class="feature">
-        <span class="f-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h6v6M15 3v6h6"/></svg></span>
-        <h3>Made for drawings</h3>
-        <p>Reads title blocks, rotated text and scanned sheets. Tested with CAD and Revit PDF exports.</p>
-      </div>
-      <div class="feature">
-        <span class="f-icon"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7ZM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7Z"/></svg></span>
-        <h3>Free, no limits</h3>
-        <p>No account, no watermark, no daily limit. If it saves you time, you can support it with a donation.</p>
+      <div class="support">
+        <span class="eyebrow light">Free forever</span>
+        <h2>Saved you an afternoon?</h2>
+        <p>File Manager Toolkit is free and stays free. A small donation keeps new tools coming.</p>
+        <a class="btn lg donate-lg" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate with PayPal</a>
       </div>
     </section>
 
     <section class="faq">
-      <h2>Questions</h2>
-      <details><summary>Are my files uploaded anywhere?</summary><p>No. The tools run in your browser. Files are read from your computer and the results are saved back to it.</p></details>
-      <details><summary>Which browser should I use?</summary><p>Google Chrome or Microsoft Edge on a computer can rename, move and delete files directly in your folders. Other browsers work too, and give you the result as a download.</p></details>
-      <details><summary>Can it handle big folders?</summary><p>Yes, thousands of files are fine. Very large PDFs depend on your computer's memory.</p></details>
-      <details><summary>Does OCR work in Arabic?</summary><p>Yes. PDF to Excel reads real PDF text directly, and uses OCR in English, Arabic or both when an area is scanned.</p></details>
-    </section>
-
-    <section class="office">
-      <div>
-        <h2>Need a tool for your office?</h2>
-        <p>Every office has its own drawing lists, title blocks and naming rules. Tell us what takes your team hours, and we can build a tool for it.</p>
+      <div class="faq-side">
+        <h2>Questions</h2>
+        <p>Something else? Use the Feedback button and we will reply.</p>
       </div>
-      <a class="btn primary lg" href="#feedback" data-feedback="office">Tell us what you need</a>
-    </section>
-
-    <section class="support">
-      <div>
-        <h2>Saved you an afternoon?</h2>
-        <p>File Manager Toolkit is free and stays free. A small donation keeps new tools coming.</p>
+      <div class="faq-list">
+        <details><summary>Are my files uploaded anywhere?</summary><p>No. The tools run in your browser. Files are read from your computer and the results are saved back to it.</p></details>
+        <details><summary>Which browser should I use?</summary><p>Google Chrome or Microsoft Edge on a computer can rename, move and delete files directly in your folders. Other browsers work too, and give you the result as a download.</p></details>
+        <details><summary>Can it handle big folders?</summary><p>Yes, thousands of files are fine. Very large PDFs depend on your computer's memory.</p></details>
+        <details><summary>Does OCR work in Arabic?</summary><p>Yes. PDF to Excel reads real PDF text directly, and uses OCR in English, Arabic or both when an area is scanned.</p></details>
       </div>
-      <a class="btn lg donate-lg" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate with PayPal</a>
     </section>
   </main>
 

@@ -869,6 +869,28 @@
   AR['PDF files found'] = 'ملفات PDF موجودة';
   AR['Your files stay on your computer. Nothing is uploaded.'] = 'ملفاتك بتفضل على جهازك. مفيش أي حاجة بتترفع.';
   AR['Your files never leave your computer'] = 'ملفاتك عمرها ما بتخرج من جهازك';
+  AR['Drawing and file tools that'] = 'أدوات للرسومات والملفات';
+  AR['never upload your files'] = 'من غير ما ملفاتك تترفع';
+  AR['Rename hundreds of drawings from their title block, list folders to Excel, merge, split and check PDFs. All inside your browser, on your own computer.'] =
+    'سمِّ مئات اللوحات من الـ Title Block، وطلّع قوايم الفولدرات على Excel، وادمج وقسّم وافحص ملفات PDF. كل ده جوه المتصفح، على جهازك إنت.';
+  AR['Rename drawings from title block'] = 'سمِّ اللوحات من الـ Title Block';
+  AR['See all 10 tools'] = 'شوف الـ 10 أدوات';
+  AR['files uploaded'] = 'ملفات بتترفع';
+  AR['free tools'] = 'أدوات مجانية';
+  AR['OCR for scans'] = 'OCR للملفات الممسوحة';
+  AR['free, no account'] = 'مجاني، من غير حساب';
+  AR['Processed on this computer'] = 'بيتعالج على جهازك إنت';
+  AR['0 bytes sent to any server'] = 'ولا بايت بيتبعت لأي سيرفر';
+  AR['10 free tools'] = '10 أدوات مجانية';
+  AR['Pick a tool and start'] = 'اختار أداة وابدأ';
+  AR['Need another tool?'] = 'محتاج أداة تانية؟';
+  AR['Tell us what you still do by hand every week. The most requested tools get built next.'] =
+    'قولنا إيه الشغل اللي لسه بتعمله بإيدك كل أسبوع. الأدوات اللي بتتطلب أكتر هي اللي بتتعمل الأول.';
+  AR['Suggest a tool →'] = 'اقترح أداة ←';
+  AR['Simple by design'] = 'بسيطة من الأساس';
+  AR['For offices'] = 'للمكاتب';
+  AR['Free forever'] = 'مجاني على طول';
+  AR['Something else? Use the Feedback button and we will reply.'] = 'عندك سؤال تاني؟ ابعتلنا من زرار "رأيك" وهنرد عليك.';
   AR['Why use this instead of AI chats or upload sites?'] = 'ليه تستخدم الأداة دي بدل الذكاء الاصطناعي أو مواقع الرفع؟';
   AR['AI chats and online file sites'] = 'الذكاء الاصطناعي ومواقع الملفات أونلاين';
   AR["Your drawings are uploaded and processed on someone else's servers."] = 'رسوماتك بتترفع وبتتعالج على سيرفرات حد تاني.';

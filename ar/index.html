@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="../assets/style.css">
   <script src="../assets/theme.js"></script>
   <script src="../assets/i18n.js"></script>
+  <script src="../assets/home.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -50,17 +51,18 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-text">
-        <span class="eyebrow">مجاني · خاص · بدون تسجيل</span>
-        <h1>تعامل مع آلاف الملفات <em>في ثوانٍ</em></h1>
-        <p class="lead">أعد تسمية الفولدرات بالكامل، واستخرج قوائمها ونظّمها. ادمج ملفات PDF وقسّمها واقرأها وعدّلها. مصمم للمهندسين والمعماريين وكل من يعمل وسط فولدرات مليئة باللوحات.</p>
+        <span class="eyebrow"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>مجاني · خاص · بدون تسجيل</span>
+        <h1>أدوات للرسومات والملفات <em>من غير ما ملفاتك تترفع</em></h1>
+        <p class="lead">سمِّ مئات اللوحات من الـ Title Block، وطلّع قوايم الفولدرات على Excel، وادمج وقسّم وافحص ملفات PDF. كل ده جوه المتصفح، على جهازك إنت.</p>
         <div class="hero-cta">
-          <a class="btn primary lg" href="#tools">استكشف الأدوات</a>
-          <a class="btn lg" href="rename.html">أعد تسمية ملفاتك الآن</a>
+          <a class="btn primary lg" href="titleblock.html">سمِّ اللوحات من الـ Title Block</a>
+          <a class="btn lg" href="#tools">شوف الـ 10 أدوات</a>
         </div>
-        <ul class="trust">
-          <li><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>ملفاتك لا تغادر جهازك</li>
-          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>مجاني 100%</li>
-          <li><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></svg>لا يحتاج تثبيت</li>
+        <ul class="proof">
+          <li><b>0</b><span>ملفات بتترفع</span></li>
+          <li><b>10</b><span>أدوات مجانية</span></li>
+          <li><b translate="no">عربي + EN</b><span>OCR للملفات الممسوحة</span></li>
+          <li><b>100%</b><span>مجاني، من غير حساب</span></li>
         </ul>
       </div>
 
@@ -74,6 +76,10 @@
           <div class="mock-row"><span>IMG_4471.jpg</span><b>→</b><span class="new">Site Photo 01.jpg</span></div>
           <div class="mock-foot"><span class="pill ok">4 ملفات جاهزة</span><span class="mock-btn">تطبيق إعادة التسمية</span></div>
         </div>
+        <div class="mock-chip safe">
+          <span class="safe-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><strong>بيتعالج على جهازك إنت</strong><small>ولا بايت بيتبعت لأي سيرفر</small></div>
+        </div>
         <div class="mock-chip excel">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 8l8 8M16 8l-8 8"/></svg>
           <div><b>files.xlsx</b><small>ملخص · 12 فولدر · 1,284 ملف</small></div>
@@ -82,7 +88,97 @@
     </div>
   </section>
 
+  <section class="why" id="privacy">
+    <div class="why-inner">
+      <div class="section-head">
+        <span class="eyebrow">ليه تستخدم الأداة دي بدل الذكاء الاصطناعي أو مواقع الرفع؟</span>
+        <h2>ملفاتك عمرها ما بتخرج من جهازك</h2>
+      </div>
+
+      <div class="why-flow">
+        <div class="lane lane-other">
+          <span class="lane-tag bad">✕</span>
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <path class="wire" d="M120 72 C 200 72, 260 60, 352 60"/>
+            <g class="doc travel"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="cloud"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/></g>
+            <g class="doc stored"><rect x="398" y="52" width="16" height="20" rx="2"/></g>
+            <g class="eye"><path d="M392 112c10-12 26-12 36 0-10 12-26 12-36 0Z"/><circle cx="410" cy="112" r="4"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="bad">الذكاء الاصطناعي ومواقع الملفات أونلاين</b>
+            <span>رسوماتك بتترفع وبتتعالج على سيرفرات حد تاني.</span>
+          </div>
+        </div>
+        <span class="vs" aria-hidden="true" translate="no">VS</span>
+        <div class="lane lane-ours">
+          <span class="lane-tag good">✓</span>
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="cloud off"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/><path class="strike" d="M366 30l84 70"/></g>
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <g class="doc spin"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="shield"><path d="M200 34l34 12v24c0 22-15 34-34 40-19-6-34-18-34-40V46Z"/><path class="tick" d="M186 72l10 10 20-22"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="good">File Manager Toolkit</b>
+            <span>المتصفح بيشتغل على جهازك إنت. مفيش أي حاجة بتترفع.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-art art-volume" aria-hidden="true">
+            <div class="pile"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <svg viewBox="0 0 64 52" class="folder"><path d="M2 10a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/></svg>
+          </div>
+          <h3>فولدرات كاملة مرة واحدة</h3>
+          <p>مئات اللوحات في مرة واحدة، مش كام ملف في كل محادثة.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-accuracy" aria-hidden="true">
+            <div class="tblock"><span class="lbl" translate="no">DWG NO.</span><span class="val" translate="no">A-102</span><i class="scan"></i></div>
+            <div class="reads">
+              <span class="guess"><s translate="no">A-120</s> ✕</span>
+              <span class="exact" translate="no">A-102 ✓</span>
+            </div>
+          </div>
+          <h3>دقيق، مش تخمين</h3>
+          <p>بيقرأ النص الحقيقي من الـ Title Block، وبتشوف كل النتايج الأول، وتقدر تتراجع.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-steps" aria-hidden="true">
+            <span class="st s1">1</span><i class="ln"></i><span class="st s2">2</span><i class="ln"></i><span class="st s3">3</span>
+          </div>
+          <h3>تلات ضغطات، من غير أوامر</h3>
+          <p>اختار الفولدر، راجع المعاينة، طبّق. مش محتاج تشرح ولا تعيد.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-rename" aria-hidden="true" translate="no">
+            <div class="row"><span class="old">scan_0012.pdf</span><span class="new">A-101 Ground Floor.pdf</span></div>
+            <div class="row"><span class="old">scan_0013.pdf</span><span class="new">A-102 First Floor.pdf</span></div>
+            <div class="row"><span class="old">Sheet3.pdf</span><span class="new">A-201 Sections.pdf</span></div>
+          </div>
+          <h3>بيخلص جوه الفولدر بتاعك</h3>
+          <p>الملفات بتتسمّى وتتحفظ في مكانها. مفيش تنزيل وترتيب بعدين.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <main id="tools">
+    <div class="section-head tools-head">
+      <span class="eyebrow">10 أدوات مجانية</span>
+      <h2>اختار أداة وابدأ</h2>
+      <div class="filter" role="group" aria-label="Show tools">
+        <button type="button" class="on" data-filter="all">الكل</button>
+        <button type="button" data-filter="files">أدوات الملفات</button>
+        <button type="button" data-filter="pdf">أدوات PDF</button>
+        <button type="button" data-filter="review">المراجعة</button>
+      </div>
+    </div>
+
     <section class="tool-group" id="files">
       <div class="group-head">
         <span class="group-icon cat-files"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span>
@@ -116,11 +212,15 @@
         <div><h2>أدوات PDF</h2><p>مبني على نفس محرك PDF المستخدم في البرامج الاحترافية. يعمل مع ملفات CAD و Revit.</p></div>
       </div>
       <div class="tool-grid">
-        <a class="tool-card cat-pdf" href="titleblock.html">
+        <a class="tool-card cat-pdf featured" href="titleblock.html">
           <span class="badge new-badge">جديد</span>
           <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
           <h3>التسمية من الـ Title Block</h3>
           <p>اقرأ رقم اللوحة وعنوانها من كل PDF وسمِّ الملف بهما.</p>
+          <div class="feat-demo" aria-hidden="true" translate="no">
+            <div><span>Sheet1.pdf</span><b>→</b><span class="new">A-101 Ground Floor Plan.pdf</span></div>
+            <div><span>Sheet2.pdf</span><b>→</b><span class="new">A-102 First Floor Plan.pdf</span></div>
+          </div>
           <span class="go">افتح الأداة ←</span>
         </a>
         <a class="tool-card cat-pdf" href="merge.html">
@@ -171,11 +271,20 @@
           <p>قبل إرسال أي تسليم: أرقام مكررة، أسماء ملفات خاطئة، لوحات ناقصة، ومراجعات غير مطابقة للقائمة.</p>
           <span class="go">افتح الأداة ←</span>
         </a>
+        <a class="tool-card request" href="#feedback" data-feedback="idea">
+          <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+          <h3>محتاج أداة تانية؟</h3>
+          <p>قولنا إيه الشغل اللي لسه بتعمله بإيدك كل أسبوع. الأدوات اللي بتتطلب أكتر هي اللي بتتعمل الأول.</p>
+          <span class="go">اقترح أداة ←</span>
+        </a>
       </div>
     </section>
 
     <section class="how">
-      <h2>طريقة العمل</h2>
+      <div class="section-head">
+        <span class="eyebrow">بسيطة من الأساس</span>
+        <h2>طريقة العمل</h2>
+      </div>
       <ol class="steps">
         <li><span>1</span><h3>اختر ملفاتك</h3><p>اختر فولدر أو اسحب ملفات PDF. المتصفح يفتحها على جهازك أنت.</p></li>
         <li><span>2</span><h3>عاين النتيجة</h3><p>شاهد كل اسم جديد أو شيت أو صفحة قبل أن يتغير أي شيء.</p></li>
@@ -183,120 +292,32 @@
       </ol>
     </section>
 
-    <section class="why" id="privacy">
-      <div class="why-head">
-        <span class="eyebrow">ليه تستخدم الأداة دي بدل الذكاء الاصطناعي أو مواقع الرفع؟</span>
-        <h2>ملفاتك عمرها ما بتخرج من جهازك</h2>
+    <section class="cta-pair">
+      <div class="office">
+        <span class="eyebrow light">للمكاتب</span>
+        <h2>محتاج أداة مخصوصة لمكتبك؟</h2>
+        <p>كل مكتب له قوائم لوحات و Title Block وقواعد تسمية خاصة بيه. قولنا إيه الشغل اللي بياخد من فريقك ساعات، ونقدر نعملك أداة ليه.</p>
+        <a class="btn lg light-btn" href="#feedback" data-feedback="office">قولنا محتاج إيه</a>
       </div>
-
-      <div class="why-flow">
-        <div class="lane lane-other">
-          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
-            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
-            <path class="wire" d="M120 72 C 200 72, 260 60, 352 60"/>
-            <g class="doc travel"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
-            <g class="cloud"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/></g>
-            <g class="doc stored"><rect x="398" y="52" width="16" height="20" rx="2"/></g>
-            <g class="eye"><path d="M392 112c10-12 26-12 36 0-10 12-26 12-36 0Z"/><circle cx="410" cy="112" r="4"/></g>
-          </svg>
-          <div class="lane-text">
-            <b class="bad">الذكاء الاصطناعي ومواقع الملفات أونلاين</b>
-            <span>رسوماتك بتترفع وبتتعالج على سيرفرات حد تاني.</span>
-          </div>
-        </div>
-        <div class="lane lane-ours">
-          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
-            <g class="cloud off"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/><path class="strike" d="M366 30l84 70"/></g>
-            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
-            <g class="doc spin"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
-            <g class="shield"><path d="M200 34l34 12v24c0 22-15 34-34 40-19-6-34-18-34-40V46Z"/><path class="tick" d="M186 72l10 10 20-22"/></g>
-          </svg>
-          <div class="lane-text">
-            <b class="good">File Manager Toolkit</b>
-            <span>المتصفح بيشتغل على جهازك إنت. مفيش أي حاجة بتترفع.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-art art-volume" aria-hidden="true">
-            <div class="pile"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <svg viewBox="0 0 64 52" class="folder"><path d="M2 10a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/></svg>
-          </div>
-          <h3>فولدرات كاملة مرة واحدة</h3>
-          <p>مئات اللوحات في مرة واحدة، مش كام ملف في كل محادثة.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-accuracy" aria-hidden="true">
-            <div class="tblock"><span class="lbl">DWG NO.</span><span class="val" translate="no">A-102</span><i class="scan"></i></div>
-            <div class="reads">
-              <span class="guess"><s translate="no">A-120</s> ✕</span>
-              <span class="exact" translate="no">A-102 ✓</span>
-            </div>
-          </div>
-          <h3>دقيق، مش تخمين</h3>
-          <p>بيقرأ النص الحقيقي من الـ Title Block، وبتشوف كل النتايج الأول، وتقدر تتراجع.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-steps" aria-hidden="true">
-            <span class="st s1">1</span><i class="ln"></i><span class="st s2">2</span><i class="ln"></i><span class="st s3">3</span>
-          </div>
-          <h3>تلات ضغطات، من غير أوامر</h3>
-          <p>اختار الفولدر، راجع المعاينة، طبّق. مش محتاج تشرح ولا تعيد.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-rename" aria-hidden="true" translate="no">
-            <div class="row"><span class="old">scan_0012.pdf</span><span class="new">A-101 Ground Floor.pdf</span></div>
-            <div class="row"><span class="old">scan_0013.pdf</span><span class="new">A-102 First Floor.pdf</span></div>
-            <div class="row"><span class="old">Sheet3.pdf</span><span class="new">A-201 Sections.pdf</span></div>
-          </div>
-          <h3>بيخلص جوه الفولدر بتاعك</h3>
-          <p>الملفات بتتسمّى وتتحفظ في مكانها. مفيش تنزيل وترتيب بعدين.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="features">
-      <div class="feature">
-        <span class="f-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-        <h3>خصوصية كاملة</h3>
-        <p>لا يوجد سيرفر يستقبل ملفاتك. كل شيء تتم معالجته داخل متصفحك.</p>
-      </div>
-      <div class="feature">
-        <span class="f-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h6v6M15 3v6h6"/></svg></span>
-        <h3>مصمم للوحات الهندسية</h3>
-        <p>يقرأ الـ Title Block والنصوص المائلة واللوحات الممسوحة ضوئياً. تمت تجربته على ملفات CAD و Revit.</p>
-      </div>
-      <div class="feature">
-        <span class="f-icon"><svg viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7ZM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7Z"/></svg></span>
-        <h3>مجاني بلا حدود</h3>
-        <p>بدون حساب، بدون علامة مائية، بدون حد يومي. إذا وفّر لك وقتاً يمكنك دعمه بتبرع.</p>
+      <div class="support">
+        <span class="eyebrow light">مجاني على طول</span>
+        <h2>وفّر عليك ساعات من الشغل؟</h2>
+        <p>File Manager Toolkit مجاني وسيظل مجانياً. تبرع صغير يساعد على إضافة أدوات جديدة.</p>
+        <a class="btn lg donate-lg" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ تبرّع عبر PayPal</a>
       </div>
     </section>
 
     <section class="faq">
-      <h2>أسئلة شائعة</h2>
-      <details><summary>هل يتم رفع ملفاتي إلى أي مكان؟</summary><p>لا. الأدوات تعمل داخل متصفحك. الملفات تُقرأ من جهازك والنتائج تُحفظ عليه.</p></details>
-      <details><summary>أي متصفح أستخدم؟</summary><p>Google Chrome أو Microsoft Edge على الكمبيوتر يستطيعان إعادة التسمية والنقل والحذف مباشرة في فولدراتك. المتصفحات الأخرى تعمل أيضاً وتعطيك النتيجة كملف للتنزيل.</p></details>
-      <details><summary>هل يتعامل مع فولدرات كبيرة؟</summary><p>نعم، آلاف الملفات لا مشكلة. ملفات PDF الضخمة جداً تعتمد على ذاكرة جهازك.</p></details>
-      <details><summary>هل يعمل الـ OCR باللغة العربية؟</summary><p>نعم. أداة PDF إلى Excel تقرأ نص الـ PDF مباشرة، وتستخدم OCR بالإنجليزي أو العربي أو الاثنين عندما تكون المنطقة ممسوحة ضوئياً.</p></details>
-    </section>
-
-    <section class="office">
-      <div>
-        <h2>محتاج أداة مخصوصة لمكتبك؟</h2>
-        <p>كل مكتب له قوائم لوحات و Title Block وقواعد تسمية خاصة بيه. قولنا إيه الشغل اللي بياخد من فريقك ساعات، ونقدر نعملك أداة ليه.</p>
+      <div class="faq-side">
+        <h2>أسئلة شائعة</h2>
+        <p>عندك سؤال تاني؟ ابعتلنا من زرار "رأيك" وهنرد عليك.</p>
       </div>
-      <a class="btn primary lg" href="#feedback" data-feedback="office">قولنا محتاج إيه</a>
-    </section>
-
-    <section class="support">
-      <div>
-        <h2>وفّر عليك ساعات من الشغل؟</h2>
-        <p>File Manager Toolkit مجاني وسيظل مجانياً. تبرع صغير يساعد على إضافة أدوات جديدة.</p>
+      <div class="faq-list">
+        <details><summary>هل يتم رفع ملفاتي إلى أي مكان؟</summary><p>لا. الأدوات تعمل داخل متصفحك. الملفات تُقرأ من جهازك والنتائج تُحفظ عليه.</p></details>
+        <details><summary>أي متصفح أستخدم؟</summary><p>Google Chrome أو Microsoft Edge على الكمبيوتر يستطيعان إعادة التسمية والنقل والحذف مباشرة في فولدراتك. المتصفحات الأخرى تعمل أيضاً وتعطيك النتيجة كملف للتنزيل.</p></details>
+        <details><summary>هل يتعامل مع فولدرات كبيرة؟</summary><p>نعم، آلاف الملفات لا مشكلة. ملفات PDF الضخمة جداً تعتمد على ذاكرة جهازك.</p></details>
+        <details><summary>هل يعمل الـ OCR باللغة العربية؟</summary><p>نعم. أداة PDF إلى Excel تقرأ نص الـ PDF مباشرة، وتستخدم OCR بالإنجليزي أو العربي أو الاثنين عندما تكون المنطقة ممسوحة ضوئياً.</p></details>
       </div>
-      <a class="btn lg donate-lg" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ تبرّع عبر PayPal</a>
     </section>
   </main>
 
