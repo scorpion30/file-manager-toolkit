@@ -4,8 +4,8 @@
  * The site (assets/backend.js) posts two kinds of rows:
  *   feedback -> sheet "Feedback": what the visitor wrote, optional name and e-mail
  *   usage    -> sheet "Usage": one row per page visit, anonymous
- * Replying: write your answer in the "Your reply" column, then menu Feedback > Send replies.
- * The person gets an e-mail with your reply and their original message.
+ * Replying: write your answer in the "Your reply" column. Within 5 minutes it is e-mailed to the person
+ * with their original message (or right away with menu Feedback > Send replies).
  */
 
 const SITE = 'https://scorpion30.github.io/file-manager-toolkit/';
@@ -16,7 +16,7 @@ const USAGE = 'Usage';
 const DASHBOARD = 'Dashboard';
 const FEEDBACK_HEADERS = ['Date', 'Type', 'Message', 'Name', 'Email', 'Page', 'Lang', 'Visitor', 'Your reply', 'Replied at', 'Notes'];
 const USAGE_HEADERS = ['Date', 'Visitor', 'New visitor', 'Page', 'Lang', 'Seconds', 'Buttons pressed', 'Came from', 'Mobile'];
-const COL = { email: 5, name: 4, message: 3, lang: 7, reply: 9, repliedAt: 10 };
+const COL = { email: 5, name: 4, message: 3, lang: 7, reply: 9, repliedAt: 10, notes: 11 };
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('Feedback')
@@ -74,7 +74,11 @@ function sendReplies() {
     const reply = String(r[COL.reply - 1] || '').trim();
     if (!reply || r[COL.repliedAt - 1]) continue;
     const email = String(r[COL.email - 1] || '').trim();
-    if (!email) { noEmail++; continue; }
+    if (!email) {
+      noEmail++;
+      if (!r[COL.notes - 1]) sh.getRange(i + 1, COL.notes).setValue('No e-mail: this person cannot get a reply');
+      continue;
+    }
     const ar = r[COL.lang - 1] === 'ar';
     const name = String(r[COL.name - 1] || '').trim();
     const original = String(r[COL.message - 1] || '');
@@ -97,17 +101,20 @@ function sendReplies() {
     sent++;
   }
   const msg = `Replies sent: ${sent}` + (noEmail ? ` · ${noEmail} reply(s) have no e-mail to send to` : '');
-  SpreadsheetApp.getActive().toast(msg, 'Feedback', 8);
+  try { SpreadsheetApp.getActive().toast(msg, 'Feedback', 8); } catch (err) { /* run by the timer: no screen */ }
 }
 
 /** Creates the sheets, headers and the dashboard. Safe to run again. */
 function setup() {
   const ss = SpreadsheetApp.getActive();
   ss.setSpreadsheetTimeZone(Session.getScriptTimeZone());
+  if (!ScriptApp.getProjectTriggers().some((t) => t.getHandlerFunction() === 'sendReplies')) {
+    ScriptApp.newTrigger('sendReplies').timeBased().everyMinutes(5).create();
+  }
   const fb = sheet(ss, FEEDBACK, FEEDBACK_HEADERS);
   fb.setColumnWidth(3, 380); fb.setColumnWidth(COL.reply, 380);
   fb.getRange('C:C').setWrap(true); fb.getRange('I:I').setWrap(true);
-  fb.getRange(1, COL.reply).setBackground('#e6eefc').setNote('Write your answer here, then menu Feedback > Send replies.');
+  fb.getRange(1, COL.reply).setBackground('#e6eefc').setNote('Write your answer here. It is e-mailed within 5 minutes (or now: menu Feedback > Send replies).');
   const us = sheet(ss, USAGE, USAGE_HEADERS);
   us.setColumnWidth(7, 380);
 

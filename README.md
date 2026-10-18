@@ -33,7 +33,7 @@ It rewrites `ar/*.html`, the SEO block in each English page (canonical, hreflang
 
 ## Feedback and usage sheet
 
-`assets/backend.js` adds the Feedback button on every page and logs one anonymous row per visit (page, seconds, button ids, referrer). Both go to a Google Sheet through the Apps Script web app in `tools/backend/` (deployed with `clasp`; `.clasp.json` is kept out of git). In the sheet: Dashboard = summary, Feedback = messages, Usage = visits. To answer someone, type in "Your reply" and use the menu Feedback > Send replies.
+`assets/backend.js` adds the Feedback button on every page and logs one anonymous row per visit (page, seconds, button ids, referrer). Both go to a Google Sheet through the Apps Script web app in `tools/backend/` (deployed with `clasp`; `.clasp.json` is kept out of git). In the sheet: Dashboard = summary, Feedback = messages, Usage = visits. To answer someone, type in "Your reply": it is e-mailed within 5 minutes (or right away with the menu Feedback > Send replies). Messages without an e-mail get a note and cannot be answered.
 
 ## Visitor counter
 
