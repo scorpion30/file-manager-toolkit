@@ -23,6 +23,18 @@ PDF work uses [MuPDF.js](https://mupdf.com/) (AGPL) and OCR uses [Tesseract.js](
 
 English and Arabic (right-to-left). The switch is in the header; `assets/i18n.js` holds the translations.
 
+Each page also exists in Arabic under `ar/`, generated from the English page so search engines see Arabic text. After editing any page (or adding words to `assets/i18n.js`), rebuild:
+
+```bash
+node tools/build.mjs
+```
+
+It rewrites `ar/*.html`, the SEO block in each English page (canonical, hreflang, Open Graph), `sitemap.xml` and `robots.txt`, and lists any text that has no Arabic yet. `node tools/build.mjs --og` also redraws the share images in `assets/og/` (needs Chrome or Edge). Never edit `ar/` by hand. A new page must be added to `PAGES` in `tools/build.mjs`.
+
+## Visitor counter
+
+`assets/analytics.js` loads Google Analytics 4 once `GA_ID` is set in it. It counts page views, donate clicks and main tool buttons, and is off on localhost.
+
 ## Browser support
 
 - **Chrome / Edge (desktop):** renames and deletes files directly in the chosen folder (File System Access API).

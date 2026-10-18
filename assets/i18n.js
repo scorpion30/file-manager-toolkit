@@ -691,9 +691,29 @@
   const ALLOW_INSIDE_SKIP = '.err, .edit-btn';
   const ATTRS = ['placeholder', 'title', 'aria-label'];
 
-  let lang = 'en';
-  try { lang = localStorage.getItem(KEY) || ''; } catch { /* ignore */ }
-  if (lang !== 'ar' && lang !== 'en') lang = (navigator.language || '').toLowerCase().startsWith('ar') ? 'ar' : 'en';
+  let stored = '';
+  try { stored = localStorage.getItem(KEY) || ''; } catch { /* ignore */ }
+  const browserAr = (navigator.language || '').toLowerCase().startsWith('ar');
+  let lang = stored === 'ar' || stored === 'en' ? stored : (browserAr ? 'ar' : 'en');
+
+  // Pages built in both languages (see tools/build.mjs) carry data-lang-page and
+  // <link rel="alternate" hreflang>. The switch then moves to the other page instead of
+  // translating in place, so each language has its own address for search engines.
+  // A visitor is only sent to the other language when they chose it before, or when an
+  // Arabic browser opens an English page; crawlers (no choice, English) stay where they are.
+  const pageLang = root.getAttribute('data-lang-page');
+  const altHref = (l) => {
+    const link = document.querySelector(`link[rel="alternate"][hreflang="${l}"]`);
+    return link ? link.getAttribute('data-switch') || link.getAttribute('href') : null;
+  };
+  if (pageLang) {
+    const want = stored === 'ar' || stored === 'en' ? stored : (pageLang === 'en' && browserAr ? 'ar' : pageLang);
+    if (want !== pageLang && altHref(want)) {
+      location.replace(altHref(want) + location.hash);
+      return;
+    }
+    lang = pageLang;
+  }
   setDirection();
 
   function setDirection() {
@@ -824,8 +844,9 @@
   }
 
   function setLang(next) {
+    try { localStorage.setItem(KEY, next); } catch { /* ignore */ }
+    if (pageLang && altHref(next)) { location.href = altHref(next) + location.hash; return; }
     lang = next;
-    try { localStorage.setItem(KEY, lang); } catch { /* ignore */ }
     setDirection();
     if (lang === 'ar') { loadArabicFont(); walk(document.body); } else restore();
     applyTitle();
