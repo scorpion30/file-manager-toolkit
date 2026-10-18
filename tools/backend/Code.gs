@@ -103,6 +103,7 @@ function sendReplies() {
 /** Creates the sheets, headers and the dashboard. Safe to run again. */
 function setup() {
   const ss = SpreadsheetApp.getActive();
+  ss.setSpreadsheetTimeZone(Session.getScriptTimeZone());
   const fb = sheet(ss, FEEDBACK, FEEDBACK_HEADERS);
   fb.setColumnWidth(3, 380); fb.setColumnWidth(COL.reply, 380);
   fb.getRange('C:C').setWrap(true); fb.getRange('I:I').setWrap(true);
