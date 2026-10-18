@@ -171,13 +171,19 @@ function notifyOwner(row) {
     const owner = Session.getEffectiveUser().getEmail();
     if (!owner) return;
     const [, type, message, name, email, page, lang] = row;
-    MailApp.sendEmail({
+    // With an e-mail, "Reply" in Gmail goes straight to the visitor (that reply is not logged in the sheet).
+    const how = email
+      ? 'Press Reply to answer them directly, or write in "Your reply" in the sheet:'
+      : 'They left no e-mail, so they cannot get a reply. Sheet:';
+    const mail = {
       to: owner,
-      subject: `New feedback (${type}) - File Manager Toolkit`,
+      subject: `New feedback (${type}) from ${name || email || 'a visitor'} - File Manager Toolkit`,
       body: `${message}\n\nFrom: ${name || '-'} ${email ? '<' + email + '>' : '(no e-mail)'}\nPage: ${page} (${lang})\n\n` +
-        `Reply in the sheet: ${SpreadsheetApp.getActive().getUrl()}`,
+        `${how} ${SpreadsheetApp.getActive().getUrl()}`,
       name: FROM_NAME,
-    });
+    };
+    if (email) mail.replyTo = email;
+    MailApp.sendEmail(mail);
   } catch (err) {
     console.warn('notify failed', err);
   }
