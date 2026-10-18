@@ -183,28 +183,78 @@
       </ol>
     </section>
 
-    <section class="privacy-compare" id="privacy">
-      <h2>ملفاتك عمرها ما بتخرج من جهازك</h2>
-      <p class="pc-lead">رسومات العملاء وملفات المشاريع سرية. هنا المتصفح بتاعك هو اللي بيفتحها على جهازك إنت، ومحدش غيرك بيستلمها.</p>
-      <div class="pc-cols">
-        <div class="pc-col other">
-          <h3>أغلب مواقع الـ PDF والملفات أونلاين</h3>
-          <ul>
-            <li>بترفع ملفاتك على السيرفرات بتاعتهم</li>
-            <li>ملفاتك بتبقى على جهاز حد تاني وهي بتتعالج</li>
-            <li>بتنزّل النتيجة تاني على جهازك</li>
-          </ul>
+    <section class="why" id="privacy">
+      <div class="why-head">
+        <span class="eyebrow">ليه تستخدم الأداة دي بدل الذكاء الاصطناعي أو مواقع الرفع؟</span>
+        <h2>ملفاتك عمرها ما بتخرج من جهازك</h2>
+      </div>
+
+      <div class="why-flow">
+        <div class="lane lane-other">
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <path class="wire" d="M120 72 C 200 72, 260 60, 352 60"/>
+            <g class="doc travel"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="cloud"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/></g>
+            <g class="doc stored"><rect x="398" y="52" width="16" height="20" rx="2"/></g>
+            <g class="eye"><path d="M392 112c10-12 26-12 36 0-10 12-26 12-36 0Z"/><circle cx="410" cy="112" r="4"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="bad">الذكاء الاصطناعي ومواقع الملفات أونلاين</b>
+            <span>رسوماتك بتترفع وبتتعالج على سيرفرات حد تاني.</span>
+          </div>
         </div>
-        <div class="pc-col ours">
-          <h3>File Manager Toolkit</h3>
-          <ul>
-            <li>المتصفح بيفتح الملفات على جهازك</li>
-            <li>مفيش حاجة بتترفع: لا الملفات، ولا أساميها، ولا محتواها</li>
-            <li>الملفات بعد التسمية والنتايج بتتحفظ في الفولدر بتاعك على طول</li>
-          </ul>
+        <div class="lane lane-ours">
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="cloud off"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/><path class="strike" d="M366 30l84 70"/></g>
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <g class="doc spin"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="shield"><path d="M200 34l34 12v24c0 22-15 34-34 40-19-6-34-18-34-40V46Z"/><path class="tick" d="M186 72l10 10 20-22"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="good">File Manager Toolkit</b>
+            <span>المتصفح بيشتغل على جهازك إنت. مفيش أي حاجة بتترفع.</span>
+          </div>
         </div>
       </div>
-      <p class="pc-note">الأداة نفسها بس هي اللي بتتحمّل من الإنترنت، زي أي صفحة ويب. وتقدر تتأكد بنفسك: الكود المصدر متاح للكل على GitHub.</p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-art art-volume" aria-hidden="true">
+            <div class="pile"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <svg viewBox="0 0 64 52" class="folder"><path d="M2 10a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/></svg>
+          </div>
+          <h3>فولدرات كاملة مرة واحدة</h3>
+          <p>مئات اللوحات في مرة واحدة، مش كام ملف في كل محادثة.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-accuracy" aria-hidden="true">
+            <div class="tblock"><span class="lbl">DWG NO.</span><span class="val" translate="no">A-102</span><i class="scan"></i></div>
+            <div class="reads">
+              <span class="guess"><s translate="no">A-120</s> ✕</span>
+              <span class="exact" translate="no">A-102 ✓</span>
+            </div>
+          </div>
+          <h3>دقيق، مش تخمين</h3>
+          <p>بيقرأ النص الحقيقي من الـ Title Block، وبتشوف كل النتايج الأول، وتقدر تتراجع.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-steps" aria-hidden="true">
+            <span class="st s1">1</span><i class="ln"></i><span class="st s2">2</span><i class="ln"></i><span class="st s3">3</span>
+          </div>
+          <h3>تلات ضغطات، من غير أوامر</h3>
+          <p>اختار الفولدر، راجع المعاينة، طبّق. مش محتاج تشرح ولا تعيد.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-rename" aria-hidden="true" translate="no">
+            <div class="row"><span class="old">scan_0012.pdf</span><span class="new">A-101 Ground Floor.pdf</span></div>
+            <div class="row"><span class="old">scan_0013.pdf</span><span class="new">A-102 First Floor.pdf</span></div>
+            <div class="row"><span class="old">Sheet3.pdf</span><span class="new">A-201 Sections.pdf</span></div>
+          </div>
+          <h3>بيخلص جوه الفولدر بتاعك</h3>
+          <p>الملفات بتتسمّى وتتحفظ في مكانها. مفيش تنزيل وترتيب بعدين.</p>
+        </div>
+      </div>
     </section>
 
     <section class="features">

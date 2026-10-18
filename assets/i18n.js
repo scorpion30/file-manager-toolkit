@@ -869,6 +869,18 @@
   AR['PDF files found'] = 'ملفات PDF موجودة';
   AR['Your files stay on your computer. Nothing is uploaded.'] = 'ملفاتك بتفضل على جهازك. مفيش أي حاجة بتترفع.';
   AR['Your files never leave your computer'] = 'ملفاتك عمرها ما بتخرج من جهازك';
+  AR['Why use this instead of AI chats or upload sites?'] = 'ليه تستخدم الأداة دي بدل الذكاء الاصطناعي أو مواقع الرفع؟';
+  AR['AI chats and online file sites'] = 'الذكاء الاصطناعي ومواقع الملفات أونلاين';
+  AR["Your drawings are uploaded and processed on someone else's servers."] = 'رسوماتك بتترفع وبتتعالج على سيرفرات حد تاني.';
+  AR['Your browser does the work on your own computer. Nothing is uploaded.'] = 'المتصفح بيشتغل على جهازك إنت. مفيش أي حاجة بتترفع.';
+  AR['Whole folders at once'] = 'فولدرات كاملة مرة واحدة';
+  AR['Hundreds of drawings in one go, not a few files per chat.'] = 'مئات اللوحات في مرة واحدة، مش كام ملف في كل محادثة.';
+  AR['Exact, not a guess'] = 'دقيق، مش تخمين';
+  AR['Reads the real text from the title block. You see every result first, and can undo.'] = 'بيقرأ النص الحقيقي من الـ Title Block، وبتشوف كل النتايج الأول، وتقدر تتراجع.';
+  AR['Three clicks, no prompts'] = 'تلات ضغطات، من غير أوامر';
+  AR['Pick the folder, check the preview, apply. Nothing to explain or retry.'] = 'اختار الفولدر، راجع المعاينة، طبّق. مش محتاج تشرح ولا تعيد.';
+  AR['Done in your folder'] = 'بيخلص جوه الفولدر بتاعك';
+  AR['Files are renamed and saved where they are. No downloading and sorting afterwards.'] = 'الملفات بتتسمّى وتتحفظ في مكانها. مفيش تنزيل وترتيب بعدين.';
   AR['Client drawings and project files are confidential. Here they are opened by your own browser, on your own computer, and nobody else receives them.'] =
     'رسومات العملاء وملفات المشاريع سرية. هنا المتصفح بتاعك هو اللي بيفتحها على جهازك إنت، ومحدش غيرك بيستلمها.';
   AR['Most online PDF and file sites'] = 'أغلب مواقع الـ PDF والملفات أونلاين';
