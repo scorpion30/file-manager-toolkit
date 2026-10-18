@@ -118,7 +118,7 @@
       values.push(text);
       ocr.push(usedOcr);
     }
-    return { values, ocr };
+    return { values, ocr, pages: count };
   }
 
   window.PdfRead = { readAreas, clean };

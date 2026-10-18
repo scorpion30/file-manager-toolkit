@@ -147,7 +147,7 @@ svg { flex: none; }
 .site-footer { margin-top: auto; border-top: 1px solid var(--border); background: var(--surface); color: var(--muted); font-size: 14px; }
 .site-footer .inner {
   max-width: 1200px; margin: 0 auto; padding: 36px 16px 20px;
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 24px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 24px;
 }
 .site-footer .f-brand p { margin: 10px 0 0; max-width: 300px; }
 .site-footer .f-col { display: flex; flex-direction: column; gap: 8px; }
@@ -643,3 +643,29 @@ details.more > .stack { display: flex; flex-direction: column; gap: 10px; paddin
   .lang-btn { min-width: 38px; padding: 0 6px; }
 }
 td.cur-name { color: var(--muted); word-break: break-all; unicode-bidi: plaintext; }
+
+/* ---------- Review tools (Comment Sheet, Pre-flight) ---------- */
+:root { --cat-qa: #12805c; --cat-qa-soft: #def3ea; }
+:root[data-theme="dark"] { --cat-qa: #4cc79a; --cat-qa-soft: #183328; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --cat-qa: #4cc79a; --cat-qa-soft: #183328; } }
+.group-icon.cat-qa, .tool-card.cat-qa .icon, .tool-icon.cat-qa { background: var(--cat-qa-soft); color: var(--cat-qa); }
+a.tool-card.cat-qa:hover { border-color: var(--cat-qa); }
+.tool-card.cat-qa .go { color: var(--cat-qa); }
+.comments-table td.comment { min-width: 260px; white-space: pre-wrap; }
+.comments-table td.sheet { min-width: 140px; unicode-bidi: plaintext; }
+.comments-table td.snap img { display: block; max-width: 240px; max-height: 150px; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+tr.off td { opacity: .45; }
+.verdict { margin: 0; font-size: 20px; }
+.verdict.ok { color: var(--success); }
+.verdict.bad { color: var(--danger); }
+.checks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.checks li { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; background: var(--surface-2); font-size: 14px; }
+.checks li .mark { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; flex: none; font-weight: 800; font-size: 13px; color: #fff; }
+.checks li.ok .mark { background: var(--success); }
+.checks li.bad { background: var(--danger-soft); }
+.checks li.bad .mark { background: var(--danger); }
+.checks li.warn { background: var(--warning-soft); }
+.checks li.warn .mark { background: var(--warning); }
+.checks li.info .mark { background: var(--accent); }
+tr.has-problem td { background: var(--danger-soft); }
+.ok-mark { color: var(--success); font-weight: 800; }

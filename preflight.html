@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pre-flight Check</title>
+  <meta name="description" content="Check a drawing issue before you send it: duplicate drawing numbers, file names that don't match the title block, missing drawings and revisions that don't match the drawing list.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js"></script>
+  <script src="assets/i18n.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+      <nav>
+        <a href="./#files" class="hide-sm">File tools</a>
+        <a href="./#pdf" class="hide-sm">PDF tools</a>
+        <a href="./#review" class="hide-sm">Review</a>
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
+        <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <div class="crumb"><a href="./">All tools</a> / <a href="./#review">Review</a></div>
+        <div class="tool-title">
+          <span class="tool-icon cat-qa"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <div><h1>Pre-flight Check</h1><p>Catch mistakes in a drawing issue before you send it.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="stepper">
+      <button class="step" type="button"><span class="n">1</span><span><b>Drawings &amp; list</b><small>The issue folder, and your drawing list</small></span></button>
+      <button class="step" type="button"><span class="n">2</span><span><b>Mark the title block</b><small>Drawing number and revision</small></span></button>
+      <button class="step" type="button"><span class="n">3</span><span><b>Report</b><small>What to fix before sending</small></span></button>
+    </nav>
+
+    <!-- Step 1 -->
+    <section class="step-panel">
+      <div class="two-equal" style="margin-top:0">
+        <div class="card">
+          <h2>1. The drawings to issue</h2>
+          <p class="hint">Choose the folder with the PDFs you are about to send.</p>
+          <div class="row" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+            <button class="btn primary" id="pickBtn">Select Folder</button>
+            <button class="btn" id="addFilesBtn">or choose PDF files</button>
+          </div>
+          <label class="check"><input type="checkbox" id="optSub" checked> Include subfolders</label>
+          <div class="count-line" id="filesLine" hidden><span class="num" id="fileCount">0</span><span>PDF files</span></div>
+          <ul class="pdf-files" id="fileList"></ul>
+        </div>
+        <div class="card">
+          <h2>2. Your drawing list <span class="hint" style="font-weight:400">(optional)</span></h2>
+          <p class="hint">An Excel register or document list. It lets the check find missing drawings and wrong revisions.</p>
+          <div class="row" style="display:flex;gap:8px;align-items:center">
+            <button class="btn" id="listBtn">Choose Excel file…</button>
+            <button class="icon-btn danger" id="listClear" title="Don't use a list" hidden>✕</button>
+          </div>
+          <div class="stack" id="listOptions" hidden style="display:flex;flex-direction:column;gap:10px">
+            <p class="hint" id="listLabel"></p>
+            <div class="field"><label for="listSheet">Sheet</label><select id="listSheet"></select></div>
+            <div class="row tight" style="display:flex;gap:8px">
+              <div class="field"><label for="listNo">Drawing number column</label><select id="listNo"></select></div>
+              <div class="field"><label for="listRev">Revision column</label><select id="listRev"></select></div>
+            </div>
+            <p class="hint" id="listCount"></p>
+          </div>
+        </div>
+      </div>
+      <div class="step-foot"><span class="spacer"></span><button class="btn primary lg" data-next>Next: mark the title block →</button></div>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="step-panel" hidden>
+      <div class="work">
+        <div id="viewer"></div>
+        <div class="side">
+          <div class="howto"><span class="big">✍</span><span><b>Drag a box around the drawing number</b> in the title block, then a second box around the <b>revision</b>. A third box for the title is optional.</span></div>
+          <div class="card">
+            <h2>Areas</h2>
+            <ul class="rect-list" id="rectList"></ul>
+            <p class="hint" id="noAreas">No areas yet. Drag on the drawing to add one.</p>
+            <button class="btn ghost" id="clearRectsBtn">Remove all areas</button>
+          </div>
+          <div class="card">
+            <div class="field"><label for="previewFile">Showing</label><select id="previewFile"></select></div>
+            <div class="field"><label for="pageNo">Page to read</label><input type="text" id="pageNo" value="1" inputmode="numeric"></div>
+          </div>
+          <div class="step-foot"><button class="btn" data-back>← Back</button><span class="spacer"></span><button class="btn primary lg" data-next>Next: check →</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="step-panel" hidden>
+      <div class="card">
+        <div class="result-bar" style="padding:0;border:0">
+          <h2 id="verdict">Checking…</h2>
+          <span class="spacer"></span>
+          <button class="btn" id="exportBtn">⬇ Download report (Excel)</button>
+        </div>
+        <progress id="progress" value="0" max="1" hidden></progress>
+        <ul class="checks" id="checks"></ul>
+      </div>
+      <section class="panel" style="margin-top:16px">
+        <div class="result-bar"><b>Drawings</b><span class="spacer"></span><label class="check"><input type="checkbox" id="onlyProblems"> Show only drawings with problems</label></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>File</th><th>Drawing No. (title block)</th><th>Rev.</th><th>Rev. in list</th><th>Problems</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="panel" id="missingPanel" hidden style="margin-top:16px">
+        <div class="result-bar"><b>In the drawing list but no PDF</b></div>
+        <div class="table-wrap"><table><thead><tr><th>Drawing No.</th><th>Rev. in list</th></tr></thead><tbody id="missingRows"></tbody></table></div>
+      </section>
+      <div class="step-foot"><button class="btn" data-back>← Back</button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="f-brand">
+        <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+        <p>Free file and PDF tools that run in your browser.</p>
+      </div>
+      <div class="f-col"><h4>File tools</h4><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="titleblock.html">Rename from Title Block</a><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="extract.html">PDF to Excel</a><a href="edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>Review</h4><a href="comments.html">Comment Sheet</a><a href="preflight.html">Pre-flight Check</a></div>
+      <div class="f-col"><h4>About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
+    </div>
+    <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/pdfview.js"></script>
+  <script src="assets/pdfread.js"></script>
+  <script src="assets/preflight.js"></script>
+</body>
+</html>

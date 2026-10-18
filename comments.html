@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment Sheet</title>
+  <meta name="description" content="Turn the client's PDF review comments into an Excel comment response sheet: sheet number, comment, author, date and a picture of the spot each comment points to.">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js"></script>
+  <script src="assets/i18n.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+      <nav>
+        <a href="./#files" class="hide-sm">File tools</a>
+        <a href="./#pdf" class="hide-sm">PDF tools</a>
+        <a href="./#review" class="hide-sm">Review</a>
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
+        <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <div class="crumb"><a href="./">All tools</a> / <a href="./#review">Review</a></div>
+        <div class="tool-title">
+          <span class="tool-icon cat-qa"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <div><h1>Comment Sheet</h1><p>Turn the client's PDF review comments into an Excel sheet ready for your responses.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="stepper">
+      <button class="step" type="button"><span class="n">1</span><span><b>Add review PDFs</b><small>The marked-up drawings</small></span></button>
+      <button class="step" type="button"><span class="n">2</span><span><b>Mark the sheet number</b><small>Optional: a box on one drawing</small></span></button>
+      <button class="step" type="button"><span class="n">3</span><span><b>Comment sheet</b><small>Check and download Excel</small></span></button>
+    </nav>
+
+    <!-- Step 1 -->
+    <section class="step-panel">
+      <div class="dropzone" id="dropzone">
+        <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg>
+        <h2>Add the PDFs with the client's comments</h2>
+        <p>Drop them here, or choose files or a whole folder. Comments made in Bluebeam, Acrobat or any PDF reader are read.</p>
+        <div class="btn-row">
+          <button class="btn primary lg" id="addFilesBtn">Choose PDF files</button>
+          <button class="btn lg" id="addFolderBtn">Choose a folder</button>
+        </div>
+      </div>
+      <div class="card" id="filesCard" hidden style="margin-top:16px">
+        <div class="count-line"><span class="num" id="commentCount">0</span><span>comments found in</span><span class="num" id="fileCount">0</span><span>file(s)</span><span class="spacer" style="flex:1"></span><button class="btn ghost" id="clearBtn">Remove all</button></div>
+        <ul class="pdf-files files-big" id="fileList"></ul>
+        <p class="hint" id="noComments" hidden>No comments were found. If the reviewer "flattened" the PDF, the markups became part of the drawing and can't be read as comments.</p>
+      </div>
+      <div class="step-foot"><span class="spacer"></span><button class="btn primary lg" data-next>Next: sheet number →</button></div>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="step-panel" hidden>
+      <div class="work">
+        <div id="viewer"></div>
+        <div class="side">
+          <div class="howto"><span class="big">✍</span><span><b>Drag a box around the sheet number</b> in the title block, so every comment gets its sheet number. You can add a second box for the sheet title. This step is optional: without a box, the file name is used.</span></div>
+          <div class="card">
+            <h2>Areas</h2>
+            <ul class="rect-list" id="rectList"></ul>
+            <p class="hint" id="noAreas">No box yet. The file name will be used as the sheet number.</p>
+            <button class="btn ghost" id="clearRectsBtn">Remove all areas</button>
+          </div>
+          <div class="card">
+            <div class="field"><label for="previewFile">Showing</label><select id="previewFile"></select></div>
+          </div>
+          <div class="step-foot"><button class="btn" data-back>← Back</button><span class="spacer"></span><button class="btn primary lg" data-next>Next: comment sheet →</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="step-panel" hidden>
+      <section class="panel">
+        <div class="result-bar">
+          <button class="btn success lg" id="exportBtn">⬇ Download comment sheet (Excel)</button>
+          <span class="spacer"></span>
+          <span class="hint">Click a comment or sheet number to fix it before downloading.</span>
+        </div>
+        <div style="padding:0 14px"><progress id="progress" value="0" max="1" hidden></progress></div>
+        <div class="status" id="status"></div>
+        <div class="table-wrap">
+          <table class="results-table comments-table">
+            <thead><tr><th class="sel"><input type="checkbox" id="headCheck" aria-label="Select all"></th><th>No.</th><th>Sheet No.</th><th>Comment</th><th>Snapshot</th><th>By</th><th>Date</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="two-equal">
+        <details class="more">
+          <summary>Sheet header (optional)</summary>
+          <div class="stack">
+            <div class="field"><label for="hProject">Project</label><input type="text" id="hProject" placeholder="e.g. Mamsha Palm Residences"></div>
+            <div class="field"><label for="hRef">Submission / reference</label><input type="text" id="hRef" placeholder="e.g. Tender submission 02"></div>
+            <div class="field"><label for="hBy">Reviewed by</label><input type="text" id="hBy" placeholder="e.g. Client / Consultant"></div>
+          </div>
+        </details>
+        <details class="more">
+          <summary>Which markups</summary>
+          <div class="stack">
+            <label class="check"><input type="checkbox" id="optNoText"> Also include markups without text (clouds, arrows, highlights)</label>
+            <label class="check"><input type="checkbox" id="optReplies" checked> Add replies to the comment they answer</label>
+            <p class="hint">Changed something? The list updates automatically.</p>
+          </div>
+        </details>
+      </div>
+      <div class="step-foot"><button class="btn" data-back>← Back</button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="f-brand">
+        <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+        <p>Free file and PDF tools that run in your browser.</p>
+      </div>
+      <div class="f-col"><h4>File tools</h4><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="titleblock.html">Rename from Title Block</a><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="extract.html">PDF to Excel</a><a href="edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>Review</h4><a href="comments.html">Comment Sheet</a><a href="preflight.html">Pre-flight Check</a></div>
+      <div class="f-col"><h4>About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
+    </div>
+    <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
+  </footer>
+
+  <script src="assets/common.js"></script>
+  <script src="assets/pdfview.js"></script>
+  <script src="assets/pdfread.js"></script>
+  <script src="assets/comments.js"></script>
+</body>
+</html>

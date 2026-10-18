@@ -13,6 +13,8 @@ Free online file tools that run entirely in the browser. Files are never uploade
 | Split PDF | Page ranges (1-3,5,8-10), every page, or picked pages into one file |
 | PDF to Excel | Draw areas, read their text from many PDFs (OCR for scanned, English/Arabic), export or insert into an existing workbook |
 | Rename from Title Block | Read the drawing number/title from each PDF and rename the file after it (OCR for scans), with undo |
+| Comment Sheet | Read review comments (PDF annotations) into an Excel comment response sheet: sheet no., comment, author, date, snapshot of the spot |
+| Pre-flight Check | Before an issue: duplicate drawing numbers, file name vs title block, missing drawings and revision mismatches against the Excel drawing list |
 | Edit PDF Text | Find & replace text inside an area across many PDFs, keeping font, size and angle |
 
 PDF work uses [MuPDF.js](https://mupdf.com/) (AGPL) and OCR uses [Tesseract.js](https://tesseract.projectnaptha.com/).
