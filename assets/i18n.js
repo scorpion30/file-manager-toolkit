@@ -862,5 +862,23 @@
   });
 
   AR['File Manager Toolkit'] = 'File Manager Toolkit';
+  AR['Need a tool for your office?'] = 'محتاج أداة مخصوصة لمكتبك؟';
+  AR['Every office has its own drawing lists, title blocks and naming rules. Tell us what takes your team hours, and we can build a tool for it.'] =
+    'كل مكتب له قوائم لوحات و Title Block وقواعد تسمية خاصة بيه. قولنا إيه الشغل اللي بياخد من فريقك ساعات، ونقدر نعملك أداة ليه.';
+  AR['Tell us what you need'] = 'قولنا محتاج إيه';
+  AR['PDF files found'] = 'ملفات PDF موجودة';
+  AR['Your files stay on your computer. Nothing is uploaded.'] = 'ملفاتك بتفضل على جهازك. مفيش أي حاجة بتترفع.';
+  AR['Your files never leave your computer'] = 'ملفاتك عمرها ما بتخرج من جهازك';
+  AR['Client drawings and project files are confidential. Here they are opened by your own browser, on your own computer, and nobody else receives them.'] =
+    'رسومات العملاء وملفات المشاريع سرية. هنا المتصفح بتاعك هو اللي بيفتحها على جهازك إنت، ومحدش غيرك بيستلمها.';
+  AR['Most online PDF and file sites'] = 'أغلب مواقع الـ PDF والملفات أونلاين';
+  AR['You upload your files to their servers'] = 'بترفع ملفاتك على السيرفرات بتاعتهم';
+  AR["Your files sit on someone else's computer while they are processed"] = 'ملفاتك بتبقى على جهاز حد تاني وهي بتتعالج';
+  AR['You download the result back'] = 'بتنزّل النتيجة تاني على جهازك';
+  AR['Your browser opens the files on your computer'] = 'المتصفح بيفتح الملفات على جهازك';
+  AR['Nothing is uploaded: not the files, not their names, not their content'] = 'مفيش حاجة بتترفع: لا الملفات، ولا أساميها، ولا محتواها';
+  AR['Renamed files and results are saved straight to your folder'] = 'الملفات بعد التسمية والنتايج بتتحفظ في الفولدر بتاعك على طول';
+  AR['Only the tool itself is downloaded from the internet, the same way any web page is. You can check it: the source code is public on GitHub.'] =
+    'الأداة نفسها بس هي اللي بتتحمّل من الإنترنت، زي أي صفحة ويب. وتقدر تتأكد بنفسك: الكود المصدر متاح للكل على GitHub.';
   window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
 })();

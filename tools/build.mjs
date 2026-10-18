@@ -234,6 +234,7 @@ function seoBlock(page, lang, desc) {
     `<meta property="og:image:height" content="630">`,
     `<meta name="twitter:card" content="summary_large_image">`,
     `<script src="${assets}analytics.js" defer></script>`,
+    `<script src="${assets}backend.js" defer></script>`,
   ];
   return `<!-- seo:start -->\n  ${lines.join('\n  ')}\n  <!-- seo:end -->`;
 }

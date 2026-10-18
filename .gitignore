@@ -3,3 +3,4 @@ _testfonts/
 *.pdf
 *.zip
 *.xlsx
+tools/backend/.clasp.json

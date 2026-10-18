@@ -31,6 +31,10 @@ node tools/build.mjs
 
 It rewrites `ar/*.html`, the SEO block in each English page (canonical, hreflang, Open Graph), `sitemap.xml` and `robots.txt`, and lists any text that has no Arabic yet. `node tools/build.mjs --og` also redraws the share images in `assets/og/` (needs Chrome or Edge). Never edit `ar/` by hand. A new page must be added to `PAGES` in `tools/build.mjs`.
 
+## Feedback and usage sheet
+
+`assets/backend.js` adds the Feedback button on every page and logs one anonymous row per visit (page, seconds, button ids, referrer). Both go to a Google Sheet through the Apps Script web app in `tools/backend/` (deployed with `clasp`; `.clasp.json` is kept out of git). In the sheet: Dashboard = summary, Feedback = messages, Usage = visits. To answer someone, type in "Your reply" and use the menu Feedback > Send replies.
+
 ## Visitor counter
 
 `assets/analytics.js` loads Google Analytics 4 once `GA_ID` is set in it. It counts page views, donate clicks and main tool buttons, and is off on localhost.

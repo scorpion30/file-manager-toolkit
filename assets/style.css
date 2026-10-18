@@ -669,3 +669,64 @@ tr.off td { opacity: .45; }
 .checks li.info .mark { background: var(--accent); }
 tr.has-problem td { background: var(--danger-soft); }
 .ok-mark { color: var(--success); font-weight: 800; }
+
+/* ---------- Feedback button + form (assets/backend.js) ---------- */
+.fb-open {
+  position: fixed; inset-inline-end: 18px; bottom: 18px; z-index: 900;
+  font: inherit; font-weight: 600; font-size: 14px;
+  padding: 10px 16px; border-radius: 999px; border: 1px solid var(--accent);
+  background: var(--accent); color: #fff; cursor: pointer; box-shadow: var(--shadow-lg);
+}
+.fb-open:hover { background: var(--accent-hover); }
+.fb-overlay {
+  position: fixed; inset: 0; z-index: 1000; background: rgba(10, 14, 25, .45);
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+}
+.fb-overlay[hidden] { display: none; }
+.fb-panel {
+  width: min(460px, 100%); max-height: calc(100vh - 32px); overflow: auto;
+  background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 22px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.fb-panel h3 { margin: 0; font-size: 19px; }
+.fb-panel .fb-lead { margin: 0 0 8px; color: var(--muted); font-size: 14px; }
+.fb-panel label { font-size: 13px; font-weight: 600; margin-top: 6px; }
+.fb-panel select, .fb-panel textarea, .fb-panel input {
+  font: inherit; font-size: 14px; padding: 8px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text); width: 100%;
+}
+.fb-panel > * { flex-shrink: 0; }
+.fb-panel textarea { resize: vertical; min-height: 110px; }
+.fb-panel .fb-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.fb-panel .fb-privacy { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+.fb-panel .fb-note { margin: 4px 0 0; font-size: 13px; color: var(--danger); min-height: 1em; }
+.fb-panel .fb-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+@media print { .fb-open, .fb-overlay { display: none !important; } }
+
+/* "Need a tool for your office?" band on the home page */
+.office { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius); padding: 24px 28px; margin: 32px 0; }
+.office h2 { margin: 0 0 6px; font-size: 22px; }
+.office p { margin: 0; color: var(--muted); max-width: 620px; }
+
+/* "Your files never leave your computer" */
+.privacy-badge { display: inline-flex; align-items: center; gap: 6px; margin: 8px 0 0; padding: 4px 10px;
+  border-radius: 999px; background: var(--success-soft); color: var(--success); font-size: 13px; font-weight: 600; }
+.privacy-badge svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.privacy-compare { margin: 48px 0; }
+.privacy-compare h2 { margin: 0 0 8px; }
+.privacy-compare .pc-lead { margin: 0 0 20px; color: var(--muted); max-width: 720px; }
+.pc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 760px) { .pc-cols { grid-template-columns: 1fr; } }
+.pc-col { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; background: var(--surface); }
+.pc-col h3 { margin: 0 0 10px; font-size: 17px; }
+.pc-col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.pc-col li { position: relative; padding-inline-start: 26px; }
+.pc-col li::before { position: absolute; inset-inline-start: 0; top: 0; font-weight: 700; }
+.pc-col.other { background: var(--surface-2); }
+.pc-col.other li::before { content: '✕'; color: var(--danger); }
+.pc-col.ours { border-color: var(--success); box-shadow: 0 0 0 1px var(--success) inset; }
+.pc-col.ours h3 { color: var(--success); }
+.pc-col.ours li::before { content: '✓'; color: var(--success); }
+.privacy-compare .pc-note { margin: 14px 0 0; font-size: 13px; color: var(--muted); }
