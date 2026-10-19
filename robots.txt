@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://scorpion30.github.io/file-manager-toolkit/sitemap.xml
+Sitemap: https://filemanagertoolkit.com/sitemap.xml

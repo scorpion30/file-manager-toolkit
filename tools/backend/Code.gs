@@ -8,7 +8,7 @@
  * with their original message (or right away with menu Feedback > Send replies).
  */
 
-const SITE = 'https://scorpion30.github.io/file-manager-toolkit/';
+const SITE = 'https://filemanagertoolkit.com/';
 const FROM_NAME = 'File Manager Toolkit';
 
 const FEEDBACK = 'Feedback';

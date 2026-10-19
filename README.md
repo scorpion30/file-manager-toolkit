@@ -54,4 +54,4 @@ Then open http://localhost:8765.
 
 ## Hosting
 
-Static site, published with GitHub Pages from the `main` branch root.
+Static site, published with GitHub Pages from the `main` branch root at https://filemanagertoolkit.com (the `CNAME` file sets the domain; DNS is at Porkbun).

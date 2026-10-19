@@ -18,7 +18,7 @@ import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
 
 const ROOT = process.cwd();
-const SITE = 'https://scorpion30.github.io/file-manager-toolkit/';
+const SITE = 'https://filemanagertoolkit.com/';
 const BRAND = 'File Manager Toolkit';
 
 // cat = colour of the share image: files (blue), pdf (red), qa (green).
