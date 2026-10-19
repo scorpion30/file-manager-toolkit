@@ -76,7 +76,11 @@
       const build = (pageNumbers) => {
         const out = new m.PDFDocument();
         pageNumbers.forEach((p) => out.graftPage(-1, src, p - 1));
-        return out.saveToBuffer('garbage=4,compress').asUint8Array();
+        // Copy out of MuPDF's WASM memory: a plain view can be freed or moved before it is written.
+        const buf = out.saveToBuffer('garbage=4,compress');
+        const bytes = buf.asUint8Array().slice();
+        buf.destroy();
+        return bytes;
       };
       const label = (s, e) => (s === e ? `p${s}` : `p${s}-${e}`);
 

@@ -373,7 +373,11 @@
         return;
       }
       replaceOnPage(m, doc, page, matches, replace);
-      const bytes = doc.saveToBuffer('garbage=4,compress').asUint8Array();
+      // asUint8Array() is a view into MuPDF's WASM memory, which can be freed or moved
+      // before the async write below runs, so copy the bytes out first.
+      const buf = doc.saveToBuffer('garbage=4,compress');
+      const bytes = buf.asUint8Array().slice();
+      buf.destroy();
       const { base } = FM.splitName(f.file.name);
       if (mode === 'download') outputs.push([`${base}${suffix}.pdf`, bytes]);
       else if (mode === 'folder') await writeFile(await outFolder.getFileHandle(f.file.name, { create: true }), bytes);
