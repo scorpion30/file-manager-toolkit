@@ -2,6 +2,7 @@
 //
 //   node tools/build.mjs          pages, Arabic copies, sitemap.xml, robots.txt
 //   node tools/build.mjs --og     the same + share images in assets/og/ (needs Chrome or Edge)
+//   node tools/build.mjs --og-new only the share images that do not exist yet
 //
 // What it does:
 // - English pages (*.html): writes the block between <!-- seo:start --> and <!-- seo:end -->
@@ -9,6 +10,9 @@
 // - Arabic pages (ar/*.html): generated from the English page, with the text translated by the
 //   dictionary in assets/i18n.js, so Arabic text is in the HTML itself and search engines see it.
 //   Never edit ar/ by hand: it is overwritten on every run.
+// - Guides (guides/*.html, guide: true): the same, with their Arabic text in tools/guides-ar.mjs (a
+//   dictionary used only here, so the long guide text is not loaded on every page), the screenshots
+//   swapped for the -ar ones, and FAQPage / HowTo JSON-LD built from the page's own FAQ and steps.
 // - sitemap.xml and robots.txt.
 
 import fs from 'node:fs';
@@ -16,6 +20,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
+import GUIDES_AR from './guides-ar.mjs';
 
 const ROOT = process.cwd();
 const SITE = 'https://filemanagertoolkit.com/';
@@ -111,6 +116,47 @@ const PAGES = [
       desc: 'افحص إصدار اللوحات قبل إرساله: أرقام لوحات مكررة، أسماء ملفات لا تطابق جدول العنوان، لوحات ناقصة ومراجعات لا تطابق قائمة اللوحات في Excel.',
     },
   },
+  // ----- guides: how-to pages written for what people search, one per tool -----
+  {
+    file: 'guides/rename-pdf-drawings-from-title-block.html', cat: 'pdf', guide: true,
+    en: { title: `How to Rename PDF Drawings from the Title Block (Free) | ${BRAND}`, name: 'Rename PDF drawings', pitch: 'From the title block, a whole folder at once' },
+    ar: {
+      title: `طريقة إعادة تسمية ملفات PDF للوحات من جدول العنوان تلقائياً | ${BRAND}`, name: 'إعادة تسمية ملفات PDF', pitch: 'من جدول العنوان، لمجلد كامل مرة واحدة',
+      desc: 'شرح خطوة بخطوة لإعادة تسمية مئات ملفات PDF للوحات تلقائياً برقم اللوحة وعنوانها من جدول العنوان (Title Block). مجاني، يقرأ اللوحات الممسوحة ضوئياً، والملفات لا تُرفع.',
+    },
+  },
+  {
+    file: 'guides/pdf-drawings-to-excel-drawing-register.html', cat: 'pdf', guide: true,
+    en: { title: `Make a Drawing Register in Excel from PDF Drawings (Free) | ${BRAND}`, name: 'Drawing register from PDFs', pitch: 'Number, title and revision of every sheet in Excel' },
+    ar: {
+      title: `تحويل PDF إلى Excel: عمل قائمة لوحات من ملفات PDF | ${BRAND}`, name: 'قائمة لوحات من PDF', pitch: 'رقم وعنوان ومراجعة كل لوحة في Excel',
+      desc: 'استخرج رقم اللوحة والعنوان والمراجعة من كل ملفات PDF إلى جدول Excel واحد. تحويل PDF إلى Excel مجاناً مع OCR عربي وإنجليزي، والملفات لا تُرفع.',
+    },
+  },
+  {
+    file: 'guides/merge-pdf-without-uploading.html', cat: 'pdf', guide: true,
+    en: { title: `How to Merge PDF Files Without Uploading Them (Free) | ${BRAND}`, name: 'Merge PDF without uploading', pitch: 'Your files never leave your computer' },
+    ar: {
+      title: `دمج ملفات PDF في ملف واحد بدون رفع على الإنترنت | ${BRAND}`, name: 'دمج PDF بدون رفع', pitch: 'ملفاتك لا تخرج من جهازك',
+      desc: 'اجمع عدة ملفات PDF في ملف واحد بالترتيب الذي تختاره داخل متصفحك. بدون رفع الملفات، بدون حد لعدد الملفات وبدون حساب. شرح خطوة بخطوة.',
+    },
+  },
+  {
+    file: 'guides/list-folder-files-to-excel.html', cat: 'files', guide: true,
+    en: { title: `List All Files in a Folder and Subfolders to Excel (Free) | ${BRAND}`, name: 'Folder file list to Excel', pitch: 'Every file in a folder tree, in one workbook' },
+    ar: {
+      title: `نسخ أسماء الملفات من مجلد إلى Excel مع المجلدات الفرعية | ${BRAND}`, name: 'أسماء الملفات إلى Excel', pitch: 'كل ملفات المجلد والمجلدات الفرعية في ملف واحد',
+      desc: 'صدّر أسماء كل الملفات في مجلد (فولدر) وكل المجلدات الفرعية إلى Excel مع المجلد والنوع والحجم والتاريخ. بدون VBA أو Power Query وبدون رفع. شرح خطوة بخطوة.',
+    },
+  },
+  {
+    file: 'guides/export-pdf-comments-to-excel.html', cat: 'qa', guide: true,
+    en: { title: `Export PDF Comments to Excel as a Comment Response Sheet | ${BRAND}`, name: 'PDF comments to Excel', pitch: 'A comment response sheet with a snapshot of each spot' },
+    ar: {
+      title: `تصدير تعليقات PDF إلى Excel (جدول الرد على التعليقات) | ${BRAND}`, name: 'تعليقات PDF إلى Excel', pitch: 'جدول رد على التعليقات مع صورة لمكان كل تعليق',
+      desc: 'حوّل تعليقات المراجعة على لوحات PDF إلى جدول رد على التعليقات في Excel: رقم اللوحة، التعليق، الكاتب، التاريخ وصورة لمكان كل تعليق. مجاني وبدون رفع.',
+    },
+  },
 ];
 
 // ---------- translation, using the same dictionary as the live switch ----------
@@ -134,7 +180,8 @@ function loadTranslator() {
   sandbox.window = sandbox;
   vm.runInNewContext(code, sandbox);
   const t = sandbox.window.FMLang.t;
-  return (s) => {
+  return (s, guide) => {
+    if (guide && Object.prototype.hasOwnProperty.call(GUIDES_AR, s)) return GUIDES_AR[s];
     const out = t(s);
     return out === s ? null : out;
   };
@@ -179,7 +226,7 @@ function isSkipped(stack) {
     || (e.tag === 'b' && stack.slice(0, i).some((p) => p.cls.has('mock-chip'))));
 }
 
-function translateBody(html, tr, missing) {
+function translateBody(html, tr, missing, guide) {
   const re = /<!--[\s\S]*?-->|<(script|style|textarea|code)\b[\s\S]*?<\/\1>|<\/?[a-zA-Z][^>]*>|[^<]+/g;
   const stack = [];
   return html.replace(re, (tok, raw) => {
@@ -193,14 +240,17 @@ function translateBody(html, tr, missing) {
       }
       if (!VOID.has(t.tag) && !t.selfClosing) stack.push(t);
       if (isSkipped(stack)) return tok;
-      return tok.replace(/(\s(?:placeholder|title|aria-label)\s*=\s*")([^"]*)"/g, (all, pre, v) => {
-        const out = tr(decode(v).replace(/\s+/g, ' ').trim());
+      return tok.replace(/(\s(?:placeholder|title|aria-label|alt)\s*=\s*")([^"]*)"/g, (all, pre, v) => {
+        const key = decode(v).replace(/\s+/g, ' ').trim();
+        if (!key) return all;
+        const out = tr(key, guide);
+        if (out == null && guide && /[A-Za-z]/.test(key)) missing.add(key);
         return out == null ? all : `${pre}${encodeAttr(out)}"`;
       });
     }
     const key = decode(tok).replace(/\s+/g, ' ').trim();
     if (!key || !/[A-Za-z→]/.test(key) || isSkipped(stack)) return tok;
-    const out = tr(key);
+    const out = tr(key, guide);
     if (out == null) { missing.add(key); return tok; }
     const lead = tok.match(/^\s*/)[0];
     const trail = tok.match(/\s*$/)[0];
@@ -211,13 +261,20 @@ function translateBody(html, tr, missing) {
 // ---------- head blocks ----------
 
 const urlOf = (file, lang) => SITE + (lang === 'ar' ? 'ar/' : '') + (file === 'index.html' ? '' : file);
-const slug = (file) => file.replace(/\.html$/, '');
+const slug = (file) => file.replace(/\.html$/, '').replace(/\//g, '-');
+// One '../' per folder level of a page: '../' for guides/x.html.
+const up = (file) => '../'.repeat(file.split('/').length - 1);
+const assetsOf = (file, lang) => (lang === 'ar' ? '../' : '') + up(file) + 'assets/';
 
-function seoBlock(page, lang, desc) {
+function seoBlock(page, lang, desc, jsonLd) {
   const p = page[lang];
-  const assets = lang === 'ar' ? '../assets/' : 'assets/';
+  const assets = assetsOf(page.file, lang);
   // data-switch = where the language button goes, relative, so it also works on a local server.
-  const rel = (to) => (lang === to ? '' : (to === 'ar' ? 'ar/' : '../')) + (page.file === 'index.html' ? (lang === to ? './' : '') : page.file);
+  const rel = (to) => {
+    if (page.file === 'index.html') return lang === to ? './' : (to === 'ar' ? 'ar/' : '../');
+    if (lang === to) return path.posix.basename(page.file);
+    return (to === 'ar' ? up(page.file) + 'ar/' : '../' + up(page.file)) + page.file;
+  };
   const lines = [
     `<link rel="canonical" href="${urlOf(page.file, lang)}">`,
     `<link rel="alternate" hreflang="en" href="${urlOf(page.file, 'en')}" data-switch="${rel('en')}">`,
@@ -235,6 +292,7 @@ function seoBlock(page, lang, desc) {
     `<meta name="twitter:card" content="summary_large_image">`,
     `<script src="${assets}analytics.js" defer></script>`,
     `<script src="${assets}backend.js" defer></script>`,
+    ...(jsonLd || []).map((d) => `<script type="application/ld+json">${JSON.stringify(d).replace(/</g, '\\u003c')}</script>`),
   ];
   return `<!-- seo:start -->\n  ${lines.join('\n  ')}\n  <!-- seo:end -->`;
 }
@@ -243,7 +301,29 @@ function setHead(html, page, lang, desc) {
   html = html.replace(/\n?\s*<!-- seo:start -->[\s\S]*?<!-- seo:end -->/, '');
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${encodeText(page[lang].title)}</title>`);
   html = html.replace(/(<meta name="description" content=")[^"]*(">)/, `$1${encodeAttr(desc)}$2`);
-  return html.replace(/(<meta name="description"[^>]*>)/, `$1\n  ${seoBlock(page, lang, desc)}`);
+  const jsonLd = page.guide ? guideJsonLd(html, page, lang, desc) : null;
+  return html.replace(/(<meta name="description"[^>]*>)/, (m) => `${m}\n  ${seoBlock(page, lang, desc, jsonLd)}`);
+}
+
+// HowTo and FAQPage data, read from the page itself (after translation), so it always matches
+// what visitors see: <ol class="guide-steps"><li><h3>Step</h3><p>Text</p></li> and
+// <div class="guide-faq"><details><summary>Question</summary><p>Answer</p></details>.
+const plain = (h) => decode(h.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+function guideJsonLd(html, page, lang, desc) {
+  const pick = (re) => (html.match(re) || [])[1] || '';
+  const steps = [...pick(/<ol class="guide-steps">([\s\S]*?)<\/ol>/).matchAll(/<li><h3>([\s\S]*?)<\/h3><p>([\s\S]*?)<\/p><\/li>/g)]
+    .map(([, name, text], i) => ({ '@type': 'HowToStep', position: i + 1, name: plain(name), text: plain(text) }));
+  const faq = [...pick(/<div class="guide-faq">([\s\S]*?)<\/div>/).matchAll(/<summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p>/g)]
+    .map(([, q, a]) => ({ '@type': 'Question', name: plain(q), acceptedAnswer: { '@type': 'Answer', text: plain(a) } }));
+  const img = pick(/<img src="[^"]*assets\/guides\/([^"]+)"/);
+  const tool = plain(pick(/<a class="btn primary lg" href="[^"]*">([\s\S]*?)<\/a>/)).replace(/\s*[→←]$/, '');
+  return [
+    {
+      '@context': 'https://schema.org', '@type': 'HowTo', name: plain(pick(/<h1>([\s\S]*?)<\/h1>/)), description: desc, inLanguage: lang,
+      ...(img ? { image: `${SITE}assets/guides/${img}` } : {}), tool: { '@type': 'HowToTool', name: tool }, step: steps,
+    },
+    { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: faq },
+  ];
 }
 
 // ---------- build ----------
@@ -261,13 +341,17 @@ for (const page of PAGES) {
   en = setHead(en, page, 'en', enDesc);
   fs.writeFileSync(file, en);
 
+  const enAssets = assetsOf(page.file, 'en');
+  const arAssets = assetsOf(page.file, 'ar');
   let ar = en.replace(/<html[^>]*>/, '<html lang="ar" dir="rtl" data-lang-page="ar">');
+  ar = ar.replace(/<body[\s\S]*<\/body>/, (body) => translateBody(body, tr, missing, page.guide));
+  if (page.guide) ar = ar.replace(/(assets\/guides\/[\w-]+)-en\.webp/g, '$1-ar.webp');
   ar = setHead(ar, page, 'ar', page.ar.desc);
-  ar = ar.replace(/(href|src)="assets\//g, '$1="../assets/');
-  ar = ar.replace('<link rel="stylesheet" href="../assets/style.css">',
-    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">\n  <link rel="stylesheet" href="../assets/style.css">');
-  ar = ar.replace(/<body[\s\S]*<\/body>/, (body) => translateBody(body, tr, missing));
-  ar = ar.replace('<head>', '<head>\n  <!-- Generated by tools/build.mjs from ../' + page.file + ' - do not edit. -->');
+  ar = ar.split(`href="${enAssets}`).join(`href="${arAssets}`).split(`src="${enAssets}`).join(`src="${arAssets}`);
+  ar = ar.replace(`<link rel="stylesheet" href="${arAssets}style.css">`,
+    `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">\n  <link rel="stylesheet" href="${arAssets}style.css">`);
+  ar = ar.replace('<head>', `<head>\n  <!-- Generated by tools/build.mjs from ${up(page.file)}../${page.file} - do not edit. -->`);
+  fs.mkdirSync(path.dirname(path.join(ROOT, 'ar', page.file)), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'ar', page.file), ar);
 }
 
@@ -294,7 +378,8 @@ if (missing.size) {
 
 // ---------- share images ----------
 
-if (process.argv.includes('--og')) {
+const ogNew = process.argv.includes('--og-new');
+if (process.argv.includes('--og') || ogNew) {
   const browsers = [
     'C:/Program Files/Google/Chrome/Application/chrome.exe',
     'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
@@ -309,6 +394,7 @@ if (process.argv.includes('--og')) {
     for (const lang of ['en', 'ar']) {
       const q = new URLSearchParams({ lang, cat: page.cat, name: page[lang].name, pitch: page[lang].pitch, home: page.file === 'index.html' ? '1' : '' });
       const out = path.join(outDir, `${slug(page.file)}-${lang}.png`);
+      if (ogNew && fs.existsSync(out)) continue;
       execFileSync(browser, ['--headless=new', '--disable-gpu', '--hide-scrollbars', '--force-device-scale-factor=1',
         '--window-size=1200,630', '--virtual-time-budget=8000', `--screenshot=${out}`, `${template}?${q}`], { stdio: 'ignore' });
       console.log('  og ' + path.relative(ROOT, out));

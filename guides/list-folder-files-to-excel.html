@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" data-lang-page="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List All Files in a Folder and Subfolders to Excel (Free) | File Manager Toolkit</title>
+  <meta name="description" content="Export the names of every file in a folder and all its subfolders to Excel, with folder, type, size and date. No VBA, no Power Query, no upload. Step by step guide.">
+  <!-- seo:start -->
+  <link rel="canonical" href="https://filemanagertoolkit.com/guides/list-folder-files-to-excel.html">
+  <link rel="alternate" hreflang="en" href="https://filemanagertoolkit.com/guides/list-folder-files-to-excel.html" data-switch="list-folder-files-to-excel.html">
+  <link rel="alternate" hreflang="ar" href="https://filemanagertoolkit.com/ar/guides/list-folder-files-to-excel.html" data-switch="../ar/guides/list-folder-files-to-excel.html">
+  <link rel="alternate" hreflang="x-default" href="https://filemanagertoolkit.com/guides/list-folder-files-to-excel.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="File Manager Toolkit">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="List All Files in a Folder and Subfolders to Excel (Free) | File Manager Toolkit">
+  <meta property="og:description" content="Export the names of every file in a folder and all its subfolders to Excel, with folder, type, size and date. No VBA, no Power Query, no upload. Step by step guide.">
+  <meta property="og:url" content="https://filemanagertoolkit.com/guides/list-folder-files-to-excel.html">
+  <meta property="og:image" content="https://filemanagertoolkit.com/assets/og/guides-list-folder-files-to-excel-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="../assets/analytics.js" defer></script>
+  <script src="../assets/backend.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to list all files in a folder and subfolders to Excel","description":"Export the names of every file in a folder and all its subfolders to Excel, with folder, type, size and date. No VBA, no Power Query, no upload. Step by step guide.","inLanguage":"en","image":"https://filemanagertoolkit.com/assets/guides/list-folder-en.webp","tool":{"@type":"HowToTool","name":"Open Files to Excel"},"step":[{"@type":"HowToStep","position":1,"name":"Choose the main folder","text":"Open the tool and click Select Folder. Pick the top folder of the project. The tool reads it and every folder inside it, however deep."},{"@type":"HowToStep","position":2,"name":"Choose which folders and file types","text":"Keep All subfolders, or choose Current folder only or Select subfolders. Use File types to keep only some types, for example PDF and DWG, and Name contains to filter by a word."},{"@type":"HowToStep","position":3,"name":"Choose the sheets","text":"Under Excel sheets, tick Summary for a count of each file type per folder and One sheet with all files for the full list. You can also split the list into a sheet for each folder or for each file type."},{"@type":"HowToStep","position":4,"name":"Choose the columns","text":"Tick Size, Date modified and Full path as needed. Type the folder location on your computer, for example D:\\Projects, if you want full paths that you can paste into Explorer."},{"@type":"HowToStep","position":5,"name":"Export to Excel","text":"Click Export to Excel. The workbook is saved to your downloads with a frozen header row, ready to filter and sort."}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"How do I copy all file names from a folder into Excel?","acceptedAnswer":{"@type":"Answer","text":"Choose the folder in Files to Excel and click Export to Excel. Each file name goes into its own row, with the extension and folder in separate columns."}},{"@type":"Question","name":"Does it include files in subfolders?","acceptedAnswer":{"@type":"Answer","text":"Yes. All subfolders are included by default. You can also choose only the current folder or pick some subfolders."}},{"@type":"Question","name":"Do I need VBA, macros or Power Query?","acceptedAnswer":{"@type":"Answer","text":"No. Nothing is installed in Excel. The tool creates a normal .xlsx workbook."}},{"@type":"Question","name":"Are my files uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Only the names, sizes and dates are read, by your own browser on your own computer. Nothing is sent to a server."}},{"@type":"Question","name":"How many files can it list?","acceptedAnswer":{"@type":"Answer","text":"Tens of thousands. Large folders take a few seconds to read."}}]}</script>
+  <!-- seo:end -->
+  <link rel="icon" href="../assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/guide.css">
+  <script src="../assets/theme.js"></script>
+  <script src="../assets/i18n.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="../"><img src="../assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+      <nav>
+        <a href="../#files" class="hide-sm">File tools</a>
+        <a href="../#pdf" class="hide-sm">PDF tools</a>
+        <a href="../#review" class="hide-sm">Review</a>
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
+        <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="guide">
+      <div class="crumb"><a href="../">All tools</a> / <a href="../list.html">Files to Excel</a> / Guide</div>
+      <h1>How to list all files in a folder and subfolders to Excel</h1>
+      <p class="lead">Get every file name in a folder tree into an Excel workbook, with its folder, type, size and date, in a few clicks and without macros, Power Query or command prompt tricks.</p>
+      <p class="privacy-badge"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Your files stay on your computer. Nothing is uploaded.</span></p>
+      <div class="guide-cta"><a class="btn primary lg" href="../list.html">Open Files to Excel →</a><span class="hint">Free, no account, works in Chrome and Edge.</span></div>
+
+      <section class="guide-answer">
+        <h2>Short answer</h2>
+        <p>Open Files to Excel, click Select Folder and pick the main folder. Every file in it and in all its subfolders is listed. Choose the sheets and columns you want and click Export to Excel.</p>
+      </section>
+
+      <h2>The usual ways, and why they are slow</h2>
+      <p>The common answers to this question are a dir /b command in the command prompt, Copy as path in Windows Explorer, Power Query in Excel or a VBA macro. They all work, but each one needs cleaning afterwards: paths to split into columns, folders to separate from files, sizes in bytes and macros that your company may block.</p>
+      <p>When you need a file list for a project handover, an audit or a document register, you want the result ready to use: one row per file, the folder in its own column, a readable size and date, and maybe one sheet per folder.</p>
+
+      <h2>Step by step</h2>
+      <ol class="guide-steps">
+        <li><h3>Choose the main folder</h3><p>Open the tool and click Select Folder. Pick the top folder of the project. The tool reads it and every folder inside it, however deep.</p></li>
+        <li><h3>Choose which folders and file types</h3><p>Keep All subfolders, or choose Current folder only or Select subfolders. Use File types to keep only some types, for example PDF and DWG, and Name contains to filter by a word.</p></li>
+        <li><h3>Choose the sheets</h3><p>Under Excel sheets, tick Summary for a count of each file type per folder and One sheet with all files for the full list. You can also split the list into a sheet for each folder or for each file type.</p></li>
+        <li><h3>Choose the columns</h3><p>Tick Size, Date modified and Full path as needed. Type the folder location on your computer, for example D:\Projects, if you want full paths that you can paste into Explorer.</p></li>
+        <li><h3>Export to Excel</h3><p>Click Export to Excel. The workbook is saved to your downloads with a frozen header row, ready to filter and sort.</p></li>
+      </ol>
+
+      <figure>
+        <img src="../assets/guides/list-folder-en.webp" width="1280" height="880" loading="lazy" alt="Files to Excel listing sixteen files from a project folder with their folders, sizes and dates">
+        <figcaption>Every file in the folder tree, with its folder, size and date.</figcaption>
+      </figure>
+
+      <h2>What you can use the list for</h2>
+      <ul class="guide-list">
+        <li>A document register or transmittal list for a project handover.</li>
+        <li>Checking that every discipline folder has the files it should, using the Summary sheet.</li>
+        <li>Finding old or very large files before archiving a project.</li>
+        <li>Planning a bulk rename: copy the list, write the new names next to it, then use Rename Files.</li>
+      </ul>
+
+      <h2>Which browser to use</h2>
+      <p>Chrome and Edge on a computer read the folder directly. Firefox and Safari also work: they ask you to confirm the folder upload in a browser window, but the files are still only read on your computer and never sent anywhere. Only file names and details are read, not the contents, so even very large folders are fast.</p>
+
+      <section class="guide-box">
+        <h2>Export your file list now</h2>
+        <p>Free, runs in your browser, and your files never leave your computer.</p>
+        <a class="btn primary lg" href="../list.html">Open Files to Excel →</a>
+      </section>
+
+      <h2>Questions</h2>
+      <div class="guide-faq">
+        <details><summary>How do I copy all file names from a folder into Excel?</summary><p>Choose the folder in Files to Excel and click Export to Excel. Each file name goes into its own row, with the extension and folder in separate columns.</p></details>
+        <details><summary>Does it include files in subfolders?</summary><p>Yes. All subfolders are included by default. You can also choose only the current folder or pick some subfolders.</p></details>
+        <details><summary>Do I need VBA, macros or Power Query?</summary><p>No. Nothing is installed in Excel. The tool creates a normal .xlsx workbook.</p></details>
+        <details><summary>Are my files uploaded?</summary><p>No. Only the names, sizes and dates are read, by your own browser on your own computer. Nothing is sent to a server.</p></details>
+        <details><summary>How many files can it list?</summary><p>Tens of thousands. Large folders take a few seconds to read.</p></details>
+      </div>
+
+      <h2>Related guides</h2>
+      <ul class="guide-related">
+        <li><a href="pdf-drawings-to-excel-drawing-register.html">Make a drawing register in Excel from PDF drawings</a></li>
+        <li><a href="rename-pdf-drawings-from-title-block.html">Rename PDF drawings from the title block</a></li>
+        <li><a href="merge-pdf-without-uploading.html">Merge PDF files without uploading them</a></li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="f-brand">
+        <a class="brand" href="../"><img src="../assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+        <p>Free file and PDF tools that run in your browser.</p>
+      </div>
+      <div class="f-col"><h4>File tools</h4><a href="../rename.html">Rename Files</a><a href="../list.html">Files to Excel</a><a href="../organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="../titleblock.html">Rename from Title Block</a><a href="../merge.html">Merge PDF</a><a href="../split.html">Split PDF</a><a href="../extract.html">PDF to Excel</a><a href="../edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>Review</h4><a href="../comments.html">Comment Sheet</a><a href="../preflight.html">Pre-flight Check</a></div>
+      <div class="f-col"><h4>Guides</h4><a href="rename-pdf-drawings-from-title-block.html">Rename PDFs from title block</a><a href="pdf-drawings-to-excel-drawing-register.html">Drawing register from PDFs</a><a href="merge-pdf-without-uploading.html">Merge PDF without uploading</a><a href="list-folder-files-to-excel.html">Folder file list to Excel</a><a href="export-pdf-comments-to-excel.html">PDF comments to Excel</a><h4 style="margin-top:14px">About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
+    </div>
+    <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
+  </footer>
+</body>
+</html>

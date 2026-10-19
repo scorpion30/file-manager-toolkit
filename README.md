@@ -31,6 +31,10 @@ node tools/build.mjs
 
 It rewrites `ar/*.html`, the SEO block in each English page (canonical, hreflang, Open Graph), `sitemap.xml` and `robots.txt`, and lists any text that has no Arabic yet. `node tools/build.mjs --og` also redraws the share images in `assets/og/` (needs Chrome or Edge). Never edit `ar/` by hand. A new page must be added to `PAGES` in `tools/build.mjs`.
 
+## Guides
+
+`guides/*.html` are how-to pages written for what people search (one per tool), linked from the footer, the home FAQ and each tool page. Their Arabic text lives in `tools/guides-ar.mjs` (used only by the build, so it is not downloaded on every page); the build also adds HowTo and FAQPage JSON-LD from each page's steps and FAQ, and swaps `assets/guides/*-en.webp` screenshots for the `-ar` ones. `node tools/build.mjs --og-new` draws share images only for pages that have none yet.
+
 ## Feedback and usage sheet
 
 `assets/backend.js` adds the Feedback button on every page and logs one anonymous row per visit (page, seconds, button ids, referrer). Both go to a Google Sheet through the Apps Script web app in `tools/backend/` (deployed with `clasp`; `.clasp.json` is kept out of git). In the sheet: Dashboard = summary, Feedback = messages, Usage = visits. To answer someone, type in "Your reply": it is e-mailed within 5 minutes (or right away with the menu Feedback > Send replies). Messages without an e-mail get a note and cannot be answered.

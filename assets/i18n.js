@@ -914,5 +914,20 @@
   AR['Renamed files and results are saved straight to your folder'] = 'الملفات بعد التسمية والنتايج بتتحفظ في الفولدر بتاعك على طول';
   AR['Only the tool itself is downloaded from the internet, the same way any web page is. You can check it: the source code is public on GitHub.'] =
     'الأداة نفسها بس هي اللي بتتحمّل من الإنترنت، زي أي صفحة ويب. وتقدر تتأكد بنفسك: الكود المصدر متاح للكل على GitHub.';
+  // Guide links (footer, tool pages, home FAQ). The guide pages' own text is in tools/guides-ar.mjs.
+  AR['Guides'] = 'شروحات';
+  AR['Rename PDFs from title block'] = 'تسمية PDF من جدول العنوان';
+  AR['Drawing register from PDFs'] = 'قائمة لوحات من PDF';
+  AR['Merge PDF without uploading'] = 'دمج PDF بدون رفع';
+  AR['Folder file list to Excel'] = 'أسماء الملفات إلى Excel';
+  AR['PDF comments to Excel'] = 'تعليقات PDF إلى Excel';
+  AR['Step-by-step guide:'] = 'شرح خطوة بخطوة:';
+  AR['How to rename PDF drawings from the title block'] = 'طريقة إعادة تسمية ملفات PDF للوحات من جدول العنوان';
+  AR['How to make a drawing register in Excel from PDF drawings'] = 'طريقة عمل قائمة لوحات في Excel من ملفات PDF';
+  AR['How to merge PDF files without uploading them'] = 'طريقة دمج ملفات PDF بدون رفعها';
+  AR['How to list all files in a folder and subfolders to Excel'] = 'طريقة نسخ أسماء كل الملفات في فولدر وفولدراته الفرعية إلى Excel';
+  AR['How to export PDF comments to an Excel comment sheet'] = 'طريقة تصدير تعليقات PDF إلى جدول تعليقات Excel';
+  AR['Is there a step-by-step guide for each tool?'] = 'فيه شرح خطوة بخطوة لكل أداة؟';
+  AR['Yes, with screenshots:'] = 'أيوه، بالصور:';
   window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
 })();
