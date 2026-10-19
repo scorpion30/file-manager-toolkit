@@ -1049,3 +1049,5 @@ a.tool-card.request:hover .icon { background: var(--accent-soft); color: var(--a
 @media (max-width: 980px) { .tool-wrap.featured-wrap { grid-column: span 2; } }
 @media (max-width: 640px) { .tool-wrap.featured-wrap { grid-column: auto; } }
 @media (prefers-reduced-motion: reduce) { .drawing, .demo-row strong { animation: none !important; opacity: 1; } }
+.faq-guides { margin-top: 12px !important; }
+.faq-guides a { font-weight: 600; }

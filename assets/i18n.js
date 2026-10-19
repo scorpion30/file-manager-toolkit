@@ -933,6 +933,7 @@
     'الأداة نفسها بس هي اللي بتتحمّل من الإنترنت، زي أي صفحة ويب. وتقدر تتأكد بنفسك: الكود المصدر متاح للكل على GitHub.';
   // Guide links (footer, tool pages, home FAQ). The guide pages' own text is in tools/guides-ar.mjs.
   AR['Guides'] = 'شروحات';
+  AR['Step-by-step guides →'] = 'شروحات خطوة بخطوة ←';
   AR['Rename PDFs from title block'] = 'تسمية PDF من جدول العنوان';
   AR['Drawing register from PDFs'] = 'قائمة لوحات من PDF';
   AR['Merge PDF without uploading'] = 'دمج PDF بدون رفع';
