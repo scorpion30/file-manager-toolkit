@@ -818,7 +818,7 @@
     const link = document.createElement('link');
     link.id = 'fm-ar-font';
     link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap';
     document.head.appendChild(link);
   }
 
@@ -869,7 +869,24 @@
   AR['PDF files found'] = 'ملفات PDF موجودة';
   AR['Your files stay on your computer. Nothing is uploaded.'] = 'ملفاتك بتفضل على جهازك. مفيش أي حاجة بتترفع.';
   AR['Your files never leave your computer'] = 'ملفاتك عمرها ما بتخرج من جهازك';
-  AR['Drawing and file tools that'] = 'أدوات للرسومات والملفات';
+  AR['Less file work.'] = 'شغل ملفات أقل.';
+  AR['Zero uploads.'] = 'وملفاتك عندك.';
+  AR['Rename hundreds of drawings from their title block, list folders to Excel, merge, split and check PDFs. Everything runs in your browser, on your own computer.'] =
+    'سمِّ مئات اللوحات من الـ Title Block، وطلّع قوايم الفولدرات على Excel، وادمج وقسّم وافحص ملفات PDF. كل ده بيشتغل جوه المتصفح، على جهازك إنت.';
+  AR['Find your tool'] = 'اختار أداتك';
+  AR['Try the title block rename'] = 'جرّب التسمية من الـ Title Block';
+  AR['Your files never leave your computer. No accounts.'] = 'ملفاتك ما بتخرجش من جهازك. ومن غير حساب.';
+  AR['100% on your device'] = '100% على جهازك';
+  AR['Your drawings. Your business.'] = 'رسوماتك تخصك إنت بس.';
+  AR['Built for the whole batch'] = 'معمولة للدفعة كلها';
+  AR['Preview before you apply'] = 'شوف النتيجة قبل ما تطبّق';
+  AR['English & Arabic, naturally'] = 'عربي وإنجليزي';
+  AR['Find a tool…'] = 'دوّر على أداة…';
+  AR['Find a tool'] = 'دوّر على أداة';
+  AR['★ My favorites'] = '★ المفضلة';
+  AR['No tool matches that. Try another word, or tell us what you need with the Feedback button.'] =
+    'مفيش أداة بالاسم ده. جرّب كلمة تانية، أو قولنا محتاج إيه من زرار "رأيك".';
+  AR['Drawing and file tools that'] ='أدوات للرسومات والملفات';
   AR['never upload your files'] = 'من غير ما ملفاتك تترفع';
   AR['Rename hundreds of drawings from their title block, list folders to Excel, merge, split and check PDFs. All inside your browser, on your own computer.'] =
     'سمِّ مئات اللوحات من الـ Title Block، وطلّع قوايم الفولدرات على Excel، وادمج وقسّم وافحص ملفات PDF. كل ده جوه المتصفح، على جهازك إنت.';
