@@ -1051,3 +1051,5 @@ a.tool-card.request:hover .icon { background: var(--accent-soft); color: var(--a
 @media (prefers-reduced-motion: reduce) { .drawing, .demo-row strong { animation: none !important; opacity: 1; } }
 .faq-guides { margin-top: 12px !important; }
 .faq-guides a { font-weight: 600; }
+[dir="rtl"] .hero h1 { font-size: clamp(32px, 4vw, 52px); }
+[dir="rtl"] .hero h1 em { display: inline-block; font-size: .7em; margin-top: 6px; }

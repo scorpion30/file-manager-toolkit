@@ -869,8 +869,8 @@
   AR['PDF files found'] = 'ملفات PDF موجودة';
   AR['Your files stay on your computer. Nothing is uploaded.'] = 'ملفاتك بتفضل على جهازك. مفيش أي حاجة بتترفع.';
   AR['Your files never leave your computer'] = 'ملفاتك عمرها ما بتخرج من جهازك';
-  AR['Less file work.'] = 'شغل ملفات أقل.';
-  AR['Zero uploads.'] = 'وملفاتك عندك.';
+  AR['Less file work.'] = 'أنجز أكتر. بخطوات أقل.';
+  AR['Zero uploads.'] = 'وملفاتك ما تخرجش من جهازك.';
   AR['Rename hundreds of drawings from their title block, list folders to Excel, merge, split and check PDFs. Everything runs in your browser, on your own computer.'] =
     'سمِّ مئات اللوحات من الـ Title Block، وطلّع قوايم الفولدرات على Excel، وادمج وقسّم وافحص ملفات PDF. كل ده بيشتغل جوه المتصفح، على جهازك إنت.';
   AR['Find your tool'] = 'اختار أداتك';
