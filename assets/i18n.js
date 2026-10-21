@@ -884,8 +884,23 @@
     'ضيف الـ MIDP، أو TIDP لكل قسم. ولكل ملف اختار العمود اللي فيه رقم المستند (يعني الاسم اللي المفروض الملف يتسمّى بيه).';
   AR['+ Add Excel file…'] = '+ ضيف ملف Excel…';
   AR['Naming rule'] = 'قاعدة التسمية';
-  AR['For ISO 19650 style names, set the separator and the number of fields, for example PRJ-ORG-VOL-LVL-TYP-ROL-NUM has 7 fields separated by "-".'] =
-    'لأسامي ISO 19650، حدد الفاصل وعدد الخانات. مثلاً PRJ-ORG-VOL-LVL-TYP-ROL-NUM فيها 7 خانات بينهم "-".';
+  AR['Check every file name field by field, for example ISO 19650 names like PRJ-ORG-VOL-LVL-TYP-ROL-NUM. Let the tool learn the rule from the received files, or type one correct name, then adjust each field.'] =
+    'راجع اسم كل ملف خانة بخانة، زي أسامي ISO 19650 من نوع PRJ-ORG-VOL-LVL-TYP-ROL-NUM. خلّي الأداة تتعلّم القاعدة من الملفات المستلمة، أو اكتب اسم واحد صح، وبعدين ظبّط كل خانة.';
+  AR['A correct name'] = 'اسم صح';
+  AR['Split into fields'] = 'قسّمه لخانات';
+  AR['Learn from the files'] = 'اتعلّم من الملفات';
+  AR['Field'] = 'الخانة';
+  AR['Example'] = 'مثال';
+  AR['Characters'] = 'عدد الحروف';
+  AR['Type'] = 'النوع';
+  AR['Fixed value(s)'] = 'قيمة ثابتة';
+  AR['Found in the files'] = 'الموجود في الملفات';
+  AR['Characters: one number (3) or a range (3-5), empty = any length. Fixed value(s): leave empty if the field changes from file to file, or list the allowed values separated by commas.'] =
+    'عدد الحروف: رقم واحد (3) أو مدى (3-5)، وفاضي يعني أي طول. القيمة الثابتة: سيبها فاضية لو الخانة بتتغيّر من ملف للتاني، أو اكتب القيم المسموحة وبينهم فاصلة.';
+  AR['No MIDP yet? Skip this step and check only the file names.'] = 'مفيش MIDP؟ اتخطّى الخطوة دي وراجع أسامي الملفات بس.';
+  AR['Excel lists (optional)'] = 'قوائم Excel (اختياري)';
+  AR['File names'] = 'أسامي الملفات';
+  AR['Naming rule'] = 'قاعدة التسمية';
   AR['Check names against this rule'] = 'راجع الأسامي على القاعدة دي';
   AR['Separator'] = 'الفاصل';
   AR['Number of fields'] = 'عدد الخانات';

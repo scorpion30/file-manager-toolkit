@@ -154,11 +154,108 @@
   });
   $('clearFoldersBtn').addEventListener('click', () => { state.folders = []; renderFolders(); });
 
+  // ---------- naming rule (field by field) ----------
+  // Each field: {example, len: '3' | '3-5' | '', type: 'any'|'letters'|'digits', fixed: 'ARC, STR' | '', seen: [...]}
+  state.ruleFields = [];
+  const sepOf = () => $('ruleSep').value || '-';
+  const typeOf = (v) => (/^\d+$/.test(v) ? 'digits' : /^[A-Za-z]+$/.test(v) ? 'letters' : 'any');
+  /** The part of a file name the rule applies to: drops a trailing revision ("_P02") when names carry one. */
+  function ruleName(base) {
+    const sep = sepOf();
+    if (!$('optRev').checked || sep === '_' || sep === ' ') return base;
+    return base.replace(/[_\s]+[^_\s]*$/, '') || base;
+  }
+  function majority(values) {
+    const counts = new Map();
+    values.forEach((v) => counts.set(v, (counts.get(v) || 0) + 1));
+    let best = null; let n = 0;
+    for (const [v, c] of counts) if (c > n) { best = v; n = c; }
+    return { value: best, share: values.length ? n / values.length : 0, distinct: [...counts.keys()] };
+  }
+  function renderRule() {
+    const f = state.ruleFields;
+    $('ruleTableWrap').hidden = !f.length;
+    $('ruleNote').hidden = !f.length;
+    const typeOpt = (t) => [['any', L('Any', 'أي حاجة')], ['letters', L('Letters', 'حروف')], ['digits', L('Digits', 'أرقام')]]
+      .map(([v, label]) => `<option value="${v}"${v === t ? ' selected' : ''}>${label}</option>`).join('');
+    $('ruleRows').innerHTML = f.map((x, i) => `<tr data-i="${i}">
+      <td><b>${i + 1}</b></td><td><code>${esc(x.example)}</code></td>
+      <td><input type="text" data-k="len" value="${esc(x.len)}" placeholder="${L('any', 'أي طول')}" style="width:70px"></td>
+      <td><select data-k="type">${typeOpt(x.type)}</select></td>
+      <td><input type="text" data-k="fixed" value="${esc(x.fixed)}" placeholder="${L('changes', 'بتتغيّر')}"></td>
+      <td class="hint">${esc(x.seen.slice(0, 6).join(', '))}${x.seen.length > 6 ? L(` +${x.seen.length - 6} more`, ` و${x.seen.length - 6} كمان`) : ''}</td></tr>`).join('');
+  }
+  $('ruleRows').addEventListener('input', (e) => {
+    const i = Number(e.target.closest('tr')?.dataset.i);
+    if (Number.isNaN(i) || !e.target.dataset.k) return;
+    state.ruleFields[i][e.target.dataset.k] = e.target.value;
+  });
+  $('ruleSplitBtn').addEventListener('click', () => {
+    const ex = $('ruleExample').value.trim();
+    if (!ex) { FM.toast(L('Type one correct name first.', 'اكتب اسم واحد صح الأول.'), 'error'); return; }
+    state.ruleFields = ex.split(sepOf()).map((v) => ({ example: v, len: String(v.length), type: typeOf(v), fixed: '', seen: [] }));
+    $('ruleOn').checked = true;
+    renderRule();
+  });
+  /** Learns each field's length, type and fixed value from the names most files share. */
+  $('ruleLearnBtn').addEventListener('click', () => {
+    const sep = sepOf();
+    let names = state.folders.flatMap((f) => f.files.map((x) => ruleName(x.base)));
+    if (!names.length) names = state.lists.flatMap((l) => (l.noCol ? l.rows.map((r) => cellText(r[l.noCol]).trim()).filter(Boolean) : []));
+    if (!names.length) { FM.toast(L('Add a folder of received files first.', 'ضيف فولدر الملفات المستلمة الأول.'), 'error'); return; }
+    const split = names.map((n) => n.split(sep));
+    const count = majority(split.map((p) => p.length)).value;
+    const rows = split.filter((p) => p.length === count);
+    state.ruleFields = Array.from({ length: count }, (_, i) => {
+      const vals = rows.map((p) => p[i]);
+      const len = majority(vals.map((v) => v.length));
+      const lens = vals.map((v) => v.length);
+      const type = majority(vals.map(typeOf));
+      const val = majority(vals);
+      return {
+        example: rows[0][i],
+        len: len.share >= 0.8 ? String(len.value) : `${Math.min(...lens)}-${Math.max(...lens)}`,
+        type: type.share >= 0.8 ? type.value : 'any',
+        fixed: val.share >= 0.8 && rows.length > 1 ? val.value : '',
+        seen: val.distinct,
+      };
+    });
+    // Show a name that already follows the learned rule as the example.
+    const good = rows.find((p) => !ruleProblems(p.join(sep)).length) || rows[0];
+    state.ruleFields.forEach((f, i) => { f.example = good[i]; });
+    $('ruleExample').value = good.join(sep);
+    $('ruleOn').checked = true;
+    renderRule();
+    FM.toast(L(`Learned ${count} fields from ${rows.length} of ${names.length} names. Check each field below.`, `اتعلّمنا ${count} خانات من ${rows.length} من ${names.length} اسم. راجع كل خانة تحت.`));
+  });
+
+  /** Returns the list of problems of one name against the rule ([] = OK). */
+  function ruleProblems(name) {
+    const f = state.ruleFields;
+    const parts = name.split(sepOf());
+    if (parts.length !== f.length) return [L(`Has ${parts.length} fields, should have ${f.length}`, `فيه ${parts.length} خانات، والمفروض ${f.length}`)];
+    const out = [];
+    parts.forEach((v, i) => {
+      const spec = f[i];
+      const tag = L(`Field ${i + 1} "${v}"`, `الخانة ${i + 1} "${v}"`);
+      const m = String(spec.len).trim().match(/^(\d+)(?:\s*-\s*(\d+))?$/);
+      if (m) {
+        const lo = Number(m[1]); const hi = Number(m[2] || m[1]);
+        if (v.length < lo || v.length > hi) out.push(`${tag}: ${lo === hi ? L(`should be ${lo} characters`, `المفروض ${lo} حروف`) : L(`should be ${lo}-${hi} characters`, `المفروض من ${lo} لـ ${hi} حروف`)}`);
+      }
+      if (spec.type === 'digits' && !/^\d+$/.test(v)) out.push(`${tag}: ${L('should be digits only', 'المفروض أرقام بس')}`);
+      if (spec.type === 'letters' && !/^[A-Za-z]+$/.test(v)) out.push(`${tag}: ${L('should be letters only', 'المفروض حروف بس')}`);
+      const allowed = String(spec.fixed).split(',').map((x) => x.trim()).filter(Boolean);
+      if (allowed.length && !allowed.some((a) => a.toUpperCase() === v.toUpperCase())) out.push(`${tag}: ${L(`should be ${allowed.join(' or ')}`, `المفروض ${allowed.join(' أو ')}`)}`);
+    });
+    return out;
+  }
+
   // ---------- step 3: check ----------
   function check() {
     const revInName = $('optRev').checked;
-    const rule = $('ruleOn').checked ? { sep: $('ruleSep').value || '-', n: Number($('ruleFields').value) || 0 } : null;
-    const ruleOk = (name) => !rule || name.split(rule.sep).length === rule.n;
+    const rule = $('ruleOn').checked && state.ruleFields.length ? true : null;
+    const ruleOk = (name) => !rule || !ruleProblems(ruleName(name)).length;
 
     // Deliverables from all lists.
     const items = [];
@@ -208,7 +305,7 @@
         const bad = it.files.filter((f) => !re.test(f.suffix || ''));
         if (bad.length) { it.problems.push(L(`Revision is not ${it.rev}`, `الـ Revision مش ${it.rev}`)); it.wrongRev = true; wrongRev++; }
       }
-      if (rule && !ruleOk(it.no)) { it.problems.push(L('Breaks the naming rule', 'مخالف لقاعدة التسمية')); badNames++; }
+      if (rule && ruleProblems(it.no).length) { it.problems.push(L('Breaks the naming rule', 'مخالف لقاعدة التسمية')); badNames++; }
       if (it.dupInList) { it.problems.push(L('Listed twice in the MIDP', 'مكرر في الـ MIDP')); dupList++; }
     }
 
@@ -222,7 +319,11 @@
       discs.set(it.disc, d);
     }
 
-    const checks = [
+    // Every received file against the naming rule.
+    const names = rule ? allFiles.map((f) => ({ ...f, issues: ruleProblems(ruleName(f.base)) })) : [];
+    const badFiles = names.filter((n) => n.issues.length).length;
+
+    const checks = !items.length ? [] : [
       { ok: !missing, text: missing ? L(`${missing} deliverable(s) in the MIDP have no file`, `${missing} مستند في الـ MIDP ملهوش ملف`) : L(`All ${items.length} deliverables were received`, `كل الـ ${items.length} مستند وصلوا`) },
       { ok: !extra.length, text: extra.length ? L(`${extra.length} file(s) are not in the MIDP`, `${extra.length} ملف مش موجود في الـ MIDP`) : L('Every received file is in the MIDP', 'كل الملفات المستلمة موجودة في الـ MIDP') },
     ];
@@ -230,24 +331,27 @@
     if (dupFiles) checks.push({ warn: true, text: L(`${dupFiles} deliverable(s) were received twice in the same format`, `${dupFiles} مستند وصل مرتين بنفس الصيغة`) });
     if (dupList) checks.push({ warn: true, text: L(`${dupList} document number(s) are listed more than once in the MIDP/TIDPs`, `${dupList} رقم مستند مكرر في الـ MIDP / TIDPs`) });
     if (rule) {
-      const badFiles = extra.filter((e) => /naming|التسمية/.test(e.problem)).length;
-      checks.push({ ok: !badNames && !badFiles, text: badNames || badFiles ? L(`${badNames + badFiles} name(s) break the naming rule`, `${badNames + badFiles} اسم مخالف لقاعدة التسمية`) : L('All names follow the naming rule', 'كل الأسامي ماشية على قاعدة التسمية') });
+      checks.push({ ok: !badFiles, text: badFiles ? L(`${badFiles} of ${names.length} file name(s) break the naming rule`, `${badFiles} من ${names.length} ملف اسمه مخالف لقاعدة التسمية`) : L(`All ${names.length} file names follow the naming rule`, `كل الـ ${names.length} ملف أساميهم ماشية على قاعدة التسمية`) });
+      if (badNames) checks.push({ ok: false, text: L(`${badNames} document number(s) in the MIDP break the naming rule`, `${badNames} رقم مستند في الـ MIDP مخالف لقاعدة التسمية`) });
     }
-    state.result = { items, extra, discs, checks, received, missing };
+    state.result = { items, extra, discs, checks, received, missing, names, badFiles };
     return state.result;
   }
 
   function renderResult() {
     const r = state.result;
     const problems = r.checks.filter((c) => !c.ok && !c.info).length;
-    $('verdict').textContent = !r.items.length ? L('Add a deliverables list first', 'ضيف قائمة المستندات الأول')
+    $('verdict').textContent = !r.items.length ? (r.badFiles ? L(`${r.badFiles} of ${r.names.length} file names need fixing`, `${r.badFiles} من ${r.names.length} اسم ملف محتاجين يتصلحوا`) : L(`All ${r.names.length} file names are correct`, `كل الـ ${r.names.length} اسم ملف مظبوطين`))
       : problems ? L(`${r.received} of ${r.items.length} deliverables received · ${problems} thing(s) to fix`, `وصل ${r.received} من ${r.items.length} مستند · ${problems} حاجة محتاجة تتصلح`)
       : L(`All ${r.items.length} deliverables received, nothing to fix`, `كل الـ ${r.items.length} مستند وصلوا، ومفيش حاجة تتصلح`);
     $('checks').innerHTML = r.checks.map((c) => `<li class="${c.warn ? 'warn' : c.ok ? 'ok' : 'bad'}"><span class="mark">${c.warn ? '!' : c.ok ? '✓' : '✕'}</span>${esc(c.text)}</li>`).join('');
     $('discRows').innerHTML = [...r.discs].sort((a, b) => collator.compare(a[0], b[0])).map(([name, d]) =>
       `<tr><td>${esc(name)}</td><td>${d.expected}</td><td>${d.received}</td><td class="${d.missing ? 'bad-cell' : ''}">${d.missing}</td><td class="${d.rev ? 'bad-cell' : ''}">${d.rev}</td></tr>`).join('');
+    $('discPanel').hidden = !r.items.length;
+    $('delPanel').hidden = !r.items.length;
     renderRows();
-    $('extraPanel').hidden = !r.extra.length;
+    renderNames();
+    $('extraPanel').hidden = !r.items.length || !r.extra.length;
     $('extraRows').innerHTML = r.extra.map((f) => `<tr><td>${esc(f.name)}</td><td>${esc(f.folder)}</td><td>${esc(f.problem)}</td></tr>`).join('');
   }
   function renderRows() {
@@ -258,7 +362,16 @@
       <td>${it.files.map((f) => `<span class="tag ext-tag">${esc(f.ext.toUpperCase())}</span>`).join('') || '—'}</td>
       <td class="${it.problems.length ? 'bad-cell' : 'ok-cell'}">${esc(it.problems.join(' · ') || L('OK', 'تمام'))}</td></tr>`).join('');
   }
+  function renderNames() {
+    const r = state.result;
+    $('namesPanel').hidden = !r.names.length;
+    const only = $('onlyBadNames').checked;
+    $('nameRows').innerHTML = r.names.filter((n) => !only || n.issues.length).slice(0, 3000).map((n) => `<tr>
+      <td>${esc(n.name)}</td><td>${esc(n.folder)}</td>
+      <td class="${n.issues.length ? 'bad-cell' : 'ok-cell'}">${n.issues.map(esc).join('<br>') || L('OK', 'تمام')}</td></tr>`).join('');
+  }
   $('onlyProblems').addEventListener('change', () => state.result && renderRows());
+  $('onlyBadNames').addEventListener('change', () => state.result && renderNames());
 
   $('exportBtn').addEventListener('click', async () => {
     const r = state.result;
@@ -269,10 +382,26 @@
     sum.columns = [{ header: 'Check', key: 'c', width: 70 }, { header: 'Result', key: 'r', width: 14 }];
     r.checks.forEach((c) => sum.addRow({ c: c.text, r: c.warn ? 'Warning' : c.ok ? 'OK' : 'Problem' }));
     FM.styleHeaderRow(sum);
-    const disc = wb.addWorksheet('By discipline');
-    disc.columns = [{ header: 'Discipline / TIDP', key: 'd', width: 34 }, { header: 'Expected', key: 'e', width: 12 }, { header: 'Received', key: 'r', width: 12 }, { header: 'Missing', key: 'm', width: 12 }, { header: 'Wrong revision', key: 'w', width: 16 }];
-    for (const [name, d] of r.discs) disc.addRow({ d: name, e: d.expected, r: d.received, m: d.missing, w: d.rev });
-    FM.styleHeaderRow(disc);
+    if (r.items.length) {
+      const disc = wb.addWorksheet('By discipline');
+      disc.columns = [{ header: 'Discipline / TIDP', key: 'd', width: 34 }, { header: 'Expected', key: 'e', width: 12 }, { header: 'Received', key: 'r', width: 12 }, { header: 'Missing', key: 'm', width: 12 }, { header: 'Wrong revision', key: 'w', width: 16 }];
+      for (const [name, d] of r.discs) disc.addRow({ d: name, e: d.expected, r: d.received, m: d.missing, w: d.rev });
+      FM.styleHeaderRow(disc);
+    }
+    if (r.names.length) {
+      const nm = wb.addWorksheet('File names');
+      const fields = state.ruleFields.map((_, i) => ({ header: `Field ${i + 1}`, key: `f${i}`, width: 12 }));
+      nm.columns = [{ header: 'File', key: 'file', width: 46 }, { header: 'Folder', key: 'folder', width: 34 }, ...fields, { header: 'Result', key: 'res', width: 10 }, { header: 'What is wrong', key: 'why', width: 60 }];
+      for (const n of r.names) {
+        const parts = ruleName(n.base).split(sepOf());
+        const row = nm.addRow({ file: n.name, folder: n.folder, ...Object.fromEntries(parts.slice(0, fields.length).map((v, i) => [`f${i}`, v])), res: n.issues.length ? 'Wrong' : 'OK', why: n.issues.join('\n') });
+        // Colour the fields that break the rule.
+        n.issues.forEach((t) => { const m = t.match(/(\d+)/); if (m && parts.length === fields.length) row.getCell(`f${Number(m[1]) - 1}`).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFADBD8' } }; });
+        row.getCell('res').font = { bold: true, color: { argb: n.issues.length ? 'FFC0392B' : 'FF198754' } };
+      }
+      FM.styleHeaderRow(nm);
+    }
+    if (!r.items.length) { await FM.downloadWorkbook(wb, 'MIDP check.xlsx'); return; }
     const del = wb.addWorksheet('Deliverables');
     del.columns = [{ header: 'Document No.', key: 'no', width: 34 }, { header: 'Title', key: 't', width: 40 }, { header: 'Discipline', key: 'd', width: 22 }, { header: 'Rev.', key: 'rev', width: 8 }, { header: 'Files received', key: 'f', width: 50 }, { header: 'Status', key: 's', width: 40 }];
     for (const it of r.items) del.addRow({ no: it.no, t: it.title, d: it.disc, rev: it.rev, f: it.files.map((f) => f.name).join('\n'), s: it.problems.join('; ') || 'OK' });
@@ -286,7 +415,7 @@
 
   FM.wizard({
     canEnter: (i) => {
-      if (i >= 1 && !state.lists.some((l) => l.noCol)) { FM.toast(L('Add an Excel list and pick its document number column first.', 'ضيف ملف Excel واختار عمود رقم المستند الأول.'), 'error'); return false; }
+      if (i >= 2 && !state.lists.some((l) => l.noCol) && !($('ruleOn').checked && state.ruleFields.length)) { FM.toast(L('Add an Excel list in step 1, or set up the naming rule.', 'ضيف ملف Excel في الخطوة 1، أو اعمل قاعدة التسمية.'), 'error'); return false; }
       if (i >= 2 && !state.folders.length) { FM.toast(L('Add at least one folder of received files.', 'ضيف فولدر واحد على الأقل فيه الملفات المستلمة.'), 'error'); return false; }
       return true;
     },

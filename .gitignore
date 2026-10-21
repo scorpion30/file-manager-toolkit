@@ -4,3 +4,4 @@ _testfonts/
 *.zip
 *.xlsx
 tools/backend/.clasp.json
+marketing/out/

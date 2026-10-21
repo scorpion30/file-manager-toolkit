@@ -1065,3 +1065,9 @@ a.tool-card.request:hover .icon { background: var(--accent-soft); color: var(--a
 td.bad-cell { color: var(--danger); font-weight: 600; }
 td.ok-cell { color: var(--success); }
 .ext-tag { color: var(--accent); background: var(--accent-soft); }
+.rule-bar { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: flex-end; margin-top: 8px; }
+.rule-bar .rule-example { flex: 1 1 240px; }
+#ruleTableWrap { margin-top: 12px; }
+.rule-table td { vertical-align: middle; }
+.rule-table input, .rule-table select { width: 100%; min-width: 70px; }
+.rule-table code { font-size: 13px; }
