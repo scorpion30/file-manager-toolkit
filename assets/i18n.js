@@ -869,7 +869,48 @@
   AR['PDF files found'] = 'ملفات PDF موجودة';
   AR['Your files stay on your computer. Nothing is uploaded.'] = 'ملفاتك بتفضل على جهازك. مفيش أي حاجة بتترفع.';
   AR['Your files never leave your computer'] = 'ملفاتك عمرها ما بتخرج من جهازك';
-  AR['Less file work.'] = 'أنجز أكتر. بخطوات أقل.';
+  AR['11 free tools'] = '11 أداة مجانية';
+  AR['MIDP Check'] = 'مراجعة الـ MIDP';
+  AR['Check a whole submission, every discipline and file type, against the MIDP and TIDPs: missing, extra, wrong revisions.'] =
+    'راجع التسليم كله، لكل الأقسام وكل أنواع الملفات، على الـ MIDP والـ TIDPs: الناقص، والزيادة، والـ Revision الغلط.';
+  AR['Check every file in a submission against the MIDP and the TIDPs of all disciplines.'] = 'راجع كل ملف في التسليم على الـ MIDP والـ TIDPs بتاعة كل الأقسام.';
+  AR['MIDP / TIDPs'] = 'الـ MIDP / الـ TIDPs';
+  AR['The deliverables lists in Excel'] = 'قوائم المستندات على Excel';
+  AR['Received files'] = 'الملفات المستلمة';
+  AR['The submission folders'] = 'فولدرات التسليم';
+  AR['Missing, extra and wrong names'] = 'الناقص والزيادة والأسامي الغلط';
+  AR['Deliverables lists'] = 'قوائم المستندات';
+  AR['Add the MIDP, or one TIDP per discipline. For each file, pick the column that holds the document number (the file name each deliverable should have).'] =
+    'ضيف الـ MIDP، أو TIDP لكل قسم. ولكل ملف اختار العمود اللي فيه رقم المستند (يعني الاسم اللي المفروض الملف يتسمّى بيه).';
+  AR['+ Add Excel file…'] = '+ ضيف ملف Excel…';
+  AR['Naming rule'] = 'قاعدة التسمية';
+  AR['For ISO 19650 style names, set the separator and the number of fields, for example PRJ-ORG-VOL-LVL-TYP-ROL-NUM has 7 fields separated by "-".'] =
+    'لأسامي ISO 19650، حدد الفاصل وعدد الخانات. مثلاً PRJ-ORG-VOL-LVL-TYP-ROL-NUM فيها 7 خانات بينهم "-".';
+  AR['Check names against this rule'] = 'راجع الأسامي على القاعدة دي';
+  AR['Separator'] = 'الفاصل';
+  AR['Number of fields'] = 'عدد الخانات';
+  AR['Next: received files →'] = 'التالي: الملفات المستلمة ←';
+  AR['Choose the submission folder. You can add one folder per discipline. Every file type counts: PDF, DWG, RVT, IFC, NWC, DOCX, XLSX…'] =
+    'اختار فولدر التسليم. تقدر تضيف فولدر لكل قسم. كل أنواع الملفات بتتحسب: PDF و DWG و RVT و IFC و NWC و DOCX و XLSX…';
+  AR['+ Add folder'] = '+ ضيف فولدر';
+  AR['File names include the revision (for example A-101_P02.pdf)'] = 'أسامي الملفات فيها الـ Revision (زي A-101_P02.pdf)';
+  AR['files'] = 'ملف';
+  AR['By discipline'] = 'حسب القسم';
+  AR['Discipline / TIDP'] = 'القسم / الـ TIDP';
+  AR['Expected'] = 'المطلوب';
+  AR['Received'] = 'المستلم';
+  AR['Missing'] = 'الناقص';
+  AR['Wrong revision'] = 'Revision غلط';
+  AR['Deliverables'] = 'المستندات';
+  AR['Show only problems'] = 'اعرض المشاكل بس';
+  AR['Document No.'] = 'رقم المستند';
+  AR['Title'] = 'العنوان';
+  AR['Discipline'] = 'القسم';
+  AR['Files received'] = 'الملفات المستلمة';
+  AR['Status'] = 'الحالة';
+  AR['Received but not in the MIDP'] = 'مستلم بس مش موجود في الـ MIDP';
+  AR['Problem'] = 'المشكلة';
+  AR['Less file work.'] ='أنجز أكتر. بخطوات أقل.';
   AR['Zero uploads.'] = 'وملفاتك ما تخرجش من جهازك.';
   AR['Rename hundreds of drawings from their title block, list folders to Excel, merge, split and check PDFs. Everything runs in your browser, on your own computer.'] =
     'سمِّ مئات اللوحات من الـ Title Block، وطلّع قوايم الفولدرات على Excel، وادمج وقسّم وافحص ملفات PDF. كل ده بيشتغل جوه المتصفح، على جهازك إنت.';

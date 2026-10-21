@@ -117,6 +117,14 @@ const PAGES = [
       desc: 'افحص إصدار اللوحات قبل إرساله: أرقام لوحات مكررة، أسماء ملفات لا تطابق جدول العنوان، لوحات ناقصة ومراجعات لا تطابق قائمة اللوحات في Excel.',
     },
   },
+  {
+    file: 'midp.html', cat: 'qa',
+    en: { title: `MIDP Check: submission vs MIDP and TIDPs (ISO 19650) | ${BRAND}`, name: 'MIDP Check', pitch: 'Check a whole submission against the MIDP' },
+    ar: {
+      title: `مراجعة الـ MIDP: ملفات التسليم مقابل الـ MIDP والـ TIDP | ${BRAND}`, name: 'مراجعة الـ MIDP', pitch: 'راجع التسليم كله على الـ MIDP',
+      desc: 'راجع كل ملفات التسليم (رسومات وموديلز وتقارير) على الـ MIDP وملفات الـ TIDP لكل الأقسام: المستندات الناقصة، والملفات الزيادة، والـ Revision المختلف، والأسامي المخالفة لقاعدة التسمية. بيشتغل في المتصفح من غير رفع ملفات.',
+    },
+  },
   // ----- guides: how-to pages written for what people search, one per tool -----
   {
     file: 'guides/rename-pdf-drawings-from-title-block.html', cat: 'pdf', guide: true,

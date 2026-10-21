@@ -338,14 +338,14 @@ a.tool-card.cat-pdf:hover { border-color: var(--cat-pdf); }
 .btn.lg { padding: 12px 22px; font-size: 16px; border-radius: 10px; }
 .btn.warn { background: var(--warning-soft); border-color: transparent; color: var(--warning); }
 
-input[type="text"], select {
+input[type="text"], input[type="number"], select {
   font: inherit; font-size: 14px;
   padding: 7px 10px; border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--surface); color: var(--text);
   min-width: 0;
 }
-input[type="text"]:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
+input[type="text"]:focus, input[type="number"]:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
 input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; margin: 0; flex: none; }
 
 .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 120px; }
@@ -1053,3 +1053,15 @@ a.tool-card.request:hover .icon { background: var(--accent-soft); color: var(--a
 .faq-guides a { font-weight: 600; }
 [dir="rtl"] .hero h1 { font-size: clamp(32px, 4vw, 52px); }
 [dir="rtl"] .hero h1 em { display: inline-block; font-size: .7em; margin-top: 6px; }
+
+/* MIDP Check */
+.midp-lists { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+.midp-list { border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; background: var(--surface-2); }
+.midp-list-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; word-break: break-all; }
+.midp-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+@media (max-width: 800px) { .midp-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .midp-grid { grid-template-columns: 1fr; } }
+.midp-list .field input, .midp-list .field select { width: 100%; }
+td.bad-cell { color: var(--danger); font-weight: 600; }
+td.ok-cell { color: var(--success); }
+.ext-tag { color: var(--accent); background: var(--accent-soft); }
