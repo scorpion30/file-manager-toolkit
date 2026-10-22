@@ -1258,3 +1258,15 @@ td.ok-cell { color: var(--success); }
 .hx-steps li.on { color: var(--text); border-color: var(--accent); font-weight: 600; }
 .hx-card .hx-foot { padding-top: 12px; }
 @media (prefers-reduced-motion: reduce) { .a-cur { display: none; } .a-sheet, .a-box { transition: none; } }
+.hx-anim.still .a-cur { display: none; }
+.hx-anim.still ~ .hx-steps li { color: var(--text); border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); }
+
+/* "How it works" demo on the tool start screens */
+.howit { max-width: 540px; margin: 30px auto 0; text-align: start; }
+.howit-title { margin: 0 0 8px; text-align: center; font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+[dir="rtl"] .howit-title { letter-spacing: 0; }
+.howit-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); padding: 12px 0 14px; }
+.howit .hx-demo { zoom: 1.3; }
+.howit .hx-steps li { font-size: 13px; }
+@media (max-width: 640px) { .howit .hx-demo { zoom: 1; } }
+.hx-anim.still .a-type::after { display: none; }
