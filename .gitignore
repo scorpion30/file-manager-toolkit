@@ -1,6 +1,7 @@
 WEB/
 _testfonts/
 *.pdf
+!assets/samples/*.pdf
 *.zip
 *.xlsx
 tools/backend/.clasp.json

@@ -24,7 +24,8 @@
   async function load(source) {
     state.source = source;
     try {
-      const listing = source.mode === 'fs' ? await FM.scanDirectory(source.handle) : FM.scanFileList(source.fileList);
+      const listing = source.mode === 'sample' ? { rootName: 'Tower A - Drawings', files: source.files.map((file) => ({ name: file.name, ...FM.splitName(file.name), folder: '', file })) }
+        : source.mode === 'fs' ? await FM.scanDirectory(source.handle) : FM.scanFileList(source.fileList);
       state.rootName = listing.rootName;
       state.all = listing.files.filter((f) => /\.pdf$/i.test(f.name)).map((f) => ({ id: nextId++, ...f }));
     } catch (e) { toast(e.message, 'error'); return; }
@@ -32,6 +33,9 @@
     state.undo = null;
     applyScope();
     if (!state.files.length) toast('No PDF files in that folder.');
+    $('sampleGuide').hidden = source.mode !== 'sample';
+    $('sampleDone').hidden = true;
+    if (source.mode === 'sample') { view.setRects([]); renderRects(); steps.go(1); } else FM.log('own-folder');
   }
 
   function applyScope() {
@@ -337,6 +341,7 @@
   $('applyBtn').onclick = async () => {
     const list = state.rows.filter(willRename);
     if (!list.length) return;
+    if (state.source.mode === 'sample') { finishSample(list); return; }
     if (state.source.mode !== 'fs') { await downloadZip(); return; }
     const ok = await FM.dialog({
       title: `Rename ${list.length} file(s)?`,
@@ -351,6 +356,7 @@
     const done = await renameAll(list.map((r) => ({ f: r.f, target: r.final })));
     state.busy = false;
     if (done.length) {
+      FM.log('own-rename');
       state.undo = done;
       const renamed = new Set(done.map((d) => d.id));
       state.rows = state.rows.filter((r) => !renamed.has(r.f.id));
@@ -405,6 +411,40 @@
     } catch (e) { toast(e.message, 'error'); }
   };
 
+  // ---------- example files ----------
+  async function loadSample() {
+    try {
+      $('sampleBtn').disabled = true;
+      await load({ mode: 'sample', files: await FM.samplePdfs() });
+    } catch (e) { toast(e.message, 'error'); } finally { $('sampleBtn').disabled = false; }
+  }
+  $('sampleBtn').onclick = loadSample;
+  $('sampleMarkBtn').onclick = () => {
+    FM.log('sample-mark');
+    view.setRects([{ ...FM.SAMPLE_BOXES.no }, { ...FM.SAMPLE_BOXES.title }]);
+    renderRects();
+    $('pattern').value = '{1} - {2}';
+    steps.go(2);
+  };
+
+  function finishSample(list) {
+    const first = list[0];
+    list.forEach((r) => { r.f.base = r.final; r.f.name = r.final + r.f.ext; });
+    state.rows = [];
+    rebuildNames();
+    FM.log('sample-rename');
+    FM.sampleDone($('sampleDone'), {
+      title: `${list.length} drawings renamed from their title block.`,
+      points: [
+        `For example, Sheet_001.pdf is now “${first.final}${first.f.ext}”`,
+        'The drawing number was read from every PDF: no typing, no copy and paste',
+        'On your own folder, the files are renamed right where they are, and you can undo',
+      ],
+      ownText: 'Now rename your own drawings',
+      onOwn: () => { FM.log('sample-own'); $('pickBtn').click(); steps.go(0); },
+    });
+  }
+
   $('pickBtn').onclick = async () => {
     try {
       const source = await FM.pickFolder({ write: true, id: 'titleblock' });
@@ -423,11 +463,14 @@
       if (i === 1) view.layout();
       if (i === 2) {
         renderRects();
+        // In the example, one box gives "A-101"; with the title box too, "A-101 - GROUND FLOOR PLAN".
+        if (state.source && state.source.mode === 'sample' && view.rects.length > 1 && $('pattern').value === '{1}') $('pattern').value = '{1} - {2}';
         if (signature() !== lastRead) readNames(); else rebuildNames();
       }
     },
   });
   renderFiles();
+  if (new URLSearchParams(location.search).has('example')) loadSample();
 
   window.__fmTitleblock = { load: (handle) => load({ mode: 'fs', handle }), view, state, rebuildNames, steps };
 })();

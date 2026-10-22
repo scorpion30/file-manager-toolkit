@@ -20,6 +20,8 @@
 
   const extKey = (f) => f.ext.toLowerCase();
   const folderLabel = (path) => (path ? state.rootName + '/' + path : state.rootName);
+  // Excel allows 31 characters per sheet name, so name folder sheets after their last two folders, not the whole path.
+  const sheetTitle = (path) => (path ? path.split('/').slice(-2).join(' - ') : state.rootName);
 
   // ---------- loading ----------
   async function load(source) {
@@ -29,9 +31,10 @@
     $('scanning').hidden = false;
     $('scanText').textContent = 'Reading folder…';
     try {
-      const listing = source.mode === 'fs'
-        ? await FM.scanDirectory(source.handle, (n) => { $('scanText').textContent = `Reading folder… ${n} files`; })
-        : FM.scanFileList(source.fileList);
+      const listing = source.mode === 'sample' ? sampleListing()
+        : source.mode === 'fs'
+          ? await FM.scanDirectory(source.handle, (n) => { $('scanText').textContent = `Reading folder… ${n} files`; })
+          : FM.scanFileList(source.fileList);
       state.rootName = listing.rootName;
       state.files = listing.files;
       state.folders = listing.folders;
@@ -52,6 +55,11 @@
     $('workspace').hidden = false;
     $('folderName').textContent = state.rootName;
     $('rescanBtn').hidden = source.mode !== 'fs';
+    $('sampleGuide').hidden = source.mode !== 'sample';
+    $('sampleDone').hidden = true;
+    $('exportBtn').classList.toggle('pulse', source.mode === 'sample');
+    if (source.mode !== 'sample') FM.log('own-folder');
+    else $('sampleGuide').scrollIntoView({ behavior: 'smooth', block: 'start' });
     refresh();
     loadInfo();
   }
@@ -199,7 +207,7 @@
       if (wantAll) addListSheet('All Files', list);
       const folderSheets = new Map();
       if (splitBy === 'folder') {
-        for (const [folder, files] of byFolder) folderSheets.set(folder, addListSheet(folderLabel(folder), files));
+        for (const [folder, files] of byFolder) folderSheets.set(folder, addListSheet(sheetTitle(folder), files));
       } else if (splitBy === 'type') {
         for (const [ext, files] of [...groupBy(extKey)].sort((a, b) => collator.compare(a[0], b[0]))) {
           addListSheet(ext ? ext.slice(1).toUpperCase() : 'No extension', files);
@@ -238,6 +246,8 @@
 
       await FM.downloadWorkbook(wb, `${state.rootName}-files.xlsx`);
       toast('Excel file downloaded.', 'success');
+      if (state.source.mode === 'sample') showSampleDone(list.length, byFolder.size);
+      else FM.log('own-export');
     } catch (e) {
       toast(e.message, 'error');
     } finally {
@@ -271,6 +281,86 @@
   $('pickBtn').onclick = pick;
   $('changeFolderBtn').onclick = pick;
   $('rescanBtn').onclick = () => state.source && load(state.source);
+
+  // ---------- example files ----------
+  /** A made-up project submission, so visitors without files at hand can see the result. */
+  function sampleListing() {
+    let seed = 7;
+    const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    const now = Date.now();
+    const files = [];
+    const add = (folder, name, kbMin, kbMax) => {
+      const size = Math.round((kbMin + rnd() * (kbMax - kbMin)) * 1024);
+      files.push({ name, ...FM.splitName(name), folder, file: { size, lastModified: now - Math.round(rnd() * 14 * 864e5) } });
+    };
+    const sheets = (folder, prefix, titles, { skipDwg = -1, extraPdf = 0 } = {}) => {
+      titles.forEach((t, i) => {
+        const no = `${prefix}-${101 + i}`;
+        add(folder, `TWR-${no}_${t}_R02.pdf`, 300, 2800);
+        if (i !== skipDwg) add(folder, `TWR-${no}_${t}_R02.dwg`, 180, 1900);
+      });
+      for (let i = 0; i < extraPdf; i++) add(folder, `TWR-${prefix}-SK-0${i + 1}_Sketch.pdf`, 150, 900);
+    };
+    const floors = ['Basement', 'Ground Floor', 'First Floor', 'Typical Floor', 'Roof'];
+    sheets('01 Architecture/Drawings', 'A', [...floors.map((f) => f + ' Plan'), 'Elevations North-South', 'Elevations East-West',
+      'Section A-A', 'Section B-B', 'Wall Sections', 'Stair Details', 'Door Schedule', 'Window Schedule', 'Toilet Details', 'Facade Details', 'Ceiling Plan']);
+    ['Design Report', 'Area Schedule', 'Finishes Schedule'].forEach((t, i) => add('01 Architecture/Reports', `TWR-A-RPT-0${i + 1}_${t}.${i ? 'xlsx' : 'docx'}`, 60, 600));
+    add('01 Architecture/Reports', 'TWR-A-RPT-01_Design Report.pdf', 900, 4200);
+    ['Lobby', 'Facade Day', 'Facade Night', 'Roof Garden'].forEach((t) => add('01 Architecture/Renders', `TWR-A-RND_${t}.jpg`, 1800, 5200));
+    sheets('02 Structure/Drawings', 'S', ['Piling Plan', 'Raft Foundation', 'Basement Slab', 'Ground Slab', 'Typical Slab', 'Roof Slab',
+      'Column Schedule', 'Core Walls', 'Beam Details', 'Stair Reinforcement'], { skipDwg: 3, extraPdf: 2 });
+    add('02 Structure/Calculations', 'TWR-S-CAL-01_Structural Calculations.pdf', 3000, 9000);
+    add('02 Structure/Calculations', 'TWR-S-CAL-02_Foundation Design.pdf', 1500, 5000);
+    sheets('03 MEP/Electrical', 'E', ['Lighting Ground', 'Lighting Typical', 'Power Ground', 'Power Typical', 'Single Line Diagram', 'Fire Alarm']);
+    sheets('03 MEP/Mechanical', 'M', ['HVAC Ground', 'HVAC Typical', 'HVAC Roof', 'Chilled Water Schematic', 'Ventilation']);
+    sheets('03 MEP/Plumbing', 'P', ['Water Supply', 'Drainage Ground', 'Drainage Typical', 'Riser Diagram']);
+    add('03 MEP', 'TWR-MEP-RPT-01_Load Calculations.xlsx', 80, 400);
+    sheets('04 Landscape', 'L', ['Hardscape Plan', 'Softscape Plan', 'Irrigation Plan', 'Paving Details']);
+    add('', 'TWR-TRN-003_Transmittal.xlsx', 30, 90);
+    add('', 'TWR-TRN-003_Transmittal.pdf', 120, 300);
+
+    const folderMap = new Map([['', 0]]);
+    for (const f of files) {
+      const parts = f.folder ? f.folder.split('/') : [];
+      parts.forEach((_, i) => folderMap.set(parts.slice(0, i + 1).join('/'), i + 1));
+    }
+    const folders = [...folderMap].map(([path, depth]) => ({ path, depth }));
+    files.sort((a, b) => collator.compare(a.folder, b.folder) || collator.compare(a.name, b.name));
+    folders.sort((a, b) => collator.compare(a.path, b.path));
+    return { rootName: 'Tower A - Submission 03', files, folders };
+  }
+
+  function showSampleDone(fileCount, folderCount) {
+    $('sampleGuide').hidden = true;
+    $('exportBtn').classList.remove('pulse');
+    FM.log('sample-export');
+    FM.sampleDone($('sampleDone'), {
+      title: 'Your Excel file is ready. Open it from your downloads.',
+      points: [
+        `Summary: how many PDF, DWG, DOCX… files are in each of the ${folderCount} folders`,
+        'A sheet for each folder. Click a folder name in the Summary to jump to it',
+        `One sheet with all ${fileCount} files, with size and date`,
+      ],
+      ownText: 'Now list your own folder',
+      onOwn: () => { FM.log('sample-own'); pick(); },
+    });
+  }
+
+  $('sampleBtn').onclick = () => load({ mode: 'sample' });
+  if (new URLSearchParams(location.search).has('example')) load({ mode: 'sample' });
+
+  // Drag a folder onto the start screen (Chrome / Edge).
+  const zone = $('startScreen');
+  zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', async (e) => {
+    e.preventDefault();
+    zone.classList.remove('dragover');
+    const item = [...(e.dataTransfer.items || [])].find((i) => i.kind === 'file');
+    const handle = item && item.getAsFileSystemHandle ? await item.getAsFileSystemHandle() : null;
+    if (handle && handle.kind === 'directory') load({ mode: 'fs', handle });
+    else toast('Drop a folder, not a file. Or use Select Folder.');
+  });
 
   // Lets automated tests feed in a directory handle.
   window.__fmLoadDirectoryHandle = (handle) => load({ mode: 'fs', handle });

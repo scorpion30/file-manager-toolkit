@@ -48,6 +48,8 @@
     if (el.hasAttribute('data-theme-toggle')) key = 'theme';
     if (key && actions.length < 60) actions.push(key);
   }, { capture: true });
+  // Tools note milestones too (e.g. 'list:sample-export'), shown with the buttons in the sheet.
+  window.FMlog = (key) => { if (actions.length < 60) actions.push(page + ':' + key); };
 
   let logged = false;
   function logVisit() {

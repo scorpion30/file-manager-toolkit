@@ -22,16 +22,16 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <script src="../assets/analytics.js?v=c6061af9" defer></script>
-  <script src="../assets/backend.js?v=73863781" defer></script>
+  <script src="../assets/backend.js?v=cefc03f9" defer></script>
   <!-- seo:end -->
   <link rel="icon" href="../assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">
-  <link rel="stylesheet" href="../assets/style.css?v=756c64f6">
+  <link rel="stylesheet" href="../assets/style.css?v=0722e6bf">
   <script src="../assets/theme.js?v=a4d0ee14"></script>
-  <script src="../assets/i18n.js?v=2be83418"></script>
+  <script src="../assets/i18n.js?v=0be6f714"></script>
 </head>
 <body>
   <header class="site-header">
@@ -77,6 +77,9 @@
         <p>كل ملف PDF فيه ستتم تسميته حسب المكتوب في الـ Title Block الخاص به.</p>
         <button class="btn primary lg" id="pickBtn">اختر فولدر</button>
         <p style="margin:14px 0 0"><label class="check" style="justify-content:center"><input type="checkbox" id="optSub"> تضمين الفولدرات الفرعية</label></p>
+        <div class="or-sep"><span>أو</span></div>
+        <button class="btn lg sample-btn" id="sampleBtn">📋 جرّب بملفات جاهزة</button>
+        <p class="sample-hint">مش معاك رسومات دلوقتي؟ جرّب على 8 لوحات مثال متصدّرة بأسماء Sheet_001.pdf و Sheet_002.pdf…</p>
       </div>
       <div class="card" id="filesCard" hidden style="margin-top:16px">
         <div class="count-line"><span class="num" id="fileCount">0</span><span id="filesHint">ملفات PDF موجودة</span></div>
@@ -90,6 +93,11 @@
       <div class="work">
         <div id="viewer"></div>
         <div class="side">
+          <div class="sample-guide" id="sampleGuide" hidden>
+            <span class="sample-step">1</span>
+            <div><b>دورك:</b> اسحب مربع حوالين رقم اللوحة <b>A-101</b> تحت على اليمين في الرسمة. وبعدين دوس <b>Next</b>.
+              <button class="btn sm" id="sampleMarkBtn" type="button">حدّده إنت</button></div>
+          </div>
           <div class="howto"><span class="big">✍</span><span><b>اسحب مربعاً حول رقم اللوحة</b> على اللوحة. يمكنك إضافة مربعات أخرى (العنوان، المراجعة) لاستخدامها في الاسم أيضاً.</span></div>
           <div class="card">
             <h2>المناطق</h2>
@@ -140,6 +148,7 @@
         </div>
       </div>
 
+      <section class="sample-done" id="sampleDone" hidden style="margin-top:16px"></section>
       <section class="panel" id="resultsPanel" style="margin-top:16px">
         <div class="result-bar">
           <button class="btn success lg" id="applyBtn">تطبيق إعادة التسمية</button>
@@ -176,9 +185,9 @@
     <div class="f-bottom">© File Manager Toolkit · كل المعالجة تتم على جهازك داخل المتصفح.</div>
   </footer>
 
-  <script src="../assets/common.js?v=ca340096"></script>
-  <script src="../assets/pdfview.js?v=a39853a0"></script>
+  <script src="../assets/common.js?v=9d3cd254"></script>
+  <script src="../assets/pdfview.js?v=91e3dba0"></script>
   <script src="../assets/pdfread.js?v=3db846ab"></script>
-  <script src="../assets/titleblock.js?v=a9be600b"></script>
+  <script src="../assets/titleblock.js?v=18b70905"></script>
 </body>
 </html>

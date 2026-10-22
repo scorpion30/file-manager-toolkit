@@ -22,16 +22,16 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <script src="../assets/analytics.js?v=c6061af9" defer></script>
-  <script src="../assets/backend.js?v=73863781" defer></script>
+  <script src="../assets/backend.js?v=cefc03f9" defer></script>
   <!-- seo:end -->
   <link rel="icon" href="../assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">
-  <link rel="stylesheet" href="../assets/style.css?v=756c64f6">
+  <link rel="stylesheet" href="../assets/style.css?v=0722e6bf">
   <script src="../assets/theme.js?v=a4d0ee14"></script>
-  <script src="../assets/i18n.js?v=2be83418"></script>
+  <script src="../assets/i18n.js?v=0be6f714"></script>
 </head>
 <body>
   <header class="site-header">
@@ -69,11 +69,21 @@
     <!-- Start screen -->
     <section class="dropzone" id="startScreen">
       <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M12 10v6M9 13h6"/></svg>
-      <h2>اختر فولدر للبدء</h2>
+      <h2>اسحب الفولدر هنا، أو اختاره</h2>
       <p id="startHint">سيطلب المتصفح إذناً لعرض وتعديل الملفات في هذا الفولدر.</p>
       <button class="btn primary lg" id="pickBtn">اختر فولدر</button>
       <input type="file" id="folderInput" webkitdirectory directory multiple hidden>
+      <div class="or-sep"><span>أو</span></div>
+      <button class="btn lg sample-btn" id="sampleBtn">📋 جرّب بملفات جاهزة</button>
+      <p class="sample-hint">مش معاك ملفات دلوقتي؟ جرّب على فولدر مثال فيه 12 رسمة بأسماء ملخبطة.</p>
     </section>
+
+    <section class="sample-guide" id="sampleGuide" hidden>
+      <span class="sample-step">1</span>
+      <div><b>فتحنالك فولدر مثال.</b> دي ملفات وهمية، والخانات متعبّية جاهزة: دوس <b>تطبيق</b> عشان تضيف كود المشروع، وبعدين <b>استبدال</b> عشان تصحّح الـ Revision. بص على الأسماء الجديدة، وبعدين دوس <b>تطبيق إعادة التسمية</b>.</div>
+    </section>
+
+    <section class="sample-done" id="sampleDone" hidden></section>
 
     <section class="panel" id="scanning" hidden>
       <div class="progress"><span class="spinner"></span><span id="scanText">جارٍ قراءة الفولدر…</span></div>
@@ -194,6 +204,7 @@
     <div class="f-bottom">© File Manager Toolkit · كل المعالجة تتم على جهازك داخل المتصفح.</div>
   </footer>
 
-  <script src="../assets/rename.js?v=7f815219"></script>
+  <script src="../assets/common.js?v=9d3cd254"></script>
+  <script src="../assets/rename.js?v=2c70df2b"></script>
 </body>
 </html>

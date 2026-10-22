@@ -208,8 +208,12 @@
     $('folderName').textContent = state.rootName;
     $('rescanBtn').hidden = state.mode !== 'fs';
     $('deleteBtn').hidden = state.mode !== 'fs';
+    $('sampleGuide').hidden = state.mode !== 'sample';
+    $('sampleDone').hidden = true;
+    if (state.mode === 'sample') $('sampleGuide').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    else FM.log('own-folder');
     $('selAllBtn').parentElement.querySelector('.spacer').hidden = state.mode !== 'fs';
-    $('applyRenameBtn').textContent = state.mode === 'fs' ? 'Apply Rename' : 'Download renamed (ZIP)';
+    $('applyRenameBtn').textContent = state.mode === 'zip' ? 'Download renamed (ZIP)' : 'Apply Rename';
     refresh();
   }
 
@@ -456,6 +460,7 @@
       return;
     }
     if (state.mode === 'zip') { await downloadZip(); return; }
+    if (state.mode === 'sample') { finishSample(ok.length); return; }
 
     const sample = ok.slice(0, 40).map((f) =>
       `<li><span class="from">${esc(fullName(f))}</span><span class="arrow">→</span>${esc(newFullName(f))}</li>`).join('');
@@ -469,7 +474,7 @@
     });
     if (!confirmed) return;
     const done = await renameOnDisk(ok);
-    if (done.length) state.undo = done;
+    if (done.length) { state.undo = done; FM.log('own-rename'); }
     renderStatus();
   };
 
@@ -822,6 +827,79 @@
     });
   }
 
+  // ---------- example files ----------
+  /** A made-up folder of drawings with messy names, for visitors without files at hand. */
+  function loadSample() {
+    state.mode = 'sample';
+    state.rootHandle = null;
+    state.undo = null;
+    state.rootName = 'Tower A - Drawings';
+    const now = Date.now();
+    const names = ['ground floor plan_rev1', 'first floor plan_rev1', 'typical floor plan_rev1', 'roof plan_rev1',
+      'section A-A_rev1', 'section B-B_rev1', 'elevations north-south_rev1', 'elevations east-west_rev1',
+      'wall sections_rev1', 'stair details_rev1', 'door schedule_rev1', 'window schedule_rev1'];
+    const files = names.map((n, i) => makeFile(`${n}.${i % 3 === 2 ? 'dwg' : 'pdf'}`, '',
+      { file: { size: 250000 + i * 91234, lastModified: now - i * 86400000 } }));
+    $('prefix').value = 'TWR-A-';
+    $('suffix').value = '';
+    $('frFind').value = '_rev1';
+    $('frReplace').value = '_R02';
+    $('frCase').checked = false;
+    state.include = 'current';
+    $('includeMode').value = 'current';
+    $('applyPsBtn').classList.add('pulse');
+    setData(files, [{ path: '', depth: 0 }]);
+  }
+
+  // In the example, Apply → Replace → Apply Rename light up one after another.
+  $('applyPsBtn').addEventListener('click', () => {
+    if (state.mode !== 'sample') return;
+    $('applyPsBtn').classList.remove('pulse');
+    $('applyFrBtn').classList.add('pulse');
+  });
+  $('applyFrBtn').addEventListener('click', () => {
+    if (state.mode !== 'sample') return;
+    $('applyFrBtn').classList.remove('pulse');
+    $('applyRenameBtn').classList.add('pulse');
+  });
+
+  function finishSample(count) {
+    state.files.forEach((f) => { f.base = f.newBase; });
+    $('applyRenameBtn').classList.remove('pulse');
+    $('sampleGuide').hidden = true;
+    refresh();
+    FM.log('sample-rename');
+    FM.sampleDone($('sampleDone'), {
+      title: `${count} files renamed in one click.`,
+      points: [
+        'The project code was added to every name, and the revision was fixed in all of them',
+        'On your own folder, the files are renamed right where they are, and you can undo',
+        'You see every new name before anything changes',
+      ],
+      ownText: 'Now rename your own files',
+      onOwn: () => { FM.log('sample-own'); pickFolder(); },
+    });
+  }
+
+  $('sampleBtn').onclick = loadSample;
+
+  // Drag a folder onto the start screen (Chrome / Edge).
+  const zone = $('startScreen');
+  zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', async (e) => {
+    e.preventDefault();
+    zone.classList.remove('dragover');
+    const item = [...(e.dataTransfer.items || [])].find((i) => i.kind === 'file');
+    const handle = item && item.getAsFileSystemHandle ? await item.getAsFileSystemHandle() : null;
+    if (handle && handle.kind === 'directory') {
+      if (handle.requestPermission && (await handle.requestPermission({ mode: 'readwrite' })) !== 'granted') return;
+      loadDirectoryHandle(handle);
+    } else toast('Drop a folder, not a file. Or use Select Folder.');
+  });
+
+  if (new URLSearchParams(location.search).has('example')) loadSample();
+
   $('pickBtn').onclick = pickFolder;
   $('changeFolderBtn').onclick = async () => { if (await confirmDiscard()) pickFolder(); };
   $('rescanBtn').onclick = async () => {
@@ -830,7 +908,7 @@
   $('folderInput').addEventListener('change', (e) => loadFromFileList(e.target.files));
 
   window.addEventListener('beforeunload', (e) => {
-    if (state.files.some(isChanged)) { e.preventDefault(); e.returnValue = ''; }
+    if (state.mode !== 'sample' && state.files.some(isChanged)) { e.preventDefault(); e.returnValue = ''; }
   });
 
   if (!canDirectAccess) {

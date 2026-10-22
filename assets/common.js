@@ -406,6 +406,55 @@
     return { go, get current() { return current; } };
   }
 
+
+  // ---------- example files ("Use example files") ----------
+  const log = (key) => { try { window.FMlog && window.FMlog(key); } catch { /* ignore */ } };
+  const isPhone = () => matchMedia('(max-width: 700px), (pointer: coarse)').matches;
+
+  /**
+   * Shows the "it worked" card after a visitor used the example files.
+   * points: short lines about what they got; onOwn: runs the tool on their own files.
+   */
+  // Made-up A3 drawings in assets/samples (tools/make-samples.py), with where their title block values are.
+  const SAMPLE_PDFS = Array.from({ length: 8 }, (_, i) => `Sheet_00${i + 1}.pdf`);
+  const SAMPLE_BOXES = {
+    no: { x1: 0.6933, y1: 0.9287, x2: 0.8361, y2: 0.9715, label: 'Drawing No' },
+    title: { x1: 0.6933, y1: 0.8575, x2: 0.979, y2: 0.8979, label: 'Title' },
+    rev: { x1: 0.8429, y1: 0.9287, x2: 0.8966, y2: 0.9715, label: 'Revision' },
+  };
+  async function samplePdfs() {
+    const base = new URL('assets/samples/', document.querySelector('script[src*="common.js"]').src.replace(/assets\/common\.js.*$/, '')).href;
+    return Promise.all(SAMPLE_PDFS.map(async (name) => {
+      const res = await fetch(base + name);
+      if (!res.ok) throw new Error('Could not load the example files. Check your connection and try again.');
+      return new File([await res.blob()], name, { type: 'application/pdf', lastModified: Date.now() });
+    }));
+  }
+
+  function sampleDone(box, { title, points = [], ownText, onOwn }) {
+    const link = location.href.split('#')[0].split('?')[0];
+    const wa = 'https://wa.me/?text=' + encodeURIComponent(link);
+    box.innerHTML = `
+      <div class="sd-head"><span class="sd-check">✓</span><h2>${esc(title)}</h2></div>
+      <ul>${points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+      <div class="sd-actions">
+        ${isPhone() ? '' : `<button class="btn primary lg" id="sdOwnBtn">${esc(ownText)}</button>`}
+        ${isPhone() ? `<a class="btn primary lg" id="sdWaBtn" href="${wa}" target="_blank" rel="noopener">Send the link to myself on WhatsApp</a>
+          <button class="btn lg" id="sdCopyBtn">Copy the link</button>` : ''}
+      </div>
+      <p class="sd-note">${isPhone()
+        ? 'Your own folders work on a computer, in Chrome or Edge. Free, no sign-up.'
+        : 'Free, no sign-up. Your files stay on your computer.'}</p>`;
+    box.hidden = false;
+    const own = box.querySelector('#sdOwnBtn');
+    if (own) own.onclick = onOwn;
+    const copy = box.querySelector('#sdCopyBtn');
+    if (copy) copy.onclick = async () => {
+      try { await navigator.clipboard.writeText(link); toast('Link copied.', 'success'); } catch { toast(link); }
+    };
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
   window.FM = {
     wizard,
     openPdf, wireDropzone, choosePdfFiles, choosePdfFolder,
@@ -415,5 +464,6 @@
     extensionFilter, chooseFolders, inScope,
     safeSheetName, styleHeaderRow, excelDate, downloadWorkbook,
     cleanText, removeDuplicateWords,
+    log, isPhone, sampleDone, samplePdfs, SAMPLE_BOXES,
   };
 })();

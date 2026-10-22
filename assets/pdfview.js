@@ -109,6 +109,7 @@
       const m = await FM.mupdf();
       const dpr = window.devicePixelRatio || 1;
       let w = this.stage.clientWidth * dpr;
+      if (!w) return; // hidden (another step is showing); layout() renders it when shown
       let scale = w / this.pageW;
       if (w * w * (this.pageH / this.pageW) > MAX_PIXELS) {
         scale = Math.sqrt(MAX_PIXELS / (this.pageW * this.pageH));

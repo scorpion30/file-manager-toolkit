@@ -17,6 +17,7 @@
 
   // ---------- files ----------
   function addFiles(files) {
+    if (!state.sample) FM.log('own-files');
     const added = files.map((file) => ({ id: nextId++, file, status: '', statusClass: '' }));
     state.files.push(...added);
     renderFiles();
@@ -307,9 +308,10 @@
         await w.close();
         toast(`Saved into “${state.existing.file.name}”, sheet “${sheetName}”.`, 'success');
       } else {
-        const name = state.existing ? state.existing.file.name : 'extracted_data.xlsx';
+        const name = state.existing ? state.existing.file.name : (state.sample ? 'Drawing register.xlsx' : 'extracted_data.xlsx');
         FM.downloadBlob(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), name);
         toast('Excel file downloaded.', 'success');
+        if (state.sample) finishSample(); else FM.log('own-export');
       }
     } catch (e) {
       toast('Export failed: ' + e.message, 'error');
@@ -317,6 +319,46 @@
   };
 
   // ---------- wiring ----------
+  // ---------- example files ----------
+  async function loadSample() {
+    try {
+      $('sampleBtn').disabled = true;
+      const files = await FM.samplePdfs();
+      state.files = [];
+      state.viewingId = null;
+      state.sample = true;
+      addFiles(files);
+      view.setRects([]);
+      renderRects();
+      $('sampleGuide').hidden = false;
+      $('sampleDone').hidden = true;
+      steps.go(1);
+    } catch (e) { toast(e.message, 'error'); } finally { $('sampleBtn').disabled = false; }
+  }
+  $('sampleBtn').onclick = loadSample;
+  $('sampleMarkBtn').onclick = () => {
+    FM.log('sample-mark');
+    const b = FM.SAMPLE_BOXES;
+    view.setRects([{ ...b.no }, { ...b.title }, { ...b.rev }]);
+    renderRects();
+    steps.go(2);
+  };
+  function finishSample() {
+    $('sampleGuide2').hidden = true;
+    $('exportBtn').classList.remove('pulse');
+    FM.log('sample-export');
+    FM.sampleDone($('sampleDone'), {
+      title: 'Your drawing register is ready. Open it from your downloads.',
+      points: [
+        `One row for each of the ${state.results.length} drawings, one column for each box you drew`,
+        'The values are read from the title block of every PDF: no typing',
+        'Works the same on hundreds of drawings, and can add to your own Excel sheet',
+      ],
+      ownText: 'Now read your own drawings',
+      onOwn: () => { FM.log('sample-own'); state.sample = false; $('clearBtn').click(); steps.go(0); },
+    });
+  }
+
   $('addFilesBtn').onclick = async () => { const f = await FM.choosePdfFiles(); if (f.length) addFiles(f); };
   $('addFolderBtn').onclick = async () => {
     try {
@@ -325,6 +367,9 @@
     } catch (e) { toast(e.message, 'error'); }
   };
   $('clearBtn').onclick = () => {
+    state.sample = false;
+    $('sampleGuide').hidden = true;
+    $('sampleGuide2').hidden = true;
     state.files = [];
     state.viewingId = null;
     view.clear();
@@ -347,9 +392,12 @@
         // Column names may have changed without needing a new read.
         state.labels = view.rects.map((r, k) => r.label.trim() || `Column ${k + 1}`);
         if (signature() !== lastRead) process(); else renderResults();
+        $('sampleGuide2').hidden = !state.sample;
+        $('exportBtn').classList.toggle('pulse', !!state.sample);
       }
     },
   });
+  if (new URLSearchParams(location.search).has('example')) loadSample();
 
   window.__fmExtract = { addFiles, view, state, steps };
 })();
