@@ -27,10 +27,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=0722e6bf">
+  <link rel="stylesheet" href="assets/style.css?v=4d78a29f">
   <script src="assets/theme.js?v=a4d0ee14"></script>
-  <script src="assets/i18n.js?v=0be6f714"></script>
-  <script src="assets/home.js?v=e25e35b1" defer></script>
+  <script src="assets/i18n.js?v=1ceedfe6"></script>
+  <script src="assets/home.js?v=58138337" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -57,144 +57,101 @@
       <p class="hx-sub">Tools made for architects and engineers. They run in your browser, on your own computer.</p>
 
       <div class="hx-cards">
+        <!-- 1. Extract file names to Excel -->
         <article class="hx-card">
-          <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>Rename PDFs from the title block</h2>
-            <p>Reads the drawing number and title from each sheet and names the file after them.</p></div>
-          <div class="hx-demo" aria-hidden="true" translate="no"><div class="hx-sheet">
-            <div class="hx-tb"><div class="hx-lines"></div><div class="hx-box">GROUND FLOOR PLAN<br><span class="hi">A-101</span>&nbsp; REV 02</div></div>
-            <div class="hx-side">
-              <div class="hx-r"><span class="hx-ico pdf">PDF</span><span class="old">Sheet_001.pdf</span></div>
-              <div class="hx-r"><span class="hx-ico pdf">PDF</span><span class="new">A-101 Ground Floor.pdf</span></div>
-              <div class="hx-r"><span class="hx-ico pdf">PDF</span><span class="new">A-102 First Floor.pdf</span></div>
-            </div></div></div>
-          <div class="hx-foot"><p class="hx-result">Hundreds of sheets renamed in seconds</p>
-            <div class="hx-btns"><a class="btn primary" href="titleblock.html">Open the tool</a><a class="btn hx-ex" href="titleblock.html?example">▷ Example</a></div></div>
-        </article>
-
-        <article class="hx-card">
-          <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>Drawing list from the title blocks</h2>
-            <p>Mark the number, title and revision once. It reads them from every PDF into Excel.</p></div>
-          <div class="hx-demo" aria-hidden="true" translate="no">
-            <div class="hx-xl c3"><b>No.</b><b>Title</b><b>Rev</b>
-              <span>A-101</span><span>Ground Floor Plan</span><span>02</span>
-              <span>A-102</span><span>First Floor Plan</span><span>02</span>
-              <span>A-201</span><span>Section A-A</span><span>01</span>
-              <span>A-301</span><span>North Elevation</span><span class="hl">P3</span>
-              <span>A-302</span><span>East Elevation</span><span>04</span>
-            </div></div>
-          <div class="hx-foot"><p class="hx-result">A ready drawing register, revisions included</p>
-            <div class="hx-btns"><a class="btn primary" href="extract.html">Open the tool</a><a class="btn hx-ex" href="extract.html?example">▷ Example</a></div></div>
-        </article>
-
-        <article class="hx-card">
-          <div class="hx-top"><span class="hx-tag files">Folders</span><h2>List folders to Excel</h2>
+          <div class="hx-top"><span class="hx-tag files">Folders</span><h2>Extract file names to Excel</h2>
             <p>Every file in a folder and its subfolders, a tab per folder, and a count of each file type.</p></div>
-          <div class="hx-demo" aria-hidden="true" translate="no">
-            <div class="hx-xl"><b>Folder</b><b>PDF</b><b>DWG</b><b>DOC</b>
-              <span>Architecture</span><span>412</span><span>388</span><span>6</span>
-              <span>Structure</span><span>296</span><span class="hl">318</span><span>4</span>
-              <span>MEP</span><span>530</span><span>502</span><span>11</span>
+          <div class="hx-demo hx-anim" data-anim="list" aria-hidden="true" translate="no">
+            <div class="a-tree">
+              <div class="a-row"><span class="a-dir"></span>Tower A - Submission</div>
+              <div class="a-row in"><span class="a-dir"></span>Architecture <i>806 files</i></div>
+              <div class="a-row in"><span class="a-dir"></span>Structure <i>618 files</i></div>
+              <div class="a-row in"><span class="a-dir"></span>MEP <i>1,043 files</i></div>
+              <div class="a-btn a-export">Export to Excel</div>
             </div>
-            <div class="hx-tabs"><span>Summary</span><span class="on">Structure</span><span>MEP</span><span>All files</span></div>
+            <div class="a-sheet">
+              <div class="hx-xl"><b>Folder</b><b>PDF</b><b>DWG</b><b>DOC</b>
+                <span>Architecture</span><span>412</span><span>388</span><span>6</span>
+                <span>Structure</span><span>296</span><span class="hl">318</span><span>4</span>
+                <span>MEP</span><span>530</span><span>502</span><span>11</span>
+              </div>
+              <div class="hx-tabs"><span class="t1">Summary</span><span class="t2">Structure</span><span>MEP</span><span>All files</span></div>
+            </div>
+            <span class="a-cur"></span>
           </div>
-          <div class="hx-foot"><p class="hx-result">Thousands of files listed in one click</p>
+          <ol class="hx-steps"><li>Pick a folder</li><li>Export it</li><li>Excel is ready</li></ol>
+          <div class="hx-foot">
             <div class="hx-btns"><a class="btn primary" href="list.html">Open the tool</a><a class="btn hx-ex" href="list.html?example">▷ Example</a></div></div>
         </article>
 
+        <!-- 2. Rename PDFs from the title block -->
+        <article class="hx-card">
+          <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>Rename PDFs from the title block</h2>
+            <p>Reads the drawing number and title from each sheet and names the file after them.</p></div>
+          <div class="hx-demo hx-anim" data-anim="titleblock" aria-hidden="true" translate="no">
+            <div class="hx-sheet">
+              <div class="a-dwg"><div class="hx-lines"></div>
+                <div class="a-tb"><small>DRAWING TITLE</small><b>GROUND FLOOR PLAN</b><small>DRAWING NO.</small><b class="a-no">A-101</b></div>
+                <span class="a-box b1"></span>
+              </div>
+              <div class="hx-side">
+                <div class="hx-r a-f1"><span class="hx-ico pdf">PDF</span><span class="a-old">Sheet_001.pdf</span><span class="a-new">A-101 Ground Floor.pdf</span></div>
+                <div class="hx-r a-f2"><span class="hx-ico pdf">PDF</span><span class="a-old">Sheet_002.pdf</span><span class="a-new">A-102 First Floor.pdf</span></div>
+                <div class="hx-r a-f3"><span class="hx-ico pdf">PDF</span><span class="a-old">Sheet_003.pdf</span><span class="a-new">A-201 Section A-A.pdf</span></div>
+                <div class="a-btn a-apply">Apply Rename</div>
+              </div>
+            </div>
+            <span class="a-cur"></span>
+          </div>
+          <ol class="hx-steps"><li>Box the drawing number</li><li>Check the names</li><li>Rename them</li></ol>
+          <div class="hx-foot">
+            <div class="hx-btns"><a class="btn primary" href="titleblock.html">Open the tool</a><a class="btn hx-ex" href="titleblock.html?example">▷ Example</a></div></div>
+        </article>
+
+        <!-- 3. Drawing list from the title blocks -->
+        <article class="hx-card">
+          <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>Drawing list from the title blocks</h2>
+            <p>Mark the number, title and revision once. It reads them from every PDF into Excel.</p></div>
+          <div class="hx-demo hx-anim" data-anim="extract" aria-hidden="true" translate="no">
+            <div class="a-tb2">
+              <div class="a-cell w"><small>DRAWING TITLE</small><b>GROUND FLOOR PLAN</b><span class="a-box b2"></span></div>
+              <div class="a-cell"><small>DRAWING NO.</small><b>A-101</b><span class="a-box b1"></span></div>
+              <div class="a-cell s"><small>REV</small><b>02</b><span class="a-box b3"></span></div>
+            </div>
+            <div class="hx-xl c3 a-list"><b>No.</b><b>Title</b><b>Rev</b>
+              <span class="r1">A-101</span><span class="r1">Ground Floor Plan</span><span class="r1">02</span>
+              <span class="r2">A-102</span><span class="r2">First Floor Plan</span><span class="r2">02</span>
+              <span class="r3">A-201</span><span class="r3">Section A-A</span><span class="r3">01</span>
+              <span class="r4">A-301</span><span class="r4">North Elevation</span><span class="r4 hl">P3</span>
+            </div>
+            <span class="a-cur"></span>
+          </div>
+          <ol class="hx-steps"><li>Box the values</li><li>Read every PDF</li><li>Download Excel</li></ol>
+          <div class="hx-foot">
+            <div class="hx-btns"><a class="btn primary" href="extract.html">Open the tool</a><a class="btn hx-ex" href="extract.html?example">▷ Example</a></div></div>
+        </article>
+
+        <!-- 4. Rename hundreds of files -->
         <article class="hx-card">
           <div class="hx-top"><span class="hx-tag files">Folders</span><h2>Rename hundreds of files</h2>
             <p>Add a prefix, replace a word or fix the revision in every name at once, with undo.</p></div>
-          <div class="hx-demo" aria-hidden="true" translate="no">
-            <div class="hx-r"><span class="hx-ico dwg">DWG</span><span class="old">plan_rev1.dwg</span></div>
-            <div class="hx-r"><span class="hx-ico dwg">DWG</span><span class="new">TWR-A-plan_R02.dwg</span></div>
-            <div class="hx-r"><span class="hx-ico pdf">PDF</span><span class="old">section_rev1.pdf</span></div>
-            <div class="hx-r"><span class="hx-ico pdf">PDF</span><span class="new">TWR-A-section_R02.pdf</span></div>
+          <div class="hx-demo hx-anim" data-anim="rename" aria-hidden="true" translate="no">
+            <div class="a-fields">
+              <div class="a-input"><small>Prefix</small><span class="a-type" data-text="TWR-A-"></span></div>
+              <div class="a-btn a-ok">Apply</div>
+            </div>
+            <div class="hx-r"><span class="hx-ico dwg">DWG</span><span class="a-pre">TWR-A-</span><span>plan_</span><span class="a-old">rev1</span><span class="a-new">R02</span><span>.dwg</span></div>
+            <div class="hx-r"><span class="hx-ico pdf">PDF</span><span class="a-pre">TWR-A-</span><span>section_</span><span class="a-old">rev1</span><span class="a-new">R02</span><span>.pdf</span></div>
+            <div class="hx-r"><span class="hx-ico pdf">PDF</span><span class="a-pre">TWR-A-</span><span>elevation_</span><span class="a-old">rev1</span><span class="a-new">R02</span><span>.pdf</span></div>
+            <span class="a-cur"></span>
           </div>
-          <div class="hx-foot"><p class="hx-result">See every new name before you apply</p>
+          <ol class="hx-steps"><li>Type the change</li><li>See the preview</li><li>Apply</li></ol>
+          <div class="hx-foot">
             <div class="hx-btns"><a class="btn primary" href="rename.html">Open the tool</a><a class="btn hx-ex" href="rename.html?example">▷ Example</a></div></div>
         </article>
       </div>
 
       <p class="hx-more"><span><b>+ 7 more tools:</b> merge and split PDF, MIDP check, comment sheet and more.</span> <a href="#tools">See all tools ↓</a></p>
-    </div>
-  </section>
-
-  <section class="why" id="privacy">
-    <div class="why-inner">
-      <div class="section-head">
-        <span class="eyebrow">Why use this instead of AI chats or upload sites?</span>
-        <h2>Your files never leave your computer</h2>
-      </div>
-
-      <div class="why-flow">
-        <div class="lane lane-other">
-          <span class="lane-tag bad">✕</span>
-          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
-            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
-            <path class="wire" d="M120 72 C 200 72, 260 60, 352 60"/>
-            <g class="doc travel"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
-            <g class="cloud"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/></g>
-            <g class="doc stored"><rect x="398" y="52" width="16" height="20" rx="2"/></g>
-            <g class="eye"><path d="M392 112c10-12 26-12 36 0-10 12-26 12-36 0Z"/><circle cx="410" cy="112" r="4"/></g>
-          </svg>
-          <div class="lane-text">
-            <b class="bad">AI chats and online file sites</b>
-            <span>Your drawings are uploaded and processed on someone else's servers.</span>
-          </div>
-        </div>
-        <span class="vs" aria-hidden="true" translate="no">VS</span>
-        <div class="lane lane-ours">
-          <span class="lane-tag good">✓</span>
-          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
-            <g class="cloud off"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/><path class="strike" d="M366 30l84 70"/></g>
-            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
-            <g class="doc spin"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
-            <g class="shield"><path d="M200 34l34 12v24c0 22-15 34-34 40-19-6-34-18-34-40V46Z"/><path class="tick" d="M186 72l10 10 20-22"/></g>
-          </svg>
-          <div class="lane-text">
-            <b class="good">File Manager Toolkit</b>
-            <span>Your browser does the work on your own computer. Nothing is uploaded.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card">
-          <div class="why-art art-volume" aria-hidden="true">
-            <div class="pile"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <svg viewBox="0 0 64 52" class="folder"><path d="M2 10a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/></svg>
-          </div>
-          <h3>Whole folders at once</h3>
-          <p>Hundreds of drawings in one go, not a few files per chat.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-accuracy" aria-hidden="true">
-            <div class="tblock"><span class="lbl" translate="no">DWG NO.</span><span class="val" translate="no">A-102</span><i class="scan"></i></div>
-            <div class="reads">
-              <span class="guess"><s translate="no">A-120</s> ✕</span>
-              <span class="exact" translate="no">A-102 ✓</span>
-            </div>
-          </div>
-          <h3>Exact, not a guess</h3>
-          <p>Reads the real text from the title block. You see every result first, and can undo.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-steps" aria-hidden="true">
-            <span class="st s1">1</span><i class="ln"></i><span class="st s2">2</span><i class="ln"></i><span class="st s3">3</span>
-          </div>
-          <h3>Three clicks, no prompts</h3>
-          <p>Pick the folder, check the preview, apply. Nothing to explain or retry.</p>
-        </div>
-        <div class="why-card">
-          <div class="why-art art-rename" aria-hidden="true" translate="no">
-            <div class="row"><span class="old">scan_0012.pdf</span><span class="new">A-101 Ground Floor.pdf</span></div>
-            <div class="row"><span class="old">scan_0013.pdf</span><span class="new">A-102 First Floor.pdf</span></div>
-            <div class="row"><span class="old">Sheet3.pdf</span><span class="new">A-201 Sections.pdf</span></div>
-          </div>
-          <h3>Done in your folder</h3>
-          <p>Files are renamed and saved where they are. No downloading and sorting afterwards.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -364,6 +321,85 @@
       </div>
     </section>
   </main>
+
+  <section class="why" id="privacy">
+    <div class="why-inner">
+      <div class="section-head">
+        <span class="eyebrow">Why use this instead of AI chats or upload sites?</span>
+        <h2>Your files never leave your computer</h2>
+      </div>
+
+      <div class="why-flow">
+        <div class="lane lane-other">
+          <span class="lane-tag bad">✕</span>
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <path class="wire" d="M120 72 C 200 72, 260 60, 352 60"/>
+            <g class="doc travel"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="cloud"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/></g>
+            <g class="doc stored"><rect x="398" y="52" width="16" height="20" rx="2"/></g>
+            <g class="eye"><path d="M392 112c10-12 26-12 36 0-10 12-26 12-36 0Z"/><circle cx="410" cy="112" r="4"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="bad">AI chats and online file sites</b>
+            <span>Your drawings are uploaded and processed on someone else's servers.</span>
+          </div>
+        </div>
+        <span class="vs" aria-hidden="true" translate="no">VS</span>
+        <div class="lane lane-ours">
+          <span class="lane-tag good">✓</span>
+          <svg class="lane-art" viewBox="0 20 480 110" aria-hidden="true">
+            <g class="cloud off"><path d="M372 92h66a26 26 0 0 0 0-52 34 34 0 0 0-64-6 24 24 0 0 0-2 58Z"/><path class="strike" d="M366 30l84 70"/></g>
+            <g class="pc-icon"><rect x="18" y="40" width="96" height="64" rx="6"/><path d="M6 112h120"/></g>
+            <g class="doc spin"><rect x="0" y="0" width="22" height="28" rx="3"/><path d="M5 8h12M5 14h12M5 20h8"/></g>
+            <g class="shield"><path d="M200 34l34 12v24c0 22-15 34-34 40-19-6-34-18-34-40V46Z"/><path class="tick" d="M186 72l10 10 20-22"/></g>
+          </svg>
+          <div class="lane-text">
+            <b class="good">File Manager Toolkit</b>
+            <span>Your browser does the work on your own computer. Nothing is uploaded.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-art art-volume" aria-hidden="true">
+            <div class="pile"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <svg viewBox="0 0 64 52" class="folder"><path d="M2 10a4 4 0 0 1 4-4h16l6 6h30a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4Z"/></svg>
+          </div>
+          <h3>Whole folders at once</h3>
+          <p>Hundreds of drawings in one go, not a few files per chat.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-accuracy" aria-hidden="true">
+            <div class="tblock"><span class="lbl" translate="no">DWG NO.</span><span class="val" translate="no">A-102</span><i class="scan"></i></div>
+            <div class="reads">
+              <span class="guess"><s translate="no">A-120</s> ✕</span>
+              <span class="exact" translate="no">A-102 ✓</span>
+            </div>
+          </div>
+          <h3>Exact, not a guess</h3>
+          <p>Reads the real text from the title block. You see every result first, and can undo.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-steps" aria-hidden="true">
+            <span class="st s1">1</span><i class="ln"></i><span class="st s2">2</span><i class="ln"></i><span class="st s3">3</span>
+          </div>
+          <h3>Three clicks, no prompts</h3>
+          <p>Pick the folder, check the preview, apply. Nothing to explain or retry.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-art art-rename" aria-hidden="true" translate="no">
+            <div class="row"><span class="old">scan_0012.pdf</span><span class="new">A-101 Ground Floor.pdf</span></div>
+            <div class="row"><span class="old">scan_0013.pdf</span><span class="new">A-102 First Floor.pdf</span></div>
+            <div class="row"><span class="old">Sheet3.pdf</span><span class="new">A-201 Sections.pdf</span></div>
+          </div>
+          <h3>Done in your folder</h3>
+          <p>Files are renamed and saved where they are. No downloading and sorting afterwards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <div class="inner">

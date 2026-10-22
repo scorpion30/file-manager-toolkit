@@ -8,6 +8,18 @@
 
   const AR = {
     // ----- home: first screen -----
+    'Extract file names to Excel': 'استخراج أسماء الملفات في Excel',
+    'Pick a folder': 'اختار الفولدر',
+    'Export it': 'صدّر',
+    'Excel is ready': 'الإكسل جاهز',
+    'Box the drawing number': 'حدّد رقم اللوحة',
+    'Check the names': 'راجع الأسماء',
+    'Rename them': 'سمّي الملفات',
+    'Box the values': 'حدّد القيم',
+    'Read every PDF': 'بيقرا كل PDF',
+    'Download Excel': 'نزّل الإكسل',
+    'Type the change': 'اكتب التعديل',
+    'See the preview': 'شوف المعاينة',
     '✓ Free': '✓ مجاني',
     '✓ No sign-up': '✓ بدون تسجيل',
     '✓ Files stay on your computer': '✓ ملفاتك ما بتخرجش من جهازك',
