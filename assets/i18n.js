@@ -789,21 +789,14 @@
   // Pages built in both languages (see tools/build.mjs) carry data-lang-page and
   // <link rel="alternate" hreflang>. The switch then moves to the other page instead of
   // translating in place, so each language has its own address for search engines.
-  // A visitor is only sent to the other language when they chose it before, or when an
-  // Arabic browser opens an English page; crawlers (no choice, English) stay where they are.
+  // The address decides the language: an English link always opens in English and an /ar/
+  // link in Arabic (no automatic redirect), so shared links open as sent.
   const pageLang = root.getAttribute('data-lang-page');
   const altHref = (l) => {
     const link = document.querySelector(`link[rel="alternate"][hreflang="${l}"]`);
     return link ? link.getAttribute('data-switch') || link.getAttribute('href') : null;
   };
-  if (pageLang) {
-    const want = stored === 'ar' || stored === 'en' ? stored : (pageLang === 'en' && browserAr ? 'ar' : pageLang);
-    if (want !== pageLang && altHref(want)) {
-      location.replace(altHref(want) + location.hash);
-      return;
-    }
-    lang = pageLang;
-  }
+  if (pageLang) lang = pageLang;
   setDirection();
 
   function setDirection() {
