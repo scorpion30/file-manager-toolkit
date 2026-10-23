@@ -169,4 +169,69 @@
     open(t.getAttribute('data-feedback'));
   });
   document.addEventListener('DOMContentLoaded', () => document.body.append(opener));
+
+  // ---------- phone note ----------
+  // The tools open folders and PDFs from the disk, so on a phone they can only be looked at.
+  // Most visitors arrive from WhatsApp/LinkedIn on their phone: let them send the link to
+  // themselves to open at their desk, instead of leaving.
+  const P = ar ? {
+    text: 'الأدوات دي بتشتغل على الكمبيوتر، لأنها بتفتح الفولدرات وملفات الـ PDF من جهازك. ابعت اللينك لنفسك وافتحه على مكتبك.',
+    share: 'ابعتلي اللينك', copy: 'انسخ اللينك', copied: 'اتنسخ ✓', how: 'شوف بتشتغل إزاي ↓', close: 'إغلاق',
+    shareText: 'افتحه على الكمبيوتر:',
+  } : {
+    text: 'These tools work on a computer, because they open folders and PDFs from your disk. Send yourself the link and open it at your desk.',
+    share: 'Send me the link', copy: 'Copy link', copied: 'Copied ✓', how: 'See how it works ↓', close: 'Close',
+    shareText: 'Open on my computer:',
+  };
+  function phoneNote() {
+    const phone = matchMedia('(pointer: coarse) and (max-width: 820px)').matches;
+    let closed = false;
+    try { closed = sessionStorage.getItem('fm-phone-note') === 'closed'; } catch { /* ignore */ }
+    if (!phone || closed || document.querySelector('.phone-note')) return;
+
+    const url = location.origin + location.pathname;
+    const title = document.title;
+    const shareBtn = el('button', { type: 'button', id: 'phoneShareBtn', class: 'btn primary', text: P.share });
+    const copyBtn = el('button', { type: 'button', id: 'phoneCopyBtn', class: 'btn', text: P.copy });
+    const closeBtn = el('button', { type: 'button', id: 'phoneCloseBtn', class: 'phone-note-x', 'aria-label': P.close, text: '×' });
+    const btns = el('div', { class: 'phone-note-btns' }, [shareBtn, copyBtn]);
+    const howit = document.querySelector('.howit');
+    if (howit) {
+      const how = el('a', { href: '#', class: 'phone-note-how', text: P.how });
+      how.addEventListener('click', (e) => { e.preventDefault(); howit.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      btns.append(how);
+    }
+    const bar = el('div', { class: 'phone-note', role: 'note', translate: 'no' }, [
+      el('span', { class: 'phone-note-ico', 'aria-hidden': 'true', text: '💻' }),
+      el('div', { class: 'phone-note-body' }, [el('p', { text: P.text }), btns]),
+      closeBtn,
+    ]);
+
+    shareBtn.addEventListener('click', async () => {
+      if (navigator.share) {
+        try { await navigator.share({ title, text: P.shareText, url }); window.FMlog('phone-shared'); } catch { /* cancelled */ }
+      } else {
+        location.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(P.shareText + ' ' + url)}`;
+      }
+    });
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch {
+        const t = el('textarea', {}); t.value = url; document.body.append(t); t.select();
+        try { document.execCommand('copy'); } catch { /* ignore */ }
+        t.remove();
+      }
+      copyBtn.textContent = P.copied;
+      window.FMlog('phone-copied');
+    });
+    closeBtn.addEventListener('click', () => {
+      bar.remove();
+      try { sessionStorage.setItem('fm-phone-note', 'closed'); } catch { /* ignore */ }
+    });
+
+    const header = document.querySelector('.site-header');
+    if (header) header.after(bar); else document.body.prepend(bar);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', phoneNote); else phoneNote();
 })();
