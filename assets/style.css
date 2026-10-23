@@ -1289,3 +1289,10 @@ td.ok-cell { color: var(--success); }
 .howit .hx-steps li { font-size: 13px; }
 @media (max-width: 640px) { .howit .hx-demo { zoom: 1; } }
 .hx-anim.still .a-type::after { display: none; }
+
+/* ---------- Split & Rename PDF ---------- */
+.page-nav { display: flex; align-items: center; gap: 6px; }
+.page-nav input { width: 64px; text-align: center; }
+.page-nav .btn { padding: 6px 12px; }
+.chips-label { font-size: 13px; color: var(--muted); align-self: center; }
+td.pages { white-space: nowrap; font-variant-numeric: tabular-nums; }

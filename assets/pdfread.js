@@ -94,14 +94,18 @@
   /**
    * Reads every area on one page of a PDF file.
    * opts: {pageIndex, lang, dpi, mode, upper, dedupe, onOcrLoading}
-   * Returns {values: string[], ocr: boolean[]}.
+   * Returns {values: string[], ocr: boolean[], pages}.
    */
   async function readAreas(file, rects, opts) {
-    const m = await FM.mupdf();
     const doc = await FM.openPdf(file);
     const count = doc.countPages();
     if (opts.pageIndex >= count) throw new Error(`has only ${count} page(s)`);
-    const page = doc.loadPage(opts.pageIndex);
+    return { ...(await readPage(doc.loadPage(opts.pageIndex), rects, opts)), pages: count };
+  }
+
+  /** Reads every area on an already open page. Returns {values, ocr}. */
+  async function readPage(page, rects, opts) {
+    const m = await FM.mupdf();
     const chars = PdfView.pageChars(page);
     const values = [];
     const ocr = [];
@@ -109,7 +113,7 @@
       const pageRect = PdfView.toPageRect(page, r);
       let text = clean(PdfView.textInRect(chars, pageRect), opts);
       let usedOcr = false;
-      if (!text) {
+      if (!text && opts.ocr !== false) {
         const w = await ocrWorker(opts.lang, opts.mode, opts.onOcrLoading);
         const { data } = await w.recognize(renderArea(m, page, pageRect, opts.dpi));
         text = clean(data.text, opts);
@@ -118,8 +122,8 @@
       values.push(text);
       ocr.push(usedOcr);
     }
-    return { values, ocr, pages: count };
+    return { values, ocr };
   }
 
-  window.PdfRead = { readAreas, clean };
+  window.PdfRead = { readAreas, readPage, clean };
 })();

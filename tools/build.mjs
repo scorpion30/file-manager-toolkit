@@ -70,6 +70,14 @@ const PAGES = [
     },
   },
   {
+    file: 'splitrename.html', cat: 'pdf',
+    en: { title: `Split PDF and Rename Pages from Title Block, Free | ${BRAND}`, name: 'Split & Rename PDF', pitch: 'One PDF per sheet, named from its title block' },
+    ar: {
+      title: `تقسيم PDF وتسمية كل لوحة من الـ Title Block مجاناً | ${BRAND}`, name: 'تقسيم وتسمية PDF', pitch: 'ملف PDF لكل لوحة باسمها من الـ Title Block',
+      desc: 'قسّم ملف PDF مجمّع فيه لوحات كثيرة إلى ملف لكل لوحة، باسم رقم اللوحة والـ Revision المقروء من جدول العنوان. مجاني، بدون رفع ملفات.',
+    },
+  },
+  {
     file: 'merge.html', cat: 'pdf',
     en: { title: `Merge PDF Files Free, No Upload | ${BRAND}`, name: 'Merge PDF', pitch: 'Combine PDFs in the order you choose' },
     ar: {

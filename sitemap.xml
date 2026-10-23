@@ -71,6 +71,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://filemanagertoolkit.com/titleblock.html"/>
   </url>
   <url>
+    <loc>https://filemanagertoolkit.com/splitrename.html</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://filemanagertoolkit.com/splitrename.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://filemanagertoolkit.com/ar/splitrename.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://filemanagertoolkit.com/splitrename.html"/>
+  </url>
+  <url>
+    <loc>https://filemanagertoolkit.com/ar/splitrename.html</loc>
+    <lastmod>2026-10-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://filemanagertoolkit.com/splitrename.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://filemanagertoolkit.com/ar/splitrename.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://filemanagertoolkit.com/splitrename.html"/>
+  </url>
+  <url>
     <loc>https://filemanagertoolkit.com/merge.html</loc>
     <lastmod>2026-10-23</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://filemanagertoolkit.com/merge.html"/>

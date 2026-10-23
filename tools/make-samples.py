@@ -1,5 +1,6 @@
 """Makes the example drawings in assets/samples/ (made-up A3 sheets with a title block).
-Used by "Use example files" on Rename from Title Block and PDF to Excel.
+Used by "Use example files" on Rename from Title Block and PDF to Excel, and (combined
+into Tower-A-Submission.pdf with a cover page) by Split & Rename PDF.
 Run from the repo root: python tools/make-samples.py   (needs PyMuPDF)"""
 import os
 import fitz
@@ -72,6 +73,18 @@ def make(no, title, rev):
 os.makedirs(OUT, exist_ok=True)
 for n, (no, title, rev) in enumerate(SHEETS, 1):
     make(no, title, rev).save(os.path.join(OUT, f'Sheet_{n:03d}.pdf'), garbage=4, deflate=True)
+# One combined set for Split & Rename PDF: a cover without a title block, then the sheets,
+# with SECTION A-A on two pages (same drawing number, so they go into one file).
+combined = fitz.open()
+cover = combined.new_page(width=W, height=H)
+cover.draw_rect(fitz.Rect(20, 20, W - 20, H - 20), color=NAVY, width=1.5)
+cover.insert_text((90, 330), 'TOWER A - RESIDENTIAL BUILDING', fontsize=34, fontname='hebo', color=NAVY)
+cover.insert_text((90, 380), 'ARCHITECTURAL DRAWINGS - ISSUED FOR CONSTRUCTION', fontsize=16, fontname='helv', color=GREY)
+cover.insert_text((90, 420), 'EXAMPLE DEVELOPMENTS LLC  -  OCTOBER 2026', fontsize=12, fontname='helv', color=GREY)
+for no, title, rev in SHEETS:
+    for _ in range(2 if no == 'A-201' else 1):
+        combined.insert_pdf(make(no, title, rev))
+combined.save(os.path.join(OUT, 'Tower-A-Submission.pdf'), garbage=4, deflate=True)
 print('boxes as fractions: no', [round(v, 4) for v in (825 / W, 782 / H, 995 / W, 818 / H)],
       'title', [round(v, 4) for v in (825 / W, 722 / H, 1165 / W, 756 / H)],
       'rev', [round(v, 4) for v in (1003 / W, 782 / H, 1067 / W, 818 / H)])

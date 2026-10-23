@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" data-lang-page="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Split PDF and Rename Pages from Title Block, Free | File Manager Toolkit</title>
+  <meta name="description" content="Split a combined PDF drawing set into one file per sheet, named after the drawing number and revision read from each title block. Free, no upload.">
+  <!-- seo:start -->
+  <link rel="canonical" href="https://filemanagertoolkit.com/splitrename.html">
+  <link rel="alternate" hreflang="en" href="https://filemanagertoolkit.com/splitrename.html" data-switch="splitrename.html">
+  <link rel="alternate" hreflang="ar" href="https://filemanagertoolkit.com/ar/splitrename.html" data-switch="ar/splitrename.html">
+  <link rel="alternate" hreflang="x-default" href="https://filemanagertoolkit.com/splitrename.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="File Manager Toolkit">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Split PDF and Rename Pages from Title Block, Free | File Manager Toolkit">
+  <meta property="og:description" content="Split a combined PDF drawing set into one file per sheet, named after the drawing number and revision read from each title block. Free, no upload.">
+  <meta property="og:url" content="https://filemanagertoolkit.com/splitrename.html">
+  <meta property="og:image" content="https://filemanagertoolkit.com/assets/og/splitrename-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="assets/analytics.js?v=c6061af9" defer></script>
+  <script src="assets/backend.js?v=dfdcec91" defer></script>
+  <!-- seo:end -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/style.css?v=fa9b31f4">
+  <script src="assets/theme.js?v=a4d0ee14"></script>
+  <script src="assets/i18n.js?v=31c3556e"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+      <nav>
+        <a href="./#files" class="hide-sm">File tools</a>
+        <a href="./#pdf" class="hide-sm">PDF tools</a>
+        <a href="./#review" class="hide-sm">Review</a>
+        <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
+        <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="tool-head">
+      <div>
+        <div class="crumb"><a href="./">All tools</a> / <a href="./#pdf">PDF tools</a></div>
+        <div class="tool-title">
+          <span class="tool-icon cat-pdf"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>
+          <div><h1>Split &amp; Rename PDF</h1><p>Split a combined drawing set into one PDF per sheet, each named from its own title block.</p><p class="privacy-badge"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Your files stay on your computer. Nothing is uploaded.</span></p></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="stepper">
+      <button class="step" type="button"><span class="n">1</span><span><b>Choose the PDF</b><small>One file with many sheets</small></span></button>
+      <button class="step" type="button"><span class="n">2</span><span><b>Mark the drawing number</b><small>Draw a box on one sheet</small></span></button>
+      <button class="step" type="button"><span class="n">3</span><span><b>Check &amp; split</b><small>See every name, then split</small></span></button>
+    </nav>
+
+    <!-- Step 1: file -->
+    <section class="step-panel">
+      <div class="dropzone" id="dropzone">
+        <svg class="icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg>
+        <h2>Choose the combined PDF</h2>
+        <p>Every sheet becomes its own PDF, named after what's written in its title block. You can also drop the file here.</p>
+        <button class="btn primary lg" id="pickBtn">Choose PDF</button>
+        <div class="or-sep"><span>or</span></div>
+        <button class="btn lg sample-btn" id="sampleBtn">📋 Use an example file</button>
+        <p class="sample-hint">No drawings with you? Use an example set: one PDF with a cover page and 9 drawing pages.</p>
+      </div>
+      <div class="card" id="fileCard" hidden style="margin-top:16px">
+        <div class="count-line"><span class="num" id="pageCount">0</span><span id="fileHint">pages</span></div>
+      </div>
+      <div class="step-foot"><span class="spacer"></span><button class="btn primary lg" data-next>Next: mark the drawing number →</button></div>
+    </section>
+
+    <!-- Step 2: areas -->
+    <section class="step-panel" hidden>
+      <div class="work">
+        <div id="viewer"></div>
+        <div class="side">
+          <div class="sample-guide" id="sampleGuide" hidden>
+            <span class="sample-step">1</span>
+            <div><b>Your turn:</b> drag a box around the drawing number <b>A-101</b> at the bottom right, then another around the revision <b>02</b> next to it. Then press <b>Next</b>.
+              <button class="btn sm" id="sampleMarkBtn" type="button">Mark them for me</button></div>
+          </div>
+          <div class="howto"><span class="big">✍</span><span><b>Drag a box around the drawing number</b> on a sheet. Add more boxes (revision, title) to use them in the name too.</span></div>
+          <div class="card">
+            <h2>Areas</h2>
+            <ul class="rect-list" id="rectList"></ul>
+            <p class="hint" id="noAreas">No areas yet. Drag on the drawing to add one.</p>
+            <button class="btn ghost" id="clearRectsBtn">Remove all areas</button>
+          </div>
+          <div class="card">
+            <div class="field"><label for="pageNo">Showing page</label>
+              <div class="page-nav"><button class="btn" id="prevPage" type="button" aria-label="Previous page">‹</button><input type="text" id="pageNo" value="1" inputmode="numeric"><span id="pageOf"></span><button class="btn" id="nextPage" type="button" aria-label="Next page">›</button></div>
+            </div>
+            <p class="hint">Pick a page that has a title block. The same boxes are read on every page.</p>
+          </div>
+          <div class="step-foot"><button class="btn" data-back>← Back</button><span class="spacer"></span><button class="btn primary lg" data-next>Next: read every page →</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: names & split -->
+    <section class="step-panel" hidden>
+      <div class="two-equal" style="margin-top:0">
+        <div class="card">
+          <h2>File name</h2>
+          <div class="field"><label for="pattern">Name pattern</label><input type="text" id="pattern" value="{1}"></div>
+          <div class="chips" id="tokens"></div>
+          <div class="chips" id="seps"><span class="chips-label">Separator:</span><button class="chip" data-token=" - ">space - space</button><button class="chip" data-token="_">_</button><button class="chip" data-token="-">-</button><button class="chip" data-token=" ">space</button></div>
+          <p class="hint">Click a box name, then a separator, then another box. Example: <code>{1}_{2}</code> gives <code>A-101_02.pdf</code></p>
+          <div class="field"><label>Example</label><div class="preview-name" id="examplePreview">—</div></div>
+        </div>
+        <div class="card">
+          <h2>Options</h2>
+          <label class="check"><input type="checkbox" id="optGroup" checked> Pages in a row with the same name go in one file</label>
+          <label class="check"><input type="checkbox" id="optSkip" checked> Leave out pages where nothing was read (cover, index…)</label>
+          <label class="check"><input type="checkbox" id="optDupes" checked> If two files get the same name, add (2), (3)…</label>
+          <label class="check"><input type="checkbox" id="optUpper"> Convert to UPPER CASE</label>
+          <label class="check"><input type="checkbox" id="optRegister" checked> Add a drawing register (Excel) with the files</label>
+          <details class="more">
+            <summary>Reading options (OCR for scanned drawings)</summary>
+            <div class="stack">
+              <div class="field"><label for="ocrUse">OCR</label>
+                <select id="ocrUse"><option value="auto">Automatic (only for scanned sets)</option><option value="always">On every empty box</option><option value="never">Never</option></select>
+              </div>
+              <div class="row tight" style="display:flex;gap:8px">
+                <div class="field"><label for="ocrLang">OCR language</label>
+                  <select id="ocrLang"><option value="eng">English</option><option value="ara">Arabic</option><option value="eng+ara">English + Arabic</option></select>
+                </div>
+                <div class="field"><label for="ocrDpi">OCR DPI</label>
+                  <select id="ocrDpi"><option>300</option><option selected>600</option><option>800</option></select>
+                </div>
+              </div>
+              <div class="field"><label for="ocrMode">OCR reads</label>
+                <select id="ocrMode"><option value="any">Any text</option><option value="codes">Codes only (A–Z, 0–9, - _)</option></select>
+              </div>
+              <button class="btn" id="readBtn">Read again</button>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <section class="sample-done" id="sampleDone" hidden style="margin-top:16px"></section>
+      <section class="panel" id="resultsPanel" style="margin-top:16px">
+        <div class="result-bar">
+          <button class="btn success lg" id="splitBtn">Split &amp; download (ZIP)</button>
+          <label class="check" style="margin:0"><input type="checkbox" id="optFolder"> Save into a folder instead</label>
+          <span class="spacer"></span>
+          <button class="btn" id="exportBtn">Drawing register (Excel)</button>
+        </div>
+        <div style="padding:0 14px"><progress id="progress" value="0" max="1" hidden></progress></div>
+        <div class="status" id="status"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th class="sel"><input type="checkbox" id="headCheck" aria-label="Select all"></th><th>Pages</th><th>New file name</th><th>Read from the title block</th><th>Note</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+      <pre class="log" id="log" hidden style="margin-top:16px"></pre>
+      <div class="step-foot"><button class="btn" data-back>← Back to the areas</button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <div class="f-brand">
+        <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
+        <p>Free file and PDF tools that run in your browser.</p>
+      </div>
+      <div class="f-col"><h4>File tools</h4><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="titleblock.html">Rename from Title Block</a><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="splitrename.html">Split &amp; Rename PDF</a><a href="extract.html">PDF to Excel</a><a href="edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>Review</h4><a href="comments.html">Comment Sheet</a><a href="preflight.html">Pre-flight Check</a><a href="midp.html">MIDP Check</a></div>
+      <div class="f-col"><h4>Guides</h4><a href="guides/rename-pdf-drawings-from-title-block.html">Rename PDFs from title block</a><a href="guides/pdf-drawings-to-excel-drawing-register.html">Drawing register from PDFs</a><a href="guides/merge-pdf-without-uploading.html">Merge PDF without uploading</a><a href="guides/list-folder-files-to-excel.html">Folder file list to Excel</a><a href="guides/export-pdf-comments-to-excel.html">PDF comments to Excel</a><h4 style="margin-top:14px">About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
+    </div>
+    <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
+  </footer>
+
+  <script src="assets/common.js?v=9d3cd254"></script>
+  <script src="assets/pdfview.js?v=91e3dba0"></script>
+  <script src="assets/pdfread.js?v=7cc5d6d7"></script>
+  <script src="assets/splitrename.js?v=6de7da9b"></script>
+</body>
+</html>
