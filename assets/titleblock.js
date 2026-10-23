@@ -230,7 +230,7 @@
     const first = state.rows.find((r) => r.final);
     $('examplePreview').textContent = first ? first.final + first.f.ext : '—';
     $('applyBtn').disabled = !count || state.busy;
-    $('applyBtn').textContent = state.source && state.source.mode !== 'fs' ? 'Download renamed (ZIP)' : 'Apply Rename';
+    $('applyBtn').textContent = state.source && !['fs', 'sample'].includes(state.source.mode) ? 'Download renamed (ZIP)' : 'Apply Rename';
     $('undoBtn').hidden = !state.undo;
     const checked = state.rows.filter((r) => r.checked).length;
     $('headCheck').checked = state.rows.length > 0 && checked === state.rows.length;
