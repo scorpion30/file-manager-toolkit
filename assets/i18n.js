@@ -1141,8 +1141,10 @@
     '+ 8 more tools:': '+ 8 أدوات تانية:',
     'split & rename PDF, merge PDF, MIDP check, comment sheet and more.': 'تقسيم وتسمية PDF، دمج PDF، مراجعة MIDP، شيت التعليقات وغيرها.',
     '12 free tools': '12 أداة مجانية',
+    'check this page': 'راجع الصفحة دي',
   });
   PATTERNS.push(
+    [/^Boxes follow their labels on sheets with another layout \((\d+) of (\d+) found\)\.$/, 'المربعات بتمشي ورا العناوين بتاعتها في اللوح اللي ترتيبها مختلف (اتلقى $1 من $2).'],
     [/^pages in “(.*)”$/, 'صفحة في “$1”'],
     [/^Splitting… (\d+)\/(\d+)$/, 'جارٍ التقسيم… $1/$2'],
     [/^Created (\d+) PDF file\(s\)\.$/, 'اتعمل $1 ملف PDF.'],

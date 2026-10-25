@@ -133,6 +133,11 @@
         opts.ocr = !probe.values.some(Boolean);
       }
     } catch { /* read as set */ }
+    try {
+      opts.anchors = await PdfRead.learnAnchors(state.doc.loadPage(state.viewIndex), rects, { ...opts, ocr: $('ocrUse').value !== 'never' });
+      const found = opts.anchors.filter(Boolean).length;
+      if (found) log(`Boxes follow their labels on sheets with another layout (${found} of ${rects.length} found).`, 'good');
+    } catch { opts.anchors = null; }
     state.pages = [];
     state.edits.clear();
     state.unchecked.clear();
@@ -171,21 +176,35 @@
     return clean(name);
   }
 
+  /** A page to look at: a box caught only its label, or one part of the name came out empty. */
+  function needsCheck(i) {
+    if (state.edits.has(i)) return false;
+    const page = state.pages[i];
+    if (!page || page.error) return false;
+    if ((page.labelOnly || []).some(Boolean)) return true;
+    const used = [...$('pattern').value.matchAll(/\{(\d+)\}/g)].map((t) => page.values[t[1] - 1] || '');
+    return used.some(Boolean) && used.some((v) => !v);
+  }
+
   /** Turns the pages into output files: names, pages in a row with one name, duplicates. */
   function rebuild() {
     const groups = [];
     for (let i = 0; i < state.pages.length; i++) {
       const name = nameOf(i);
+      const check = needsCheck(i);
       const last = groups[groups.length - 1];
-      if ($('optGroup').checked && last && last.end === i - 1 && last.name === name) last.end = i;
-      else groups.push({ start: i, end: i, name, values: state.pages[i].values, ocr: state.pages[i].ocr.some(Boolean), error: state.pages[i].error });
+      // Only pages with a full, sure name join the one before: never several unread sheets in one file.
+      if ($('optGroup').checked && last && last.end === i - 1 && name && !check && !last.check && last.name === name) last.end = i;
+      else groups.push({ start: i, end: i, name, check, values: state.pages[i].values, ocr: state.pages[i].ocr.some(Boolean), error: state.pages[i].error });
     }
     const taken = new Set();
     for (const g of groups) {
       g.note = '';
       g.final = g.name;
       if (g.error) { g.note = 'error'; continue; }
-      if (!g.name) {
+      // A half-read name ("C" for "<title>-C") would mislead: name it after the page and flag it.
+      if (g.check) { g.final = `${state.base}_p${pageLabel(g)}`; g.note = 'check this page'; }
+      if (!g.final) {
         if ($('optSkip').checked) { g.note = 'left out'; continue; }
         g.final = `${state.base}_p${pageLabel(g)}`;
         g.note = 'nothing read';
