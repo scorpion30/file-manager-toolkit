@@ -11,6 +11,14 @@
   const local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   const ar = document.documentElement.lang === 'ar';
   const page = location.pathname.replace(/^.*\/file-manager-toolkit\//, '/').replace(/index\.html$/, '') || '/';
+  // The owner's own visits and test runs are not counted: open any page once with ?nolog
+  // (?nolog=0 turns it back on). Automated and headless browsers (link checkers) are skipped too.
+  let noLog = navigator.webdriver || /HeadlessChrome|bot|crawl|spider|facebookexternalhit/i.test(navigator.userAgent);
+  try {
+    const q = new URLSearchParams(location.search).get('nolog');
+    if (q !== null) localStorage.setItem('fm-nolog', q === '0' ? '' : '1');
+    if (localStorage.getItem('fm-nolog') === '1') noLog = true;
+  } catch { /* storage blocked */ }
 
   function send(data, beacon) {
     if (!ENDPOINT) return Promise.resolve(false);
@@ -53,7 +61,7 @@
 
   let logged = false;
   function logVisit() {
-    if (logged || local) return;
+    if (logged || local || noLog) return;
     logged = true;
     let ref = '';
     try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch { /* ignore */ }
