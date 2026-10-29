@@ -5,7 +5,10 @@
   const { $, esc, toast } = FM;
   // Annotation types that are never review comments on their own.
   const SKIP_TYPES = new Set(['Popup', 'Link', 'Widget', 'Redact', 'PrinterMark', 'TrapNet', 'Watermark', 'Screen', 'Movie', 'Sound', 'RichMedia', '3D', 'Projection']);
-  const SNAP_MAX_PX = 640;
+  // Snapshot size: longest side in pixels and the highest zoom. Excel shows every picture at the same
+  // size in its cell, so a higher quality only means more detail when the reader zooms in.
+  const SNAP_QUALITY = { low: { px: 640, zoom: 3 }, medium: { px: 1400, zoom: 6 }, high: { px: 2400, zoom: 10 } };
+  const snapQuality = () => SNAP_QUALITY[$('snapQuality').value] || SNAP_QUALITY.medium;
 
   const state = {
     files: [],        // {id, file, pages, comments: [], error}
@@ -158,7 +161,8 @@
     [y0, y1] = grow(y0, y1, 160);
     const [px0, py0, px1, py1] = page.getBounds();
     x0 = Math.max(px0, x0); y0 = Math.max(py0, y0); x1 = Math.min(px1, x1); y1 = Math.min(py1, y1);
-    const scale = Math.min(3, SNAP_MAX_PX / Math.max(x1 - x0, y1 - y0));
+    const q = snapQuality();
+    const scale = Math.min(q.zoom, q.px / Math.max(x1 - x0, y1 - y0));
     const bbox = [Math.floor(x0 * scale), Math.floor(y0 * scale), Math.ceil(x1 * scale), Math.ceil(y1 * scale)];
     const pix = new m.Pixmap(m.ColorSpace.DeviceRGB, bbox, false);
     pix.clear(255);
@@ -183,15 +187,16 @@
     ctx.putImageData(img, 0, 0);
     pix.destroy?.();
     const tx = (x) => x * scale - bbox[0], ty = (y) => y * scale - bbox[1];
-    ctx.lineWidth = 3;
+    const u = Math.max(1, Math.max(w, h) / 640); // keep the marks the same size on screen at any quality
+    ctx.lineWidth = 3 * u;
     ctx.strokeStyle = 'rgba(245, 130, 32, 0.95)';
-    ctx.setLineDash([8, 5]);
-    ctx.strokeRect(tx(c.box[0]) - 4, ty(c.box[1]) - 4, (c.box[2] - c.box[0]) * scale + 8, (c.box[3] - c.box[1]) * scale + 8);
+    ctx.setLineDash([8 * u, 5 * u]);
+    ctx.strokeRect(tx(c.box[0]) - 4 * u, ty(c.box[1]) - 4 * u, (c.box[2] - c.box[0]) * scale + 8 * u, (c.box[3] - c.box[1]) * scale + 8 * u);
     if (c.pts.length) {
       ctx.setLineDash([]);
       ctx.strokeStyle = 'rgba(220, 38, 38, 0.95)';
       ctx.beginPath();
-      ctx.arc(tx(c.pts[0][0]), ty(c.pts[0][1]), 14, 0, Math.PI * 2);
+      ctx.arc(tx(c.pts[0][0]), ty(c.pts[0][1]), 14 * u, 0, Math.PI * 2);
       ctx.stroke();
     }
     return new Promise((resolve) => canvas.toBlob(async (blob) => {
@@ -287,6 +292,7 @@
   $('headCheck').addEventListener('change', (e) => { state.rows.forEach((r) => { r.checked = e.target.checked; }); renderRows(); });
   $('optNoText').addEventListener('change', () => { renderFiles(); build(); });
   $('optReplies').addEventListener('change', build);
+  $('snapQuality').addEventListener('change', build);
 
   // ---------- Excel ----------
   $('exportBtn').onclick = async () => {
@@ -372,7 +378,7 @@
   };
 
   // ---------- steps ----------
-  const signature = () => JSON.stringify([state.files.map((f) => f.id), view.rects.map((r) => [r.x1, r.y1, r.x2, r.y2]), $('optNoText').checked, $('optReplies').checked]);
+  const signature = () => JSON.stringify([state.files.map((f) => f.id), view.rects.map((r) => [r.x1, r.y1, r.x2, r.y2]), $('optNoText').checked, $('optReplies').checked, $('snapQuality').value]);
   let lastBuilt = '';
 
   const steps = FM.wizard({

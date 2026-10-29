@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">
   <link rel="stylesheet" href="../assets/style.css?v=3ac9b114">
   <script src="../assets/theme.js?v=9bee45e6"></script>
-  <script src="../assets/i18n.js?v=8bc7049f"></script>
+  <script src="../assets/i18n.js?v=f76d3ff6"></script>
 </head>
 <body>
   <header class="site-header">
@@ -108,6 +108,13 @@
       <section class="panel">
         <div class="result-bar">
           <button class="btn success lg" id="exportBtn">⬇ تنزيل جدول التعليقات (Excel)</button>
+          <label class="check" for="snapQuality" style="gap:8px">جودة الصور
+            <select id="snapQuality" style="width:auto">
+              <option value="low">منخفضة (ملف صغير)</option>
+              <option value="medium" selected>متوسطة</option>
+              <option value="high">عالية (واضحة مع التكبير)</option>
+            </select>
+          </label>
           <span class="spacer"></span>
           <span class="hint">اضغط على أي تعليق أو رقم لوحة لتصحيحه قبل التنزيل.</span>
         </div>
@@ -161,6 +168,6 @@
   <script src="../assets/common.js?v=9d3cd254"></script>
   <script src="../assets/pdfview.js?v=91e3dba0"></script>
   <script src="../assets/pdfread.js?v=c947a9f7"></script>
-  <script src="../assets/comments.js?v=1ce11012"></script>
+  <script src="../assets/comments.js?v=67d7775f"></script>
 </body>
 </html>

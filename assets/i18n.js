@@ -1155,5 +1155,9 @@
     [/^For example, page (\d+) is now “(.*)”$/, 'مثلًا، صفحة $1 بقت “$2”'],
     [/^Pages (\S+) have the same drawing number, so they went into one file$/, 'الصفحات $1 ليها نفس رقم اللوحة، فاتجمعت في ملف واحد'],
   );
+  AR['Picture quality'] = 'جودة الصور';
+  AR['Low (small file)'] = 'منخفضة (ملف صغير)';
+  AR['Medium'] = 'متوسطة';
+  AR['High (sharp when zoomed)'] = 'عالية (واضحة مع التكبير)';
   window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
 })();
