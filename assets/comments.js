@@ -1,4 +1,4 @@
-/* Comment Sheet: read review comments (PDF annotations) and build an Excel comment
+/* PDF Comments to Excel: read review comments (PDF annotations) and build an Excel comment
  * response sheet with sheet number, comment, author, date and a snapshot of the spot. */
 (() => {
   'use strict';

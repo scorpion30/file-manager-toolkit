@@ -234,10 +234,10 @@ export default {
   "How to export PDF comments to an Excel comment sheet": "طريقة تصدير تعليقات PDF إلى Excel (جدول الرد على التعليقات)",
   "Turn the review comments on marked-up PDF drawings into an Excel comment response sheet, with the sheet number, comment, author, date and a picture of where each comment was made.":
     "حوّل تعليقات المراجعة على لوحات PDF إلى جدول رد على التعليقات في Excel، فيه رقم اللوحة والتعليق والكاتب والتاريخ وصورة لمكان كل تعليق.",
-  "Open Comment Sheet →": "افتح أداة جدول التعليقات ←",
+  "Open PDF Comments to Excel →": "افتح أداة تعليقات PDF إلى Excel ←",
   "Free, no account, works with Acrobat and Bluebeam markups.": "مجانية، بدون حساب، وتعمل مع تعليقات Acrobat و Bluebeam.",
-  "Open Comment Sheet, add the marked-up PDFs, optionally draw a box around the drawing number, and click Download comment sheet. You get one Excel row per comment, with a snapshot of the spot and empty Response and Status columns for your replies.":
-    "افتح أداة جدول التعليقات، وأضف ملفات PDF التي عليها التعليقات، وارسم مربعاً حول رقم اللوحة إذا أردت، ثم اضغط \"تنزيل جدول التعليقات\". تحصل على صف في Excel لكل تعليق، مع صورة لمكانه وعمودين فارغين للرد والحالة.",
+  "Open PDF Comments to Excel, add the marked-up PDFs, optionally draw a box around the drawing number, and click Download comment sheet. You get one Excel row per comment, with a snapshot of the spot and empty Response and Status columns for your replies.":
+    "افتح أداة تعليقات PDF إلى Excel، وأضف ملفات PDF التي عليها التعليقات، وارسم مربعاً حول رقم اللوحة إذا أردت، ثم اضغط \"تنزيل جدول التعليقات\". تحصل على صف في Excel لكل تعليق، مع صورة لمكانه وعمودين فارغين للرد والحالة.",
   "Why copying comments by hand is a problem": "لماذا نسخ التعليقات يدوياً مشكلة",
   "When a client or consultant reviews a submission, the comments come back as notes, clouds and callouts on the PDFs. Before you can reply, someone has to copy each one into a comment response sheet, note which drawing it is on and describe where on the sheet it was made.":
     "عندما يراجع العميل أو الاستشاري التسليم، تعود التعليقات كملاحظات وسحابات وأسهم على ملفات PDF. وقبل أن ترد، على شخص ما أن ينسخ كل تعليق إلى جدول الرد، ويكتب رقم اللوحة، ويصف مكان التعليق على اللوحة.",
@@ -272,7 +272,7 @@ export default {
     "أرسل ملف Excel للفريق، واكتبوا الردود في عمود الرد، وحددوا الحالة مفتوح أو مغلق. ولأن كل صف فيه رقم اللوحة وصورة، لا يحتاج أحد أن يفتح ملفات PDF مرة أخرى ليفهم المطلوب.",
   "Make your comment sheet now": "اعمل جدول التعليقات الآن",
   "How do I export PDF comments to Excel?": "كيف أصدّر تعليقات PDF إلى Excel؟",
-  "Add the PDFs to Comment Sheet and click Download comment sheet. Every comment becomes one row in an Excel workbook.": "أضف ملفات PDF إلى أداة جدول التعليقات واضغط \"تنزيل جدول التعليقات\". كل تعليق يصبح صفاً في ملف Excel.",
+  "Add the PDFs to PDF Comments to Excel and click Download comment sheet. Every comment becomes one row in an Excel workbook.": "أضف ملفات PDF إلى أداة تعليقات PDF إلى Excel واضغط \"تنزيل جدول التعليقات\". كل تعليق يصبح صفاً في ملف Excel.",
   "Does it work with Bluebeam markups?": "هل تعمل مع تعليقات Bluebeam؟",
   "Yes. Bluebeam saves markups as standard PDF comments, so they are read like Acrobat comments.": "نعم. Bluebeam يحفظ التعليقات كتعليقات PDF عادية، فتُقرأ مثل تعليقات Acrobat.",
   "Can I get a picture of each comment in Excel?": "هل يمكن الحصول على صورة لكل تعليق في Excel؟",

@@ -111,9 +111,9 @@ const PAGES = [
   },
   {
     file: 'comments.html', cat: 'qa',
-    en: { title: `PDF Comments to Excel Comment Sheet | ${BRAND}`, name: 'Comment Sheet', pitch: 'Client PDF comments to an Excel comment sheet' },
+    en: { title: `PDF Comments to Excel: Comment Response Sheet | ${BRAND}`, name: 'PDF Comments to Excel', pitch: 'Client PDF comments to an Excel comment response sheet' },
     ar: {
-      title: `تحويل تعليقات PDF إلى جدول تعليقات Excel | ${BRAND}`, name: 'جدول التعليقات', pitch: 'تعليقات العميل على الـ PDF في جدول Excel',
+      title: `تحويل تعليقات PDF إلى جدول تعليقات Excel | ${BRAND}`, name: 'تعليقات PDF إلى Excel', pitch: 'تعليقات العميل على الـ PDF في جدول Excel',
       desc: 'حوّل تعليقات المراجعة في ملفات PDF إلى جدول رد على التعليقات في Excel: رقم اللوحة، التعليق، الكاتب، التاريخ وصورة لمكان التعليق.',
     },
   },

@@ -1155,6 +1155,7 @@
     [/^For example, page (\d+) is now “(.*)”$/, 'مثلًا، صفحة $1 بقت “$2”'],
     [/^Pages (\S+) have the same drawing number, so they went into one file$/, 'الصفحات $1 ليها نفس رقم اللوحة، فاتجمعت في ملف واحد'],
   );
+  AR['PDF Comments to Excel'] = 'تعليقات PDF إلى Excel';
   AR['Picture quality'] = 'جودة الصور';
   AR['Low (small file)'] = 'منخفضة (ملف صغير)';
   AR['Medium'] = 'متوسطة';
