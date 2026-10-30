@@ -611,7 +611,7 @@
     'No comments were found. If the reviewer "flattened" the PDF, the markups became part of the drawing and can\'t be read as comments.': 'لم يتم العثور على تعليقات. إذا قام المراجع "بتثبيت" (flatten) الملف، تصبح التعليقات جزءاً من الرسم ولا يمكن قراءتها كتعليقات.',
     'Next: sheet number →': 'التالي: رقم اللوحة ←',
     'Drag a box around the sheet number': 'اسحب مربعاً حول رقم اللوحة',
-    'in the title block, so every comment gets its sheet number. You can add a second box for the sheet title. This step is optional: without a box, the file name is used.': 'في الـ Title Block، ليأخذ كل تعليق رقم لوحته. يمكنك إضافة مربع ثانٍ لعنوان اللوحة. هذه الخطوة اختيارية: بدون مربع يُستخدم اسم الملف.',
+    'in the title block, so every comment gets its sheet number. Need more from the title block, like the title or the revision? Drag more boxes: each one becomes its own column. This step is optional: without a box, the file name is used.': 'في الـ Title Block، ليأخذ كل تعليق رقم لوحته. تحتاج بيانات أخرى من الـ Title Block مثل العنوان أو المراجعة؟ اسحب مربعات أخرى: كل مربع يصبح عموداً مستقلاً. هذه الخطوة اختيارية: بدون مربع يُستخدم اسم الملف.',
     'No box yet. The file name will be used as the sheet number.': 'لا يوجد مربع بعد. سيُستخدم اسم الملف كرقم للوحة.',
     'Next: comment sheet →': 'التالي: جدول التعليقات ←',
     '⬇ Download comment sheet (Excel)': '⬇ تنزيل جدول التعليقات (Excel)',

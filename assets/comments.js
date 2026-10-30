@@ -18,7 +18,14 @@
   };
   let nextId = 1;
   const sheetCache = new Map(); // "fileId:page" -> {values}
-  const view = new PdfView($('viewer'), { onRectsChange: renderRects, dragDraws: true, maxRects: 2, newLabel: (i) => ['Sheet No', 'Title'][i] });
+  // The first box is the sheet number; every other box becomes a column of its own (title, revision...).
+  const AR_PAGE = document.documentElement.lang === 'ar';
+  const BOX_NAMES = AR_PAGE ? ['رقم اللوحة', 'العنوان', 'المراجعة'] : ['Sheet No', 'Title', 'Rev'];
+  const view = new PdfView($('viewer'), {
+    onRectsChange: renderRects, dragDraws: true, maxRects: 8,
+    newLabel: (i) => BOX_NAMES[i] || (AR_PAGE ? `حقل ${i + 1}` : `Field ${i + 1}`),
+  });
+  const extraNames = () => view.rects.slice(1).map((r, i) => r.label.trim() || BOX_NAMES[i + 1] || `Field ${i + 2}`);
 
   // ---------- reading comments ----------
   const safe = (fn, fallback = '') => { try { const v = fn(); return v == null ? fallback : v; } catch { return fallback; } };
@@ -207,7 +214,7 @@
   async function sheetInfo(f, page) {
     if (!view.rects.length) {
       const base = FM.splitName(f.file.name).base;
-      return { sheet: f.pages > 1 ? `${base} (p${page + 1})` : base, title: '' };
+      return { sheet: f.pages > 1 ? `${base} (p${page + 1})` : base, extra: [] };
     }
     const key = `${f.id}:${page}:${JSON.stringify(view.rects.map((r) => [r.x1, r.y1, r.x2, r.y2]))}`;
     if (!sheetCache.has(key)) {
@@ -217,7 +224,7 @@
       } catch { sheetCache.set(key, []); }
     }
     const v = sheetCache.get(key);
-    return { sheet: v[0] || FM.splitName(f.file.name).base, title: v[1] || '' };
+    return { sheet: v[0] || FM.splitName(f.file.name).base, extra: view.rects.slice(1).map((_, k) => v[k + 1] || '') };
   }
 
   const describe = (c) => c.text || `[${c.subject || c.type}]`;
@@ -242,7 +249,7 @@
       state.rows.push({
         checked: true,
         sheet: info.sheet,
-        title: info.title,
+        extra: info.extra,
         page: c.page + 1,
         text,
         author: c.author,
@@ -261,12 +268,26 @@
 
   const fmtDate = (d) => (d ? `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}` : '');
 
+  function renderHead() {
+    const head = document.querySelector('.comments-table thead tr');
+    head.querySelectorAll('th.xcol').forEach((th) => th.remove());
+    const before = head.children[3]; // the Comment column
+    for (const name of extraNames()) {
+      const th = document.createElement('th');
+      th.className = 'xcol';
+      th.textContent = name;
+      head.insertBefore(th, before);
+    }
+  }
+
   function renderRows() {
+    renderHead();
     let n = 0;
     $('rows').innerHTML = state.rows.map((r, i) => `<tr data-i="${i}" class="${r.checked ? '' : 'off'}">
       <td class="sel"><input type="checkbox" data-act="check" ${r.checked ? 'checked' : ''}></td>
       <td class="ext">${r.checked ? ++n : ''}</td>
       <td class="sheet" contenteditable="plaintext-only" data-field="sheet">${esc(r.sheet)}</td>
+      ${r.extra.map((v, k) => `<td class="sheet" contenteditable="plaintext-only" data-extra="${k}">${esc(v)}</td>`).join('')}
       <td class="comment" contenteditable="plaintext-only" data-field="text">${esc(r.text)}</td>
       <td class="snap"><img src="${r.snap.url}" alt=""></td>
       <td class="folder">${esc(r.author)}</td>
@@ -286,8 +307,11 @@
     renderRows();
   });
   $('rows').addEventListener('input', (e) => {
-    const td = e.target.closest('td[data-field]');
-    if (td) state.rows[Number(td.parentElement.dataset.i)][td.dataset.field] = td.textContent;
+    const td = e.target.closest('td[data-field], td[data-extra]');
+    if (!td) return;
+    const row = state.rows[Number(td.parentElement.dataset.i)];
+    if (td.dataset.extra !== undefined) row.extra[Number(td.dataset.extra)] = td.textContent;
+    else row[td.dataset.field] = td.textContent;
   });
   $('headCheck').addEventListener('change', (e) => { state.rows.forEach((r) => { r.checked = e.target.checked; }); renderRows(); });
   $('optNoText').addEventListener('change', () => { renderFiles(); build(); });
@@ -302,11 +326,10 @@
       const ExcelJS = await FM.excel();
       const wb = new ExcelJS.Workbook();
       const ws = wb.addWorksheet('Comment Sheet', { pageSetup: { orientation: 'landscape', fitToPage: true, fitToWidth: 1, fitToHeight: 0 } });
-      const withTitle = rows.some((r) => r.title);
       const cols = [
         { header: 'No.', key: 'no', width: 6 },
         { header: 'Sheet No.', key: 'sheet', width: 28 },
-        ...(withTitle ? [{ header: 'Sheet Title', key: 'title', width: 28 }] : []),
+        ...extraNames().map((name, k) => ({ header: name, key: `x${k}`, width: 24 })),
         { header: 'Comment', key: 'text', width: 50 },
         { header: 'Snapshot', key: 'snap', width: 42 },
         { header: 'Commented By', key: 'author', width: 18 },
@@ -351,7 +374,8 @@
       const colPx = cols[snapCol].width * 7 + 5; // Excel column width in pixels, roughly
       for (const [i, row] of rows.entries()) {
         r++;
-        const values = { no: i + 1, sheet: row.sheet, title: row.title, text: row.text, author: row.author, date: row.date ? FM.excelDate(row.date.getTime()) : null, response: '', status: '' };
+        const values = { no: i + 1, sheet: row.sheet, text: row.text, author: row.author, date: row.date ? FM.excelDate(row.date.getTime()) : null, response: '', status: '' };
+        row.extra.forEach((v, k) => { values[`x${k}`] = v; });
         cols.forEach((c, k) => {
           const cell = ws.getCell(r, k + 1);
           if (c.key !== 'snap') cell.value = values[c.key] ?? '';
