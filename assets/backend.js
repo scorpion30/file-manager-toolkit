@@ -57,7 +57,11 @@
     if (key && actions.length < 60) actions.push(key);
   }, { capture: true });
   // Tools note milestones too (e.g. 'list:sample-export'), shown with the buttons in the sheet.
-  window.FMlog = (key) => { if (actions.length < 60) actions.push(page + ':' + key); };
+  window.FMlog = (key) => {
+    if (actions.length < 60) actions.push(page + ':' + key);
+    // A tool just finished on the visitor's own files: ask one quick question.
+    if (/^(own-(rename|export|split)|download)$/.test(key)) setTimeout(rateCard, 1200);
+  };
 
   let logged = false;
   function logVisit() {
@@ -177,6 +181,29 @@
     open(t.getAttribute('data-feedback'));
   });
   document.addEventListener('DOMContentLoaded', () => document.body.append(opener));
+
+  // ---------- one-tap rating after a tool finished ----------
+  const R = ar ? { q: 'الأداة وفّرت عليك وقت؟', yes: 'أيوه', no: 'لأ', thanks: 'شكراً! ده بيساعدنا جداً.', more: 'إيه اللي كان ناقص؟ اكتبلنا', close: 'إغلاق' }
+    : { q: 'Did this save you time?', yes: 'Yes', no: 'No', thanks: 'Thanks! That really helps.', more: 'What was missing? Tell us', close: 'Close' };
+  function rateCard() {
+    try { if (sessionStorage.getItem('fm-rated-' + page)) return; sessionStorage.setItem('fm-rated-' + page, '1'); } catch { /* ignore */ }
+    if (document.querySelector('.rate-card')) return;
+    const card = el('div', { class: 'rate-card', role: 'status', translate: 'no' });
+    const x = el('button', { type: 'button', class: 'rate-x', 'aria-label': R.close, text: '✕' });
+    x.onclick = () => card.remove();
+    const vote = (up) => {
+      window.FMlog(up ? 'rate-up' : 'rate-down');
+      if (!local && !noLog) send({ kind: 'feedback', type: up ? 'thanks' : 'problem', message: (up ? '👍 ' : '👎 ') + R.q + ' (' + page + ')', name: '', email: '', page, lang: ar ? 'ar' : 'en', visitor });
+      const kids = [el('span', { text: R.thanks })];
+      if (!up) kids.push(Object.assign(el('button', { type: 'button', class: 'btn', text: R.more }), { onclick: () => { card.remove(); open('problem'); } }));
+      card.replaceChildren(x, ...kids);
+      if (up) setTimeout(() => card.remove(), 4000);
+    };
+    card.append(x, el('span', { text: R.q }),
+      Object.assign(el('button', { type: 'button', class: 'btn', text: '👍 ' + R.yes }), { onclick: () => vote(true) }),
+      Object.assign(el('button', { type: 'button', class: 'btn', text: '👎 ' + R.no }), { onclick: () => vote(false) }));
+    document.body.append(card);
+  }
 
   // ---------- phone note ----------
   // The tools open folders and PDFs from the disk, so on a phone they can only be looked at.

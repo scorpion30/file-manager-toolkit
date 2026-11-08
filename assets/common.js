@@ -127,6 +127,7 @@
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 30000);
+    try { window.FMlog && window.FMlog('download'); } catch { /* ignore */ }
   }
 
   // ---------- folders ----------

@@ -1296,3 +1296,15 @@ td.ok-cell { color: var(--success); }
 .page-nav .btn { padding: 6px 12px; }
 .chips-label { font-size: 13px; color: var(--muted); align-self: center; }
 td.pages { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* one-tap rating after a tool finished (backend.js) */
+.rate-card {
+  position: fixed; z-index: 60; left: 50%; bottom: 22px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+  background: var(--surface); color: var(--text); border: 1px solid var(--border);
+  border-radius: 14px; box-shadow: 0 12px 34px rgba(15, 23, 42, .18); padding: 12px 40px 12px 18px;
+  font-weight: 600; max-width: calc(100vw - 32px);
+}
+[dir="rtl"] .rate-card { padding: 12px 18px 12px 40px; }
+.rate-card .btn { padding: 6px 14px; }
+.rate-card .rate-x { position: absolute; top: 6px; inset-inline-end: 8px; border: 0; background: none; color: var(--muted, #64748b); cursor: pointer; font-size: 14px; }
