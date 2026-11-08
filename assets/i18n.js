@@ -1084,6 +1084,12 @@
   AR['How to merge PDF files without uploading them'] = 'طريقة دمج ملفات PDF بدون رفعها';
   AR['How to list all files in a folder and subfolders to Excel'] = 'طريقة نسخ أسماء كل الملفات في فولدر وفولدراته الفرعية إلى Excel';
   AR['How to export PDF comments to an Excel comment sheet'] = 'طريقة تصدير تعليقات PDF إلى جدول تعليقات Excel';
+  AR["Split a PDF drawing set"] = "تقسيم ملف لوحات PDF";
+  AR["Edit title block text"] = "تعديل نص جدول العنوان";
+  AR["MIDP / ISO 19650 check"] = "مراجعة MIDP / ISO 19650";
+  AR["How to split a PDF drawing set into sheets named by drawing number"] = "طريقة تقسيم ملف لوحات PDF إلى ملف لكل لوحة باسم رقمها";
+  AR["How to change title block text in many PDF drawings without CAD"] = "طريقة تعديل نص جدول العنوان في ملفات PDF كثيرة بدون CAD";
+  AR["How to check a submission against the MIDP and ISO 19650 file naming"] = "طريقة مراجعة التسليم على الـ MIDP وقاعدة تسمية ISO 19650";
   AR['Is there a step-by-step guide for each tool?'] = 'فيه شرح خطوة بخطوة لكل أداة؟';
   AR['Yes, with screenshots:'] = 'أيوه، بالصور:';
   // ----- Split & Rename PDF -----

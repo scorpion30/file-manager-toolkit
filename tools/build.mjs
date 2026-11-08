@@ -174,6 +174,30 @@ const PAGES = [
       desc: 'حوّل تعليقات المراجعة على لوحات PDF إلى جدول رد على التعليقات في Excel: رقم اللوحة، التعليق، الكاتب، التاريخ وصورة لمكان كل تعليق. مجاني وبدون رفع.',
     },
   },
+  {
+    file: 'guides/split-pdf-drawing-set-into-sheets.html', cat: 'pdf', guide: true,
+    en: { title: `Split a PDF Drawing Set into Sheets by Drawing Number (Free) | ${BRAND}`, name: 'Split a PDF drawing set', pitch: 'One PDF per sheet, named from its title block' },
+    ar: {
+      title: `تقسيم ملف PDF للوحات إلى ملف لكل لوحة باسم رقمها | ${BRAND}`, name: 'تقسيم ملف لوحات PDF', pitch: 'ملف PDF لكل لوحة، باسمه من جدول العنوان',
+      desc: 'قسّم ملف PDF واحد فيه كل اللوحات إلى ملف منفصل لكل لوحة، باسم رقم اللوحة والمراجعة من جدول العنوان، مع قائمة لوحات في Excel. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'guides/edit-title-block-text-in-pdf.html', cat: 'pdf', guide: true,
+    en: { title: `Change Title Block Text in Many PDF Drawings Without CAD | ${BRAND}`, name: 'Edit title block text in PDFs', pitch: 'A date or revision on the whole set, no CAD' },
+    ar: {
+      title: `تعديل نص جدول العنوان في ملفات PDF كثيرة بدون CAD | ${BRAND}`, name: 'تعديل جدول العنوان في PDF', pitch: 'التاريخ أو المراجعة على كل اللوحات بدون CAD',
+      desc: 'غيّر التاريخ أو المراجعة أو الحالة في جدول العنوان لكل لوحات PDF مرة واحدة، بدون الرجوع إلى AutoCAD أو Revit. مجاني، يعمل في المتصفح وبدون رفع.',
+    },
+  },
+  {
+    file: 'guides/check-submission-against-midp-iso-19650.html', cat: 'qa', guide: true,
+    en: { title: `Check a Submission Against the MIDP and ISO 19650 Naming (Free) | ${BRAND}`, name: 'MIDP and ISO 19650 check', pitch: 'Missing, extra, wrong revision and wrong names' },
+    ar: {
+      title: `مراجعة التسليم على الـ MIDP وقاعدة تسمية ISO 19650 | ${BRAND}`, name: 'مراجعة MIDP و ISO 19650', pitch: 'الناقص والزيادة والمراجعة الخطأ والأسماء الخطأ',
+      desc: 'راجع كل ملفات التسليم على الـ MIDP والـ TIDP: المستندات الناقصة، والملفات الزيادة، والمراجعات المختلفة، والأسماء المخالفة لقاعدة تسمية ISO 19650. مجاني وبدون رفع.',
+    },
+  },
 ];
 
 // ---------- translation, using the same dictionary as the live switch ----------
