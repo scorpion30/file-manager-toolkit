@@ -1308,3 +1308,11 @@ td.pages { white-space: nowrap; font-variant-numeric: tabular-nums; }
 [dir="rtl"] .rate-card { padding: 12px 18px 12px 40px; }
 .rate-card .btn { padding: 6px 14px; }
 .rate-card .rate-x { position: absolute; top: 6px; inset-inline-end: 8px; border: 0; background: none; color: var(--muted, #64748b); cursor: pointer; font-size: 14px; }
+
+/* Whole home card is clickable: the "Open the tool" link stretches over the card; Example stays its own button */
+.hx-cards .hx-card { position: relative; isolation: isolate; cursor: pointer; }
+.hx-cards .hx-btns .btn.primary::after { content: ""; position: absolute; inset: 0; border-radius: 16px; z-index: 1; }
+.hx-cards .hx-btns .hx-ex { position: relative; z-index: 2; }
+.hx-cards .hx-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.hx-cards .hx-card:hover .btn.primary { background: var(--accent-hover, var(--accent)); box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent); }
+.hx-cards .hx-card:has(.btn.primary:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
