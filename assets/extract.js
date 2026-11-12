@@ -311,7 +311,7 @@
         const name = state.existing ? state.existing.file.name : (state.sample ? 'Drawing register.xlsx' : 'extracted_data.xlsx');
         FM.downloadBlob(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), name);
         toast('Excel file downloaded.', 'success');
-        if (state.sample) finishSample(); else FM.log('own-export');
+        if (state.sample) finishSample(); else { FM.log('own-export'); FM.suggestNext('extract'); }
       }
     } catch (e) {
       toast('Export failed: ' + e.message, 'error');
@@ -400,4 +400,19 @@
   if (new URLSearchParams(location.search).has('example')) loadSample();
 
   window.__fmExtract = { addFiles, view, state, steps };
+
+  // PDFs or a folder dropped on the home page card, or handed over by another tool.
+  FM.useDropped(async (handles) => {
+    try {
+      const files = [];
+      for (const h of handles) {
+        if (h.kind === 'file' && /\.pdf$/i.test(h.name)) files.push(await h.getFile());
+        else if (h.kind === 'directory') {
+          const listing = await FM.scanDirectory(h);
+          files.push(...(await Promise.all(listing.files.filter((f) => /\.pdf$/i.test(f.name)).map((f) => FM.fileOf(f)))));
+        }
+      }
+      if (files.length) { addFiles(files); steps.go(1); } else toast('No PDF files in that folder.');
+    } catch (e) { toast(e.message, 'error'); }
+  });
 })();

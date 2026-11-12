@@ -29,11 +29,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">
-  <link rel="stylesheet" href="../assets/style.css?v=234a7452">
+  <link rel="stylesheet" href="../assets/style.css?v=1bcb38bc">
   <script src="../assets/theme.js?v=9bee45e6"></script>
-  <script src="../assets/i18n.js?v=094ca91e"></script>
+  <script src="../assets/i18n.js?v=200640b4"></script>
   <script src="../assets/demo.js?v=24717fe8" defer></script>
-  <script src="../assets/home.js?v=1a67ba71" defer></script>
+  <script src="../assets/home.js?v=def1c8fb" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -61,7 +61,7 @@
 
       <div class="hx-cards">
         <!-- 1. Extract file names to Excel -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="folder">
           <div class="hx-top"><span class="hx-tag files">فولدرات</span><h2>استخراج أسماء الملفات في Excel</h2>
             <p>كل الملفات في الفولدر والفولدرات اللي جواه، تاب لكل فولدر، وعدد كل نوع ملف.</p></div>
           <div class="hx-demo hx-anim" data-anim="list" aria-hidden="true" translate="no">
@@ -88,7 +88,7 @@
         </article>
 
         <!-- 2. Rename PDFs from the title block -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="folder">
           <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>تسمية ملفات PDF من الـ Title Block</h2>
             <p>بتقرا رقم اللوحة واسمها من كل شيت وتسمي الملف بيهم.</p></div>
           <div class="hx-demo hx-anim" data-anim="titleblock" aria-hidden="true" translate="no">
@@ -112,7 +112,7 @@
         </article>
 
         <!-- 3. Drawing list from the title blocks -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="pdf">
           <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>قائمة اللوحات من الـ Title Block</h2>
             <p>حدّد مكان الرقم والاسم والـ Revision مرة واحدة، وهي تقراهم من كل PDF في شيت Excel.</p></div>
           <div class="hx-demo hx-anim" data-anim="extract" aria-hidden="true" translate="no">
@@ -135,7 +135,7 @@
         </article>
 
         <!-- 4. Rename hundreds of files -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="folder">
           <div class="hx-top"><span class="hx-tag files">فولدرات</span><h2>إعادة تسمية مئات الملفات</h2>
             <p>زوّد بادئة، غيّر كلمة، أو صحّح الـ Revision في كل الأسماء مرة واحدة، مع إمكانية التراجع.</p></div>
           <div class="hx-demo hx-anim" data-anim="rename" aria-hidden="true" translate="no">
@@ -154,7 +154,18 @@
         </article>
       </div>
 
-      <p class="hx-more"><span><b>+ 8 أدوات تانية:</b> تقسيم وتسمية PDF، دمج PDF، مراجعة MIDP، شيت التعليقات وغيرها.</span> <a href="#tools">كل الأدوات ↓</a></p>
+      <nav class="hx-more" aria-label="More tools">
+        <b class="hx-more-label">+ 8 أدوات تانية:</b>
+        <a class="hx-chip pdf" href="splitrename.html">تقسيم وتسمية PDF</a>
+        <a class="hx-chip pdf" href="merge.html">دمج PDF</a>
+        <a class="hx-chip pdf" href="split.html">تقسيم PDF</a>
+        <a class="hx-chip pdf" href="edit.html">تعديل نص PDF</a>
+        <a class="hx-chip files" href="organize.html">تنظيم الملفات</a>
+        <a class="hx-chip qa" href="comments.html">تعليقات PDF إلى Excel</a>
+        <a class="hx-chip qa" href="preflight.html">فحص قبل التسليم</a>
+        <a class="hx-chip qa" href="midp.html">مراجعة الـ MIDP</a>
+        <a class="hx-all" href="#tools">كل الأدوات ↓</a>
+      </nav>
     </div>
   </section>
 

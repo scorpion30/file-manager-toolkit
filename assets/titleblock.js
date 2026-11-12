@@ -327,6 +327,7 @@
       }
     }
     if (done.length) toast(`Renamed ${done.length} file(s).`, 'success');
+    if (done.length && state.source && state.source.mode === 'fs') FM.suggestNext('titleblock', [state.source.handle]);
     if (failed.length) {
       await FM.dialog({
         title: `${failed.length} file(s) could not be renamed`,
@@ -473,4 +474,12 @@
   if (new URLSearchParams(location.search).has('example')) loadSample();
 
   window.__fmTitleblock = { load: (handle) => load({ mode: 'fs', handle }), view, state, rebuildNames, steps };
+
+  // A folder dropped on the home page card, or handed over by another tool.
+  FM.useDropped((handles) => {
+    const dir = handles.find((h) => h.kind === 'directory');
+    if (!dir) { toast('Drop the folder that holds the PDFs.'); return; }
+    // Straight to "Box the drawing number".
+    load({ mode: 'fs', handle: dir }).then(() => { if (state.files.length) steps.go(1); });
+  }, { write: true });
 })();

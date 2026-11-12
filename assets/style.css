@@ -1170,9 +1170,6 @@ td.ok-cell { color: var(--success); }
 .hx-btns { display: flex; gap: 8px; }
 .hx-btns .btn { flex: 1; justify-content: center; text-align: center; white-space: nowrap; }
 .hx-btns .hx-ex { flex: 0 0 auto; color: var(--accent); }
-.hx-more { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 24px; margin: 26px 0 0; color: var(--muted); font-size: 14px; }
-.hx-more b { color: var(--text); }
-.hx-more a { font-weight: 700; }
 @media (max-width: 1000px) { .hx-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) {
   .hx-wrap { padding: 28px 16px 36px; }
@@ -1316,3 +1313,46 @@ td.pages { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .hx-cards .hx-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
 .hx-cards .hx-card:hover .btn.primary { background: var(--accent-hover, var(--accent)); box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 35%, transparent); }
 .hx-cards .hx-card:has(.btn.primary:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Drop a folder / PDFs on a top card (home.js) */
+.hx-drop { position: absolute; inset: 6px; z-index: 3; pointer-events: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  border: 2.5px dashed var(--accent); border-radius: 12px; background: color-mix(in srgb, var(--surface) 88%, var(--accent)); color: var(--accent);
+  opacity: 0; transition: opacity .15s; text-align: center; padding: 16px; }
+.hx-drop b { font-size: 17px; }
+.hx-drop small { color: var(--muted); font-size: 13px; }
+.hx-drop-ico { font-size: 34px; }
+.hx-cards .hx-card.dragover .hx-drop, .hx-cards .hx-card.opening .hx-drop { opacity: 1; }
+.hx-cards .hx-card.dragover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.hx-droptip { text-align: center; color: var(--muted); font-size: 13.5px; margin: 14px 0 0; }
+.hx-droptip b { color: var(--text); }
+
+/* "+ 8 more tools" as buttons */
+.hx-more { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; margin: 22px auto 0; max-width: 980px; font-size: 14px; }
+.hx-more-label { color: var(--text); margin-inline-end: 4px; }
+.hx-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); font-weight: 600; font-size: 13.5px; text-decoration: none; transition: border-color .15s, background .15s, transform .15s; }
+.hx-chip::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cat-files); }
+.hx-chip.pdf::before { background: var(--cat-pdf); }
+.hx-chip.qa::before { background: var(--success); }
+.hx-chip:hover { text-decoration: none; border-color: var(--accent); background: var(--surface-2); transform: translateY(-1px); }
+.hx-all { font-weight: 700; margin-inline-start: 8px; }
+
+/* Bar on a tool page when a dropped folder needs one more click to open */
+.drop-ready { display: flex; align-items: center; gap: 12px; max-width: 900px; margin: 16px auto; padding: 12px 14px; border-radius: 12px;
+  border: 1.5px solid var(--accent); background: color-mix(in srgb, var(--surface) 90%, var(--accent)); box-shadow: var(--shadow); }
+.drop-ready .dr-ico { font-size: 26px; }
+.drop-ready .dr-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.drop-ready .dr-text b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.drop-ready .dr-text span { color: var(--muted); font-size: 13.5px; }
+
+/* "What's next?" card after a tool finished on the visitor's own files */
+.next-step { position: fixed; z-index: 45; bottom: 20px; inset-inline-start: 20px; width: min(340px, calc(100vw - 40px)); background: var(--surface);
+  border: 1px solid var(--border); border-top: 4px solid var(--accent); border-radius: 14px; box-shadow: var(--shadow-lg); padding: 14px 16px 16px;
+  transform: translateY(16px); opacity: 0; transition: transform .25s, opacity .25s; }
+.next-step.in { transform: none; opacity: 1; }
+.next-step .ns-kicker { display: block; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+[dir="rtl"] .next-step .ns-kicker { letter-spacing: 0; }
+.next-step p { margin: 6px 0 12px; font-size: 14px; line-height: 1.45; padding-inline-end: 18px; }
+.next-step .btn { width: 100%; justify-content: center; }
+.next-step .ns-x { position: absolute; top: 8px; inset-inline-end: 8px; border: 0; background: none; color: var(--muted); font-size: 15px; cursor: pointer; padding: 4px 6px; border-radius: 6px; }
+.next-step .ns-x:hover { background: var(--surface-2); color: var(--text); }

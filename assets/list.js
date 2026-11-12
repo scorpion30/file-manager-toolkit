@@ -247,7 +247,7 @@
       await FM.downloadWorkbook(wb, `${state.rootName}-files.xlsx`);
       toast('Excel file downloaded.', 'success');
       if (state.source.mode === 'sample') showSampleDone(list.length, byFolder.size);
-      else FM.log('own-export');
+      else { FM.log('own-export'); FM.suggestNext('list', [state.source.handle]); }
     } catch (e) {
       toast(e.message, 'error');
     } finally {
@@ -364,4 +364,10 @@
 
   // Lets automated tests feed in a directory handle.
   window.__fmLoadDirectoryHandle = (handle) => load({ mode: 'fs', handle });
+
+  // A folder dropped on the home page card, or handed over by another tool.
+  FM.useDropped((handles) => {
+    const dir = handles.find((h) => h.kind === 'directory');
+    if (dir) load({ mode: 'fs', handle: dir }); else toast('Drop a folder, not a file. Or use Select Folder.');
+  });
 })();

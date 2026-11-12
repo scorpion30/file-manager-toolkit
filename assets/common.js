@@ -456,7 +456,123 @@
     box.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
+  // ---------- handing a folder / files to another tool ----------
+  // The home cards (home.js) and the "What's next" card save the dropped folder's handle in
+  // IndexedDB and open the tool with ?dropped. The tool picks it up with FM.useDropped().
+  const DROP_DB = 'fm-drop';
+  function dropDb() {
+    return new Promise((resolve, reject) => {
+      const r = indexedDB.open(DROP_DB, 1);
+      r.onupgradeneeded = () => r.result.createObjectStore('h');
+      r.onsuccess = () => resolve(r.result);
+      r.onerror = () => reject(r.error);
+    });
+  }
+  async function saveHandoff(handles) {
+    const db = await dropDb();
+    await new Promise((resolve, reject) => {
+      const tx = db.transaction('h', 'readwrite');
+      tx.objectStore('h').put({ at: Date.now(), handles }, 'last');
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+    db.close();
+  }
+  async function takeHandoff() {
+    const params = new URLSearchParams(location.search);
+    if (!params.has('dropped')) return null;
+    params.delete('dropped');
+    const qs = params.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+    try {
+      const db = await dropDb();
+      const rec = await new Promise((resolve, reject) => {
+        const tx = db.transaction('h', 'readwrite');
+        const st = tx.objectStore('h');
+        const g = st.get('last');
+        g.onsuccess = () => { st.delete('last'); resolve(g.result); };
+        g.onerror = () => reject(g.error);
+      });
+      db.close();
+      if (!rec || Date.now() - rec.at > 10 * 60000 || !rec.handles || !rec.handles.length) return null;
+      return rec.handles;
+    } catch { return null; }
+  }
+
+  /**
+   * Runs onReady(handles) with the folder / files handed over from the home page or another tool.
+   * If the browser wants the visitor to confirm access again, shows a bar with one "Open" button.
+   */
+  async function useDropped(onReady, { write = false } = {}) {
+    const handles = await takeHandoff();
+    if (!handles) return;
+    const mode = write ? 'readwrite' : 'read';
+    const allGranted = async () => {
+      for (const h of handles) { if ((await h.queryPermission({ mode })) !== 'granted') return false; }
+      return true;
+    };
+    const go = () => { log('handoff-open'); onReady(handles); };
+    if (await allGranted()) { go(); return; }
+    const bar = document.createElement('div');
+    bar.className = 'drop-ready';
+    bar.setAttribute('role', 'status');
+    const name = handles.length === 1 ? handles[0].name : handles.map((h) => h.name).slice(0, 3).join(', ') + (handles.length > 3 ? '…' : '');
+    bar.innerHTML = `<span class="dr-ico" aria-hidden="true">${handles.some((h) => h.kind === 'directory') ? '📂' : '📄'}</span>
+      <div class="dr-text"><b translate="no">${esc(name)}</b><span>Your files are ready. Click Open so this page can read them.</span></div>
+      <button type="button" class="btn primary" data-open>Open</button>
+      <button type="button" class="btn ghost dr-x" data-close aria-label="Close">✕</button>`;
+    const main = document.querySelector('main') || document.body;
+    main.prepend(bar);
+    bar.querySelector('[data-close]').onclick = () => bar.remove();
+    bar.querySelector('[data-open]').onclick = async () => {
+      try {
+        for (const h of handles) {
+          if ((await h.requestPermission({ mode })) !== 'granted') { toast('Access was not given. Use the button to choose the folder.'); return; }
+        }
+        bar.remove();
+        go();
+      } catch (e) { toast(e.message, 'error'); }
+    };
+  }
+
+  // ---------- "What's next" card after a tool finished on the visitor's own files ----------
+  const NEXT = {
+    list: { href: 'rename.html', tool: 'Rename Files', text: 'Need to fix names in this folder? Add a prefix or fix the revision in every name at once.' },
+    rename: { href: 'list.html', tool: 'Files to Excel', text: 'Make an Excel list of the renamed files, with a count of each file type.' },
+    titleblock: { href: 'extract.html', tool: 'PDF to Excel', text: 'Make a drawing register in Excel from the same PDFs: number, title and revision.' },
+    extract: { href: 'preflight.html', tool: 'Pre-flight Check', text: 'Check a submission folder against this drawing list before you send it.' },
+  };
+  /** Shows the next-tool card once per page visit. handles: the same folder, opened straight in the next tool. */
+  function suggestNext(key, handles) {
+    const n = NEXT[key];
+    if (!n || document.querySelector('.next-step')) return;
+    try { if (sessionStorage.getItem('fm-next-x-' + key)) return; } catch { /* ignore */ }
+    const list = (handles || []).filter(Boolean);
+    const usable = list.length > 0 && canDirectAccess;
+    const card = document.createElement('aside');
+    card.className = 'next-step';
+    card.setAttribute('aria-label', 'What’s next?');
+    card.innerHTML = `<button type="button" class="ns-x" aria-label="Close">✕</button>
+      <span class="ns-kicker">What’s next?</span>
+      <p>${esc(n.text)}</p>
+      <a class="btn primary" href="${n.href}"><span>${usable ? 'Open this folder in' : 'Open'}</span> <span>${esc(n.tool)}</span> <span aria-hidden="true">→</span></a>`;
+    document.body.appendChild(card);
+    requestAnimationFrame(() => card.classList.add('in'));
+    log('next-shown-' + key);
+    card.querySelector('.ns-x').onclick = () => {
+      try { sessionStorage.setItem('fm-next-x-' + key, '1'); } catch { /* ignore */ }
+      card.remove();
+    };
+    card.querySelector('a').onclick = async (e) => {
+      log('next-click-' + key);
+      if (!usable) return;
+      e.preventDefault();
+      try { await saveHandoff(list); location.href = n.href + '?dropped'; } catch { location.href = n.href; }
+    };
+  }
+
   window.FM = {
+    useDropped, saveHandoff, suggestNext,
     wizard,
     openPdf, wireDropzone, choosePdfFiles, choosePdfFolder,
     $, esc, collator, canDirectAccess, splitName, formatBytes,

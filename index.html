@@ -27,11 +27,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=234a7452">
+  <link rel="stylesheet" href="assets/style.css?v=1bcb38bc">
   <script src="assets/theme.js?v=9bee45e6"></script>
-  <script src="assets/i18n.js?v=094ca91e"></script>
+  <script src="assets/i18n.js?v=200640b4"></script>
   <script src="assets/demo.js?v=24717fe8" defer></script>
-  <script src="assets/home.js?v=1a67ba71" defer></script>
+  <script src="assets/home.js?v=def1c8fb" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -59,7 +59,7 @@
 
       <div class="hx-cards">
         <!-- 1. Extract file names to Excel -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="folder">
           <div class="hx-top"><span class="hx-tag files">Folders</span><h2>Extract file names to Excel</h2>
             <p>Every file in a folder and its subfolders, a tab per folder, and a count of each file type.</p></div>
           <div class="hx-demo hx-anim" data-anim="list" aria-hidden="true" translate="no">
@@ -86,7 +86,7 @@
         </article>
 
         <!-- 2. Rename PDFs from the title block -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="folder">
           <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>Rename PDFs from the title block</h2>
             <p>Reads the drawing number and title from each sheet and names the file after them.</p></div>
           <div class="hx-demo hx-anim" data-anim="titleblock" aria-hidden="true" translate="no">
@@ -110,7 +110,7 @@
         </article>
 
         <!-- 3. Drawing list from the title blocks -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="pdf">
           <div class="hx-top"><span class="hx-tag pdf">PDF</span><h2>Drawing list from the title blocks</h2>
             <p>Mark the number, title and revision once. It reads them from every PDF into Excel.</p></div>
           <div class="hx-demo hx-anim" data-anim="extract" aria-hidden="true" translate="no">
@@ -133,7 +133,7 @@
         </article>
 
         <!-- 4. Rename hundreds of files -->
-        <article class="hx-card">
+        <article class="hx-card" data-drop="folder">
           <div class="hx-top"><span class="hx-tag files">Folders</span><h2>Rename hundreds of files</h2>
             <p>Add a prefix, replace a word or fix the revision in every name at once, with undo.</p></div>
           <div class="hx-demo hx-anim" data-anim="rename" aria-hidden="true" translate="no">
@@ -152,7 +152,18 @@
         </article>
       </div>
 
-      <p class="hx-more"><span><b>+ 8 more tools:</b> split &amp; rename PDF, merge PDF, MIDP check, comment sheet and more.</span> <a href="#tools">See all tools ↓</a></p>
+      <nav class="hx-more" aria-label="More tools">
+        <b class="hx-more-label">+ 8 more tools:</b>
+        <a class="hx-chip pdf" href="splitrename.html">Split &amp; Rename PDF</a>
+        <a class="hx-chip pdf" href="merge.html">Merge PDF</a>
+        <a class="hx-chip pdf" href="split.html">Split PDF</a>
+        <a class="hx-chip pdf" href="edit.html">Edit PDF Text</a>
+        <a class="hx-chip files" href="organize.html">Organize Files</a>
+        <a class="hx-chip qa" href="comments.html">PDF Comments to Excel</a>
+        <a class="hx-chip qa" href="preflight.html">Pre-flight Check</a>
+        <a class="hx-chip qa" href="midp.html">MIDP Check</a>
+        <a class="hx-all" href="#tools">See all tools ↓</a>
+      </nav>
     </div>
   </section>
 

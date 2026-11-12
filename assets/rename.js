@@ -585,6 +585,7 @@
     refresh();
 
     if (done.length) toast(`Renamed ${done.length} file(s).`, 'success');
+    if (done.length && state.mode === 'fs') FM.suggestNext('rename', [state.rootHandle]);
     if (failed.length) {
       const items = failed.slice(0, 30).map(([f, msg]) => `<li>${esc(fullName(f))}<br><small>${esc(msg)}</small></li>`).join('');
       await dialog({
@@ -918,4 +919,10 @@
 
   // Lets automated tests feed in a directory handle (e.g. from the origin-private file system).
   window.__fmLoadDirectoryHandle = loadDirectoryHandle;
+
+  // A folder dropped on the home page card, or handed over by another tool.
+  FM.useDropped((handles) => {
+    const dir = handles.find((h) => h.kind === 'directory');
+    if (dir) loadDirectoryHandle(dir); else toast('Drop a folder, not a file. Or use Select Folder.');
+  }, { write: true });
 })();

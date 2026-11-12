@@ -1166,5 +1166,16 @@
   AR['Low (small file)'] = 'منخفضة (ملف صغير)';
   AR['Medium'] = 'متوسطة';
   AR['High (sharp when zoomed)'] = 'عالية (واضحة مع التكبير)';
+  // ----- handing files between tools, "What's next?" card -----
+  AR['Your files are ready. Click Open so this page can read them.'] = 'ملفاتك جاهزة. دوس "افتح" عشان الصفحة دي تقدر تقراها.';
+  AR['Open'] = AR['Open'] || 'افتح';
+  AR['Access was not given. Use the button to choose the folder.'] = 'ماتدّتش صلاحية. استخدم الزرار واختار الفولدر.';
+  AR['Drop the folder that holds the PDFs.'] = 'ارمي الفولدر اللي فيه ملفات الـ PDF.';
+  AR['What’s next?'] = 'الخطوة الجاية؟';
+  AR['Open this folder in'] = 'افتح نفس الفولدر في';
+  AR['Need to fix names in this folder? Add a prefix or fix the revision in every name at once.'] = 'محتاج تظبط الأسامي في الفولدر ده؟ ضيف Prefix أو صلّح الـ Revision في كل الأسامي مرة واحدة.';
+  AR['Make an Excel list of the renamed files, with a count of each file type.'] = 'اعمل قائمة Excel بالملفات بعد التسمية، وعدد كل نوع ملف.';
+  AR['Make a drawing register in Excel from the same PDFs: number, title and revision.'] = 'اعمل Drawing register على Excel من نفس ملفات الـ PDF: الرقم والعنوان والـ Revision.';
+  AR['Check a submission folder against this drawing list before you send it.'] = 'راجع فولدر الـ Submission على القائمة دي قبل ما تبعته.';
   window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
 })();
