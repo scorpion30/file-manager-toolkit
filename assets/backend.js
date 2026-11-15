@@ -63,6 +63,13 @@
     if (/^(own-(rename|export|split)|download)$/.test(key)) setTimeout(rateCard, 1200);
   };
 
+  let srcTag = '';
+  try {
+    const qs = new URLSearchParams(location.search);
+    srcTag = (qs.get('src') || qs.get('utm_source') || '').replace(/[^\w.-]/g, '').slice(0, 40);
+    if (qs.has('example')) actions.push(page + ':example');
+  } catch { /* ignore */ }
+
   let logged = false;
   function logVisit() {
     if (logged || local || noLog) return;
@@ -70,6 +77,9 @@
     let ref = '';
     try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch { /* ignore */ }
     if (ref === location.hostname) ref = '(site)';
+    // Links in our posts carry ?src=<where> (e.g. li-profile, li-g11801386, fb-g1281463125625848),
+    // because LinkedIn/Facebook apps often send no referrer and the visit looked "direct".
+    if (srcTag) ref = 'src:' + srcTag;
     send({
       kind: 'usage', visitor, isNew, page, lang: ar ? 'ar' : 'en',
       seconds: Math.round((Date.now() - started) / 1000), actions: actions.join(' '),
