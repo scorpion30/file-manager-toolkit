@@ -216,10 +216,10 @@ const PAGES = [
   },
   {
     file: 'guides/export-bluebeam-markups-to-excel.html', cat: 'qa', guide: true,
-    en: { title: `Export Bluebeam Markups to Excel (Free, No Revu Needed) | ${BRAND}`, name: 'Bluebeam markups to Excel', pitch: 'A comment response sheet from Bluebeam-reviewed PDFs' },
+    en: { title: `Export Bluebeam or Any PDF Comments to Excel (Free) | ${BRAND}`, name: 'Bluebeam / PDF comments to Excel', pitch: 'A response sheet from any reviewed PDF' },
     ar: {
-      title: `تصدير تعليقات Bluebeam إلى Excel (جدول الرد على التعليقات) | ${BRAND}`, name: 'تعليقات Bluebeam إلى Excel', pitch: 'جدول رد على التعليقات من ملفات راجعوها على Bluebeam',
-      desc: 'صدّر تعليقات وماركب Bluebeam من ملفات PDF إلى جدول رد على التعليقات في Excel، فيه رقم اللوحة وصورة لكل تعليق. مجاني، من غير Revu، والملفات ما بتترفعش.',
+      title: `تصدير تعليقات Bluebeam أو أي ملف PDF إلى Excel | ${BRAND}`, name: 'تعليقات Bluebeam و PDF إلى Excel', pitch: 'جدول رد على التعليقات من أي ملف PDF',
+      desc: 'صدّر تعليقات أي ملف PDF، من Bluebeam أو Acrobat أو أي برنامج، إلى جدول رد على التعليقات في Excel، فيه رقم اللوحة وصورة لكل تعليق. مجاني، من غير Revu، والملفات ما بتترفعش.',
     },
   },
 ];

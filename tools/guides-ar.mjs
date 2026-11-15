@@ -486,12 +486,12 @@ export default {
   "Check a submission against the MIDP and ISO 19650 naming": "مراجعة التسليم على الـ MIDP وقاعدة تسمية ISO 19650",
 
   // ----- export-bluebeam-markups-to-excel -----
-  "How to export Bluebeam markups to Excel": "طريقة تصدير تعليقات Bluebeam إلى Excel",
-  "Turn the markups and comments in a Bluebeam-reviewed PDF into an Excel comment response sheet, with the sheet number, the comment, the author and a picture of each markup, ready for your replies.":
-    "حوّل الماركب والتعليقات في ملف PDF تمت مراجعته على Bluebeam إلى جدول رد على التعليقات في Excel، فيه رقم اللوحة والتعليق وكاتبه وصورة لكل تعليق، جاهز لردودك.",
-  "Free, no account, no Bluebeam licence needed.": "مجاني، بدون حساب، وبدون رخصة Bluebeam.",
-  "Bluebeam markups are saved inside the PDF as standard PDF annotations. Open PDF Comments to Excel, add the marked-up PDFs and click Download Excel: you get one row per markup with the sheet number, page, comment, author, date and a snapshot of the spot it points to.":
-    "تعليقات Bluebeam تُحفظ داخل ملف الـ PDF كتعليقات PDF عادية. افتح أداة تعليقات PDF إلى Excel، وأضف الملفات، واضغط تنزيل Excel: ستحصل على صف لكل تعليق فيه رقم اللوحة والصفحة والتعليق وكاتبه وتاريخه وصورة للمكان الذي يشير إليه.",
+  "How to export Bluebeam markups, or comments from any PDF, to Excel": "طريقة تصدير تعليقات Bluebeam، أو تعليقات أي ملف PDF، إلى Excel",
+  "Turn the markups and comments in any reviewed PDF, from Bluebeam, Acrobat, PDF-XChange, Foxit or any other reader, into an Excel comment response sheet, with the sheet number, the comment, the author and a picture of each markup, ready for your replies.":
+    "حوّل التعليقات في أي ملف PDF تمت مراجعته، على Bluebeam أو Acrobat أو PDF-XChange أو Foxit أو أي برنامج آخر، إلى جدول رد على التعليقات في Excel، فيه رقم اللوحة والتعليق وكاتبه وصورة لكل تعليق، جاهز لردودك.",
+  "Free, no account, works with comments from any PDF reader.": "مجاني، بدون حساب، ويعمل مع تعليقات أي برنامج PDF.",
+  "Bluebeam markups, like comments from Acrobat or any other reader, are saved inside the PDF as standard PDF annotations. Open PDF Comments to Excel, add the marked-up PDFs and click Download Excel: you get one row per markup with the sheet number, page, comment, author, date and a snapshot of the spot it points to.":
+    "تعليقات Bluebeam، مثل تعليقات Acrobat أو أي برنامج آخر، تُحفظ داخل ملف الـ PDF كتعليقات PDF عادية. افتح أداة تعليقات PDF إلى Excel، وأضف الملفات، واضغط تنزيل Excel: ستحصل على صف لكل تعليق فيه رقم اللوحة والصفحة والتعليق وكاتبه وتاريخه وصورة للمكان الذي يشير إليه.",
   "Two ways to do it": "طريقتان لعمل ذلك",
   "Inside Bluebeam Revu:": "من داخل Bluebeam Revu:",
   "open the Markups List, filter it if you need to, and export it to CSV or a summary. This works when you have Revu and only need the raw list.": "افتح الـ Markups List، وفلترها لو احتجت، وصدّرها إلى CSV أو Summary. هذا مناسب لو معك Revu وتحتاج القائمة الخام فقط.",

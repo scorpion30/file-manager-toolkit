@@ -1182,10 +1182,10 @@
   AR['Automatic: codes only in number / revision boxes, any text in the rest'] = 'تلقائي: أكواد بس في خانات الرقم والـ Revision، وأي نص في الباقي';
   AR['Drawing register template'] = 'نموذج قائمة اللوحات';
   AR['Transmittal template'] = 'نموذج Transmittal';
-  AR['Bluebeam markups to Excel'] = 'تعليقات Bluebeam إلى Excel';
+  AR['Bluebeam / PDF comments to Excel'] = 'تعليقات Bluebeam و PDF إلى Excel';
   AR['· Free'] = '· نموذج مجاني:';
   AR['drawing register template'] = 'قائمة اللوحات (Drawing Register)';
   AR['transmittal template'] = 'Transmittal';
-  AR['Export Bluebeam markups to Excel'] = 'تصدير تعليقات Bluebeam إلى Excel';
+  AR['Export Bluebeam or any PDF comments to Excel'] = 'تصدير تعليقات Bluebeam أو أي PDF إلى Excel';
   window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
 })();
