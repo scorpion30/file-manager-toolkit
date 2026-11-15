@@ -5,6 +5,8 @@
   // Same character set as the desktop app: digits, A-Z without O and Q, dash, underscore.
   const CODE_WHITELIST = '0123456789ABCDEFGHIJKLMNPRSTUVWXYZ-_';
   const MAX_OCR_PIXELS = 40e6;
+  // Box names that hold a code (drawing number, revision): OCR 'auto' reads them as codes only.
+  const CODE_LABEL = /\b(no|nr|num|number|code|rev|revision|sheet|dwg|ref)\b|#|رقم/i;
 
   /** Renders one area at the OCR DPI and returns a black/white canvas (Otsu threshold). */
   function renderArea(m, page, pageRect, dpi) {
@@ -122,6 +124,7 @@
         run.x0 = Math.min(run.x0, ch.x0); run.y0 = Math.min(run.y0, ch.y0);
         run.x1 = Math.max(run.x1, ch.x1); run.y1 = Math.max(run.y1, ch.y1);
         run.end = ch.along + ch.width / 2;
+        run.size = Math.max(run.size || 0, ch.size || 0);
       }
     }
     return runs.filter((r) => /[A-Z؀-ۿ]/i.test(r.text) && norm(r.text).length >= 2);
@@ -192,7 +195,8 @@
       let text = clean(PdfView.textInRect(chars, pageRect), opts);
       let usedOcr = false;
       if (!text && opts.ocr !== false) {
-        const w = await ocrWorker(opts.lang, opts.mode, opts.onOcrLoading);
+        const mode = opts.mode === 'auto' ? (CODE_LABEL.test((opts.labels || [])[i] || '') ? 'codes' : 'any') : opts.mode;
+        const w = await ocrWorker(opts.lang, mode, opts.onOcrLoading);
         const { data } = await w.recognize(renderArea(m, page, pageRect, opts.dpi));
         text = clean(data.text, opts);
         usedOcr = true;
@@ -206,5 +210,94 @@
     return { values, ocr, moved, labelOnly };
   }
 
-  window.PdfRead = { readAreas, readPage, learnAnchors, clean };
+  /**
+   * A column name for a box just drawn. First the label printed with it: to its left on the
+   * same line ("Date   6/1/2023", even inside the box) or just above it in smaller letters
+   * ("DRAWING TITLE:"). Failing that, a name from what the box holds (a sheet code → Drawing No,
+   * a date → Date, a long text → Title). Real PDF text only, no OCR.
+   * Returns {name, inside} or null; inside = the label is inside the box (strip it from values).
+   */
+  function guessLabel(page, r) {
+    const chars = PdfView.pageChars(page);
+    if (!chars.length) return null;
+    const [, , pw, ph] = page.getBounds();
+    const [x0, y0, x1, y1] = PdfView.toPageRect(page, r);
+    const w = x1 - x0, h = y1 - y0;
+    const isLabel = (t) => /[A-Za-z؀-ۿ]{2}/.test(t) && !/\d/.test(t) && t.trim().length <= 32 && t.trim().split(/\s+/).length <= 4;
+    // horizontal text only (a rotated "NOT FOR CONSTRUCTION" stamp is not a label), values kept even with no letters
+    const flat = chars.filter((c) => Math.abs(c.dir[1]) < 0.2 && c.dir[0] > 0);
+    const runsIn = (rect) => {
+      const out = [];
+      for (const line of PdfView.linesInRect(flat, rect)) {
+        let run = null;
+        for (const ch of line) {
+          if (run && (ch.along - ch.width / 2) - run.end > (ch.size || 10) * 2) run = null;
+          if (!run) { run = { text: '', x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity, end: 0, size: 0 }; out.push(run); }
+          run.text += ch.c;
+          run.x0 = Math.min(run.x0, ch.x0); run.y0 = Math.min(run.y0, ch.y0);
+          run.x1 = Math.max(run.x1, ch.x1); run.y1 = Math.max(run.y1, ch.y1);
+          run.end = ch.along + ch.width / 2;
+          run.size = Math.max(run.size, ch.size || 0);
+        }
+      }
+      return out.filter((l) => l.text.trim());
+    };
+    const inBox = runsIn([x0, y0, x1, y1]);
+    const valueSize = Math.max(0, ...inBox.map((l) => l.size || 0));
+    // runs of the rows around the box, wide enough that a label is never cut in half
+    const around = runsIn([Math.max(0, x0 - w), Math.max(0, y0 - Math.max(h, 30)), Math.min(pw, x1 + w * 0.2), Math.min(ph, y1)]);
+    const midY = (l) => (l.y0 + l.y1) / 2;
+    const sameLine = (a, b) => Math.abs(midY(a) - midY(b)) < Math.max(a.y1 - a.y0, b.y1 - b.y0) * 0.6;
+
+    let pick = null, inside = false;
+    // 1. label at the left of a value inside the box
+    const lineIn = inBox.filter((l) => inBox.some((o) => o !== l && sameLine(o, l) && o.x0 > l.x1));
+    const leftIn = lineIn.filter((l) => isLabel(l.text)).sort((a, b) => a.x0 - b.x0)[0];
+    if (leftIn) { pick = leftIn; inside = true; }
+    // 2. label just left of the box, on the line of its value
+    if (!pick && inBox.length) {
+      const v = inBox[0];
+      pick = around.filter((l) => l.x1 <= x0 + 2 && sameLine(l, v) && isLabel(l.text) && x0 - l.x1 < w).sort((a, b) => b.x1 - a.x1)[0] || null;
+    }
+    // 3. smaller label just above, that is not itself the label of a "Label  value" row
+    if (!pick) {
+      // it starts at the box's left edge or is centred over it
+      pick = around.filter((l) => l.y1 <= y0 + 2 && y0 - l.y1 < Math.max(h, valueSize * 2) &&
+        (Math.abs(l.x0 - x0) < w * 0.35 || Math.abs((l.x0 + l.x1) / 2 - (x0 + x1) / 2) < w * 0.25) &&
+        isLabel(l.text) && (!valueSize || l.size <= valueSize * 0.8) &&
+        // alone on its line, and nothing between it and the box
+        !around.some((o) => o !== l && sameLine(o, l)) &&
+        !around.some((o) => o !== l && o.y0 >= l.y1 - 1 && o.y1 <= y0 + 2 && o.x1 > x0 && o.x0 < x1)).sort((a, b) => b.y1 - a.y1)[0] || null;
+    }
+    if (pick) {
+      const name = pick.text.replace(/[:.\s]+$/, '').replace(/\s+/g, ' ').trim();
+      if (norm(name).length >= 2) return { name: titleCase(name), inside };
+    }
+    // 4. no label: name it from what it holds
+    const value = PdfView.textInRect(chars, [x0, y0, x1, y1]).replace(/\s+/g, ' ').trim();
+    if (!value) return null;
+    if (/\b\d{1,4}[/.-]\d{1,2}[/.-]\d{1,4}\b/.test(value)) return { name: 'Date', inside: false };
+    if (/^1\s*:\s*\d+|^\d+\/\d+"?\s*=/.test(value)) return { name: 'Scale', inside: false };
+    if (/^[A-Z]{0,2}\d{0,2}$/i.test(value.replace(/\s/g, '')) && value.length <= 3) return { name: 'Rev', inside: false };
+    if (/^[A-Z0-9][A-Z0-9._-]{1,24}$/i.test(value) && /\d/.test(value)) return { name: 'Drawing No', inside: false };
+    if (value.split(' ').length >= 2 && /[A-Za-z؀-ۿ]{3}/.test(value)) return { name: 'Title', inside: false };
+    return null;
+  }
+
+  /** "DRAWING TITLE" → "Drawing Title"; mixed case and Arabic stay as they are. */
+  function titleCase(t) {
+    if (t !== t.toUpperCase()) return t;
+    return t.toLowerCase().replace(/(^|[\s/(-])([a-z])/g, (m0, a, b) => a + b.toUpperCase());
+  }
+
+  /** Removes a label that was caught inside a box from the front of its value. */
+  function stripLabel(value, label) {
+    if (!value || !label) return value;
+    const words = label.split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    const re = new RegExp('^\\s*' + words.join('[\\s._-]*') + '\\s*[:.#-]?\\s*', 'i');
+    const out = value.replace(re, '');
+    return out || value;
+  }
+
+  window.PdfRead = { readAreas, readPage, learnAnchors, clean, guessLabel, stripLabel };
 })();

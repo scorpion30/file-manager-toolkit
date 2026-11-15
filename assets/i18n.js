@@ -1177,5 +1177,8 @@
   AR['Make an Excel list of the renamed files, with a count of each file type.'] = 'اعمل قائمة Excel بالملفات بعد التسمية، وعدد كل نوع ملف.';
   AR['Make a drawing register in Excel from the same PDFs: number, title and revision.'] = 'اعمل Drawing register على Excel من نفس ملفات الـ PDF: الرقم والعنوان والـ Revision.';
   AR['Check a submission folder against this drawing list before you send it.'] = 'راجع فولدر الـ Submission على القائمة دي قبل ما تبعته.';
+  AR['↘ Title block'] = '↘ الـ Title Block';
+  AR['Zoom to the bottom-right corner'] = 'تكبير على الركن اللي تحت يمين';
+  AR['Automatic: codes only in number / revision boxes, any text in the rest'] = 'تلقائي: أكواد بس في خانات الرقم والـ Revision، وأي نص في الباقي';
   window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
 })();

@@ -13,12 +13,54 @@
   };
   let nextId = 1;
 
-  const view = new PdfView($('viewer'), { onRectsChange: renderRects, dragDraws: true, newLabel: (i) => `Column ${i + 1}` });
+  const view = new PdfView($('viewer'), { onRectsChange: onRectsChange, dragDraws: true, newLabel: (i) => `Column ${i + 1}` });
+
+  // A new box takes its name from the label printed next to it ("Sheet Number", "Drawing Title").
+  function onRectsChange() {
+    for (const r of view.rects) {
+      if (r.named || !view.page) continue;
+      r.named = true;
+      if (!/^Column \d+$/.test(r.label)) continue;
+      try {
+        const g = PdfRead.guessLabel(view.page, r);
+        if (g) { r.label = g.name; r.strip = g.inside ? g.name : ''; }
+      } catch { /* keep the default name */ }
+    }
+    renderRects();
+  }
+
+  // Title blocks sit at the bottom right on nearly every sheet: open there, zoomed in.
+  let zoomedOnce = false;
+  function zoomToTitleBlock() {
+    if (!view.page) return;
+    view.setZoom(2.5);
+    view.scroll.scrollLeft = view.scroll.scrollWidth;
+    view.scroll.scrollTop = view.scroll.scrollHeight;
+  }
+  // First sheet seen with no boxes yet (and not the guided example): start at the title block.
+  function maybeZoom() {
+    if (zoomedOnce || view.rects.length || state.sample || !view.page || view.pageW <= view.pageH) return;
+    if (!view.scroll.clientWidth) return; // the viewer step is not showing yet
+    zoomedOnce = true;
+    requestAnimationFrame(zoomToTitleBlock);
+  }
+  const tbBtn = document.createElement('button');
+  tbBtn.className = 'btn ghost';
+  tbBtn.type = 'button';
+  tbBtn.textContent = '↘ Title block';
+  tbBtn.title = 'Zoom to the bottom-right corner';
+  tbBtn.onclick = () => { FM.log('zoom-tb'); zoomToTitleBlock(); };
+  $('viewer').querySelector('[data-z="fit"]').after(tbBtn);
 
   // ---------- files ----------
   function addFiles(files) {
     if (!state.sample) FM.log('own-files');
-    const added = files.map((file) => ({ id: nextId++, file, status: '', statusClass: '' }));
+    // The same file picked twice (or a folder and a file in it) is read once.
+    const key = (f) => `${f.name}|${f.size}|${f.lastModified}`;
+    const seen = new Set(state.files.map((x) => key(x.file)));
+    const fresh = files.filter((f) => !seen.has(key(f)) && seen.add(key(f)));
+    if (fresh.length < files.length) toast(`${files.length - fresh.length} file(s) already in the list were skipped.`);
+    const added = fresh.map((file) => ({ id: nextId++, file, status: '', statusClass: '' }));
     state.files.push(...added);
     renderFiles();
     if (state.viewingId === null && added.length) showFile(added[0].id);
@@ -50,6 +92,7 @@
       const idx = Math.min(pageIndex(), doc.countPages() - 1);
       view.setPage(doc.loadPage(idx));
       view._doc = doc; // keep the document alive while its page is shown
+      maybeZoom();
     } catch (e) {
       toast(`${f.file.name}: ${e.message}`, 'error');
     }
@@ -119,7 +162,7 @@
     $('progress').hidden = false;
     $('progress').max = state.files.length;
     $('progress').value = 0;
-    state.labels = rects.map((r, i) => r.label.trim() || `Rectangle ${i + 1}`);
+    state.labels = rects.map((r, i) => r.label.trim() || `Column ${i + 1}`);
     state.results = [];
     const opts = {
       pageIndex: pageIndex(),
@@ -128,13 +171,16 @@
       mode: $('ocrMode').value,
       upper: $('optUpper').checked,
       dedupe: $('optDedupe').checked,
+      labels: state.labels,
       onOcrLoading: (lang) => log(`Loading OCR (${lang})… first time can take a minute.`),
     };
     try {
       for (const [n, f] of state.files.entries()) {
         btn.textContent = `Processing… ${n + 1}/${state.files.length}`;
         try {
-          const { values, ocr } = await PdfRead.readAreas(f.file, rects, opts);
+          const { values: raw, ocr } = await PdfRead.readAreas(f.file, rects, opts);
+          // a box drawn around its printed label and the value: keep the value only
+          const values = raw.map((v, j) => PdfRead.stripLabel(v, rects[j].strip));
           state.results.push({ fileId: f.id, name: f.file.name, values, ocr });
           f.status = '✓';
           f.statusClass = 'ok';
@@ -151,6 +197,12 @@
         await new Promise((r) => setTimeout(r));
       }
       log('Processing complete!', 'good');
+      const empty = state.results.reduce((n, r) => n + r.values.filter((v) => !v).length, 0);
+      if (empty) {
+        log(`${empty} cell(s) came back empty (marked in the table). Check that the box covers the value on every sheet, ` +
+          'or for scanned drawings try OCR “Any text” and a higher DPI in Reading options, then Read again.', 'bad');
+        FM.log('empty:' + empty);
+      }
     } catch (e) {
       toast(e.message, 'error');
     } finally {
@@ -233,7 +285,7 @@
     if (!state.results.length) { toast('Process the PDFs first.'); return; }
     const start = parseCell($('startCell').value);
     if (!start) { toast('Start cell must look like A1 or C5.', 'error'); return; }
-    let sheetName = $('sheetName').value.trim() || 'Sheet1';
+    let sheetName = $('sheetName').value.trim() || 'Drawing register';
     const header = $('optHeader').checked;
     const withName = $('optFilename').checked;
     const compare = $('optCompare').checked;
@@ -262,11 +314,18 @@
       }
       if (!ws) ws = wb.addWorksheet(sheetName);
 
+      // A register reads left to right: the values first, the source file last.
       const cols = [];
-      if (withName) cols.push({ title: 'PDF Filename', get: (r) => r.name, width: 36 });
-      state.labels.forEach((l, j) => cols.push({ title: l, get: (r) => r.values[j], width: 24, data: j === 0 }));
-      if (withName) cols.push({ title: 'File Name (no extension)', get: (r) => FM.cleanText(baseName(r.name)), width: 30 });
-      if (compare) cols.push({ title: 'Match', get: (r) => (matches(r) ? 'Yes' : 'No'), width: 9 });
+      state.labels.forEach((l, j) => cols.push({ title: l, get: (r) => r.values[j], data: true, first: j === 0 }));
+      if (withName) cols.push({ title: 'PDF File', get: (r) => r.name });
+      if (compare) cols.push({ title: 'Matches file name', get: (r) => (matches(r) ? 'Yes' : 'No') });
+      // width from the longest text in the column (Excel units ≈ characters)
+      cols.forEach((c) => {
+        const longest = Math.max(c.title.length, ...state.results.map((r) => String(c.get(r) ?? '').length));
+        c.width = Math.min(70, Math.max(10, longest + 3));
+      });
+      const thin = { style: 'thin', color: { argb: 'FFBFC5CE' } };
+      const border = { top: thin, left: thin, bottom: thin, right: thin };
 
       let row = start.row;
       const headerEmpty = cols.every((c, k) => ws.getCell(row, start.col + k).value == null);
@@ -275,20 +334,42 @@
           const cell = ws.getCell(row, start.col + k);
           cell.value = c.title;
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF4F81BD' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2F5597' } };
+          cell.alignment = { vertical: 'middle' };
+          cell.border = border;
         });
+        ws.getRow(row).height = 20;
+        if (!insert) {
+          // header stays in view while scrolling, and every column can be sorted / filtered
+          ws.views = [{ state: 'frozen', xSplit: 0, ySplit: row, topLeftCell: ws.getCell(row + 1, 1).address }];
+          ws.autoFilter = {
+            from: { row, column: start.col },
+            to: { row: row + state.results.length, column: start.col + cols.length - 1 },
+          };
+        }
         row++;
       } else if (header) {
         row++;
       }
+      let emptyCells = 0;
       for (const r of state.results) {
         cols.forEach((c, k) => {
           const v = c.get(r);
           if (insert && (v === '' || v == null)) return; // insert mode leaves existing cells alone
-          ws.getCell(row, start.col + k).value = v;
+          const cell = ws.getCell(row, start.col + k);
+          cell.value = v;
+          if (insert) return;
+          cell.border = border;
+          cell.alignment = { vertical: 'top', wrapText: c.width >= 70 };
+          if (c.data && !v) {
+            // a value that was not found: easy to spot and fill in
+            cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFCE4D6' } };
+            emptyCells++;
+          }
+          if (c.first) cell.font = { bold: true };
         });
         if (compare && !matches(r)) {
-          const k = cols.findIndex((c) => c.data);
+          const k = cols.findIndex((c) => c.first);
           const cell = ws.getCell(row, start.col + k);
           cell.font = { color: { argb: 'FFFF0000' } };
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFFF00' } };
@@ -308,9 +389,10 @@
         await w.close();
         toast(`Saved into “${state.existing.file.name}”, sheet “${sheetName}”.`, 'success');
       } else {
-        const name = state.existing ? state.existing.file.name : (state.sample ? 'Drawing register.xlsx' : 'extracted_data.xlsx');
+        const today = new Date().toISOString().slice(0, 10);
+        const name = state.existing ? state.existing.file.name : `Drawing register ${today}.xlsx`;
         FM.downloadBlob(new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), name);
-        toast('Excel file downloaded.', 'success');
+        toast(emptyCells ? `Excel file downloaded. ${emptyCells} empty cell(s) are shaded orange so you can fill them in.` : 'Excel file downloaded.', 'success');
         if (state.sample) finishSample(); else { FM.log('own-export'); FM.suggestNext('extract'); }
       }
     } catch (e) {
@@ -387,7 +469,7 @@
     },
     onEnter: (i) => {
       if (i === 1 && state.viewingId === null && state.files.length) showFile(state.files[0].id);
-      if (i === 1) view.layout();
+      if (i === 1) { view.layout(); maybeZoom(); }
       if (i === 2) {
         // Column names may have changed without needing a new read.
         state.labels = view.rects.map((r, k) => r.label.trim() || `Column ${k + 1}`);

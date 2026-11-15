@@ -21,15 +21,15 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <script src="assets/analytics.js?v=1ebc6cd8" defer></script>
-  <script src="assets/backend.js?v=10aa654e" defer></script>
+  <script src="assets/backend.js?v=23202cba" defer></script>
   <!-- seo:end -->
   <link rel="icon" href="assets/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=1bcb38bc">
+  <link rel="stylesheet" href="assets/style.css?v=2cb1f51e">
   <script src="assets/theme.js?v=9bee45e6"></script>
-  <script src="assets/i18n.js?v=200640b4"></script>
+  <script src="assets/i18n.js?v=5e5c61f1"></script>
 </head>
 <body>
   <header class="site-header">
@@ -153,7 +153,7 @@
           <summary>Excel options</summary>
           <div class="stack">
             <div class="row tight" style="display:flex;gap:8px">
-              <div class="field"><label for="sheetName">Sheet name</label><input type="text" id="sheetName" value="Sheet1"></div>
+              <div class="field"><label for="sheetName">Sheet name</label><input type="text" id="sheetName" value="Drawing register"></div>
               <div class="field"><label for="startCell">Start cell</label><input type="text" id="startCell" value="A1"></div>
             </div>
             <label class="check"><input type="checkbox" id="optHeader" checked> Include header</label>
@@ -180,9 +180,9 @@
               </div>
             </div>
             <div class="field"><label for="ocrMode">OCR reads</label>
-              <select id="ocrMode"><option value="codes">Codes only (A–Z, 0–9, - _) like the old app</option><option value="any">Any text</option></select>
+              <select id="ocrMode"><option value="auto" selected>Automatic: codes only in number / revision boxes, any text in the rest</option><option value="codes">Codes only (A–Z, 0–9, - _) like the old app</option><option value="any">Any text</option></select>
             </div>
-            <label class="check"><input type="checkbox" id="optUpper" checked> Convert to UPPER CASE</label>
+            <label class="check"><input type="checkbox" id="optUpper"> Convert to UPPER CASE</label>
             <label class="check"><input type="checkbox" id="optDedupe" checked> Remove repeated words</label>
             <p class="hint">Changed something? Click “Read again”.</p>
           </div>
@@ -210,8 +210,8 @@
 
   <script src="assets/common.js?v=c7ed8bdd"></script>
   <script src="assets/pdfview.js?v=91e3dba0"></script>
-  <script src="assets/pdfread.js?v=c947a9f7"></script>
+  <script src="assets/pdfread.js?v=d44316a3"></script>
   <script src="assets/demo.js?v=24717fe8" defer></script>
-  <script src="assets/extract.js?v=97a9a622"></script>
+  <script src="assets/extract.js?v=21871ebb"></script>
 </body>
 </html>
