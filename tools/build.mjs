@@ -47,7 +47,7 @@ const PAGES = [
   },
   {
     file: 'list.html', cat: 'files',
-    en: { title: `List Folder Files to Excel, Free | ${BRAND}`, name: 'Files to Excel', pitch: 'Every file in a folder tree, in one Excel workbook' },
+    en: { title: `Export Folder File Names to Excel (with Subfolders), Free | ${BRAND}`, name: 'Files to Excel', pitch: 'Every file in a folder tree, in one Excel workbook' },
     ar: {
       title: `قائمة ملفات الفولدر إلى Excel مجاناً | ${BRAND}`, name: 'قائمة الملفات إلى Excel', pitch: 'كل ملفات الفولدر وفولدراته الفرعية في ملف Excel',
       desc: 'اعرض كل الملفات داخل فولدر وكل الفولدرات الفرعية، وصدّرها إلى Excel بورقة لكل فولدر أو لكل نوع ملف مع ملخص بالأعداد.',
@@ -95,7 +95,7 @@ const PAGES = [
   },
   {
     file: 'extract.html', cat: 'pdf',
-    en: { title: `PDF to Excel from Drawing Areas (OCR) | ${BRAND}`, name: 'PDF to Excel', pitch: 'Read the same boxes from every drawing into Excel' },
+    en: { title: `PDF Drawings to Excel: Drawing Register from Title Blocks | ${BRAND}`, name: 'PDF to Excel', pitch: 'Read the same boxes from every drawing into Excel' },
     ar: {
       title: `تحويل PDF إلى Excel من مناطق في اللوحة (OCR عربي) | ${BRAND}`, name: 'PDF إلى Excel', pitch: 'اقرأ نفس الخانات من كل اللوحات إلى Excel',
       desc: 'ارسم مربعات على اللوحة واقرأ النص داخلها من عشرات ملفات PDF إلى جدول Excel. يدعم نص الـ PDF والملفات الممسوحة ضوئياً بالعربي والإنجليزي.',
@@ -111,7 +111,7 @@ const PAGES = [
   },
   {
     file: 'comments.html', cat: 'qa',
-    en: { title: `PDF Comments to Excel: Comment Response Sheet | ${BRAND}`, name: 'PDF Comments to Excel', pitch: 'Client PDF comments to an Excel comment response sheet' },
+    en: { title: `PDF Comments to Excel (Bluebeam, Acrobat): Response Sheet | ${BRAND}`, name: 'PDF Comments to Excel', pitch: 'Client PDF comments to an Excel comment response sheet' },
     ar: {
       title: `تحويل تعليقات PDF إلى جدول تعليقات Excel | ${BRAND}`, name: 'تعليقات PDF إلى Excel', pitch: 'تعليقات العميل على الـ PDF في جدول Excel',
       desc: 'حوّل تعليقات المراجعة في ملفات PDF إلى جدول رد على التعليقات في Excel: رقم اللوحة، التعليق، الكاتب، التاريخ وصورة لمكان التعليق.',
@@ -160,7 +160,7 @@ const PAGES = [
   },
   {
     file: 'guides/list-folder-files-to-excel.html', cat: 'files', guide: true,
-    en: { title: `List All Files in a Folder and Subfolders to Excel (Free) | ${BRAND}`, name: 'Folder file list to Excel', pitch: 'Every file in a folder tree, in one workbook' },
+    en: { title: `List Files in a Folder to Excel: Export All File Names (Free) | ${BRAND}`, name: 'Folder file list to Excel', pitch: 'Every file in a folder tree, in one workbook' },
     ar: {
       title: `نسخ أسماء الملفات من مجلد إلى Excel مع المجلدات الفرعية | ${BRAND}`, name: 'أسماء الملفات إلى Excel', pitch: 'كل ملفات المجلد والمجلدات الفرعية في ملف واحد',
       desc: 'صدّر أسماء كل الملفات في مجلد (فولدر) وكل المجلدات الفرعية إلى Excel مع المجلد والنوع والحجم والتاريخ. بدون VBA أو Power Query وبدون رفع. شرح خطوة بخطوة.',
@@ -196,6 +196,30 @@ const PAGES = [
     ar: {
       title: `مراجعة التسليم على الـ MIDP وقاعدة تسمية ISO 19650 | ${BRAND}`, name: 'مراجعة MIDP و ISO 19650', pitch: 'الناقص والزيادة والمراجعة الخطأ والأسماء الخطأ',
       desc: 'راجع كل ملفات التسليم على الـ MIDP والـ TIDP: المستندات الناقصة، والملفات الزيادة، والمراجعات المختلفة، والأسماء المخالفة لقاعدة تسمية ISO 19650. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'guides/drawing-register-template-excel.html', cat: 'pdf', guide: true,
+    en: { title: `Free Drawing Register Template for Excel (Download) | ${BRAND}`, name: 'Drawing register template', pitch: 'Free Excel template, or filled from your PDFs' },
+    ar: {
+      title: `نموذج Drawing Register على Excel مجاناً (قائمة اللوحات) | ${BRAND}`, name: 'نموذج قائمة اللوحات', pitch: 'نموذج Excel مجاني، أو يتملى من ملفات الـ PDF',
+      desc: 'نزّل نموذج Drawing Register (قائمة اللوحات) على Excel مجاناً: رقم اللوحة والعنوان وتاريخ كل Revision وحالة ISO 19650. أو املاه تلقائياً من ملفات الـ PDF بتاعتك.',
+    },
+  },
+  {
+    file: 'guides/document-transmittal-template-excel.html', cat: 'files', guide: true,
+    en: { title: `Free Document Transmittal Template for Excel (Download) | ${BRAND}`, name: 'Transmittal template', pitch: 'Free Excel transmittal, list filled from your folder' },
+    ar: {
+      title: `نموذج Transmittal على Excel مجاناً (خطاب إرسال المستندات) | ${BRAND}`, name: 'نموذج Transmittal', pitch: 'نموذج Transmittal مجاني، والقائمة تتملى من الفولدر',
+      desc: 'نزّل نموذج Document Transmittal على Excel مجاناً، فيه ترقيم تلقائي والغرض من الإرسال والتوقيعات. واملا قائمة المستندات من الفولدر أو من الـ Title Block في ثواني.',
+    },
+  },
+  {
+    file: 'guides/export-bluebeam-markups-to-excel.html', cat: 'qa', guide: true,
+    en: { title: `Export Bluebeam Markups to Excel (Free, No Revu Needed) | ${BRAND}`, name: 'Bluebeam markups to Excel', pitch: 'A comment response sheet from Bluebeam-reviewed PDFs' },
+    ar: {
+      title: `تصدير تعليقات Bluebeam إلى Excel (جدول الرد على التعليقات) | ${BRAND}`, name: 'تعليقات Bluebeam إلى Excel', pitch: 'جدول رد على التعليقات من ملفات راجعوها على Bluebeam',
+      desc: 'صدّر تعليقات وماركب Bluebeam من ملفات PDF إلى جدول رد على التعليقات في Excel، فيه رقم اللوحة وصورة لكل تعليق. مجاني، من غير Revu، والملفات ما بتترفعش.',
     },
   },
 ];

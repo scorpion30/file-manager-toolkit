@@ -1180,5 +1180,12 @@
   AR['↘ Title block'] = '↘ الـ Title Block';
   AR['Zoom to the bottom-right corner'] = 'تكبير على الركن اللي تحت يمين';
   AR['Automatic: codes only in number / revision boxes, any text in the rest'] = 'تلقائي: أكواد بس في خانات الرقم والـ Revision، وأي نص في الباقي';
+  AR['Drawing register template'] = 'نموذج قائمة اللوحات';
+  AR['Transmittal template'] = 'نموذج Transmittal';
+  AR['Bluebeam markups to Excel'] = 'تعليقات Bluebeam إلى Excel';
+  AR['· Free'] = '· نموذج مجاني:';
+  AR['drawing register template'] = 'قائمة اللوحات (Drawing Register)';
+  AR['transmittal template'] = 'Transmittal';
+  AR['Export Bluebeam markups to Excel'] = 'تصدير تعليقات Bluebeam إلى Excel';
   window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
 })();
