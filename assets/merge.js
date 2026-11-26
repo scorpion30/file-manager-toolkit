@@ -1,124 +1,117 @@
-/* Merge PDF: combine PDFs in a chosen order (MuPDF). */
+/* Merge PDF (Merge Pro): files or whole folders in natural order, a bookmark per file or per folder,
+ * the bookmarks inside each file kept, an optional clickable table of contents, the file name in the
+ * footer, and blank pages for double-sided printing. */
 (() => {
   'use strict';
-  const { $, esc, toast, formatBytes } = FM;
+  const P = window.PdfOps;
+  const { $ } = FM;
+  const val = (name) => (document.querySelector(`input[name="${name}"]:checked`) || {}).value;
 
-  let items = [];   // {id, file, pages, error}
-  let nextId = 1;
-  let dragId = null;
+  /** Writes text in Helvetica, or as a picture of the text for other scripts (Arabic names). */
+  async function write(m, doc, page, text, { x, y, size, color = '#000000', align = 'left', bold = false }) {
+    if (P.isLatin(text)) return P.drawText(m, doc, page, { text, x, y, size, color: FMKit.hexRgb(color), align, bold });
+    const png = await FMKit.textPng(text, { size, color, bold });
+    const w = png.w / png.scale; const h = png.h / png.scale;
+    const left = align === 'left' ? x - size * 0.1 : align === 'right' ? x - w : x - w / 2;
+    P.drawImage(m, doc, page, doc.addImage(new m.Image(png.bytes)), { x: left, y: y + size * 0.36 - h / 2, w, h });
+    return w;
+  }
+  const fit = (s, n) => (s.length > n ? s.slice(0, n - 1) + '…' : s);
 
-  async function addFiles(files) {
-    const added = files.map((file) => ({ id: nextId++, file, pages: null, error: '' }));
-    items.push(...added);
-    render();
-    for (const it of added) {
-      try {
-        const doc = await FM.openPdf(it.file);
-        it.pages = doc.countPages();
-      } catch (e) {
-        it.error = e.message;
+  /** Outline items (from loadOutline) with their page numbers moved by `by`. */
+  function shifted(list, by) {
+    return (list || []).filter((o) => o.page != null && o.page >= 0).map((o) => ({ title: o.title || '', page: o.page + by, children: shifted(o.down, by) }));
+  }
+
+  async function run(items, ui) {
+    const m = await FM.mupdf();
+    const s = { bm: val('bm'), keep: $('keepBm').checked, toc: $('toc').checked, footer: $('footer').checked, blank: $('blank').checked };
+    const out = new m.PDFDocument();
+    const parts = []; // { title, folder, start, inner }
+    for (const [k, it] of items.entries()) {
+      ui.progress(k, items.length, it.file.name);
+      await ui.yield();
+      const src = await FM.openPdf(it.file);
+      const n = src.countPages();
+      const start = out.countPages();
+      const map = out.newGraftMap();
+      for (let p = 0; p < n; p++) {
+        map.graftPage(-1, src, p);
+        if (p % 25 === 24) await ui.yield();
       }
-      render();
+      let inner = [];
+      if (s.keep) { try { inner = shifted(src.loadOutline(), start); } catch { inner = []; } }
+      parts.push({ title: FMKit.baseOf(it.file.name), folder: it.folder, start, inner });
+      if (s.footer) {
+        for (let p = 0; p < n; p++) {
+          const page = out.loadPage(start + p);
+          const { W } = P.pageSpace(m, page);
+          await write(m, out, page, it.file.name, { x: W / 2, y: 12, size: 7, color: '#555555', align: 'center' });
+        }
+      }
+      if (s.blank && n % 2 === 1 && k < items.length - 1) {
+        const b = out.loadPage(out.countPages() - 1).getBounds();
+        out.insertPage(-1, out.addPage([0, 0, b[2] - b[0], b[3] - b[1]], 0, {}, ''));
+      }
     }
-  }
 
-  function render() {
-    $('workspace').hidden = items.length === 0;
-    const pages = items.reduce((s, it) => s + (it.pages || 0), 0);
-    $('countLabel').textContent = `${items.length} file(s) · ${pages} page(s)`;
-    $('fileList').innerHTML = items.map((it, i) => `<li draggable="true" data-id="${it.id}">
-      <span class="grip" title="Drag to reorder">⋮⋮</span>
-      <span class="idx">${i + 1}</span>
-      <span class="fname">${esc(it.file.name)}${it.error ? `<br><span class="err">${esc(it.error)}</span>` : ''}</span>
-      <span class="meta">${it.pages == null ? (it.error ? '' : '…') : it.pages + ' p'} · ${formatBytes(it.file.size)}</span>
-      <button class="icon-btn" data-act="up" title="Move up" ${i === 0 ? 'disabled' : ''}>↑</button>
-      <button class="icon-btn" data-act="down" title="Move down" ${i === items.length - 1 ? 'disabled' : ''}>↓</button>
-      <button class="icon-btn danger" data-act="remove" title="Remove">✕</button>
-    </li>`).join('');
-  }
+    // ----- table of contents at the front -----
+    let tocPages = 0;
+    if (s.toc) {
+      const PER = 34; const W = 595.28; const H = 841.89;
+      tocPages = Math.ceil(parts.length / PER);
+      for (let t = 0; t < tocPages; t++) out.insertPage(t, out.addPage([0, 0, W, H], 0, {}, ''));
+      for (let t = 0; t < tocPages; t++) {
+        const page = out.loadPage(t);
+        let y = H - 72;
+        if (t === 0) { await write(m, out, page, 'Contents', { x: 56, y, size: 22, bold: true }); y -= 40; }
+        for (const part of parts.slice(t * PER, (t + 1) * PER)) {
+          const target = part.start + tocPages;
+          const label = fit((part.folder ? part.folder + ' / ' : '') + part.title, 80);
+          await write(m, out, page, label, { x: 56, y, size: 10.5 });
+          P.drawText(m, out, page, { text: String(target + 1), x: W - 56, y, size: 10.5, align: 'right' });
+          P.appendContent(m, out, page, `0.82 0.84 0.88 RG 0.5 w [1 2] 0 d 56 ${P.num(y - 4)} m ${P.num(W - 56)} ${P.num(y - 4)} l S`);
+          page.createLink([50, H - y - 13, W - 50, H - y + 5], out.formatLinkURI({ chapter: 0, page: target, type: 'Fit', x: 0, y: 0, width: 0, height: 0, zoom: 0 }));
+          y -= 21;
+        }
+      }
+    }
 
-  $('fileList').addEventListener('click', (e) => {
-    const act = e.target.dataset.act;
-    if (!act) return;
-    const id = Number(e.target.closest('li').dataset.id);
-    const i = items.findIndex((it) => it.id === id);
-    if (act === 'remove') items.splice(i, 1);
-    if (act === 'up' && i > 0) [items[i - 1], items[i]] = [items[i], items[i - 1]];
-    if (act === 'down' && i < items.length - 1) [items[i + 1], items[i]] = [items[i], items[i + 1]];
-    render();
-  });
+    // ----- bookmarks -----
+    const at = (p) => p + tocPages;
+    const shift = (list) => list.map((o) => ({ ...o, page: at(o.page), children: shift(o.children) }));
+    let outline = [];
+    if (s.bm === 'none') outline = s.keep ? shift(parts.flatMap((p) => p.inner)) : [];
+    else if (s.bm === 'file') outline = parts.map((p) => ({ title: p.title, page: at(p.start), children: shift(p.inner) }));
+    else {
+      const root = { children: [], kids: new Map() };
+      for (const p of parts) {
+        let node = root;
+        for (const seg of (p.folder || '').split('/').filter(Boolean)) {
+          if (!node.kids.has(seg)) { const nn = { title: seg, page: at(p.start), children: [], kids: new Map() }; node.kids.set(seg, nn); node.children.push(nn); }
+          node = node.kids.get(seg);
+        }
+        node.children.push({ title: p.title, page: at(p.start), children: shift(p.inner) });
+      }
+      outline = root.children;
+    }
+    if (s.toc) outline.unshift({ title: 'Contents', page: 0, children: [] });
+    if (outline.length) P.writeOutline(m, out, outline);
 
-  // Drag to reorder
-  $('fileList').addEventListener('dragstart', (e) => {
-    const li = e.target.closest('li');
-    dragId = Number(li.dataset.id);
-    li.classList.add('dragging');
-    e.dataTransfer.effectAllowed = 'move';
-  });
-  $('fileList').addEventListener('dragover', (e) => {
-    if (dragId === null) return;
-    e.preventDefault();
-    e.stopPropagation();
-    document.querySelectorAll('.drop-before').forEach((x) => x.classList.remove('drop-before'));
-    const li = e.target.closest('li');
-    if (li) li.classList.add('drop-before');
-  });
-  $('fileList').addEventListener('drop', (e) => {
-    if (dragId === null) return;
-    e.preventDefault();
-    e.stopPropagation();
-    const li = e.target.closest('li');
-    const from = items.findIndex((it) => it.id === dragId);
-    const [moved] = items.splice(from, 1);
-    const to = li ? items.findIndex((it) => it.id === Number(li.dataset.id)) : items.length;
-    items.splice(to === -1 ? items.length : to, 0, moved);
-    dragId = null;
-    render();
-  });
-  $('fileList').addEventListener('dragend', () => { dragId = null; render(); });
-
-  $('mergeBtn').onclick = async () => {
-    const good = items.filter((it) => !it.error);
-    if (good.length < 2) { toast('Add at least 2 PDF files.'); return; }
-    let name = $('outName').value.trim() || 'combined.pdf';
+    ui.progress(0.98, 1, 'Saving…');
+    await ui.yield();
+    let name = $('outName').value.trim() || 'merged.pdf';
     if (!/\.pdf$/i.test(name)) name += '.pdf';
-    const btn = $('mergeBtn');
-    btn.disabled = true;
-    try {
-      const m = await FM.mupdf();
-      const out = new m.PDFDocument();
-      for (const [i, it] of good.entries()) {
-        btn.textContent = `Merging… ${i + 1}/${good.length}`;
-        await new Promise((r) => setTimeout(r)); // let the label repaint
-        const src = await FM.openPdf(it.file);
-        const n = src.countPages();
-        for (let p = 0; p < n; p++) out.graftPage(-1, src, p);
-      }
-      btn.textContent = 'Saving…';
-      const buf = out.saveToBuffer('garbage=4,compress').asUint8Array();
-      FM.downloadBlob(new Blob([buf], { type: 'application/pdf' }), name);
-      toast(`Merged ${good.length} files into ${name}.`, 'success');
-    } catch (e) {
-      toast('Could not merge: ' + e.message, 'error');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Merge PDF';
-    }
-  };
+    const bytes = out.saveToBuffer('garbage=4,compress').asUint8Array().slice();
+    ui.progress(1, 1);
+    return [{ name: FMKit.safeName(name), bytes, type: 'application/pdf', note: `${items.length} files · ${out.countPages()} pages` }];
+  }
 
-  const chooseFiles = async () => { const f = await FM.choosePdfFiles(); if (f.length) addFiles(f); };
-  $('addFilesBtn').onclick = chooseFiles;
-  $('moreFilesBtn').onclick = chooseFiles;
-  $('addFolderBtn').onclick = async () => {
-    try {
-      const f = await FM.choosePdfFolder();
-      if (f.length) addFiles(f); else toast('No PDF files in that folder.');
-    } catch (e) { toast(e.message, 'error'); }
-  };
-  $('sortBtn').onclick = () => { items.sort((a, b) => FM.collator.compare(a.file.name, b.file.name)); render(); };
-  $('clearBtn').onclick = () => { items = []; render(); };
-  FM.wireDropzone($('dropzone'), addFiles);
-  FM.wireDropzone($('workspace'), addFiles);
-
-  window.__fmAddFiles = addFiles;
+  FMKit.init({
+    key: 'merge', accept: 'pdf', runLabel: 'Merge PDF', makes: 'pdf', busyTitle: 'Merging…', view: 'rows',
+    run,
+    validate: (items) => (items.length < 2 ? 'Add at least two PDF files to merge.' : true),
+    estimate: async (items) => `${items.length} files → 1 PDF of ${items.reduce((t, it) => t + (it.pages || 0), 0)} pages`,
+    doneTitle: () => 'Your PDFs are merged',
+  });
 })();

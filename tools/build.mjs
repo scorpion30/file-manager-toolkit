@@ -31,10 +31,10 @@ const BRAND = 'File Manager Toolkit';
 const PAGES = [
   {
     file: 'index.html', cat: 'files',
-    en: { title: `${BRAND} – Free bulk file and PDF tools for engineers`, name: BRAND, pitch: 'Bulk file and PDF tools for engineers and architects' },
+    en: { title: `${BRAND} – Free PDF and file tools, no upload`, name: BRAND, pitch: 'Every PDF and file tool you need. Nothing uploaded.' },
     ar: {
-      title: `أدوات ملفات و PDF مجانية للمهندسين | ${BRAND}`, name: BRAND, pitch: 'أدوات ملفات و PDF بالجملة للمهندسين والمعماريين',
-      desc: 'أدوات مجانية أونلاين لإعادة تسمية الملفات بالجملة، وتحويل قائمة الملفات إلى Excel، وترتيب الملفات، ودمج وتقسيم وقراءة وتعديل ملفات PDF. كل شيء يعمل داخل متصفحك وملفاتك لا تُرفع لأي سيرفر.',
+      title: `أدوات PDF والملفات مجاناً بدون رفع | ${BRAND}`, name: BRAND, pitch: 'كل أدوات PDF والملفات اللي محتاجها. من غير ما ترفع حاجة.',
+      desc: 'كل أدوات PDF والملفات مجاناً: دمج وتقسيم وضغط PDF، تحويل PDF إلى JPG والعكس، ترقيم الصفحات، علامة مائية، حماية وفك حماية، OCR عربي، مقارنة ملفين، وإعادة تسمية الملفات بالجملة. كل شيء يعمل داخل متصفحك وملفاتك لا تُرفع.',
     },
   },
   {
@@ -79,18 +79,114 @@ const PAGES = [
   },
   {
     file: 'merge.html', cat: 'pdf',
-    en: { title: `Merge PDF Files Free, No Upload | ${BRAND}`, name: 'Merge PDF', pitch: 'Combine PDFs in the order you choose' },
+    en: { title: `Merge PDF Files and Folders, with Bookmarks, Free, No Upload | ${BRAND}`, name: 'Merge PDF', pitch: 'Files or whole folders, with bookmarks and a table of contents' },
     ar: {
-      title: `دمج ملفات PDF مجاناً بدون رفع | ${BRAND}`, name: 'دمج PDF', pitch: 'اجمع ملفات PDF في ملف واحد بالترتيب الذي تختاره',
-      desc: 'اجمع عدة ملفات PDF في ملف واحد بالترتيب الذي تختاره. مجاني وآمن: يعمل داخل متصفحك وملفاتك لا تُرفع.',
+      title: `دمج ملفات PDF وفولدرات كاملة مع إشارات مرجعية مجاناً | ${BRAND}`, name: 'دمج PDF', pitch: 'ملفات أو فولدرات كاملة، مع إشارات مرجعية وفهرس',
+      desc: 'اجمع ملفات PDF، أو فولدر كامل بفولدراته الفرعية، في ملف واحد. ترتيب طبيعي للأسماء، إشارة مرجعية لكل ملف، وفهرس قابل للضغط. مجاني وبدون رفع وبلا حدود.',
     },
   },
   {
     file: 'split.html', cat: 'pdf',
-    en: { title: `Split PDF by Page Ranges, Free | ${BRAND}`, name: 'Split PDF', pitch: 'Split by page ranges or into single pages' },
+    en: { title: `Split PDF by Pages, Every N Pages, Size or Bookmarks, Free | ${BRAND}`, name: 'Split PDF', pitch: 'By page ranges, every few pages, file size or bookmarks' },
     ar: {
-      title: `تقسيم ملف PDF حسب الصفحات مجاناً | ${BRAND}`, name: 'تقسيم PDF', pitch: 'قسّم الملف حسب الصفحات أو صفحة صفحة',
-      desc: 'قسّم ملف PDF حسب نطاقات صفحات مثل 1-3، 5، 8-10، أو كل صفحة في ملف. مجاني وآمن: يعمل داخل متصفحك.',
+      title: `تقسيم PDF حسب الصفحات أو الحجم أو الإشارات المرجعية مجاناً | ${BRAND}`, name: 'تقسيم PDF', pitch: 'حسب الصفحات، كل عدد صفحات، الحجم أو الإشارات المرجعية',
+      desc: 'قسّم ملفات PDF حسب نطاقات صفحات، أو كل عدد من الصفحات، أو حجم الملف (مثل أجزاء أقل من 10 ميجا)، أو الإشارات المرجعية، أو استخرج صفحات في ملف جديد. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'pages.html', cat: 'pdf',
+    en: { title: `Organize PDF Pages: Reorder, Rotate, Delete, Add, Free | ${BRAND}`, name: 'Organize Pages', pitch: 'Drag pages to reorder, rotate, delete or add blanks' },
+    ar: {
+      title: `ترتيب صفحات PDF: تحريك وتدوير وحذف وإضافة مجاناً | ${BRAND}`, name: 'ترتيب الصفحات', pitch: 'اسحب الصفحات لترتيبها، دوّرها، احذفها أو أضف صفحات فارغة',
+      desc: 'شوف كل صفحات ملفات PDF. اسحب الصفحات لترتيبها، دوّر أو احذف أو كرر صفحات، أضف صفحات فارغة، واجمع صفحات من أكثر من ملف. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'rotate.html', cat: 'pdf',
+    en: { title: `Rotate PDF Pages, Many Files at Once, Free | ${BRAND}`, name: 'Rotate PDF', pitch: 'All pages, only landscape or portrait, or the pages you choose' },
+    ar: {
+      title: `تدوير صفحات PDF وحفظها مجاناً | ${BRAND}`, name: 'تدوير PDF', pitch: 'كل الصفحات، أو العرضية أو الطولية فقط، أو صفحات تختارها',
+      desc: 'دوّر صفحات PDF واحفظها بالاتجاه الصحيح: كل الصفحات، أو العرضية أو الطولية فقط، أو صفحات تختارها، في ملفات كثيرة مرة واحدة. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'compress.html', cat: 'pdf',
+    en: { title: `Compress PDF to a Target Size (e.g. under 2 MB), Free | ${BRAND}`, name: 'Compress PDF', pitch: 'See the size of each level before you save' },
+    ar: {
+      title: `ضغط ملفات PDF مع معرفة الحجم الجديد قبل الحفظ مجاناً | ${BRAND}`, name: 'ضغط PDF', pitch: 'اعرف حجم كل مستوى قبل ما تحفظ',
+      desc: 'صغّر حجم ملفات PDF بثلاثة مستويات أو لحجم تحدده مثل 2 ميجا، وشوف الحجم الجديد قبل الحفظ. النصوص والرسومات تفضل حادة. ملفات كثيرة مرة واحدة، مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'ocr.html', cat: 'pdf',
+    en: { title: `OCR PDF: Make Scanned PDFs Searchable, English and Arabic, Free | ${BRAND}`, name: 'OCR PDF', pitch: 'Scanned PDFs you can search and copy, in Arabic and English' },
+    ar: {
+      title: `OCR لملفات PDF الممسوحة: عربي وإنجليزي مجاناً | ${BRAND}`, name: 'OCR لملفات PDF', pitch: 'ملفات ممسوحة تقدر تبحث فيها وتنسخ منها، عربي وإنجليزي',
+      desc: 'حوّل ملفات PDF الممسوحة ضوئياً إلى ملفات يمكن البحث فيها ونسخ النص منها، بالعربي والإنجليزي ولغات أخرى. ملفات وصفحات كثيرة، مجاني وبدون رفع وبلا حدود.',
+    },
+  },
+  {
+    file: 'pdf-to-image.html', cat: 'pdf',
+    en: { title: `PDF to JPG, PNG, WebP or TIFF at any DPI, Free | ${BRAND}`, name: 'PDF to JPG', pitch: 'JPG, PNG, WebP or TIFF, at the resolution you choose' },
+    ar: {
+      title: `تحويل PDF إلى JPG أو PNG أو TIFF بأي دقة مجاناً | ${BRAND}`, name: 'PDF إلى صور', pitch: 'JPG أو PNG أو WebP أو TIFF بالدقة اللي تختارها',
+      desc: 'حوّل صفحات PDF إلى صور JPG أو PNG أو WebP أو TIFF بالدقة التي تختارها من 72 إلى 600 DPI، ملون أو رمادي، أو استخرج الصور الموجودة داخل الملف. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'image-to-pdf.html', cat: 'pdf',
+    en: { title: `JPG to PDF: Images and Photos to PDF, Free, No Upload | ${BRAND}`, name: 'Images to PDF', pitch: 'Photos and scans into one PDF, or one per folder' },
+    ar: {
+      title: `تحويل الصور JPG إلى PDF مجاناً بدون رفع | ${BRAND}`, name: 'صور إلى PDF', pitch: 'الصور والممسوحات في ملف PDF واحد، أو ملف لكل فولدر',
+      desc: 'حوّل صور JPG و PNG وغيرها إلى PDF: مقاس الصفحة، الاتجاه، الهوامش، ملف واحد أو ملف لكل صورة أو لكل فولدر. صور الموبايل تتعدل اتجاهها تلقائياً. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'page-numbers.html', cat: 'pdf',
+    en: { title: `Add Page Numbers or Bates Numbers to PDF, Free | ${BRAND}`, name: 'Add Page Numbers', pitch: 'Page numbers or Bates numbers, on one PDF or hundreds' },
+    ar: {
+      title: `إضافة أرقام الصفحات أو ترقيم Bates لملفات PDF مجاناً | ${BRAND}`, name: 'ترقيم الصفحات', pitch: 'أرقام صفحات أو ترقيم Bates، لملف واحد أو مئات الملفات',
+      desc: 'أضف أرقام الصفحات لملفات PDF: المكان، الشكل (صفحة 1 من 10)، رقم البداية، الصفحات المستثناة، أو ترقيم Bates متصل عبر ملفات كثيرة. مجاني وبدون رفع وبلا حدود.',
+    },
+  },
+  {
+    file: 'watermark.html', cat: 'pdf',
+    en: { title: `Add Watermark to PDF: Text in Any Language or Logo, Free | ${BRAND}`, name: 'Add Watermark', pitch: 'A word or your logo on every page, in any language' },
+    ar: {
+      title: `إضافة علامة مائية لملفات PDF: نص بأي لغة أو لوجو مجاناً | ${BRAND}`, name: 'علامة مائية', pitch: 'كلمة أو اللوجو بتاعك على كل صفحة، بأي لغة',
+      desc: 'اطبع علامة مائية نصية أو صورة على صفحات PDF: سري، مسودة، اللوجو بتاعك، بأي لغة منها العربي. المكان والحجم والزاوية والشفافية. ملفات كثيرة مرة واحدة، بدون رفع.',
+    },
+  },
+  {
+    file: 'crop.html', cat: 'pdf',
+    en: { title: `Crop PDF Pages or Trim White Margins, Free | ${BRAND}`, name: 'Crop PDF', pitch: 'Draw the area to keep, or trim the white margins' },
+    ar: {
+      title: `قص صفحات PDF أو إزالة الهوامش البيضاء مجاناً | ${BRAND}`, name: 'قص PDF', pitch: 'ارسم الجزء اللي عايز تحتفظ بيه، أو شيل الهوامش البيضاء',
+      desc: 'قص صفحات PDF برسم المنطقة التي تريد الاحتفاظ بها، أو أزل الهوامش البيضاء من كل صفحة تلقائياً. ملفات كثيرة مرة واحدة، مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'compare.html', cat: 'qa',
+    en: { title: `Compare Two PDFs: See What Changed, Free, No Upload | ${BRAND}`, name: 'Compare PDF', pitch: 'What was removed and what was added, page by page' },
+    ar: {
+      title: `مقارنة ملفين PDF ومعرفة التغييرات مجاناً | ${BRAND}`, name: 'مقارنة PDF', pitch: 'اللي اتشال واللي اتضاف، صفحة صفحة',
+      desc: 'قارن نسختين من ملف PDF أو لوحة: الأجزاء المحذوفة بالأحمر والمضافة بالأخضر، فوق بعض أو جنب بعض، مع النص اللي اتغير وتقرير PDF. مجاني وبدون رفع.',
+    },
+  },
+  {
+    file: 'protect.html', cat: 'files',
+    en: { title: `Protect PDF with a Password (AES-256), Free, No Upload | ${BRAND}`, name: 'Protect PDF', pitch: 'A password and permissions, on many PDFs at once' },
+    ar: {
+      title: `حماية ملفات PDF بكلمة سر (AES-256) مجاناً بدون رفع | ${BRAND}`, name: 'حماية PDF', pitch: 'كلمة سر وصلاحيات، لملفات كثيرة مرة واحدة',
+      desc: 'أضف كلمة سر لملفات PDF بتشفير AES-256، واختار هل يقدر الناس يطبعوا أو ينسخوا أو يعدلوا. ملفات كثيرة مرة واحدة. ملفاتك وكلمات السر لا تخرج من جهازك.',
+    },
+  },
+  {
+    file: 'unlock.html', cat: 'files',
+    en: { title: `Unlock PDF: Remove Password and Restrictions, Free | ${BRAND}`, name: 'Unlock PDF', pitch: 'Remove the password and the print, copy and edit locks' },
+    ar: {
+      title: `فك حماية PDF: إزالة كلمة السر والقيود مجاناً | ${BRAND}`, name: 'فك حماية PDF', pitch: 'شيل كلمة السر وقيود الطباعة والنسخ والتعديل',
+      desc: 'أزل كلمة السر وقيود الطباعة والنسخ والتعديل من ملفات PDF المسموح لك بفتحها. ملفات كثيرة مرة واحدة، مجاني وبدون رفع.',
     },
   },
   {

@@ -3,7 +3,7 @@
  * Favourites are kept in this browser only (localStorage). */
 (() => {
   'use strict';
-  const groups = { files: 'files', pdf: 'pdf', review: 'review' };
+  const groups = { organize: 1, optimize: 1, convert: 1, edit: 1, security: 1, files: 1, eng: 1, pdf: 'organize', review: 'eng' };
   const KEY = 'fm-favs';
   const ar = document.documentElement.lang === 'ar';
   let filter = 'all';
@@ -20,18 +20,15 @@
       b.classList.toggle('on', on);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
-    document.querySelectorAll('.tool-group').forEach((g) => {
-      let groupShown = 0;
-      g.querySelectorAll('.tool-wrap').forEach((w) => {
-        const card = w.querySelector('.tool-card');
-        const href = card.getAttribute('href');
-        const okFilter = filter === 'all' || filter === g.id || (filter === 'fav' && favs.includes(href));
-        const okSearch = !q || norm(card.innerText).includes(q);
-        const show = okFilter && okSearch && !(filter === 'fav' && card.classList.contains('request'));
-        w.hidden = !show;
-        if (show) { groupShown++; shown++; }
-      });
-      g.hidden = groupShown === 0;
+    document.querySelectorAll('.all-tools .tool-wrap').forEach((w) => {
+      const card = w.querySelector('.tool-card');
+      const href = card.getAttribute('href');
+      const cat = card.dataset.cat;
+      const okFilter = filter === 'all' || filter === cat || (filter === 'fav' && favs.includes(href));
+      const okSearch = !q || norm(card.innerText).includes(q);
+      const show = okFilter && okSearch && !(filter !== 'all' && cat === 'request');
+      w.hidden = !show;
+      if (show) shown++;
     });
     const none = document.getElementById('noResults');
     if (none) none.hidden = shown > 0;
@@ -70,7 +67,7 @@
   function fromHash() {
     const id = location.hash.slice(1);
     if (groups[id]) {
-      filter = id;
+      filter = typeof groups[id] === 'string' ? groups[id] : id;
       apply();
       document.querySelector('.tools-head')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -107,7 +104,7 @@
   const log = (k) => { try { window.FMlog && window.FMlog(k); } catch { /* ignore */ } };
 
   function wireCardDrop() {
-    const cards = [...document.querySelectorAll('.hx-cards .hx-card[data-drop]')];
+    const cards = [...document.querySelectorAll('.hx-cards .hx-card[data-drop], .all-tools .tool-card[data-drop]')];
     if (!cards.length) return;
     const supported = typeof DataTransferItem !== 'undefined' && 'getAsFileSystemHandle' in DataTransferItem.prototype;
     const hasFiles = (e) => [...((e.dataTransfer && e.dataTransfer.types) || [])].includes('Files');
@@ -120,16 +117,17 @@
       tip.className = 'hx-droptip';
       tip.innerHTML = T('<b>Tip:</b> drag a folder from your computer onto a card to open it straight in that tool.',
         '<b>نصيحة:</b> اسحب فولدر من جهازك وارميه على أي كارت، يفتح على طول في الأداة دي.');
-      document.querySelector('.hx-cards').after(tip);
+      document.querySelector('.all-tools').after(tip);
     }
 
     cards.forEach((card) => {
-      const pdf = card.dataset.drop === 'pdf';
-      const href = card.querySelector('.btn.primary').getAttribute('href');
+      const kind = card.dataset.drop;
+      const pdf = kind === 'pdf' || kind === 'image';
+      const href = card.matches('a') ? card.getAttribute('href') : card.querySelector('.btn.primary').getAttribute('href');
       const veil = document.createElement('div');
       veil.className = 'hx-drop';
       veil.setAttribute('aria-hidden', 'true');
-      veil.innerHTML = `<span class="hx-drop-ico">📂</span><b>${pdf ? T('Drop PDFs or a folder', 'ارمي ملفات PDF أو فولدر') : T('Drop the folder here', 'ارمي الفولدر هنا')}</b>
+      veil.innerHTML = `<span class="hx-drop-ico">📂</span><b>${kind === 'image' ? T('Drop images or a folder', 'ارمي صور أو فولدر') : pdf ? T('Drop PDFs or a folder', 'ارمي ملفات PDF أو فولدر') : T('Drop the folder here', 'ارمي الفولدر هنا')}</b>
         <small>${T('It opens in this tool', 'هيفتح في الأداة دي')}</small>`;
       card.appendChild(veil);
       let depth = 0;
@@ -150,10 +148,11 @@
         // getAsFileSystemHandle() must be called for every item before the first await.
         const pending = [...e.dataTransfer.items].filter((i) => i.kind === 'file').map((i) => i.getAsFileSystemHandle());
         let handles = (await Promise.all(pending.map((p) => p.catch(() => null)))).filter(Boolean);
-        handles = pdf ? handles.filter((h) => h.kind === 'directory' || /\.pdf$/i.test(h.name))
+        const okFile = kind === 'image' ? /\.(jpe?g|png|webp|gif|bmp|avif|tiff?)$/i : /\.pdf$/i;
+        handles = pdf ? handles.filter((h) => h.kind === 'directory' || okFile.test(h.name))
           : handles.filter((h) => h.kind === 'directory').slice(0, 1);
         if (!handles.length) {
-          homeToast(pdf ? T('Drop PDF files or a folder.', 'ارمي ملفات PDF أو فولدر.') : T('Drop a folder, not a file.', 'ارمي فولدر، مش ملف.'));
+          homeToast(kind === 'image' ? T('Drop images or a folder.', 'ارمي صور أو فولدر.') : pdf ? T('Drop PDF files or a folder.', 'ارمي ملفات PDF أو فولدر.') : T('Drop a folder, not a file.', 'ارمي فولدر، مش ملف.'));
           return;
         }
         card.classList.add('opening');

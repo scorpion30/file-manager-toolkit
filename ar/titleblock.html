@@ -29,18 +29,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">
-  <link rel="stylesheet" href="../assets/style.css?v=2cb1f51e">
-  <script src="../assets/theme.js?v=9bee45e6"></script>
-  <script src="../assets/i18n.js?v=6a153a13"></script>
+  <link rel="stylesheet" href="../assets/style.css?v=d9e96c29">
+  <script src="../assets/theme.js?v=1cd1a16e"></script>
+  <script src="../assets/i18n.js?v=0194eb65"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="inner">
       <a class="brand" href="./"><img src="../assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
       <nav>
-        <a href="./#files" class="hide-sm">أدوات الملفات</a>
-        <a href="./#pdf" class="hide-sm">أدوات PDF</a>
-        <a href="./#review" class="hide-sm">المراجعة</a>
+        <a href="merge.html" class="hide-md">دمج PDF</a>
+        <a href="split.html" class="hide-md">تقسيم PDF</a>
+        <a href="compress.html" class="hide-md">ضغط PDF</a>
+        <a href="pdf-to-image.html" class="hide-md">PDF إلى JPG</a>
+        <div class="mega-wrap">
+          <button class="mega-btn" type="button" aria-expanded="false" aria-controls="megaMenu">كل الأدوات <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="mega" id="megaMenu" hidden>
+          <div class="mega-col"><h4>ترتيب PDF</h4><a href="merge.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/></svg></span>دمج PDF</a><a href="split.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M2 12h5M17 12h5"/></svg></span>تقسيم PDF</a><a href="pages.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span>ترتيب الصفحات</a><a href="rotate.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></span>تدوير PDF</a></div>
+          <div class="mega-col"><h4>تحسين PDF</h4><a href="compress.html"><span class="mi cat-optimize"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M12 10v3M12 17v1M10 11.5l2 2 2-2M10 16.5l2-2 2 2"/></svg></span>ضغط PDF</a><a href="ocr.html"><span class="mi cat-optimize"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span>OCR لملفات PDF</a></div>
+          <div class="mega-col"><h4>تحويل</h4><a href="pdf-to-image.html"><span class="mi cat-convert"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span>PDF إلى JPG</a><a href="image-to-pdf.html"><span class="mi cat-convert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 3-4 2 2 1.5-1.5L17 17Z"/></svg></span>JPG إلى PDF</a></div>
+          <div class="mega-col"><h4>تعديل ومراجعة</h4><a href="page-numbers.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M10 15.5l1.5-1.5v5M10 19h3"/></svg></span>ترقيم الصفحات</a><a href="watermark.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 8-6"/></svg></span>علامة مائية</a><a href="crop.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg></span>قص PDF</a><a href="compare.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/><path d="M6 9h2M16 9h2M6 13h2M15 13h4"/></svg></span>مقارنة PDF</a><a href="edit.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>تعديل نص PDF</a></div>
+          <div class="mega-col"><h4>حماية PDF</h4><a href="protect.html"><span class="mi cat-security"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>حماية PDF</a><a href="unlock.html"><span class="mi cat-security"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span>فك حماية PDF</a></div>
+          <div class="mega-col"><h4>أدوات الملفات</h4><a href="rename.html"><span class="mi cat-files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>إعادة تسمية الملفات</a><a href="list.html"><span class="mi cat-files"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>قائمة الملفات إلى Excel</a><a href="organize.html"><span class="mi cat-files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>تنظيم الملفات</a></div>
+          <div class="mega-col"><h4>للمهندسين</h4><a href="titleblock.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>التسمية من الـ Title Block</a><a href="splitrename.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>تقسيم وتسمية PDF</a><a href="extract.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/></svg></span>PDF إلى Excel</a><a href="comments.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>تعليقات PDF إلى Excel</a><a href="preflight.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>فحص قبل التسليم</a><a href="midp.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>مراجعة الـ MIDP</a></div>
+          </div>
+        </div>
         <button class="theme-btn" type="button" data-theme-toggle aria-label="تبديل الوضع الفاتح أو الداكن"></button>
         <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ تبرّع</a>
       </nav>
@@ -116,7 +129,7 @@
         <div class="side">
           <div class="sample-guide" id="sampleGuide" hidden>
             <span class="sample-step">1</span>
-            <div><b>دورك:</b> اسحب مربع حوالين رقم اللوحة <b>A-101</b> تحت على اليمين في الرسمة. وبعدين دوس <b>Next</b>.
+            <div><b>دورك:</b> اسحب مربع حوالين رقم اللوحة <b>A-101</b> تحت على اليمين في الرسمة. وبعدين دوس <b>التالي</b>.
               <button class="btn sm" id="sampleMarkBtn" type="button">حدّده إنت</button></div>
           </div>
           <div class="howto"><span class="big">✍</span><span><b>اسحب مربعاً حول رقم اللوحة</b> على اللوحة. يمكنك إضافة مربعات أخرى (العنوان، المراجعة) لاستخدامها في الاسم أيضاً.</span></div>
@@ -196,12 +209,13 @@
     <div class="inner">
       <div class="f-brand">
         <a class="brand" href="./"><img src="../assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
-        <p>أدوات مجانية للملفات و PDF تعمل داخل متصفحك.</p>
+        <p>أدوات PDF وملفات مجانية بتشتغل في متصفحك. من غير رفع ولا تسجيل ولا حدود.</p>
       </div>
-      <div class="f-col"><h4>أدوات الملفات</h4><a href="rename.html">إعادة تسمية الملفات</a><a href="list.html">قائمة الملفات إلى Excel</a><a href="organize.html">تنظيم الملفات</a></div>
-      <div class="f-col"><h4>أدوات PDF</h4><a href="titleblock.html">التسمية من الـ Title Block</a><a href="merge.html">دمج PDF</a><a href="split.html">تقسيم PDF</a><a href="splitrename.html">تقسيم وتسمية PDF</a><a href="extract.html">PDF إلى Excel</a><a href="edit.html">تعديل نص PDF</a></div>
-      <div class="f-col"><h4>المراجعة</h4><a href="comments.html">تعليقات PDF إلى Excel</a><a href="preflight.html">فحص قبل التسليم</a><a href="midp.html">مراجعة الـ MIDP</a></div>
-      <div class="f-col"><h4>شروحات</h4><a href="guides/rename-pdf-drawings-from-title-block.html">تسمية PDF من جدول العنوان</a><a href="guides/pdf-drawings-to-excel-drawing-register.html">قائمة لوحات من PDF</a><a href="guides/merge-pdf-without-uploading.html">دمج PDF بدون رفع</a><a href="guides/list-folder-files-to-excel.html">أسماء الملفات إلى Excel</a><a href="guides/export-pdf-comments-to-excel.html">تعليقات PDF إلى Excel</a><a href="guides/split-pdf-drawing-set-into-sheets.html">تقسيم ملف لوحات PDF</a><a href="guides/edit-title-block-text-in-pdf.html">تعديل نص جدول العنوان</a><a href="guides/check-submission-against-midp-iso-19650.html">مراجعة MIDP / ISO 19650</a><a href="guides/drawing-register-template-excel.html">نموذج قائمة اللوحات</a><a href="guides/document-transmittal-template-excel.html">نموذج Transmittal</a><a href="guides/export-bluebeam-markups-to-excel.html">تعليقات Bluebeam و PDF إلى Excel</a><h4 style="margin-top:14px">عن الموقع</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">تبرّع</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">الكود المصدري</a></div>
+      <div class="f-col"><h4>أدوات PDF</h4><a href="merge.html">دمج PDF</a><a href="split.html">تقسيم PDF</a><a href="pages.html">ترتيب الصفحات</a><a href="rotate.html">تدوير PDF</a><a href="compress.html">ضغط PDF</a><a href="ocr.html">OCR لملفات PDF</a></div>
+      <div class="f-col"><h4>تحويل وتعديل</h4><a href="pdf-to-image.html">PDF إلى JPG</a><a href="image-to-pdf.html">JPG إلى PDF</a><a href="page-numbers.html">ترقيم الصفحات</a><a href="watermark.html">علامة مائية</a><a href="crop.html">قص PDF</a><a href="compare.html">مقارنة PDF</a><a href="edit.html">تعديل نص PDF</a></div>
+      <div class="f-col"><h4>الحماية والملفات</h4><a href="protect.html">حماية PDF</a><a href="unlock.html">فك حماية PDF</a><a href="rename.html">إعادة تسمية الملفات</a><a href="list.html">قائمة الملفات إلى Excel</a><a href="organize.html">تنظيم الملفات</a></div>
+      <div class="f-col"><h4>للمهندسين</h4><a href="titleblock.html">التسمية من الـ Title Block</a><a href="splitrename.html">تقسيم وتسمية PDF</a><a href="extract.html">PDF إلى Excel</a><a href="comments.html">تعليقات PDF إلى Excel</a><a href="preflight.html">فحص قبل التسليم</a><a href="midp.html">مراجعة الـ MIDP</a></div>
+      <div class="f-col"><h4>شروحات</h4><a href="guides/rename-pdf-drawings-from-title-block.html">شروحات خطوة بخطوة ←</a><h4 style="margin-top:14px">عن الموقع</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">تبرّع</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">الكود المصدري</a></div>
     </div>
     <div class="f-bottom">© File Manager Toolkit · كل المعالجة تتم على جهازك داخل المتصفح.</div>
   </footer>

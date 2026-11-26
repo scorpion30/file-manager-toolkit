@@ -29,4 +29,33 @@
     paint();
   });
   document.addEventListener('DOMContentLoaded', paint);
+  // "All tools" menu in the header: opens on click, closes on Escape or a click outside.
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('.mega-btn').forEach((b) => {
+      const wrap = b.closest('.mega-wrap');
+      const wasOpen = b.getAttribute('aria-expanded') === 'true';
+      let open = false;
+      if (e.target.closest('.mega-btn') === b) open = !wasOpen;
+      else if (wrap.contains(e.target)) open = wasOpen && !e.target.closest('a');
+      b.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const menu = document.getElementById(b.getAttribute('aria-controls'));
+      if (menu) menu.hidden = !open;
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.mega-btn[aria-expanded="true"]').forEach((b) => {
+      b.setAttribute('aria-expanded', 'false');
+      document.getElementById(b.getAttribute('aria-controls')).hidden = true;
+      b.focus();
+    });
+  });
+
+  // Offline: the service worker keeps every page and library you have used, so tools also work without internet.
+  if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+    addEventListener('load', () => {
+      const base = (document.querySelector('script[src*="theme.js"]')?.getAttribute('src') || 'assets/theme.js').replace(/assets\/theme\.js.*$/, '');
+      navigator.serviceWorker.register(base + 'sw.js').catch(() => {});
+    });
+  }
 })();

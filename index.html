@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>File Manager Toolkit – Free bulk file and PDF tools for engineers</title>
-  <meta name="description" content="Free online tools to rename files in bulk, list folders to Excel, organize files, and merge, split, read and edit PDFs. Everything runs in your browser - your files never leave your device.">
+  <title>File Manager Toolkit – Free PDF and file tools, no upload</title>
+  <meta name="description" content="Merge, split, compress and convert PDFs, PDF to JPG at any resolution, OCR, page numbers, watermarks, passwords and bulk file tools. Free, no limits, and your files never leave your device.">
   <!-- seo:start -->
   <link rel="canonical" href="https://filemanagertoolkit.com/">
   <link rel="alternate" hreflang="en" href="https://filemanagertoolkit.com/" data-switch="./">
@@ -13,8 +13,8 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="File Manager Toolkit">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="File Manager Toolkit – Free bulk file and PDF tools for engineers">
-  <meta property="og:description" content="Free online tools to rename files in bulk, list folders to Excel, organize files, and merge, split, read and edit PDFs. Everything runs in your browser - your files never leave your device.">
+  <meta property="og:title" content="File Manager Toolkit – Free PDF and file tools, no upload">
+  <meta property="og:description" content="Merge, split, compress and convert PDFs, PDF to JPG at any resolution, OCR, page numbers, watermarks, passwords and bulk file tools. Free, no limits, and your files never leave your device.">
   <meta property="og:url" content="https://filemanagertoolkit.com/">
   <meta property="og:image" content="https://filemanagertoolkit.com/assets/og/index-en.png">
   <meta property="og:image:width" content="1200">
@@ -27,36 +27,229 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=2cb1f51e">
-  <script src="assets/theme.js?v=9bee45e6"></script>
-  <script src="assets/i18n.js?v=6a153a13"></script>
+  <link rel="stylesheet" href="assets/style.css?v=d9e96c29">
+  <script src="assets/theme.js?v=1cd1a16e"></script>
+  <script src="assets/i18n.js?v=0194eb65"></script>
   <script src="assets/demo.js?v=24717fe8" defer></script>
-  <script src="assets/home.js?v=bb9c51d7" defer></script>
+  <script src="assets/home.js?v=0058598e" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="inner">
       <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
       <nav>
-        <a href="./#files" class="hide-sm">File tools</a>
-        <a href="./#pdf" class="hide-sm">PDF tools</a>
-        <a href="./#review" class="hide-sm">Review</a>
+        <a href="merge.html" class="hide-md">Merge PDF</a>
+        <a href="split.html" class="hide-md">Split PDF</a>
+        <a href="compress.html" class="hide-md">Compress PDF</a>
+        <a href="pdf-to-image.html" class="hide-md">PDF to JPG</a>
+        <div class="mega-wrap">
+          <button class="mega-btn" type="button" aria-expanded="false" aria-controls="megaMenu">All tools <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="mega" id="megaMenu" hidden>
+          <div class="mega-col"><h4>Organize PDF</h4><a href="merge.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/></svg></span>Merge PDF</a><a href="split.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M2 12h5M17 12h5"/></svg></span>Split PDF</a><a href="pages.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span>Organize Pages</a><a href="rotate.html"><span class="mi cat-organize"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></span>Rotate PDF</a></div>
+          <div class="mega-col"><h4>Optimize PDF</h4><a href="compress.html"><span class="mi cat-optimize"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M12 10v3M12 17v1M10 11.5l2 2 2-2M10 16.5l2-2 2 2"/></svg></span>Compress PDF</a><a href="ocr.html"><span class="mi cat-optimize"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span>OCR PDF</a></div>
+          <div class="mega-col"><h4>Convert</h4><a href="pdf-to-image.html"><span class="mi cat-convert"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span>PDF to JPG</a><a href="image-to-pdf.html"><span class="mi cat-convert"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 3-4 2 2 1.5-1.5L17 17Z"/></svg></span>JPG to PDF</a></div>
+          <div class="mega-col"><h4>Edit &amp; review</h4><a href="page-numbers.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M10 15.5l1.5-1.5v5M10 19h3"/></svg></span>Add Page Numbers</a><a href="watermark.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 8-6"/></svg></span>Add Watermark</a><a href="crop.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg></span>Crop PDF</a><a href="compare.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/><path d="M6 9h2M16 9h2M6 13h2M15 13h4"/></svg></span>Compare PDF</a><a href="edit.html"><span class="mi cat-edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>Edit PDF Text</a></div>
+          <div class="mega-col"><h4>PDF security</h4><a href="protect.html"><span class="mi cat-security"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>Protect PDF</a><a href="unlock.html"><span class="mi cat-security"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span>Unlock PDF</a></div>
+          <div class="mega-col"><h4>File tools</h4><a href="rename.html"><span class="mi cat-files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>Rename Files</a><a href="list.html"><span class="mi cat-files"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>Files to Excel</a><a href="organize.html"><span class="mi cat-files"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>Organize Files</a></div>
+          <div class="mega-col"><h4>For engineers</h4><a href="titleblock.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>Rename from Title Block</a><a href="splitrename.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>Split &amp; Rename PDF</a><a href="extract.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/></svg></span>PDF to Excel</a><a href="comments.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>PDF Comments to Excel</a><a href="preflight.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>Pre-flight Check</a><a href="midp.html"><span class="mi cat-eng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>MIDP Check</a></div>
+          </div>
+        </div>
         <button class="theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"></button>
         <a class="donate-btn" href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">♥ Donate</a>
       </nav>
     </div>
   </header>
 
-  <section class="hero hx">
-    <div class="hx-wrap">
-      <div class="hx-badges">
-        <span class="hx-badge">✓ Free</span>
-        <span class="hx-badge">✓ No sign-up</span>
-        <span class="hx-badge">✓ Files stay on your computer</span>
-      </div>
-      <h1>Hours renaming and listing drawings by hand? <em>Do it in one click</em>, without uploading a single file.</h1>
-      <p class="hx-sub">Tools made for architects and engineers. They run in your browser, on your own computer.</p>
+  <section class="hero home2">
+    <div class="h2-wrap">
+      <h1>Every PDF and file tool you need. <em>Nothing uploaded.</em></h1>
+      <p class="h2-sub">Merge, split, compress, convert and protect PDFs, or rename and list whole folders. Free, with no limits and no sign-up, because everything runs in your browser on your own computer.</p>
+      <ul class="h2-badges">
+        <li>✓ Free, no limits</li>
+        <li>✓ No upload</li>
+        <li>✓ Whole folders at once</li>
+        <li>✓ Works offline</li>
+        <li>✓ English &amp; Arabic</li>
+      </ul>
+    </div>
+  </section>
 
+  <main id="tools" class="home-main">
+    <div class="tools-head">
+      <div class="filter" role="group" aria-label="Show tools">
+        <button type="button" class="on" data-filter="all">All</button>
+        <button type="button" data-filter="organize">Organize PDF</button>
+        <button type="button" data-filter="optimize">Optimize PDF</button>
+        <button type="button" data-filter="convert">Convert</button>
+        <button type="button" data-filter="edit">Edit &amp; review</button>
+        <button type="button" data-filter="security">PDF security</button>
+        <button type="button" data-filter="files">File tools</button>
+        <button type="button" data-filter="eng">For engineers</button>
+        <button type="button" data-filter="fav">★ My favorites</button>
+      </div>
+      <label class="tool-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" id="toolSearch" placeholder="Find a tool…" aria-label="Find a tool" autocomplete="off"><kbd translate="no">/</kbd></label>
+    </div>
+    <p class="no-results" id="noResults" hidden>No tool matches that. Try another word, or tell us what you need with the Feedback button.</p>
+    <!-- grid:start -->
+      <div class="tool-grid all-tools">
+        <a class="tool-card cat-organize" href="merge.html" data-cat="organize" data-drop="pdf">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/></svg></span>
+          <h3>Merge PDF</h3>
+          <p>Combine PDFs, or a whole folder with its subfolders, into one file with a bookmark for each.</p>
+        </a>
+        <a class="tool-card cat-organize" href="split.html" data-cat="organize" data-drop="pdf">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M2 12h5M17 12h5"/></svg></span>
+          <h3>Split PDF</h3>
+          <p>By page ranges, every few pages, file size or bookmarks.</p>
+        </a>
+        <a class="tool-card cat-organize" href="pages.html" data-cat="organize" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span>
+          <h3>Organize Pages</h3>
+          <p>See every page. Drag to reorder, rotate, delete or add blank pages.</p>
+        </a>
+        <a class="tool-card cat-organize" href="rotate.html" data-cat="organize" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></span>
+          <h3>Rotate PDF</h3>
+          <p>Turn pages the right way in many files at once, or only the landscape ones.</p>
+        </a>
+        <a class="tool-card cat-optimize" href="compress.html" data-cat="optimize" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M12 10v3M12 17v1M10 11.5l2 2 2-2M10 16.5l2-2 2 2"/></svg></span>
+          <h3>Compress PDF</h3>
+          <p>Make PDFs smaller. Pick a target size, like under 2 MB for email.</p>
+        </a>
+        <a class="tool-card cat-optimize" href="ocr.html" data-cat="optimize" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span>
+          <h3>OCR PDF</h3>
+          <p>Make scanned PDFs searchable and copyable, in English and Arabic.</p>
+        </a>
+        <a class="tool-card cat-convert" href="pdf-to-image.html" data-cat="convert" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span>
+          <h3>PDF to JPG</h3>
+          <p>Pages to JPG, PNG, WebP or TIFF, at the resolution you choose.</p>
+        </a>
+        <a class="tool-card cat-convert" href="image-to-pdf.html" data-cat="convert" data-drop="image">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 3-4 2 2 1.5-1.5L17 17Z"/></svg></span>
+          <h3>JPG to PDF</h3>
+          <p>Photos and images to PDF: one file, or one per image or folder.</p>
+        </a>
+        <a class="tool-card cat-edit" href="page-numbers.html" data-cat="edit" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M10 15.5l1.5-1.5v5M10 19h3"/></svg></span>
+          <h3>Add Page Numbers</h3>
+          <p>Page numbers or Bates numbers, on many PDFs at once.</p>
+        </a>
+        <a class="tool-card cat-edit" href="watermark.html" data-cat="edit" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 8-6"/></svg></span>
+          <h3>Add Watermark</h3>
+          <p>Stamp text in any language, or a logo, on every page.</p>
+        </a>
+        <a class="tool-card cat-edit" href="crop.html" data-cat="edit" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg></span>
+          <h3>Crop PDF</h3>
+          <p>Draw the area to keep, or trim the white margins automatically.</p>
+        </a>
+        <a class="tool-card cat-edit" href="compare.html" data-cat="edit">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/><path d="M6 9h2M16 9h2M6 13h2M15 13h4"/></svg></span>
+          <h3>Compare PDF</h3>
+          <p>Two versions laid over each other: what was removed and what was added.</p>
+        </a>
+        <a class="tool-card cat-edit" href="edit.html" data-cat="edit" data-drop="pdf">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>
+          <h3>Edit PDF Text</h3>
+          <p>Replace a value inside an area, across many PDFs at once.</p>
+        </a>
+        <a class="tool-card cat-security" href="protect.html" data-cat="security" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          <h3>Protect PDF</h3>
+          <p>Add a password, and choose whether people can print, copy or edit.</p>
+        </a>
+        <a class="tool-card cat-security" href="unlock.html" data-cat="security" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span>
+          <h3>Unlock PDF</h3>
+          <p>Remove the password and restrictions from PDFs you can open.</p>
+        </a>
+        <a class="tool-card cat-files" href="rename.html" data-cat="files" data-drop="folder">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+          <h3>Rename Files</h3>
+          <p>Prefix, suffix, find and replace in hundreds of names, with undo.</p>
+        </a>
+        <a class="tool-card cat-files" href="list.html" data-cat="files" data-drop="folder">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>
+          <h3>Files to Excel</h3>
+          <p>Every file in a folder and its subfolders, listed in Excel.</p>
+        </a>
+        <a class="tool-card cat-files" href="organize.html" data-cat="files" data-drop="folder">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>
+          <h3>Organize Files</h3>
+          <p>Move or copy files into folders by type or by a word in the name.</p>
+        </a>
+        <a class="tool-card cat-eng" href="titleblock.html" data-cat="eng" data-drop="folder">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+          <h3>Rename from Title Block</h3>
+          <p>Name each PDF drawing after the number and title in its title block.</p>
+        </a>
+        <a class="tool-card cat-eng" href="splitrename.html" data-cat="eng">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>
+          <h3>Split &amp; Rename PDF</h3>
+          <p>One PDF per sheet from a combined set, named from each title block.</p>
+        </a>
+        <a class="tool-card cat-eng" href="extract.html" data-cat="eng" data-drop="pdf">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/></svg></span>
+          <h3>PDF to Excel</h3>
+          <p>Read the same boxes from every drawing into a spreadsheet. OCR included.</p>
+        </a>
+        <a class="tool-card cat-eng" href="comments.html" data-cat="eng">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <h3>PDF Comments to Excel</h3>
+          <p>Review comments to an Excel response sheet, with a picture of each.</p>
+        </a>
+        <a class="tool-card cat-eng" href="preflight.html" data-cat="eng">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <h3>Pre-flight Check</h3>
+          <p>Duplicate numbers, wrong names and missing drawings, before you send.</p>
+        </a>
+        <a class="tool-card cat-eng" href="midp.html" data-cat="eng">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>
+          <h3>MIDP Check</h3>
+          <p>A whole submission against the MIDP and TIDPs: missing, extra, wrong revisions.</p>
+        </a>
+        <a class="tool-card request" href="#feedback" data-feedback="idea" data-cat="request">
+          <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+          <h3>Need another tool?</h3>
+          <p>Tell us what you still do by hand. The most requested tools get built next.</p>
+        </a>
+      </div>
+      <!-- grid:end -->
+
+    <section class="vs-table" id="compare">
+      <div class="section-head">
+        <span class="eyebrow">Why people switch</span>
+        <h2>Online PDF sites vs File Manager Toolkit</h2>
+      </div>
+      <div class="vs-wrap">
+        <table>
+          <thead><tr><th></th><th>Typical online PDF sites</th><th class="us">File Manager Toolkit</th></tr></thead>
+          <tbody>
+            <tr><th>Your files</th><td>Uploaded to their servers and kept for hours</td><td class="us">Never leave your computer</td></tr>
+            <tr><th>Free limits</th><td>2 files per task, 1 file for OCR, hourly caps</td><td class="us">No limits, no account</td></tr>
+            <tr><th>Folders</th><td>Pick files one by one</td><td class="us">Whole folders with their subfolders</td></tr>
+            <tr><th>PDF to JPG quality</th><td>Normal or High</td><td class="us">Any DPI, JPG / PNG / WebP / TIFF, color, grey or black and white</td></tr>
+            <tr><th>Compress</th><td>3 fixed levels, result only after download</td><td class="us">A target size, and the size of each level before you save</td></tr>
+            <tr><th>Merge</th><td>Drag files in order</td><td class="us">Natural sort, a bookmark per file, a table of contents</td></tr>
+            <tr><th>Split by size, OCR, workflows</th><td>Paid plans</td><td class="us">Free</td></tr>
+            <tr><th>Speed with big files</th><td>Wait for the upload and the download</td><td class="us">Starts at once, nothing to send</td></tr>
+            <tr><th>Ads</th><td>Yes, on the free plan</td><td class="us">None</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="eng-show">
+      <div class="section-head">
+        <span class="eyebrow">For architects and engineers</span>
+        <h2>Tools no PDF site has</h2>
+        <p class="lead-c">Drawing sets, title blocks and submissions: the work that used to take an afternoon.</p>
+      </div>
+      <div class="hx">
       <div class="hx-cards">
         <!-- 1. Extract file names to Excel -->
         <article class="hx-card" data-drop="folder">
@@ -152,150 +345,6 @@
         </article>
       </div>
 
-      <nav class="hx-more" aria-label="More tools">
-        <b class="hx-more-label">+ 8 more tools:</b>
-        <a class="hx-chip pdf" href="splitrename.html">Split &amp; Rename PDF</a>
-        <a class="hx-chip pdf" href="merge.html">Merge PDF</a>
-        <a class="hx-chip pdf" href="split.html">Split PDF</a>
-        <a class="hx-chip pdf" href="edit.html">Edit PDF Text</a>
-        <a class="hx-chip files" href="organize.html">Organize Files</a>
-        <a class="hx-chip qa" href="comments.html">PDF Comments to Excel</a>
-        <a class="hx-chip qa" href="preflight.html">Pre-flight Check</a>
-        <a class="hx-chip qa" href="midp.html">MIDP Check</a>
-        <a class="hx-all" href="#tools">See all tools ↓</a>
-      </nav>
-    </div>
-  </section>
-
-  <main id="tools">
-    <div class="section-head tools-head">
-      <span class="eyebrow">12 free tools</span>
-      <h2>Pick a tool and start</h2>
-      <div class="tool-tools">
-        <label class="tool-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" id="toolSearch" placeholder="Find a tool…" aria-label="Find a tool" autocomplete="off"><kbd translate="no">/</kbd></label>
-      <div class="filter" role="group" aria-label="Show tools">
-        <button type="button" class="on" data-filter="all">All</button>
-        <button type="button" data-filter="files">File tools</button>
-        <button type="button" data-filter="pdf">PDF tools</button>
-        <button type="button" data-filter="review">Review</button>
-        <button type="button" data-filter="fav">★ My favorites</button>
-      </div>
-      </div>
-      <p class="no-results" id="noResults" hidden>No tool matches that. Try another word, or tell us what you need with the Feedback button.</p>
-    </div>
-
-    <section class="tool-group" id="files">
-      <div class="group-head">
-        <span class="group-icon cat-files"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg></span>
-        <div><h2>File tools</h2><p>Work on whole folders: thousands of files at once, including folders inside folders.</p></div>
-      </div>
-      <div class="tool-grid">
-        <a class="tool-card cat-files" href="rename.html">
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
-          <h3>Rename Files</h3>
-          <p>Prefix, suffix, find &amp; replace, edit any name, delete, and undo.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-files" href="list.html">
-          <span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>
-          <h3>Files to Excel</h3>
-          <p>List every file in a folder tree. A sheet per folder or per file type, with a summary.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-files" href="organize.html">
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>
-          <h3>Organize Files</h3>
-          <p>Move or copy files into folders by type (PDF, DWG…) or by a word in the name.</p>
-          <span class="go">Open tool →</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="tool-group" id="pdf">
-      <div class="group-head">
-        <span class="group-icon cat-pdf"><svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/></svg></span>
-        <div><h2>PDF tools</h2><p>Built on the same PDF engine as professional desktop software. Works with CAD and Revit exports.</p></div>
-      </div>
-      <div class="tool-grid">
-        <a class="tool-card cat-pdf featured" href="titleblock.html">
-          <span class="badge new-badge">New</span>
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
-          <h3>Rename from Title Block</h3>
-          <p>Read the drawing number and title from each PDF and name the file after them.</p>
-          <div class="feat-demo" aria-hidden="true" translate="no">
-            <div><span>Sheet1.pdf</span><b>→</b><span class="new">A-101 Ground Floor Plan.pdf</span></div>
-            <div><span>Sheet2.pdf</span><b>→</b><span class="new">A-102 First Floor Plan.pdf</span></div>
-          </div>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-pdf" href="splitrename.html">
-          <span class="badge new-badge">New</span>
-          <span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>
-          <h3>Split &amp; Rename PDF</h3>
-          <p>Split a combined drawing set into one PDF per sheet, named from each title block: drawing number, revision…</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-pdf" href="merge.html">
-          <span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/></svg></span>
-          <h3>Merge PDF</h3>
-          <p>Combine several PDFs into one, in the order you choose.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-pdf" href="split.html">
-          <span class="icon"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1"/><path d="M2 12h5M17 12h5"/></svg></span>
-          <h3>Split PDF</h3>
-          <p>Take page ranges like 1-3, 5, 8-10 into separate files, or every page on its own.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-pdf" href="extract.html">
-          <span class="badge">OCR · Arabic &amp; English</span>
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span>
-          <h3>PDF to Excel</h3>
-          <p>Draw boxes on a drawing and read the same boxes from every PDF into a spreadsheet.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-pdf" href="edit.html">
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>
-          <h3>Edit PDF Text</h3>
-          <p>Replace a value inside an area, like a title block field, across many PDFs at once.</p>
-          <span class="go">Open tool →</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="tool-group" id="review">
-      <div class="group-head">
-        <span class="group-icon cat-qa"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-        <div><h2>Review &amp; document control</h2><p>For submissions: client comments, and checks before you send an issue.</p></div>
-      </div>
-      <div class="tool-grid">
-        <a class="tool-card cat-qa" href="comments.html">
-          <span class="badge new-badge">New</span>
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
-          <h3>PDF Comments to Excel</h3>
-          <p>Turn the client's PDF review comments into an Excel response sheet, with the sheet number, date and a picture of each comment.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-qa" href="preflight.html">
-          <span class="badge new-badge">New</span>
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-          <h3>Pre-flight Check</h3>
-          <p>Before sending an issue: duplicate numbers, wrong file names, missing drawings and revisions that don't match the list.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card cat-qa" href="midp.html">
-          <span class="badge new-badge">New</span>
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>
-          <h3>MIDP Check</h3>
-          <p>Check a whole submission, every discipline and file type, against the MIDP and TIDPs: missing, extra, wrong revisions.</p>
-          <span class="go">Open tool →</span>
-        </a>
-        <a class="tool-card request" href="#feedback" data-feedback="idea">
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
-          <h3>Need another tool?</h3>
-          <p>Tell us what you still do by hand every week. The most requested tools get built next.</p>
-          <span class="go">Suggest a tool →</span>
-        </a>
       </div>
     </section>
 
@@ -305,9 +354,9 @@
         <h2>How it works</h2>
       </div>
       <ol class="steps">
-        <li><span>1</span><h3>Pick your files</h3><p>Choose a folder or drop PDFs. Your browser opens them on your own computer.</p></li>
-        <li><span>2</span><h3>Preview the result</h3><p>See every new name, sheet or page before anything changes.</p></li>
-        <li><span>3</span><h3>Apply or download</h3><p>Rename in place, save to a folder, or download the result.</p></li>
+        <li><span>1</span><h3>Pick your files</h3><p>Choose files or a whole folder, or drop them on the page. Your browser opens them on your own computer.</p></li>
+        <li><span>2</span><h3>Choose the options</h3><p>See every page, name or size before anything changes.</p></li>
+        <li><span>3</span><h3>Download or save</h3><p>One file, a ZIP, or straight into a folder. Then carry on with another tool.</p></li>
       </ol>
     </section>
 
@@ -315,7 +364,7 @@
       <div class="office">
         <span class="eyebrow light">For offices</span>
         <h2>Need a tool for your office?</h2>
-        <p>Every office has its own drawing lists, title blocks and naming rules. Tell us what takes your team hours, and we can build a tool for it.</p>
+        <p>Every office has its own lists, forms and naming rules. Tell us what takes your team hours, and we can build a tool for it.</p>
         <a class="btn lg light-btn" href="#feedback" data-feedback="office">Tell us what you need</a>
       </div>
       <div class="support">
@@ -333,10 +382,11 @@
         <p class="faq-guides"><a href="guides/rename-pdf-drawings-from-title-block.html">Step-by-step guides →</a></p>
       </div>
       <div class="faq-list">
-        <details><summary>Are my files uploaded anywhere?</summary><p>No. The tools run in your browser. Files are read from your computer and the results are saved back to it.</p></details>
-        <details><summary>Which browser should I use?</summary><p>Google Chrome or Microsoft Edge on a computer can rename, move and delete files directly in your folders. Other browsers work too, and give you the result as a download.</p></details>
-        <details><summary>Can it handle big folders?</summary><p>Yes, thousands of files are fine. Very large PDFs depend on your computer's memory.</p></details>
-        <details><summary>Does OCR work in Arabic?</summary><p>Yes. PDF to Excel reads real PDF text directly, and uses OCR in English, Arabic or both when an area is scanned.</p></details>
+        <details><summary>Are my files uploaded anywhere?</summary><p>No. The tools run in your browser. Files are read from your computer and the results are saved back to it. You can even disconnect from the internet after the page has loaded.</p></details>
+        <details><summary>Is it really free? What are the limits?</summary><p>It is free, with no account and no limits on the number of files or tasks. The only limit is your computer's memory with very large files.</p></details>
+        <details><summary>Does it work without internet?</summary><p>Yes. After you have used a tool once, the page and its PDF engine are kept by your browser, so the tool opens and works offline.</p></details>
+        <details><summary>Which browser should I use?</summary><p>Google Chrome or Microsoft Edge on a computer can also save results straight into a folder and rename files in place. Other browsers work too, and give you the result as a download.</p></details>
+        <details><summary>Does OCR work in Arabic?</summary><p>Yes. OCR PDF and PDF to Excel read English, Arabic or both.</p></details>
       </div>
     </section>
   </main>
@@ -424,12 +474,13 @@
     <div class="inner">
       <div class="f-brand">
         <a class="brand" href="./"><img src="assets/favicon.ico" alt="">File Manager <span>Toolkit</span></a>
-        <p>Free file and PDF tools that run in your browser.</p>
+        <p>Free PDF and file tools that run in your browser. No upload, no sign-up, no limits.</p>
       </div>
-      <div class="f-col"><h4>File tools</h4><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
-      <div class="f-col"><h4>PDF tools</h4><a href="titleblock.html">Rename from Title Block</a><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="splitrename.html">Split &amp; Rename PDF</a><a href="extract.html">PDF to Excel</a><a href="edit.html">Edit PDF Text</a></div>
-      <div class="f-col"><h4>Review</h4><a href="comments.html">PDF Comments to Excel</a><a href="preflight.html">Pre-flight Check</a><a href="midp.html">MIDP Check</a></div>
-      <div class="f-col"><h4>Guides</h4><a href="guides/rename-pdf-drawings-from-title-block.html">Rename PDFs from title block</a><a href="guides/pdf-drawings-to-excel-drawing-register.html">Drawing register from PDFs</a><a href="guides/merge-pdf-without-uploading.html">Merge PDF without uploading</a><a href="guides/list-folder-files-to-excel.html">Folder file list to Excel</a><a href="guides/export-pdf-comments-to-excel.html">PDF comments to Excel</a><a href="guides/split-pdf-drawing-set-into-sheets.html">Split a PDF drawing set</a><a href="guides/edit-title-block-text-in-pdf.html">Edit title block text</a><a href="guides/check-submission-against-midp-iso-19650.html">MIDP / ISO 19650 check</a><a href="guides/drawing-register-template-excel.html">Drawing register template</a><a href="guides/document-transmittal-template-excel.html">Transmittal template</a><a href="guides/export-bluebeam-markups-to-excel.html">Bluebeam / PDF comments to Excel</a><h4 style="margin-top:14px">About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
+      <div class="f-col"><h4>PDF tools</h4><a href="merge.html">Merge PDF</a><a href="split.html">Split PDF</a><a href="pages.html">Organize Pages</a><a href="rotate.html">Rotate PDF</a><a href="compress.html">Compress PDF</a><a href="ocr.html">OCR PDF</a></div>
+      <div class="f-col"><h4>Convert &amp; edit</h4><a href="pdf-to-image.html">PDF to JPG</a><a href="image-to-pdf.html">JPG to PDF</a><a href="page-numbers.html">Add Page Numbers</a><a href="watermark.html">Add Watermark</a><a href="crop.html">Crop PDF</a><a href="compare.html">Compare PDF</a><a href="edit.html">Edit PDF Text</a></div>
+      <div class="f-col"><h4>Security &amp; files</h4><a href="protect.html">Protect PDF</a><a href="unlock.html">Unlock PDF</a><a href="rename.html">Rename Files</a><a href="list.html">Files to Excel</a><a href="organize.html">Organize Files</a></div>
+      <div class="f-col"><h4>For engineers</h4><a href="titleblock.html">Rename from Title Block</a><a href="splitrename.html">Split &amp; Rename PDF</a><a href="extract.html">PDF to Excel</a><a href="comments.html">PDF Comments to Excel</a><a href="preflight.html">Pre-flight Check</a><a href="midp.html">MIDP Check</a></div>
+      <div class="f-col"><h4>Guides</h4><a href="guides/rename-pdf-drawings-from-title-block.html">Step-by-step guides →</a><h4 style="margin-top:14px">About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
     </div>
     <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
   </footer>
