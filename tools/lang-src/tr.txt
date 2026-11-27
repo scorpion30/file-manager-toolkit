@@ -237,7 +237,7 @@
 236|Hayır. Yüzlerce dosya sorun değil.
 237|İlgili araçlar
 238|PDF dosyalarını ya da alt klasörleriyle bir klasörün tamamını tek PDF'de birleştirin. Doğal sıralama, dosya başına yer imi, tıklanabilir içindekiler. Ücretsiz, yükleme yok, sınır yok.
-239|PDF Dosyalarını ve Klasörleri Yer İmleriyle Birleştirin, Ücretsiz, Yükleme Yok | File Manager Toolkit
+239|PDF Birleştir: Dosya ve Klasörleri Yer İmleriyle Birleştirin, Ücretsiz, Yükleme Yok | File Manager Toolkit
 240|Sayfa aralığına, belirli sayfa sayısına, dosya boyutuna veya yer imlerine göre bölün.
 241|Bölme
 242|Sayfa aralıkları
@@ -273,7 +273,7 @@
 272|Bir PDF'yi bölümlere göre ayırabilir miyim?
 273|Evet, PDF'de yer imleri varsa: "Yer imlerine göre"yi seçin, her bölüm kendi adını taşıyan ayrı bir dosya olur.
 274|PDF dosyalarını sayfa aralığına, belirli sayfa sayısına, dosya boyutuna (örneğin 10 MB'lık parçalar) veya yer imlerine göre bölün ya da sayfaları yeni bir PDF'ye çıkarın. Ücretsiz, birçok dosya aynı anda, yükleme yok.
-275|PDF'yi Sayfaya, Her N Sayfaya, Boyuta veya Yer İmlerine Göre Bölün, Ücretsiz | File Manager Toolkit
+275|PDF Böl: Sayfaya, Her N Sayfaya, Boyuta veya Yer İmlerine Göre, Ücretsiz | File Manager Toolkit
 276|Her sayfayı görün. Sıralamak için sürükleyin, döndürün, silin veya boş sayfa ekleyin.
 277|Tüm sayfalar
 278|↺ Tümünü döndür
@@ -343,7 +343,7 @@
 342|Metin ve çizimlerin kalitesi düşer mi?
 343|Hayır. Sadece görseller ve taramalar küçültülür. Metin, çizgiler ve vektör çizimler net kalır.
 344|PDF dosyalarını küçültün. Bir seviye veya e-posta için 2 MB gibi bir hedef boyut seçin ve kaydetmeden önce her seviyenin boyutunu görün. Birçok dosya aynı anda, yükleme yok, sınır yok.
-345|PDF'yi Hedef Boyuta Sıkıştırın (örn. 2 MB altı), Ücretsiz | File Manager Toolkit
+345|PDF Sıkıştır: Hedef Boyuta Küçültün (örn. 2 MB altı), Ücretsiz | File Manager Toolkit
 346|PDF'lerinizden düzenlenebilir Word dosyaları, taranmış olanlar da dahil. Arapça sağdan sola kalır.
 347|Okuma
 348|Otomatik
@@ -390,7 +390,7 @@
 389|Dosyalarım yükleniyor mu?
 390|Hayır. Her şey kendi bilgisayarınızda çalışır, böylece özel belgeler sizde kalır. Sayfa veya dosya sınırı yoktur.
 391|PDF'yi düzenlenebilir bir Word dosyasına (.docx) dönüştürün, taranmış PDF'ler dahil. Arapça metin sağdan sola ve doğru sırada çıkar. Ücretsiz, yükleme yok, kayıt yok, sayfa sınırı yok.
-392|Arapça Destekli PDF'den Word'e, Taranmış PDF'ler de, Ücretsiz | File Manager Toolkit
+392|PDF'den Word'e Çevirme: Arapça ve Taranmış PDF'ler de, Ücretsiz | File Manager Toolkit
 393|Fotoğraflardaki insanları, ürünleri ve nesneleri tek tıkla dekupe edin. Şeffaf veya istediğiniz renkte arka plan.
 394|Görsel seçin
 395|veya görselleri ya da bir klasörü buraya bırakın
@@ -426,7 +426,7 @@
 425|İlk sefer neden yavaş?
 426|İlk seferde tarayıcınız yapay zekâ modelini (yaklaşık 45 MB) indirir. Model saklanır, böylece sonraki fotoğraflar saniyeler içinde başlar. Yeni bir ekran kartı olan bilgisayar daha hızlıdır.
 427|Tarayıcınızda çalışan yapay zekâyla fotoğrafların arka planını otomatik kaldırın. Şeffaf PNG, beyaz veya istediğiniz renk. Birçok fotoğraf aynı anda, tam boyut, ücretsiz, yükleme yok, kayıt yok.
-428|Görsellerin Arka Planını Kaldırın, Ücretsiz ve Gizli, Yükleme Yok | File Manager Toolkit
+428|Arka Plan Silme: Görsellerin Arka Planını Kaldırın, Ücretsiz, Yükleme Yok | File Manager Toolkit
 429|Taranmış PDF'leri Arapça, İngilizce ve diğer dillerde aranabilir ve kopyalanabilir yapın.
 430|Almanca
 431|İspanyolca
@@ -476,7 +476,7 @@
 475|Sayfaların tamamı yerine PDF'deki resimleri alabilir miyim?
 476|Evet. PDF'deki her fotoğrafı ve resmi orijinal boyutunda kaydetmek için "İçindeki resimler"i seçin.
 477|PDF sayfalarını seçtiğiniz çözünürlükte JPG, PNG, WebP veya TIFF görsellere dönüştürün: 72, 150, 300, 600 DPI veya kendi değeriniz. Renkli, gri veya siyah beyaz. Ücretsiz, yükleme yok, dosya sınırı yok.
-478|Her DPI'da PDF'den JPG, PNG, WebP veya TIFF'e, Ücretsiz | File Manager Toolkit
+478|PDF'den JPG'ye: PNG, WebP veya TIFF, Her DPI'da, Ücretsiz | File Manager Toolkit
 479|Fotoğrafları, taramaları ve ekran görüntülerini istediğiniz sırayla PDF'ye çevirin.
 480|Sayfa boyutu
 481|Görselle aynı

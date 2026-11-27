@@ -29,6 +29,9 @@ import GUIDES_AR from './guides-ar.mjs';
 const ROOT = process.cwd();
 const SITE = 'https://filemanagertoolkit.com/';
 const BRAND = 'File Manager Toolkit';
+// Google cuts titles at about 60 characters and shows the site name on its own,
+// so a long title drops the " | File Manager Toolkit" ending and keeps the words people search for.
+const seoTitle = (t) => (t.length > 60 && t.endsWith(` | ${BRAND}`) ? t.slice(0, -(BRAND.length + 3)) : t);
 
 // Languages besides English and Arabic, and the pages built in them.
 const LANGS = { fr: 'fr_FR', es: 'es_ES', pt: 'pt_BR', id: 'id_ID', tr: 'tr_TR', hi: 'hi_IN' };
@@ -479,7 +482,7 @@ function seoBlock(page, lang, desc, jsonLd) {
     `<meta property="og:type" content="website">`,
     `<meta property="og:site_name" content="${BRAND}">`,
     `<meta property="og:locale" content="${LOCALE[lang]}">`,
-    `<meta property="og:title" content="${encodeAttr(p.title)}">`,
+    `<meta property="og:title" content="${encodeAttr(seoTitle(p.title))}">`,
     `<meta property="og:description" content="${encodeAttr(desc)}">`,
     `<meta property="og:url" content="${urlOf(page.file, lang)}">`,
     `<meta property="og:image" content="${SITE}assets/og/${slug(page.file)}-${lang === 'ar' ? 'ar' : 'en'}.png">`,
@@ -495,7 +498,7 @@ function seoBlock(page, lang, desc, jsonLd) {
 
 function setHead(html, page, lang, desc) {
   html = html.replace(/\n?\s*<!-- seo:start -->[\s\S]*?<!-- seo:end -->/, '');
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${encodeText(page[lang].title)}</title>`);
+  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${encodeText(seoTitle(page[lang].title))}</title>`);
   html = html.replace(/(<meta name="description" content=")[^"]*(">)/, `$1${encodeAttr(desc)}$2`);
   const jsonLd = page.guide ? guideJsonLd(html, page, lang, desc) : toolJsonLd(html, page, lang, desc);
   return html.replace(/(<meta name="description"[^>]*>)/, (m) => `${m}\n  ${seoBlock(page, lang, desc, jsonLd)}`);
