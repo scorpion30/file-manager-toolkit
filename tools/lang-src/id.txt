@@ -1,0 +1,834 @@
+0|Gabungkan PDF
+1|Pisahkan PDF
+2|Kompres PDF
+3|PDF ke JPG
+4|Semua alat
+5|Atur PDF
+6|Putar PDF
+7|Atur halaman
+8|Optimalkan PDF
+9|OCR PDF
+10|Konversi
+11|PDF ke Word
+12|Hapus latar belakang
+13|JPG ke PDF
+14|Edit dan tinjau
+15|Tambah watermark
+16|Tambah nomor halaman
+17|Potong PDF
+18|Bandingkan PDF
+19|Edit teks PDF
+20|Keamanan PDF
+21|Buka kunci PDF
+22|Lindungi PDF
+23|Alat file
+24|Ganti nama file
+25|File ke Excel
+26|Rapikan file
+27|Untuk insinyur
+28|Pisahkan dan ganti nama PDF
+29|Ganti nama dari kop gambar
+30|PDF ke Excel
+31|Komentar PDF ke Excel
+32|Cek sebelum kirim
+33|Cek MIDP
+34|Ganti mode terang atau gelap
+35|♥ Donasi
+36|Semua alat PDF dan file yang Anda butuhkan.
+37|Tidak ada yang diunggah.
+38|Gabungkan, pisahkan, kompres, konversi, dan lindungi PDF, atau ganti nama dan buat daftar seluruh folder. Gratis, tanpa batas, dan tanpa daftar, karena semuanya berjalan di browser, di komputer Anda sendiri.
+39|✓ Gratis, tanpa batas
+40|✓ Tanpa unggah
+41|✓ Seluruh folder sekaligus
+42|✓ Bisa offline
+43|✓ Inggris dan Arab
+44|Lihat alat
+45|Semua
+46|✦ Hanya di sini
+47|★ Favorit saya
+48|Cari alat…
+49|Cari alat
+50|Tidak ada alat yang cocok. Coba kata lain, atau beri tahu kami kebutuhan Anda lewat tombol Masukan.
+51|Gabungkan PDF, atau seluruh folder beserta subfoldernya, menjadi satu file dengan bookmark untuk masing-masing.
+52|File Word yang bisa diedit dari PDF, termasuk hasil pindaian. Bahasa Arab tetap dari kanan ke kiri.
+53|Perkecil ukuran PDF. Pilih ukuran target, misalnya di bawah 2 MB untuk email.
+54|Halaman ke JPG, PNG, WebP, atau TIFF, dengan resolusi pilihan Anda.
+55|Hapus latar belakang foto dengan AI. PNG transparan, putih, atau warna apa pun.
+56|Foto dan gambar ke PDF: satu file, atau satu per gambar atau per folder.
+57|Berdasarkan rentang halaman, setiap beberapa halaman, ukuran file, atau bookmark.
+58|Putar halaman ke arah yang benar di banyak file sekaligus, atau hanya halaman lanskap.
+59|Hapus kata sandi dan batasan dari PDF yang bisa Anda buka.
+60|Tambahkan kata sandi, dan tentukan apakah orang bisa mencetak, menyalin, atau mengedit.
+61|Bubuhkan teks dalam bahasa apa pun, atau logo, di setiap halaman.
+62|Nomor halaman atau penomoran Bates, di banyak PDF sekaligus.
+63|Lihat setiap halaman. Seret untuk mengurutkan, putar, hapus, atau tambah halaman kosong.
+64|Buat PDF hasil pindaian bisa dicari dan disalin, dalam bahasa Inggris dan Arab.
+65|Gambar area yang ingin disimpan, atau potong margin putih secara otomatis.
+66|Dua versi yang ditumpuk: apa yang dihapus dan apa yang ditambahkan.
+67|Butuh alat lain?
+68|Beri tahu kami apa yang masih Anda kerjakan secara manual. Alat yang paling banyak diminta akan dibuat lebih dulu.
+69|Hanya di File Manager Toolkit
+70|Alat yang tidak ada di situs PDF lain: seluruh folder, nama file, daftar Excel, dan pengecekan gambar kerja.
+71|Baru
+72|Awalan, akhiran, cari dan ganti di ratusan nama, dengan urungkan.
+73|Ganti nilai di dalam suatu area, di banyak PDF sekaligus.
+74|Semua file dalam folder dan subfoldernya, didaftar di Excel.
+75|Pindahkan atau salin file ke folder berdasarkan jenis atau kata di namanya.
+76|Satu PDF per lembar dari satu set gabungan, dinamai dari setiap kop gambar.
+77|Beri nama setiap gambar PDF sesuai nomor dan judul di kop gambarnya.
+78|Baca kotak yang sama dari setiap gambar ke dalam spreadsheet. Termasuk OCR.
+79|Komentar tinjauan ke lembar tanggapan Excel, dengan gambar untuk masing-masing.
+80|Nomor ganda, nama salah, dan gambar yang hilang, sebelum Anda kirim.
+81|Satu pengajuan lengkap dicek terhadap MIDP dan TIDP: kurang, lebih, revisi salah.
+82|Mengapa orang beralih
+83|Situs PDF online vs File Manager Toolkit
+84|Situs PDF online biasa
+85|File Manager Toolkit
+86|File Anda
+87|Diunggah ke server mereka dan disimpan berjam-jam
+88|Tidak pernah keluar dari komputer Anda
+89|Batas gratis
+90|2 file per tugas, 1 file untuk OCR, batas per jam
+91|Tanpa batas, tanpa akun
+92|Folder
+93|Pilih file satu per satu
+94|Seluruh folder beserta subfoldernya
+95|Kualitas PDF ke JPG
+96|Normal atau Tinggi
+97|DPI berapa pun, JPG / PNG / WebP / TIFF, warna, abu-abu, atau hitam putih
+98|Kompres
+99|3 level tetap, hasil baru terlihat setelah diunduh
+100|Ukuran target, dan ukuran setiap level sebelum disimpan
+101|Gabungkan
+102|Seret file sesuai urutan
+103|Urutan alami, satu bookmark per file, daftar isi
+104|Pisah berdasarkan ukuran, OCR, alur kerja
+105|Paket berbayar
+106|Gratis
+107|Kecepatan dengan file besar
+108|Menunggu unggah dan unduh
+109|Langsung mulai, tidak ada yang dikirim
+110|Iklan
+111|Ya, di paket gratis
+112|Tidak ada
+113|Untuk arsitek dan insinyur
+114|Alat yang tidak dimiliki situs PDF mana pun
+115|Set gambar kerja, kop gambar, dan pengajuan: pekerjaan yang dulu makan waktu seharian.
+116|Ambil nama file ke Excel
+117|Semua file dalam folder dan subfoldernya, satu tab per folder, dan jumlah setiap jenis file.
+118|Pilih folder
+119|Ekspor
+120|Excel siap
+121|Buka alat
+122|▷ Contoh
+123|=
+124|Ganti nama PDF dari kop gambar
+125|Membaca nomor dan judul gambar dari setiap lembar dan menamai file sesuai itu.
+126|Tandai nomor gambar
+127|Cek nama
+128|Ganti nama
+129|Daftar gambar dari kop gambar
+130|Tandai nomor, judul, dan revisi sekali. Semuanya dibaca dari setiap PDF ke Excel.
+131|Tandai nilainya
+132|Baca setiap PDF
+133|Unduh Excel
+134|Ganti nama ratusan file
+135|Tambahkan awalan, ganti kata, atau perbaiki revisi di semua nama sekaligus, dengan urungkan.
+136|Ketik perubahannya
+137|Lihat pratinjau
+138|Terapkan
+139|Sederhana sejak awal
+140|Cara kerjanya
+141|Pilih file Anda
+142|Pilih file atau seluruh folder, atau letakkan di halaman. Browser Anda membukanya di komputer Anda sendiri.
+143|Pilih opsi
+144|Lihat setiap halaman, nama, atau ukuran sebelum ada yang berubah.
+145|Unduh atau simpan
+146|Satu file, ZIP, atau langsung ke folder. Lalu lanjutkan dengan alat lain.
+147|Untuk kantor
+148|Butuh alat untuk kantor Anda?
+149|Setiap kantor punya daftar, formulir, dan aturan penamaan sendiri. Beri tahu kami pekerjaan yang makan waktu berjam-jam bagi tim Anda, dan kami bisa membuatkan alatnya.
+150|Beri tahu kebutuhan Anda
+151|Gratis selamanya
+152|Menghemat waktu Anda seharian?
+153|File Manager Toolkit gratis dan akan tetap gratis. Donasi kecil membantu alat baru terus hadir.
+154|♥ Donasi lewat PayPal
+155|Pertanyaan
+156|Ada hal lain? Gunakan tombol Masukan dan kami akan membalas.
+157|Panduan langkah demi langkah →
+158|Apakah file saya diunggah ke suatu tempat?
+159|Tidak. Alat berjalan di browser Anda. File dibaca dari komputer Anda dan hasilnya disimpan kembali ke sana. Anda bahkan bisa memutus internet setelah halaman dimuat.
+160|Benarkah gratis? Apa batasnya?
+161|Gratis, tanpa akun, dan tanpa batas jumlah file atau tugas. Satu-satunya batas adalah memori komputer Anda untuk file yang sangat besar.
+162|Apakah bisa tanpa internet?
+163|Ya. Setelah Anda memakai alat sekali, halaman dan mesin PDF-nya disimpan browser, jadi alat bisa dibuka dan dipakai offline.
+164|Browser apa yang sebaiknya dipakai?
+165|Google Chrome atau Microsoft Edge di komputer juga bisa menyimpan hasil langsung ke folder dan mengganti nama file di tempatnya. Browser lain juga bisa, dan memberi hasilnya sebagai unduhan.
+166|Apakah OCR bisa bahasa Arab?
+167|Ya. OCR PDF dan PDF ke Excel membaca bahasa Inggris, Arab, atau keduanya.
+168|Mengapa memakai ini, bukan chat AI atau situs unggah?
+169|File Anda tidak pernah keluar dari komputer Anda
+170|Chat AI dan situs file online
+171|Gambar kerja Anda diunggah dan diproses di server milik orang lain.
+172|Browser Anda yang bekerja, di komputer Anda sendiri. Tidak ada yang diunggah.
+173|Seluruh folder sekaligus
+174|Ratusan gambar sekaligus, bukan beberapa file per chat.
+175|Akurat, bukan tebakan
+176|Membaca teks asli dari kop gambar. Anda melihat setiap hasil lebih dulu, dan bisa mengurungkan.
+177|Tiga klik, tanpa perintah
+178|Pilih folder, cek pratinjau, terapkan. Tidak perlu menjelaskan atau mengulang.
+179|Selesai di folder Anda
+180|File diganti nama dan disimpan di tempatnya. Tidak perlu mengunduh dan merapikan lagi.
+181|Alat PDF dan file gratis yang berjalan di browser Anda. Tanpa unggah, tanpa daftar, tanpa batas.
+182|Alat PDF
+183|Konversi dan edit
+184|Keamanan dan file
+185|Panduan
+186|Tentang
+187|Donasi
+188|Kode sumber
+189|© File Manager Toolkit · Semua pemrosesan terjadi secara lokal di browser Anda.
+190|Gabungkan, pisahkan, kompres, dan konversi PDF, PDF ke JPG dengan resolusi apa pun, OCR, nomor halaman, watermark, kata sandi, dan alat file massal. Gratis, tanpa batas, dan file Anda tidak pernah keluar dari perangkat Anda.
+191|File Manager Toolkit – Alat PDF dan file gratis, tanpa unggah
+192|Gabungkan PDF, atau seluruh folder beserta subfoldernya, menjadi satu file.
+193|Pilih file PDF
+194|📁 Pilih folder
+195|atau letakkan file PDF atau folder di sini
+196|Tidak ada yang diunggah
+197|Tanpa batas jumlah atau ukuran file
+198|Gratis, tanpa daftar
+199|Urutkan file
+200|Urutkan…
+201|Nama A → Z
+202|Nama Z → A
+203|Terlama dulu
+204|Terbaru dulu
+205|Terkecil dulu
+206|+ Tambah file
+207|+ Folder
+208|Bersihkan
+209|Opsi
+210|Bookmark
+211|Satu per file
+212|Per folder
+213|Pertahankan bookmark di setiap file
+214|Tambahkan halaman daftar isi
+215|Opsi lainnya
+216|Cetak nama file di bagian bawah setiap halaman
+217|Cetak bolak-balik: tambahkan halaman kosong setelah file dengan jumlah halaman ganjil
+218|Nama file
+219|Memproses…
+220|← Ubah opsi
+221|Mulai lagi dengan file lain
+222|Lanjutkan dengan hasilnya
+223|Cara memakai Gabungkan PDF
+224|Pilih PDF Anda, atau seluruh folder
+225|. File di subfolder ikut disertakan, dengan urutan alami (2 sebelum 10).
+226|Seret untuk mengubah urutan
+227|, atau urutkan berdasarkan nama atau tanggal.
+228|. Setiap file mendapat bookmark, jadi PDF gabungan mudah dijelajahi.
+229|Panduan langkah demi langkah:
+230|Cara menggabungkan file PDF tanpa mengunggahnya
+231|Bisakah saya menggabungkan semua PDF di folder dan subfoldernya?
+232|Bisa. Pilih foldernya: setiap PDF di dalamnya, di kedalaman berapa pun, ditambahkan sesuai urutan folder, dan Anda bisa membuat bookmark untuk setiap folder.
+233|Apakah "file 10" akan berada setelah "file 2"?
+234|Ya. Nama diurutkan seperti cara orang berhitung, bukan huruf per huruf.
+235|Apakah ada batas jumlah file?
+236|Tidak. Ratusan file pun tidak masalah.
+237|Alat terkait
+238|Gabungkan file PDF, atau seluruh folder beserta subfoldernya, menjadi satu PDF. Urutan alami, satu bookmark per file, daftar isi yang bisa diklik. Gratis, tanpa unggah, tanpa batas.
+239|Gabungkan File dan Folder PDF, dengan Bookmark, Gratis, Tanpa Unggah | File Manager Toolkit
+240|Pisahkan berdasarkan rentang halaman, setiap beberapa halaman, ukuran file, atau bookmark.
+241|Pisahkan
+242|Rentang halaman
+243|Setiap N halaman
+244|Berdasarkan ukuran file
+245|Berdasarkan bookmark
+246|Ambil halaman
+247|Setiap halaman
+248|Rentang
+249|mis. 1-3, 4-6, 7-
+250|Satu file untuk setiap rentang. "4-" berarti halaman 4 sampai akhir.
+251|Halaman per file
+252|Ukuran file maksimum
+253|=
+254|Level bookmark
+255|Level atas
+256|Level kedua
+257|Satu file untuk setiap bookmark, dinamai sesuai bookmark itu.
+258|Halaman yang diambil
+259|mis. 1, 3, 5-7
+260|Disalin ke satu PDF baru, dengan urutan ini.
+261|Nama file
+262|{name} = nama PDF, {part} = nomor bagian atau bookmark, {pages} = rentang halaman
+263|Cara memakai Pisahkan PDF
+264|Pilih PDF Anda
+265|(atau beberapa: masing-masing dipisahkan dengan cara yang sama).
+266|Pilih cara memisahkan
+267|: rentang halaman, setiap beberapa halaman, batas ukuran untuk email, atau bookmark.
+268|dan unduh bagian-bagiannya sebagai ZIP atau ke folder.
+269|Memisahkan set gambar PDF menjadi satu file per lembar
+270|Bisakah saya memisahkan PDF menjadi bagian di bawah 10 MB?
+271|Bisa. Pilih "Berdasarkan ukuran file" dan ketik 10. Setiap bagian tetap di bawah ukuran itu, tanpa memotong halaman menjadi dua.
+272|Bisakah saya memisahkan PDF per bab?
+273|Bisa, jika PDF punya bookmark: pilih "Berdasarkan bookmark" dan setiap bab menjadi file sendiri, dinamai sesuai bab itu.
+274|Pisahkan file PDF berdasarkan rentang halaman, setiap beberapa halaman, ukuran file (misalnya bagian 10 MB), atau bookmark, atau ambil halaman ke PDF baru. Gratis, banyak file sekaligus, tanpa unggah.
+275|Pisahkan PDF per Halaman, Setiap N Halaman, Ukuran, atau Bookmark, Gratis | File Manager Toolkit
+276|Lihat setiap halaman. Seret untuk mengurutkan, putar, hapus, atau tambah halaman kosong.
+277|Semua halaman
+278|↺ Putar semua
+279|↻ Putar semua
+280|Balik urutan
+281|+ Halaman kosong
+282|Seret halaman untuk memindahkannya. Gunakan tombol di halaman untuk memutar, menyalin, atau menghapusnya.
+283|Simpan PDF
+284|Cara memakai Atur halaman
+285|Pilih satu atau beberapa PDF
+286|. Semua halamannya muncul sebagai gambar.
+287|Seret halaman
+288|ke urutan yang Anda mau, putar atau hapus, atau tambahkan halaman kosong.
+289|Simpan
+290|PDF barunya.
+291|Bisakah saya menggabungkan halaman dari PDF yang berbeda?
+292|Bisa. Tambahkan beberapa PDF: semua halamannya muncul bersama, dan Anda bisa mencampurnya dalam urutan apa pun.
+293|Bisakah saya membatalkan halaman yang terhapus?
+294|Klik "Mulai lagi", atau tambahkan file itu lagi. File asli Anda tidak berubah sama sekali.
+295|Lihat setiap halaman PDF Anda. Seret halaman untuk mengurutkan, putar, hapus, duplikat, atau tambah halaman kosong, dan gabungkan halaman dari beberapa PDF. Gratis, tanpa unggah.
+296|Atur Halaman PDF: Urutkan, Putar, Hapus, Tambah, Gratis | File Manager Toolkit
+297|Putar halaman ke arah yang benar dan simpan, di banyak file sekaligus.
+298|Putar
+299|↻ 90° ke kanan
+300|↺ 90° ke kiri
+301|Halaman mana
+302|Lanskap
+303|Potret
+304|Pilih…
+305|mis. 1-3, 5
+306|Anda juga bisa memutar satu file saja dengan tombol ↻ di gambarnya.
+307|Cara memakai Putar PDF
+308|Pilih PDF Anda.
+309|Pilih sudutnya
+310|dan halaman mana: semua, hanya halaman lanskap atau potret, atau daftar halaman.
+311|dan unduh. Halaman disimpan dalam keadaan terputar, jadi terbuka dengan arah yang benar di mana pun.
+312|Apakah putarannya tersimpan?
+313|Ya. Orientasi baru disimpan di PDF, jadi terbuka dengan arah yang benar di semua pembaca dan tercetak seperti itu.
+314|Bisakah saya memutar hanya halaman lanskap?
+315|Bisa. Pilih "Lanskap" untuk memutar hanya halaman yang lebih lebar daripada tingginya, misalnya gambar kerja dalam laporan.
+316|Putar halaman PDF dan simpan seperti itu: semua halaman, hanya halaman lanskap atau potret, atau halaman pilihan Anda, di banyak file sekaligus. Gratis, tanpa unggah.
+317|Putar Halaman PDF, Banyak File Sekaligus, Gratis | File Manager Toolkit
+318|Perkecil PDF untuk email dan unggahan, dan lihat ukuran barunya sebelum disimpan.
+319|Kompresi
+320|Ringan
+321|kualitas terbaik
+322|Disarankan
+323|kualitas baik
+324|Kuat
+325|paling kecil
+326|Ukuran target
+327|pilihan Anda
+328|Ukuran setiap level dihitung untuk file pertama Anda.
+329|Ukuran target per file
+330|Ubah gambar ke abu-abu (lebih kecil)
+331|Hapus detail dokumen (penulis, judul, kata kunci)
+332|Cara memakai Kompres PDF
+333|Pilih PDF Anda
+334|, atau folder berisi PDF.
+335|Pilih level, atau ketik ukuran target
+336|seperti 2 MB. Ukuran setiap level ditampilkan sebelum Anda mulai.
+337|dan unduh, atau simpan file yang lebih kecil ke folder.
+338|Seberapa kecil PDF saya nanti?
+339|Tergantung isinya. Pindaian dan foto menyusut banyak, sering 60 sampai 90 persen. PDF yang sebagian besar teks atau garis CAD sudah kecil dan hanya sedikit berubah.
+340|Bisakah saya mengompres PDF hingga di bawah 2 MB?
+341|Bisa. Pilih "Ukuran target" dan ketik 2. Alat ini mencoba pengaturan yang lebih kuat sampai file muat, dan memberi tahu Anda jika tidak bisa sekecil itu.
+342|Apakah kualitas teks dan gambar kerja menurun?
+343|Tidak. Hanya foto dan pindaian yang diperkecil. Teks, garis, dan gambar vektor tetap tajam.
+344|Perkecil file PDF. Pilih level atau ukuran target seperti 2 MB untuk email, dan lihat ukuran setiap level sebelum disimpan. Banyak file sekaligus, tanpa unggah, tanpa batas.
+345|Kompres PDF ke Ukuran Target (mis. di bawah 2 MB), Gratis | File Manager Toolkit
+346|File Word yang bisa diedit dari PDF Anda, termasuk hasil pindaian. Bahasa Arab tetap dari kanan ke kiri.
+347|Baca
+348|Otomatis
+349|teks atau pindaian
+350|Baca setiap halaman
+351|hasil pindaian
+352|Teks saja
+353|cepat
+354|Bahasa dalam dokumen
+355|Arab
+356|Inggris
+357|Prancis
+358|Urdu
+359|Turki
+360|Hindi
+361|Akurasi
+362|Cepat
+363|=
+364|Akurat
+365|=
+366|Halaman
+367|Semua halaman, atau mis. 1-3, 5, 8-
+368|Font
+369|=
+370|=
+371|=
+372|=
+373|=
+374|=
+375|Mulai setiap halaman PDF di halaman Word baru
+376|Halaman hasil pindaian: saat pertama kali, mesin pembaca dan file bahasa (beberapa MB) diunduh, lalu bisa dipakai offline.
+377|Konversi ke Word
+378|Cara memakai PDF ke Word
+379|, hasil ketik atau pindaian. File dibuka di browser Anda dan tidak diunggah.
+380|Centang bahasa
+381|yang dipakai di dalamnya. Bahasa Arab dan Inggris sudah dicentang.
+382|dan buka .docx di Word, Google Docs, atau LibreOffice untuk mengeditnya.
+383|Apakah bisa untuk bahasa Arab?
+384|Bisa. Paragraf bahasa Arab ditulis dari kanan ke kiri di Word, dengan huruf yang urutannya benar, jadi bisa langsung Anda edit. Dokumen campuran Arab dan Inggris juga bisa.
+385|Apakah bisa mengonversi PDF hasil pindaian?
+386|Bisa. Halaman tanpa teks dibaca dengan OCR. Pindaian yang jelas pada 300 DPI memberi hasil terbaik. Periksa nama dan angka setelah konversi, karena OCR bisa salah membaca satu huruf.
+387|Apakah hasilnya akan persis seperti PDF-nya?
+388|Anda mendapat teks berupa paragraf yang rapi dan bisa diedit, dengan judul tetap lebih besar dan tebal. Tabel, kolom, dan gambar belum disusun ulang, jadi tata letak yang rumit perlu sedikit dirapikan di Word.
+389|Apakah file saya diunggah?
+390|Tidak. Semuanya berjalan di komputer Anda sendiri, jadi dokumen pribadi tetap bersama Anda. Tidak ada batas halaman atau file.
+391|Konversi PDF ke file Word yang bisa diedit (.docx), termasuk PDF hasil pindaian. Teks Arab keluar dari kanan ke kiri dan dengan urutan yang benar. Gratis, tanpa unggah, tanpa daftar, tanpa batas halaman.
+392|PDF ke Word dengan Dukungan Bahasa Arab, PDF Pindaian juga, Gratis | File Manager Toolkit
+393|Potong orang, produk, dan objek dari foto dalam satu klik. Latar transparan atau warna apa pun.
+394|Pilih gambar
+395|atau letakkan gambar atau folder di sini
+396|Latar belakang
+397|Transparan
+398|Putih
+399|Warna
+400|Format
+401|=
+402|=
+403|=
+404|JPG tidak mendukung transparansi, jadi latarnya akan putih.
+405|Tepi
+406|Halus
+407|rambut, bulu
+408|Tajam
+409|produk
+410|Potong mengikuti objek
+411|Saat pertama kali, model AI (sekitar 45 MB) diunduh sekali. Setelah itu bisa dipakai offline. Foto Anda tidak pernah keluar dari komputer Anda.
+412|Hapus latar belakang
+413|Cara memakai Hapus latar belakang
+414|Pilih foto Anda
+415|, atau seluruh folder. Foto dibuka di browser Anda dan tidak diunggah.
+416|Pilih latar belakang
+417|: transparan, putih, atau warna pilihan Anda.
+418|, lalu unduh gambarnya satu per satu atau sebagai ZIP.
+419|Benarkah gratis tanpa batas?
+420|Ya. AI berjalan di komputer Anda sendiri, jadi tidak ada kredit, tidak ada watermark, dan tidak ada batas ukuran. Anda mendapat gambar ukuran penuh.
+421|Apakah foto saya diunggah?
+422|Tidak. Model diunduh ke browser Anda sekali dan setiap foto diproses di perangkat Anda. Ini penting untuk foto KTP dan gambar pribadi.
+423|Apa yang paling cocok?
+424|Foto yang objeknya menonjol dari latar: orang, produk, mobil, hewan. Pilih tepi "Halus" untuk rambut dan bulu, "Tajam" untuk produk dengan tepi yang rapi.
+425|Mengapa pertama kali lambat?
+426|Pertama kali, browser Anda mengunduh model AI (sekitar 45 MB). Model ini disimpan, jadi foto berikutnya mulai dalam hitungan detik. Komputer dengan kartu grafis terbaru lebih cepat.
+427|Hapus latar belakang foto secara otomatis dengan AI yang berjalan di browser Anda. PNG transparan, putih, atau warna apa pun. Banyak foto sekaligus, ukuran penuh, gratis, tanpa unggah, tanpa daftar.
+428|Hapus Latar Belakang Gambar, Gratis dan Privat, Tanpa Unggah | File Manager Toolkit
+429|Buat PDF hasil pindaian bisa dicari dan disalin, dalam bahasa Arab, Inggris, dan lainnya.
+430|Jerman
+431|Spanyol
+432|Lewati halaman yang sudah berisi teks
+433|Saat pertama kali, mesin pembaca dan file bahasa (beberapa MB) diunduh, lalu bisa dipakai offline.
+434|Jadikan bisa dicari
+435|Cara memakai OCR PDF
+436|Pilih PDF hasil pindaian Anda.
+437|yang dipakai di dalamnya.
+438|. Halaman tampak sama, tetapi sekarang Anda bisa mencari, memilih, dan menyalin teksnya.
+439|Apakah tampilan PDF berubah setelah OCR?
+440|Tidak. Halaman tetap persis seperti semula. Lapisan teks tak terlihat ditambahkan di atasnya, agar Anda bisa mencari dan menyalin.
+441|Apakah bisa membaca bahasa Arab?
+442|Bisa. Centang Arab, atau Arab dan Inggris untuk dokumen campuran.
+443|Apakah ada batas halaman?
+444|Tidak. Dokumen panjang hanya butuh waktu lebih lama, karena pembacaan dilakukan di komputer Anda sendiri.
+445|Ubah PDF hasil pindaian menjadi PDF yang bisa dicari dan teksnya bisa disalin. Inggris, Arab, dan bahasa lain. Banyak file dan halaman, gratis, tanpa unggah, tanpa batas.
+446|OCR PDF: Jadikan PDF Pindaian Bisa Dicari, Inggris dan Arab, Gratis | File Manager Toolkit
+447|Ubah halaman PDF menjadi gambar dengan resolusi yang Anda butuhkan, atau ambil gambar di dalamnya.
+448|Gambar di dalamnya
+449|=
+450|Resolusi
+451|layar
+452|email
+453|cetak
+454|arsip
+455|Lainnya
+456|=
+457|DPI (20 sampai 1200)
+458|Abu-abu
+459|Hitam putih
+460|Kualitas
+461|{name} = nama PDF, {page} = nomor halaman, {total} = jumlah halaman
+462|Satu TIFF multihalaman untuk setiap PDF
+463|Latar transparan (PNG dan WebP)
+464|Konversi ke gambar
+465|Cara memakai PDF ke JPG
+466|Pilih format dan resolusi.
+467|150 DPI cocok untuk email dan layar, 300 DPI untuk cetak.
+468|, lalu unduh gambarnya sebagai ZIP atau simpan langsung ke folder.
+469|DPI berapa yang sebaiknya dipilih?
+470|72 DPI untuk layar dan presentasi, 150 DPI untuk email dan dokumen, 300 DPI untuk cetak, 600 DPI untuk arsip dan gambar kerja yang detail. Ukuran setiap gambar ditampilkan sebelum konversi.
+471|Format mana yang terbaik?
+472|JPG kecil dan cocok untuk foto dan pindaian. PNG tajam untuk teks dan gambar kerja. WebP lebih kecil dari keduanya. TIFF untuk cetak dan arsip, dan bisa memuat semua halaman dalam satu file.
+473|Apakah ada batas file atau halaman?
+474|Tidak. Semuanya berjalan di komputer Anda, jadi tidak ada batas jumlah atau ukuran file, hanya memori komputer Anda untuk halaman yang sangat besar.
+475|Bisakah saya mengambil gambar dari PDF, bukan seluruh halaman?
+476|Bisa. Pilih "Gambar di dalamnya" untuk menyimpan setiap foto dan gambar di PDF dengan ukuran aslinya.
+477|Konversi halaman PDF ke gambar JPG, PNG, WebP, atau TIFF dengan resolusi pilihan Anda: 72, 150, 300, 600 DPI, atau sesuai keinginan. Warna, abu-abu, atau hitam putih. Gratis, tanpa unggah, tanpa batas file.
+478|PDF ke JPG, PNG, WebP, atau TIFF di DPI Berapa Pun, Gratis | File Manager Toolkit
+479|Foto, pindaian, dan tangkapan layar ke PDF, dengan urutan yang Anda mau.
+480|Ukuran halaman
+481|Sama dengan gambar
+482|=
+483|=
+484|=
+485|Orientasi
+486|Otomatis
+487|Margin
+488|Kecil
+489|Besar
+490|Buat
+491|Satu PDF
+492|Satu PDF per gambar
+493|Satu PDF per folder
+494|Kualitas gambar
+495|Asli
+496|tanpa perubahan
+497|File lebih kecil
+498|=
+499|Konversi ke PDF
+500|Cara memakai JPG ke PDF
+501|Pilih gambar Anda
+502|atau folder berisi gambar. JPG, PNG, WebP, GIF, BMP, dan TIFF semuanya bisa.
+503|Urutkan
+504|dengan menyeret, atau urutkan berdasarkan nama atau tanggal.
+505|Pilih ukuran halaman dan margin
+506|, lalu konversi dan unduh PDF-nya.
+507|Apakah foto dari ponsel saya akan miring?
+508|Tidak. Rotasi yang disimpan kamera ponsel dibaca, jadi setiap foto ditempatkan dengan arah yang benar.
+509|Apakah konversi menurunkan kualitas?
+510|Tidak dengan "Asli": foto JPG dimasukkan ke PDF apa adanya. "File lebih kecil" menurunkannya ke 150 DPI untuk email.
+511|Bisakah saya membuat satu PDF untuk setiap folder?
+512|Bisa. Pilih folder yang berisi subfolder dan pilih "Satu PDF per folder": setiap folder menjadi PDF sendiri.
+513|Konversi JPG, PNG, WebP, dan gambar lain ke PDF: satu PDF, satu per gambar, atau satu per folder. Ukuran halaman, orientasi, dan margin. Foto ponsel diputar ke arah yang benar. Gratis dan privat.
+514|JPG ke PDF: Gambar dan Foto ke PDF, Gratis, Tanpa Unggah | File Manager Toolkit
+515|Nomor halaman atau penomoran Bates, di satu PDF atau ratusan.
+516|Posisi
+517|Kiri atas
+518|Tengah atas
+519|Kanan atas
+520|Kiri tengah
+521|Tengah
+522|Kanan tengah
+523|Kiri bawah
+524|Tengah bawah
+525|Kanan bawah
+526|Letak nomor di halaman
+527|Teks
+528|Halaman 1
+529|Halaman 1 dari 10
+530|Kustom…
+531|{n} = nomor, {total} = nomor terakhir, {file} = nama file
+532|Nomor pertama
+533|Halaman yang diberi nomor
+534|Semua halaman, atau mis. 2-
+535|Lewati halaman pertama (sampul)
+536|Ukuran dan warna
+537|Ukuran font
+538|=
+539|Tebal
+540|Jarak dari tepi
+541|=
+542|Bolak-balik: tukar kiri dan kanan di halaman genap
+543|Penomoran Bates: lanjutkan nomor di semua file
+544|Awalan
+545|Digit
+546|Tambah nomor halaman
+547|Cara memakai Tambah nomor halaman
+548|, atau folder.
+549|Pilih letak nomor
+550|dan bentuknya, misalnya "Halaman 1 dari 10".
+551|Tambahkan nomornya
+552|dan unduh.
+553|Bisakah saya melewati halaman sampul?
+554|Bisa. Centang "Lewati halaman pertama", atau ketik halaman yang diberi nomor, misalnya 2- untuk halaman 2 sampai akhir. Atur nomor pertama untuk memilih dari mana hitungan dimulai.
+555|Apa itu penomoran Bates?
+556|Satu nomor berurutan di seluruh kumpulan dokumen, dengan awalan, misalnya DOC-000001 sampai DOC-000250. Dipakai untuk dokumen hukum dan kontrak serta pengendalian dokumen.
+557|Bisakah saya memberi nomor banyak PDF sekaligus?
+558|Bisa. Pilih file sebanyak yang Anda mau, atau seluruh folder. Setiap file mendapat nomornya sendiri, atau satu nomor berurutan dengan penomoran Bates.
+559|Tambahkan nomor halaman ke file PDF: posisi, format (Halaman 1 dari 10), nomor pertama, halaman yang dilewati, atau penomoran Bates di banyak file. Gratis, tanpa unggah, tanpa batas.
+560|Tambah Nomor Halaman atau Penomoran Bates ke PDF, Gratis | File Manager Toolkit
+561|Bubuhkan kata atau logo Anda di setiap halaman: DRAFT, RAHASIA, dalam bahasa apa pun.
+562|Pratinjau halaman pertama
+563|Watermark
+564|Gambar atau logo
+565|Gambar
+566|Pilih gambar…
+567|PNG atau JPG
+568|Ulangi di seluruh halaman
+569|Ukuran
+570|dari lebar halaman
+571|Sudut
+572|Opasitas
+573|Lapisan
+574|Di atas konten
+575|Di bawah konten
+576|Tambah watermark
+577|Cara memakai Tambah watermark
+578|Ketik teksnya atau pilih logo Anda
+579|, lalu atur posisi, ukuran, sudut, dan transparansi. Pratinjau menampilkan halaman pertama.
+580|Tambahkan watermark
+581|Bisakah saya menulis watermark dalam bahasa Arab?
+582|Bisa. Bahasa apa pun bisa, termasuk Arab, dengan huruf yang tersambung dengan benar.
+583|Di atas atau di bawah konten?
+584|"Di atas" selalu terlihat. "Di bawah" berada di belakang teks dan gambar seperti latar tipis, tetapi bisa tertutup di halaman pindaian, karena halaman itu berupa gambar.
+585|Bubuhkan watermark teks atau gambar di halaman PDF: RAHASIA, DRAFT, logo Anda, dalam bahasa apa pun termasuk Arab. Posisi, ukuran, sudut, dan transparansi. Banyak file sekaligus, tanpa unggah.
+586|Tambah Watermark ke PDF: Teks dalam Bahasa Apa Pun atau Logo, Gratis | File Manager Toolkit
+587|Seret di halaman untuk menggambar area yang disimpan.
+588|Cara
+589|Gambar area
+590|Potong margin putih
+591|Margin yang dipotong (mm)
+592|Atas
+593|Bawah
+594|Kiri
+595|Kanan
+596|Ruang yang disisakan di sekitar konten
+597|Cara memakai Potong PDF
+598|Seret kotak
+599|di halaman mengelilingi bagian yang ingin disimpan, atau pilih "Potong margin putih".
+600|Potong
+601|Apakah bagian yang dipotong terhapus?
+602|Bagian itu disembunyikan: setiap pembaca PDF hanya menampilkan dan mencetak area yang disimpan. Konten aslinya masih ada di dalam file.
+603|Bisakah saya memotong margin yang berbeda di setiap halaman?
+604|Bisa. "Potong margin putih" mencari konten di setiap halaman secara terpisah dan memotong di sekitarnya.
+605|Potong halaman PDF dengan menggambar area yang disimpan, atau potong margin putih setiap halaman secara otomatis. Banyak file sekaligus, gratis, tanpa unggah.
+606|Potong Halaman PDF atau Margin Putih, Gratis | File Manager Toolkit
+607|Dua versi dokumen atau gambar kerja: lihat persis apa yang dihapus dan apa yang ditambahkan.
+608|Pilih dua PDF
+609|Tampilan
+610|Tumpuk
+611|Berdampingan
+612|Sensitivitas
+613|Rendah
+614|abaikan geseran kecil
+615|Normal
+616|Tinggi
+617|setiap piksel
+618|Bandingkan teksnya juga
+619|File pertama adalah versi lama, yang kedua versi baru. Seret untuk menukarnya.
+620|Unduh laporan
+621|Cara memakai Bandingkan PDF
+622|Pilih dua versi
+623|PDF: yang lama dulu, lalu yang baru.
+624|Lihat setiap halaman
+625|: bagian yang dihapus berwarna merah, yang ditambahkan hijau. Ganti ke berdampingan jika Anda lebih suka.
+626|: PDF dengan setiap halaman yang berubah ditandai, untuk dikirim atau diarsipkan.
+627|Apakah bisa untuk gambar kerja?
+628|Bisa. Gambar kerja dibandingkan sebagai gambar, garis demi garis, jadi dinding yang dipindah, dimensi baru, dan catatan yang dihapus semuanya terlihat. Halaman pindaian juga bisa.
+629|Bagaimana jika ukuran halamannya berbeda?
+630|Halaman baru diskalakan ke halaman lama, jadi gambar yang dicetak di ukuran kertas berbeda tetap sejajar.
+631|Tidak. Kedua PDF dibandingkan di browser Anda.
+632|Bandingkan dua versi PDF, gambar kerja, atau dokumen. Bagian yang dihapus berwarna merah, yang ditambahkan hijau, berdampingan atau ditumpuk, plus teks yang berubah dan laporan PDF. Gratis, tanpa unggah.
+633|Bandingkan Dua PDF: Lihat Apa yang Berubah, Gratis, Tanpa Unggah | File Manager Toolkit
+634|Kunci PDF dengan kata sandi, dan tentukan apa yang boleh dilakukan orang.
+635|Kata sandi
+636|Ketik lagi
+637|Tampilkan kata sandi
+638|Orang yang membukanya boleh
+639|Mencetak
+640|Menyalin teks dan gambar
+641|Menambah komentar dan mengisi formulir
+642|Mengedit, dan menambah atau menghapus halaman
+643|Enkripsi
+644|=
+645|disarankan
+646|=
+647|pembaca lama
+648|Kata sandi pemilik
+649|Opsional
+650|Agar Anda bisa mengubah izin nanti. Tanpa ini, kata sandi acak yang dipakai.
+651|Cara memakai Lindungi PDF
+652|Ketik kata sandi
+653|dan tentukan apa yang boleh dilakukan orang: mencetak, menyalin, mengedit.
+654|Lindungi
+655|dan unduh. PDF akan meminta kata sandi saat dibuka.
+656|Apakah kata sandi saya dikirim ke suatu tempat?
+657|Tidak. File dienkripsi di browser Anda. Baik file maupun kata sandi tidak keluar dari komputer Anda.
+658|Seberapa kuat perlindungannya?
+659|AES-256, enkripsi terkuat yang didukung PDF. Gunakan kata sandi yang panjang: kata sandi tidak bisa dipulihkan jika Anda lupa.
+660|Tambahkan kata sandi ke file PDF dengan enkripsi AES-256, dan tentukan apakah orang bisa mencetak, menyalin, atau mengedit. Banyak file sekaligus. File dan kata sandi Anda tidak pernah keluar dari komputer Anda.
+661|Lindungi PDF dengan Kata Sandi (AES-256), Gratis, Tanpa Unggah | File Manager Toolkit
+662|Hapus kata sandi dan batasan cetak, salin, dan edit dari PDF Anda.
+663|Hanya jika PDF memintanya
+664|File bertanda 🔒 butuh kata sandi untuk dibuka. File yang hanya memblokir cetak atau salin dibuka kuncinya tanpa kata sandi.
+665|Cara memakai Buka kunci PDF
+666|Pilih PDF yang terlindungi.
+667|Ketik kata sandinya
+668|jika diminta saat Anda membukanya.
+669|Buka kunci
+670|dan unduh PDF yang bisa dibuka, dicetak, dan disalin dengan bebas.
+671|Apakah bisa membuka PDF tanpa tahu kata sandinya?
+672|Tidak. Anda perlu kata sandi untuk membuka file. Batasan cetak, salin, atau edit dihapus tanpa kata sandi.
+673|Buka kunci hanya file yang Anda berhak buka
+674|Gunakan untuk file Anda sendiri, atau file yang pemiliknya mengizinkan.
+675|Hapus kata sandi dan batasan cetak, salin, dan edit dari file PDF yang Anda berhak buka. Banyak file sekaligus, gratis, tanpa unggah.
+676|Buka Kunci PDF: Hapus Kata Sandi dan Batasan, Gratis | File Manager Toolkit
+677|galat
+678|=
+679|Batal
+680|Tidak bisa memuat pustaka yang dibutuhkan. Periksa koneksi internet Anda.
+681|tidak ada
+682|Pilih folder
+683|Konfirmasi
+684|Tidak ada folder yang dipilih.
+685|Bukan file PDF yang valid
+686|PDF ini dilindungi kata sandi
+687|Letakkan file PDF di sini.
+688|Judul
+689|Tidak bisa memuat file contoh. Periksa koneksi Anda dan coba lagi.
+690|Folder Anda sendiri bisa dipakai di komputer, di Chrome atau Edge. Gratis, tanpa daftar.
+691|Gratis, tanpa daftar. File Anda tetap di komputer Anda.
+692|Tautan disalin.
+693|Buka
+694|Akses tidak diberikan. Gunakan tombol untuk memilih folder.
+695|Perlu memperbaiki nama di folder ini? Tambahkan awalan atau perbaiki revisi di semua nama sekaligus.
+696|Buat daftar Excel dari file yang diganti nama, dengan jumlah setiap jenis file.
+697|Buat daftar gambar di Excel dari PDF yang sama: nomor, judul, dan revisi.
+698|Cek folder pengajuan terhadap daftar gambar ini sebelum Anda kirim.
+699|Selanjutnya apa?
+700|Buka folder ini di
+701|halaman
+702|Dilindungi kata sandi. Buka kuncinya dulu dengan Buka kunci PDF.
+703|Tidak ada file PDF di sana.
+704|Tidak ada gambar di sana.
+705|Hapus
+706|Tunggu sampai file selesai dibaca, atau hapus file yang bermasalah.
+707|Tambahkan file dulu.
+708|Tidak ada yang dibuat. Periksa opsinya.
+709|File Anda siap
+710|Unduh
+711|Unduh semua (ZIP)
+712|Filter
+713|Paskan
+714|kosong
+715|Menyimpan…
+716|Menggabungkan…
+717|Tambahkan minimal dua file PDF untuk digabungkan.
+718|PDF Anda sudah digabungkan
+719|File ini besar: ukuran barunya ditampilkan setelah selesai.
+720|Menghitung ukuran setiap level…
+721|tidak lebih kecil
+722|Ukuran untuk file Anda, dihitung di komputer Anda.
+723|Ketik ukuran yang Anda butuhkan, misalnya 2 MB.
+724|sudah kecil, dibiarkan apa adanya
+725|Mengompres…
+726|Selesai
+727|Memuat mesin pembaca dan file bahasa (hanya pertama kali)…
+728|Centang minimal satu bahasa.
+729|Membaca halaman…
+730|Tidak ada teks yang ditemukan. Coba "Baca setiap halaman" dengan bahasa yang benar dicentang.
+731|Tidak ada gambar di dalam PDF ini. Pilih "Setiap halaman" untuk mengubah halaman menjadi gambar.
+732|Mengonversi…
+733|Gambar Anda siap
+734|=
+735|Membuat PDF Anda…
+736|Ketik rentang halaman, misalnya 1-3, 4-
+737|Ketik halaman yang diambil, misalnya 1, 3, 5-7
+738|Ketik ukuran maksimum setiap bagian, misalnya 10 MB.
+739|Tidak ada halaman yang cocok. Periksa nomor halamannya.
+740|Memisahkan…
+741|Setiap PDF
+742|PDF ini
+743|Memutar…
+744|tidak dilindungi
+745|kata sandi dihapus
+746|batasan dihapus
+747|PDF ini butuh kata sandi untuk dibuka. Ketik kata sandinya, lalu coba lagi.
+748|Membuka kunci…
+749|Mengenkripsi…
+750|Ketik kata sandi.
+751|Kata sandi tidak boleh berisi koma (,).
+752|Kedua kata sandi tidak sama.
+753|Kata sandi pemilik tidak boleh berisi koma (,).
+754|Simpan kata sandi baik-baik: kata sandi tidak bisa dipulihkan.
+755|Ketik teks watermark.
+756|Pilih gambar untuk watermark.
+757|Menambahkan watermark…
+758|Ketik teks untuk nomor halaman.
+759|Memberi nomor halaman…
+760|Salin
+761|Hapus
+762|Tidak ada halaman tersisa. Tambahkan file, atau klik "Mulai lagi".
+763|PDF baru Anda siap
+764|Jenis
+765|Tidak ada teks baru yang ditemukan.
+766|Seret di halaman untuk menggambar area yang disimpan, atau ketik margin yang dipotong.
+767|Memotong…
+768|Tambahkan PDF kedua (versi baru).
+769|Sisakan hanya dua PDF: versi lama dan versi baru.
+770|Tidak ada perubahan yang terlihat di halaman ini.
+771|Pilih tepat dua PDF: versi lama dan versi baru.
+772|Membandingkan halaman…
+773|Membuat laporan…
+774|Laporan perbandingan Anda siap
+775|Menyalakan model AI…
+776|Menghapus latar belakang…
+777|Latar belakang dihapus
+778|Sebelum
+779|Sesudah
+780|Kirim tautan ke WhatsApp saya
+781|Salin tautan
+782|Mode terang
+783|Mode gelap
+784|(tanpa ekstensi)
+785|File di folder yang dicentang (dan folder di dalamnya) akan disertakan.
+786|Ya
+787|Sheet
+788|file
+789|File Anda siap. Klik Buka agar halaman ini bisa membacanya.
+790|Semua halaman sudah dihapus. Tambahkan file, atau klik "Mulai lagi".
+791|Putar file ini 90° lagi
+792|Putar file ini
+793|Pratinjau halaman 1
+794|Lama
+795|Dihapus (hanya di versi lama)
+796|Ditambahkan (hanya di versi baru)
+797|Area yang berubah
+798|Membandingkan…
+799|Teksnya sama.
+800|Simpan ke folder
+801|Bahasa
+802|Tutup
+803|Disalin ✓
+804|Salin tautan
+805|Tidak bisa mengirim. Silakan coba lagi.
+806|Alat khusus untuk kantor saya
+807|Apakah ini menghemat waktu Anda?
+808|Masukan
+809|Diterima, terima kasih!
+810|Ada masalah, punya ide, atau butuh alat khusus untuk kantor Anda? Tulis ke kami.
+811|Ide atau alat baru
+812|Buka di komputer saya:
+813|Tulis pesan dulu.
+814|Masalah dengan alat
+815|Lihat cara kerjanya ↓
+816|Kirimi saya tautannya
+817|Kirim
+818|Pengiriman belum diaktifkan.
+819|Mengirim…
+820|Beri tahu pendapat Anda
+821|Terima kasih! Itu sangat membantu.
+822|Terima kasih
+823|Alamat email itu sepertinya tidak benar.
+824|Topik
+825|Apa yang kurang? Beri tahu kami
+826|Email Anda (opsional, jika ingin dibalas)
+827|Email Anda hanya dipakai untuk membalas. File Anda tidak pernah dikirim.
+828|Pesan Anda
+829|Nama Anda (opsional)
+830|Mulai lagi
+831|Alat ini berjalan di komputer, karena membuka folder dan PDF dari disk Anda. Kirim tautannya ke diri sendiri dan buka di meja kerja Anda.
+832|Kami akan segera membalas ke email Anda.
+833|Tidak

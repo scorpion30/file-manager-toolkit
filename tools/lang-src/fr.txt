@@ -1,0 +1,834 @@
+0|Fusionner PDF
+1|Diviser PDF
+2|Compresser PDF
+3|PDF en JPG
+4|Tous les outils
+5|Organiser PDF
+6|Pivoter PDF
+7|Organiser les pages
+8|Optimiser PDF
+9|OCR PDF
+10|Convertir
+11|PDF en Word
+12|Supprimer l'arrière-plan
+13|JPG en PDF
+14|Modifier et réviser
+15|Ajouter un filigrane
+16|Numéroter les pages
+17|Rogner PDF
+18|Comparer PDF
+19|Modifier le texte PDF
+20|Sécurité PDF
+21|Déverrouiller PDF
+22|Protéger PDF
+23|Outils fichiers
+24|Renommer des fichiers
+25|Fichiers vers Excel
+26|Ranger des fichiers
+27|Pour les ingénieurs
+28|Diviser et renommer PDF
+29|Renommer depuis le cartouche
+30|PDF vers Excel
+31|Commentaires PDF vers Excel
+32|Contrôle avant envoi
+33|Contrôle MIDP
+34|Passer en mode clair ou sombre
+35|♥ Faire un don
+36|Tous les outils PDF et fichiers dont vous avez besoin.
+37|Rien n'est envoyé en ligne.
+38|Fusionnez, divisez, compressez, convertissez et protégez vos PDF, ou renommez et listez des dossiers entiers. Gratuit, sans limite et sans inscription, car tout fonctionne dans votre navigateur, sur votre ordinateur.
+39|✓ Gratuit, sans limite
+40|✓ Aucun envoi
+41|✓ Des dossiers entiers d'un coup
+42|✓ Fonctionne hors ligne
+43|✓ Anglais et arabe
+44|Voir les outils
+45|Tous
+46|✦ Seulement ici
+47|★ Mes favoris
+48|Trouver un outil…
+49|Trouver un outil
+50|Aucun outil ne correspond. Essayez un autre mot, ou dites-nous ce qu'il vous faut avec le bouton Avis.
+51|Réunissez des PDF, ou un dossier entier avec ses sous-dossiers, en un seul fichier avec un signet pour chacun.
+52|Des fichiers Word modifiables à partir de PDF, même scannés. L'arabe reste de droite à gauche.
+53|Rendez vos PDF plus légers. Choisissez une taille cible, par exemple moins de 2 Mo pour un e-mail.
+54|Pages en JPG, PNG, WebP ou TIFF, à la résolution de votre choix.
+55|Détourez vos photos avec l'IA. PNG transparent, fond blanc ou de la couleur de votre choix.
+56|Photos et images en PDF : un fichier, ou un par image ou par dossier.
+57|Par plages de pages, toutes les N pages, par taille de fichier ou par signets.
+58|Remettez les pages dans le bon sens dans plusieurs fichiers à la fois, ou seulement les pages paysage.
+59|Retirez le mot de passe et les restrictions des PDF que vous pouvez ouvrir.
+60|Ajoutez un mot de passe et choisissez si l'on peut imprimer, copier ou modifier.
+61|Apposez un texte dans n'importe quelle langue, ou un logo, sur chaque page.
+62|Numéros de page ou numérotation Bates, sur plusieurs PDF à la fois.
+63|Voyez chaque page. Glissez pour réordonner, pivotez, supprimez ou ajoutez des pages blanches.
+64|Rendez les PDF scannés consultables et copiables, en anglais et en arabe.
+65|Tracez la zone à garder, ou retirez automatiquement les marges blanches.
+66|Deux versions superposées : ce qui a été supprimé et ce qui a été ajouté.
+67|Besoin d'un autre outil ?
+68|Dites-nous ce que vous faites encore à la main. Les outils les plus demandés seront créés en premier.
+69|Uniquement sur File Manager Toolkit
+70|Des outils introuvables sur les autres sites PDF : dossiers entiers, noms de fichiers, listes Excel et contrôle de plans.
+71|Nouveau
+72|Préfixe, suffixe, rechercher et remplacer dans des centaines de noms, avec annulation.
+73|Remplacez une valeur dans une zone, sur plusieurs PDF à la fois.
+74|Tous les fichiers d'un dossier et de ses sous-dossiers, listés dans Excel.
+75|Déplacez ou copiez des fichiers dans des dossiers selon leur type ou un mot du nom.
+76|Un PDF par planche à partir d'un jeu combiné, nommé d'après chaque cartouche.
+77|Nommez chaque plan PDF d'après le numéro et le titre de son cartouche.
+78|Lisez les mêmes zones de chaque plan dans un tableur. OCR inclus.
+79|Des commentaires de revue vers un tableau de réponses Excel, avec une image de chacun.
+80|Numéros en double, mauvais noms et plans manquants, avant l'envoi.
+81|Un dossier complet contrôlé par rapport au MIDP et aux TIDP : manquants, en trop, mauvais indices.
+82|Pourquoi on change
+83|Sites PDF en ligne ou File Manager Toolkit
+84|Sites PDF en ligne habituels
+85|File Manager Toolkit
+86|Vos fichiers
+87|Envoyés sur leurs serveurs et gardés pendant des heures
+88|Ne quittent jamais votre ordinateur
+89|Limites gratuites
+90|2 fichiers par tâche, 1 fichier pour l'OCR, plafonds horaires
+91|Aucune limite, aucun compte
+92|Dossiers
+93|Choisir les fichiers un par un
+94|Des dossiers entiers avec leurs sous-dossiers
+95|Qualité PDF en JPG
+96|Normale ou haute
+97|N'importe quelle résolution, JPG / PNG / WebP / TIFF, couleur, gris ou noir et blanc
+98|Compresser
+99|3 niveaux fixes, résultat visible seulement après téléchargement
+100|Une taille cible, et la taille de chaque niveau avant d'enregistrer
+101|Fusionner
+102|Glisser les fichiers dans l'ordre
+103|Tri naturel, un signet par fichier, une table des matières
+104|Découpe par taille, OCR, enchaînements
+105|Offres payantes
+106|Gratuit
+107|Vitesse avec de gros fichiers
+108|Attendre l'envoi puis le téléchargement
+109|Démarre tout de suite, rien à envoyer
+110|Publicités
+111|Oui, dans l'offre gratuite
+112|Aucune
+113|Pour les architectes et ingénieurs
+114|Des outils qu'aucun site PDF n'a
+115|Jeux de plans, cartouches et dossiers de rendu : le travail qui prenait un après-midi.
+116|Extraire les noms de fichiers dans Excel
+117|Tous les fichiers d'un dossier et de ses sous-dossiers, un onglet par dossier, et le nombre de fichiers de chaque type.
+118|Choisir un dossier
+119|Exporter
+120|L'Excel est prêt
+121|Ouvrir l'outil
+122|▷ Exemple
+123|=
+124|Renommer des PDF depuis le cartouche
+125|Lit le numéro et le titre du plan sur chaque planche et nomme le fichier en conséquence.
+126|Encadrer le numéro du plan
+127|Vérifier les noms
+128|Renommer
+129|Liste de plans depuis les cartouches
+130|Indiquez une fois le numéro, le titre et l'indice. Ils sont lus dans chaque PDF et mis dans Excel.
+131|Encadrer les valeurs
+132|Lire chaque PDF
+133|Télécharger l'Excel
+134|Renommer des centaines de fichiers
+135|Ajoutez un préfixe, remplacez un mot ou corrigez l'indice dans tous les noms à la fois, avec annulation.
+136|Saisir la modification
+137|Voir l'aperçu
+138|Appliquer
+139|Simple, par conception
+140|Comment ça marche
+141|Choisissez vos fichiers
+142|Choisissez des fichiers ou un dossier entier, ou déposez-les sur la page. Votre navigateur les ouvre sur votre ordinateur.
+143|Choisissez les options
+144|Voyez chaque page, nom ou taille avant que quoi que ce soit change.
+145|Téléchargez ou enregistrez
+146|Un fichier, un ZIP, ou directement dans un dossier. Puis continuez avec un autre outil.
+147|Pour les bureaux
+148|Besoin d'un outil pour votre bureau ?
+149|Chaque bureau a ses propres listes, formulaires et règles de nommage. Dites-nous ce qui prend des heures à votre équipe, et nous pouvons créer un outil pour cela.
+150|Dites-nous ce qu'il vous faut
+151|Gratuit pour toujours
+152|On vous a fait gagner un après-midi ?
+153|File Manager Toolkit est gratuit et le restera. Un petit don permet de créer de nouveaux outils.
+154|♥ Faire un don avec PayPal
+155|Questions
+156|Autre chose ? Utilisez le bouton Avis et nous vous répondrons.
+157|Guides pas à pas →
+158|Mes fichiers sont-ils envoyés quelque part ?
+159|Non. Les outils fonctionnent dans votre navigateur. Les fichiers sont lus sur votre ordinateur et les résultats y sont enregistrés. Vous pouvez même vous déconnecter d'internet une fois la page chargée.
+160|Est-ce vraiment gratuit ? Quelles sont les limites ?
+161|C'est gratuit, sans compte et sans limite sur le nombre de fichiers ou de tâches. La seule limite est la mémoire de votre ordinateur avec de très gros fichiers.
+162|Est-ce que ça marche sans internet ?
+163|Oui. Après une première utilisation, la page et son moteur PDF sont gardés par votre navigateur : l'outil s'ouvre et fonctionne hors ligne.
+164|Quel navigateur utiliser ?
+165|Google Chrome ou Microsoft Edge sur ordinateur peuvent aussi enregistrer les résultats directement dans un dossier et renommer les fichiers sur place. Les autres navigateurs fonctionnent aussi et vous donnent le résultat en téléchargement.
+166|L'OCR fonctionne-t-il en arabe ?
+167|Oui. OCR PDF et PDF vers Excel lisent l'anglais, l'arabe ou les deux.
+168|Pourquoi utiliser ceci plutôt qu'une IA ou un site d'envoi ?
+169|Vos fichiers ne quittent jamais votre ordinateur
+170|Chats d'IA et sites de fichiers en ligne
+171|Vos plans sont envoyés et traités sur les serveurs de quelqu'un d'autre.
+172|Votre navigateur fait le travail sur votre ordinateur. Rien n'est envoyé.
+173|Des dossiers entiers d'un coup
+174|Des centaines de plans en une fois, pas quelques fichiers par conversation.
+175|Exact, pas approximatif
+176|Lit le vrai texte du cartouche. Vous voyez chaque résultat d'abord, et pouvez annuler.
+177|Trois clics, aucune consigne
+178|Choisissez le dossier, vérifiez l'aperçu, appliquez. Rien à expliquer ni à recommencer.
+179|Fait dans votre dossier
+180|Les fichiers sont renommés et enregistrés là où ils sont. Pas de téléchargement ni de tri ensuite.
+181|Des outils PDF et fichiers gratuits qui fonctionnent dans votre navigateur. Sans envoi, sans inscription, sans limite.
+182|Outils PDF
+183|Convertir et modifier
+184|Sécurité et fichiers
+185|Guides
+186|À propos
+187|Faire un don
+188|Code source
+189|© File Manager Toolkit · Tout le traitement se fait localement dans votre navigateur.
+190|Fusionnez, divisez, compressez et convertissez des PDF, PDF en JPG à toute résolution, OCR, numéros de page, filigranes, mots de passe et outils de fichiers en masse. Gratuit, sans limite, et vos fichiers ne quittent jamais votre appareil.
+191|File Manager Toolkit – Outils PDF et fichiers gratuits, sans envoi
+192|Réunissez des PDF, ou un dossier entier avec ses sous-dossiers, en un seul fichier.
+193|Choisir des fichiers PDF
+194|📁 Choisir un dossier
+195|ou déposez ici des PDF ou un dossier
+196|Rien n'est envoyé
+197|Aucune limite de fichiers ni de taille
+198|Gratuit, sans inscription
+199|Trier les fichiers
+200|Trier…
+201|Nom A → Z
+202|Nom Z → A
+203|Plus anciens d'abord
+204|Plus récents d'abord
+205|Plus petits d'abord
+206|+ Ajouter des fichiers
+207|+ Dossier
+208|Effacer
+209|Options
+210|Signets
+211|Un par fichier
+212|Par dossier
+213|Garder les signets de chaque fichier
+214|Ajouter une page de table des matières
+215|Plus d'options
+216|Imprimer le nom du fichier en bas de chaque page
+217|Impression recto verso : ajouter une page blanche après les fichiers au nombre de pages impair
+218|Nom du fichier
+219|Traitement…
+220|← Modifier les options
+221|Recommencer avec d'autres fichiers
+222|Continuer avec le résultat
+223|Comment utiliser Fusionner PDF
+224|Choisissez vos PDF, ou un dossier entier
+225|. Les fichiers des sous-dossiers sont inclus, dans l'ordre naturel (2 avant 10).
+226|Glissez pour changer l'ordre
+227|, ou triez par nom ou par date.
+228|. Chaque fichier reçoit un signet, pour naviguer facilement dans le PDF combiné.
+229|Guide pas à pas :
+230|Comment fusionner des PDF sans les envoyer en ligne
+231|Puis-je fusionner tous les PDF d'un dossier et de ses sous-dossiers ?
+232|Oui. Choisissez le dossier : chaque PDF qu'il contient, à toute profondeur, est ajouté dans l'ordre des dossiers, et vous pouvez créer un signet par dossier.
+233|« fichier 10 » viendra-t-il après « fichier 2 » ?
+234|Oui. Les noms sont triés comme on compte, pas lettre par lettre.
+235|Y a-t-il une limite au nombre de fichiers ?
+236|Non. Des centaines de fichiers, sans problème.
+237|Outils associés
+238|Réunissez des fichiers PDF, ou un dossier entier avec ses sous-dossiers, en un seul PDF. Tri naturel, un signet par fichier, une table des matières cliquable. Gratuit, sans envoi, sans limite.
+239|Fusionner des PDF et des dossiers, avec signets, gratuit et sans envoi | File Manager Toolkit
+240|Divisez par plages de pages, toutes les N pages, par taille de fichier ou par signets.
+241|Diviser
+242|Plages de pages
+243|Toutes les N pages
+244|Par taille de fichier
+245|Par signets
+246|Extraire des pages
+247|Chaque page
+248|Plages
+249|ex. 1-3, 4-6, 7-
+250|Un fichier par plage. « 4- » signifie de la page 4 jusqu'à la fin.
+251|Pages par fichier
+252|Taille maximale du fichier
+253|Mo
+254|Niveau de signet
+255|Premier niveau
+256|Deuxième niveau
+257|Un fichier par signet, nommé d'après lui.
+258|Pages à extraire
+259|ex. 1, 3, 5-7
+260|Copiées dans un nouveau PDF, dans cet ordre.
+261|Noms des fichiers
+262|{name} = nom du PDF, {part} = numéro de partie ou signet, {pages} = plage de pages
+263|Comment utiliser Diviser PDF
+264|Choisissez votre PDF
+265|(ou plusieurs : chacun est divisé de la même façon).
+266|Choisissez comment diviser
+267|: plages de pages, toutes les N pages, une taille limite pour l'e-mail, ou les signets.
+268|et téléchargez les parties en ZIP ou dans un dossier.
+269|Diviser un jeu de plans PDF en un fichier par planche
+270|Puis-je diviser un PDF en parties de moins de 10 Mo ?
+271|Oui. Choisissez « Par taille de fichier » et tapez 10. Chaque partie reste sous cette taille, sans couper une page en deux.
+272|Puis-je diviser un PDF par chapitres ?
+273|Oui, si le PDF a des signets : choisissez « Par signets » et chaque chapitre devient un fichier, nommé d'après lui.
+274|Divisez des PDF par plages de pages, toutes les N pages, par taille (par exemple des parties de 10 Mo) ou par signets, ou extrayez des pages dans un nouveau PDF. Gratuit, plusieurs fichiers à la fois, sans envoi.
+275|Diviser un PDF par pages, toutes les N pages, par taille ou par signets, gratuit | File Manager Toolkit
+276|Voyez chaque page. Glissez pour réordonner, pivotez, supprimez ou ajoutez des pages blanches.
+277|Toutes les pages
+278|↺ Tout pivoter
+279|↻ Tout pivoter
+280|Inverser l'ordre
+281|+ Page blanche
+282|Glissez une page pour la déplacer. Utilisez les boutons d'une page pour la pivoter, la copier ou la supprimer.
+283|Enregistrer le PDF
+284|Comment utiliser Organiser les pages
+285|Choisissez un ou plusieurs PDF
+286|. Toutes leurs pages apparaissent en vignettes.
+287|Glissez les pages
+288|dans l'ordre voulu, pivotez-les ou supprimez-les, ou ajoutez une page blanche.
+289|Enregistrez
+290|le nouveau PDF.
+291|Puis-je combiner des pages de différents PDF ?
+292|Oui. Ajoutez plusieurs PDF : toutes leurs pages apparaissent ensemble, et vous pouvez les mélanger dans n'importe quel ordre.
+293|Puis-je annuler la suppression d'une page ?
+294|Cliquez sur « Recommencer », ou ajoutez à nouveau le fichier. Vos fichiers d'origine ne changent pas.
+295|Voyez chaque page de vos PDF. Glissez les pages pour les réordonner, pivotez, supprimez, dupliquez ou ajoutez des pages blanches, et combinez des pages de plusieurs PDF. Gratuit, sans envoi.
+296|Organiser les pages PDF : réordonner, pivoter, supprimer, ajouter, gratuit | File Manager Toolkit
+297|Remettez les pages dans le bon sens et enregistrez-les, dans plusieurs fichiers à la fois.
+298|Pivoter
+299|↻ 90° à droite
+300|↺ 90° à gauche
+301|Quelles pages
+302|Paysage
+303|Portrait
+304|Choisir…
+305|ex. 1-3, 5
+306|Vous pouvez aussi pivoter un seul fichier avec le bouton ↻ sur sa vignette.
+307|Comment utiliser Pivoter PDF
+308|Choisissez vos PDF.
+309|Choisissez l'angle
+310|et les pages : toutes, seulement les pages paysage ou portrait, ou une liste.
+311|et téléchargez. Les pages sont enregistrées pivotées, elles s'ouvrent donc dans le bon sens partout.
+312|La rotation est-elle enregistrée ?
+313|Oui. La nouvelle orientation est enregistrée dans le PDF, il s'ouvre donc dans le bon sens dans tous les lecteurs et s'imprime ainsi.
+314|Puis-je pivoter seulement les pages paysage ?
+315|Oui. Choisissez « Paysage » pour ne pivoter que les pages plus larges que hautes, par exemple les plans d'un rapport.
+316|Pivotez des pages PDF et enregistrez-les ainsi : toutes les pages, seulement les pages paysage ou portrait, ou celles que vous choisissez, dans plusieurs fichiers à la fois. Gratuit, sans envoi.
+317|Pivoter des pages PDF, plusieurs fichiers à la fois, gratuit | File Manager Toolkit
+318|Rendez vos PDF plus légers pour l'e-mail et les envois, et voyez la nouvelle taille avant d'enregistrer.
+319|Compression
+320|Légère
+321|meilleure qualité
+322|Recommandée
+323|bonne qualité
+324|Forte
+325|le plus petit
+326|Taille cible
+327|à vous de choisir
+328|La taille de chaque niveau est calculée pour votre premier fichier.
+329|Taille cible par fichier
+330|Convertir les images en gris (plus léger)
+331|Supprimer les informations du document (auteur, titre, mots-clés)
+332|Comment utiliser Compresser PDF
+333|Choisissez vos PDF
+334|, ou un dossier qui en contient.
+335|Choisissez un niveau, ou tapez une taille cible
+336|comme 2 Mo. La taille de chaque niveau s'affiche avant de commencer.
+337|et téléchargez, ou enregistrez les fichiers allégés dans un dossier.
+338|De combien mon PDF sera-t-il réduit ?
+339|Cela dépend de son contenu. Les scans et photos diminuent beaucoup, souvent de 60 à 90 %. Les PDF surtout composés de texte ou de traits CAO sont déjà légers et changent peu.
+340|Puis-je compresser un PDF à moins de 2 Mo ?
+341|Oui. Choisissez « Taille cible » et tapez 2. L'outil essaie des réglages plus forts jusqu'à ce que le fichier tienne, et vous prévient s'il ne peut pas descendre aussi bas.
+342|La qualité du texte et des plans baisse-t-elle ?
+343|Non. Seules les images et les scans sont allégés. Le texte, les traits et les dessins vectoriels restent nets.
+344|Rendez vos fichiers PDF plus légers. Choisissez un niveau ou une taille cible comme 2 Mo pour l'e-mail, et voyez la taille de chaque niveau avant d'enregistrer. Plusieurs fichiers à la fois, sans envoi, sans limite.
+345|Compresser un PDF à une taille cible (ex. moins de 2 Mo), gratuit | File Manager Toolkit
+346|Des fichiers Word modifiables à partir de vos PDF, même scannés. L'arabe reste de droite à gauche.
+347|Lecture
+348|Automatique
+349|texte ou scan
+350|Lire chaque page
+351|scanné
+352|Texte seulement
+353|rapide
+354|Langues du document
+355|Arabe
+356|Anglais
+357|Français
+358|Ourdou
+359|Turc
+360|Hindi
+361|Précision
+362|Rapide
+363|=
+364|Précise
+365|=
+366|Pages
+367|Toutes les pages, ou ex. 1-3, 5, 8-
+368|Police
+369|=
+370|=
+371|=
+372|=
+373|=
+374|=
+375|Commencer chaque page PDF sur une nouvelle page Word
+376|Pages scannées : la première fois, le moteur de lecture et les fichiers de langue (quelques Mo) sont téléchargés, puis tout fonctionne hors ligne.
+377|Convertir en Word
+378|Comment utiliser PDF en Word
+379|, saisis ou scannés. Ils s'ouvrent dans votre navigateur et ne sont pas envoyés.
+380|Cochez les langues
+381|qui y sont écrites. L'arabe et l'anglais sont déjà cochés.
+382|et ouvrez le .docx dans Word, Google Docs ou LibreOffice pour le modifier.
+383|Est-ce que ça marche avec l'arabe ?
+384|Oui. Les paragraphes arabes sont écrits de droite à gauche dans Word, avec les lettres dans le bon ordre, pour que vous puissiez les modifier tout de suite. Les documents mêlant arabe et anglais fonctionnent aussi.
+385|Peut-il convertir des PDF scannés ?
+386|Oui. Les pages sans texte sont lues par OCR. Des scans nets à 300 DPI donnent le meilleur résultat. Vérifiez les noms et les chiffres après conversion, car l'OCR peut mal lire une lettre.
+387|Le résultat ressemblera-t-il exactement au PDF ?
+388|Vous obtenez le texte en paragraphes propres et modifiables, avec les titres en plus grand et en gras. Les tableaux, colonnes et images ne sont pas encore reconstruits : les mises en page complexes demandent quelques retouches dans Word.
+389|Mes fichiers sont-ils envoyés en ligne ?
+390|Non. Tout fonctionne sur votre ordinateur, vos documents privés restent donc chez vous. Il n'y a aucune limite de pages ou de fichiers.
+391|Convertissez un PDF en fichier Word modifiable (.docx), y compris les PDF scannés. Le texte arabe sort de droite à gauche et dans le bon ordre. Gratuit, sans envoi, sans inscription, sans limite de pages.
+392|PDF en Word avec prise en charge de l'arabe, PDF scannés compris, gratuit | File Manager Toolkit
+393|Détourez personnes, produits et objets de vos photos en un clic. Fond transparent ou de n'importe quelle couleur.
+394|Choisir des images
+395|ou déposez ici des images ou un dossier
+396|Arrière-plan
+397|Transparent
+398|Blanc
+399|Couleur
+400|Format
+401|=
+402|=
+403|=
+404|Le JPG n'a pas de transparence, le fond sera donc blanc.
+405|Contours
+406|Doux
+407|cheveux, poils
+408|Nets
+409|produits
+410|Recadrer sur le sujet
+411|La première fois, le modèle d'IA (environ 45 Mo) est téléchargé une seule fois. Ensuite, tout fonctionne hors ligne. Vos photos ne quittent jamais votre ordinateur.
+412|Supprimer l'arrière-plan
+413|Comment utiliser Supprimer l'arrière-plan
+414|Choisissez vos photos
+415|, ou un dossier entier. Elles s'ouvrent dans votre navigateur et ne sont pas envoyées.
+416|Choisissez l'arrière-plan
+417|: transparent, blanc ou de la couleur de votre choix.
+418|, puis téléchargez les images une par une ou en ZIP.
+419|Est-ce vraiment gratuit et sans limite ?
+420|Oui. L'IA fonctionne sur votre ordinateur : pas de crédits, pas de filigrane et pas de limite de taille. Vous obtenez l'image en pleine taille.
+421|Mes photos sont-elles envoyées en ligne ?
+422|Non. Le modèle est téléchargé une fois dans votre navigateur et chaque photo est traitée sur votre appareil. C'est important pour les photos d'identité et les images privées.
+423|Qu'est-ce qui marche le mieux ?
+424|Les photos où le sujet se détache du fond : personnes, produits, voitures, animaux. Choisissez des contours « Doux » pour les cheveux et les poils, « Nets » pour les produits aux bords francs.
+425|Pourquoi la première fois est-elle lente ?
+426|La première fois, votre navigateur télécharge le modèle d'IA (environ 45 Mo). Il est gardé en mémoire, donc les photos suivantes démarrent en quelques secondes. Un ordinateur avec une carte graphique récente est plus rapide.
+427|Supprimez automatiquement l'arrière-plan de vos photos avec une IA qui fonctionne dans votre navigateur. PNG transparent, fond blanc ou de n'importe quelle couleur. Plusieurs photos à la fois, en pleine taille, gratuit, sans envoi, sans inscription.
+428|Supprimer l'arrière-plan d'une image, gratuit et privé, sans envoi | File Manager Toolkit
+429|Rendez les PDF scannés consultables et copiables, en arabe, en anglais et dans d'autres langues.
+430|Allemand
+431|Espagnol
+432|Ignorer les pages qui ont déjà du texte
+433|La première fois, le moteur de lecture et les fichiers de langue (quelques Mo) sont téléchargés, puis tout fonctionne hors ligne.
+434|Rendre consultable
+435|Comment utiliser OCR PDF
+436|Choisissez vos PDF scannés.
+437|qui y sont écrites.
+438|. Les pages ont le même aspect, mais vous pouvez maintenant rechercher, sélectionner et copier le texte.
+439|Le PDF change-t-il d'aspect après l'OCR ?
+440|Non. Les pages restent exactement comme avant. Une couche de texte invisible est ajoutée par-dessus, pour pouvoir rechercher et copier.
+441|Lit-il l'arabe ?
+442|Oui. Cochez l'arabe, ou l'arabe et l'anglais pour les documents mixtes.
+443|Y a-t-il une limite de pages ?
+444|Non. Les longs documents prennent juste plus de temps, car la lecture se fait sur votre ordinateur.
+445|Transformez des PDF scannés en PDF consultables dont vous pouvez copier le texte. Anglais, arabe et autres langues. Plusieurs fichiers et pages, gratuit, sans envoi, sans limite.
+446|OCR PDF : rendre les PDF scannés consultables, anglais et arabe, gratuit | File Manager Toolkit
+447|Transformez les pages PDF en images à la résolution voulue, ou récupérez les images qu'elles contiennent.
+448|Images contenues
+449|=
+450|Résolution
+451|écran
+452|e-mail
+453|impression
+454|archive
+455|Autre
+456|=
+457|DPI (20 à 1200)
+458|Gris
+459|Noir et blanc
+460|Qualité
+461|{name} = nom du PDF, {page} = numéro de page, {total} = nombre de pages
+462|Un TIFF multipage par PDF
+463|Fond transparent (PNG et WebP)
+464|Convertir en images
+465|Comment utiliser PDF en JPG
+466|Choisissez le format et la résolution.
+467|150 DPI convient pour l'e-mail et l'écran, 300 DPI pour l'impression.
+468|, puis téléchargez les images en ZIP ou enregistrez-les directement dans un dossier.
+469|Quelle résolution choisir ?
+470|72 DPI pour l'écran et les présentations, 150 DPI pour l'e-mail et les documents, 300 DPI pour l'impression, 600 DPI pour l'archivage et les plans fins. La taille de chaque image s'affiche avant la conversion.
+471|Quel format est le meilleur ?
+472|Le JPG est léger et convient aux photos et aux scans. Le PNG est net pour le texte et les plans. Le WebP est plus léger que les deux. Le TIFF sert à l'impression et à l'archivage, et peut contenir toutes les pages dans un seul fichier.
+473|Y a-t-il une limite de fichiers ou de pages ?
+474|Non. Tout fonctionne sur votre ordinateur : pas de limite de nombre ni de taille, seulement la mémoire de votre ordinateur pour les très grandes pages.
+475|Puis-je récupérer les images d'un PDF plutôt que des pages entières ?
+476|Oui. Choisissez « Images contenues » pour enregistrer chaque photo et image du PDF à sa taille d'origine.
+477|Convertissez des pages PDF en images JPG, PNG, WebP ou TIFF à la résolution de votre choix : 72, 150, 300, 600 DPI ou la vôtre. Couleur, gris ou noir et blanc. Gratuit, sans envoi, sans limite de fichiers.
+478|PDF en JPG, PNG, WebP ou TIFF à toute résolution, gratuit | File Manager Toolkit
+479|Photos, scans et captures d'écran en PDF, dans l'ordre voulu.
+480|Format de page
+481|Comme l'image
+482|=
+483|=
+484|Lettre US
+485|Orientation
+486|Auto
+487|Marge
+488|Petite
+489|Grande
+490|Créer
+491|Un seul PDF
+492|Un PDF par image
+493|Un PDF par dossier
+494|Qualité d'image
+495|Originale
+496|sans changement
+497|Fichier plus léger
+498|=
+499|Convertir en PDF
+500|Comment utiliser JPG en PDF
+501|Choisissez vos images
+502|ou un dossier qui en contient. JPG, PNG, WebP, GIF, BMP et TIFF fonctionnent tous.
+503|Mettez-les dans l'ordre
+504|en les glissant, ou triez par nom ou par date.
+505|Choisissez le format de page et les marges
+506|, puis convertissez et téléchargez le PDF.
+507|Mes photos de téléphone seront-elles de travers ?
+508|Non. La rotation enregistrée par l'appareil photo du téléphone est lue, chaque photo est donc placée dans le bon sens.
+509|La conversion baisse-t-elle la qualité ?
+510|Pas avec « Originale » : les photos JPG sont placées dans le PDF telles quelles. « Fichier plus léger » les réduit à 150 DPI pour l'e-mail.
+511|Puis-je créer un PDF par dossier ?
+512|Oui. Choisissez un dossier avec des sous-dossiers et « Un PDF par dossier » : chaque dossier devient son propre PDF.
+513|Convertissez des images JPG, PNG, WebP et autres en PDF : un seul PDF, un par image ou un par dossier. Format de page, orientation et marges. Les photos de téléphone sont remises dans le bon sens. Gratuit et privé.
+514|JPG en PDF : images et photos en PDF, gratuit, sans envoi | File Manager Toolkit
+515|Numéros de page ou numérotation Bates, sur un PDF ou des centaines.
+516|Position
+517|En haut à gauche
+518|En haut au centre
+519|En haut à droite
+520|Au milieu à gauche
+521|Centre
+522|Au milieu à droite
+523|En bas à gauche
+524|En bas au centre
+525|En bas à droite
+526|Emplacement du numéro sur la page
+527|Texte
+528|Page 1
+529|Page 1 sur 10
+530|Personnalisé…
+531|{n} = numéro, {total} = dernier numéro, {file} = nom du fichier
+532|Premier numéro
+533|Pages à numéroter
+534|Toutes les pages, ou ex. 2-
+535|Ignorer la première page (couverture)
+536|Taille et couleur
+537|Taille de police
+538|=
+539|Gras
+540|Distance du bord
+541|=
+542|Recto verso : inverser gauche et droite sur les pages paires
+543|Numérotation Bates : continuer les numéros sur tous les fichiers
+544|Préfixe
+545|Chiffres
+546|Numéroter les pages
+547|Comment utiliser Numéroter les pages
+548|, ou un dossier.
+549|Choisissez l'emplacement du numéro
+550|et sa forme, par exemple « Page 1 sur 10 ».
+551|Ajoutez les numéros
+552|et téléchargez.
+553|Puis-je ignorer la page de couverture ?
+554|Oui. Cochez « Ignorer la première page », ou tapez les pages à numéroter, par exemple 2- pour la page 2 jusqu'à la fin. Réglez le premier numéro pour choisir où commence le comptage.
+555|Qu'est-ce que la numérotation Bates ?
+556|Un numéro continu sur tout un ensemble de documents, avec un préfixe, par exemple DOC-000001 à DOC-000250. Elle sert pour les documents juridiques et contractuels et pour la gestion documentaire.
+557|Puis-je numéroter plusieurs PDF à la fois ?
+558|Oui. Choisissez autant de fichiers que vous voulez, ou un dossier entier. Chaque fichier a ses propres numéros, ou un numéro continu avec la numérotation Bates.
+559|Ajoutez des numéros de page à des PDF : position, format (Page 1 sur 10), premier numéro, pages à ignorer, ou numérotation Bates sur plusieurs fichiers. Gratuit, sans envoi, sans limite.
+560|Ajouter des numéros de page ou une numérotation Bates à un PDF, gratuit | File Manager Toolkit
+561|Apposez un mot ou votre logo sur chaque page : BROUILLON, CONFIDENTIEL, dans n'importe quelle langue.
+562|Aperçu de la première page
+563|Filigrane
+564|Image ou logo
+565|Image
+566|Choisir une image…
+567|PNG ou JPG
+568|Répéter sur toute la page
+569|Taille
+570|de la largeur de page
+571|Angle
+572|Opacité
+573|Calque
+574|Au-dessus du contenu
+575|Sous le contenu
+576|Ajouter le filigrane
+577|Comment utiliser Ajouter un filigrane
+578|Tapez le texte ou choisissez votre logo
+579|, puis réglez la position, la taille, l'angle et la transparence. L'aperçu montre la première page.
+580|Ajoutez le filigrane
+581|Puis-je écrire le filigrane en arabe ?
+582|Oui. Toutes les langues fonctionnent, y compris l'arabe, avec des lettres correctement liées.
+583|Au-dessus ou sous le contenu ?
+584|« Au-dessus » est toujours visible. « Sous » se place derrière le texte et les dessins comme un fond léger, mais il peut être masqué sur les pages scannées, qui sont des images.
+585|Apposez un filigrane texte ou image sur des pages PDF : CONFIDENTIEL, BROUILLON, votre logo, dans toute langue y compris l'arabe. Position, taille, angle et transparence. Plusieurs fichiers à la fois, sans envoi.
+586|Ajouter un filigrane à un PDF : texte dans toute langue ou logo, gratuit | File Manager Toolkit
+587|Glissez sur la page pour tracer la zone à garder.
+588|Méthode
+589|Tracer la zone
+590|Retirer les marges blanches
+591|Marges à couper (mm)
+592|Haut
+593|Bas
+594|Gauche
+595|Droite
+596|Espace à garder autour du contenu
+597|Comment utiliser Rogner PDF
+598|Tracez un cadre
+599|sur la page autour de ce que vous voulez garder, ou choisissez « Retirer les marges blanches ».
+600|Rogner
+601|La partie rognée est-elle supprimée ?
+602|Elle est masquée : tous les lecteurs PDF n'affichent et n'impriment que la zone gardée. Le contenu d'origine reste dans le fichier.
+603|Puis-je retirer des marges différentes sur chaque page ?
+604|Oui. « Retirer les marges blanches » trouve le contenu de chaque page séparément et coupe autour.
+605|Rognez des pages PDF en traçant la zone à garder, ou retirez automatiquement les marges blanches de chaque page. Plusieurs fichiers à la fois, gratuit, sans envoi.
+606|Rogner des pages PDF ou retirer les marges blanches, gratuit | File Manager Toolkit
+607|Deux versions d'un document ou d'un plan : voyez exactement ce qui a été supprimé et ajouté.
+608|Choisir les deux PDF
+609|Affichage
+610|Superposé
+611|Côte à côte
+612|Sensibilité
+613|Faible
+614|ignore les petits décalages
+615|Normale
+616|Élevée
+617|chaque pixel
+618|Comparer aussi le texte
+619|Le premier fichier est l'ancienne version, le second la nouvelle. Glissez pour les inverser.
+620|Télécharger le rapport
+621|Comment utiliser Comparer PDF
+622|Choisissez les deux versions
+623|du PDF : l'ancienne d'abord, puis la nouvelle.
+624|Regardez chaque page
+625|: les parties supprimées sont en rouge, les ajouts en vert. Passez en côte à côte si vous préférez.
+626|: un PDF avec chaque page modifiée marquée, à envoyer ou à archiver.
+627|Est-ce que ça marche pour les plans ?
+628|Oui. Les plans sont comparés comme des images, trait par trait : murs déplacés, nouvelles cotes et notes supprimées apparaissent tous. Cela marche aussi pour les pages scannées.
+629|Et si les pages n'ont pas la même taille ?
+630|La nouvelle page est mise à l'échelle de l'ancienne, donc un plan imprimé sur un autre format reste aligné.
+631|Non. Les deux PDF sont comparés dans votre navigateur.
+632|Comparez deux versions d'un PDF, d'un plan ou d'un document. Parties supprimées en rouge, ajouts en vert, côte à côte ou superposés, plus le texte modifié et un rapport PDF. Gratuit, sans envoi.
+633|Comparer deux PDF : voir ce qui a changé, gratuit, sans envoi | File Manager Toolkit
+634|Verrouillez des PDF avec un mot de passe et choisissez ce que l'on peut en faire.
+635|Mot de passe
+636|Retapez-le
+637|Afficher le mot de passe
+638|Les personnes qui l'ouvrent peuvent
+639|Imprimer
+640|Copier le texte et les images
+641|Ajouter des commentaires et remplir des formulaires
+642|Modifier, et ajouter ou retirer des pages
+643|Chiffrement
+644|=
+645|recommandé
+646|=
+647|anciens lecteurs
+648|Mot de passe propriétaire
+649|Facultatif
+650|Permet de changer les autorisations plus tard. Sans lui, un mot de passe aléatoire est utilisé.
+651|Comment utiliser Protéger PDF
+652|Tapez un mot de passe
+653|et choisissez ce que l'on peut faire : imprimer, copier, modifier.
+654|Protéger
+655|et téléchargez. Les PDF demandent le mot de passe à l'ouverture.
+656|Mon mot de passe est-il envoyé quelque part ?
+657|Non. Les fichiers sont chiffrés dans votre navigateur. Ni les fichiers ni le mot de passe ne quittent votre ordinateur.
+658|La protection est-elle solide ?
+659|AES-256, le chiffrement le plus fort que le PDF prend en charge. Utilisez un mot de passe long : il est impossible de le récupérer si vous l'oubliez.
+660|Ajoutez un mot de passe à des fichiers PDF avec un chiffrement AES-256, et choisissez si l'on peut imprimer, copier ou modifier. Plusieurs fichiers à la fois. Vos fichiers et mots de passe ne quittent jamais votre ordinateur.
+661|Protéger un PDF par mot de passe (AES-256), gratuit, sans envoi | File Manager Toolkit
+662|Retirez le mot de passe et les restrictions d'impression, de copie et de modification de vos PDF.
+663|Seulement si le PDF en demande un
+664|Les fichiers marqués 🔒 demandent le mot de passe pour s'ouvrir. Ceux qui bloquent seulement l'impression ou la copie sont déverrouillés sans mot de passe.
+665|Comment utiliser Déverrouiller PDF
+666|Choisissez les PDF protégés.
+667|Tapez le mot de passe
+668|s'ils en demandent un à l'ouverture.
+669|Déverrouiller
+670|et téléchargez des PDF qui s'ouvrent, s'impriment et se copient librement.
+671|Peut-il ouvrir un PDF sans connaître le mot de passe ?
+672|Non. Il vous faut le mot de passe qui ouvre le fichier. Les restrictions d'impression, de copie ou de modification sont retirées sans lui.
+673|Ne déverrouillez que les fichiers que vous avez le droit de déverrouiller
+674|Utilisez-le pour vos propres fichiers, ou ceux dont le propriétaire l'autorise.
+675|Retirez le mot de passe et les restrictions d'impression, de copie et de modification des fichiers PDF que vous avez le droit d'ouvrir. Plusieurs fichiers à la fois, gratuit, rien n'est envoyé.
+676|Déverrouiller un PDF : retirer le mot de passe et les restrictions, gratuit | File Manager Toolkit
+677|erreur
+678|=
+679|Annuler
+680|Impossible de charger une bibliothèque nécessaire. Vérifiez votre connexion internet.
+681|aucun
+682|Choisir des dossiers
+683|Confirmer
+684|Aucun dossier n'a été choisi.
+685|Fichier PDF non valide
+686|Ce PDF est protégé par un mot de passe
+687|Déposez des fichiers PDF ici.
+688|Titre
+689|Impossible de charger les fichiers d'exemple. Vérifiez votre connexion et réessayez.
+690|Vos propres dossiers fonctionnent sur ordinateur, dans Chrome ou Edge. Gratuit, sans inscription.
+691|Gratuit, sans inscription. Vos fichiers restent sur votre ordinateur.
+692|Lien copié.
+693|Ouvrir
+694|L'accès n'a pas été accordé. Utilisez le bouton pour choisir le dossier.
+695|Besoin de corriger les noms de ce dossier ? Ajoutez un préfixe ou corrigez l'indice dans tous les noms à la fois.
+696|Créez une liste Excel des fichiers renommés, avec le nombre de fichiers de chaque type.
+697|Créez un registre de plans dans Excel à partir des mêmes PDF : numéro, titre et indice.
+698|Contrôlez un dossier de rendu par rapport à cette liste de plans avant de l'envoyer.
+699|Et ensuite ?
+700|Ouvrir ce dossier dans
+701|pages
+702|Protégé par mot de passe. Déverrouillez-le d'abord avec Déverrouiller PDF.
+703|Aucun fichier PDF ici.
+704|Aucune image ici.
+705|Retirer
+706|Attendez que les fichiers soient lus, ou retirez ceux qui ont des erreurs.
+707|Ajoutez d'abord des fichiers.
+708|Rien n'a été créé. Vérifiez les options.
+709|Votre fichier est prêt
+710|Télécharger
+711|Tout télécharger (ZIP)
+712|Filtre
+713|Ajuster
+714|vide
+715|Enregistrement…
+716|Fusion…
+717|Ajoutez au moins deux fichiers PDF à fusionner.
+718|Vos PDF sont fusionnés
+719|Ce fichier est gros : la nouvelle taille s'affiche à la fin.
+720|Calcul de la taille de chaque niveau…
+721|pas plus petit
+722|Tailles pour votre fichier, calculées sur votre ordinateur.
+723|Tapez la taille voulue, par exemple 2 Mo.
+724|déjà léger, gardé tel quel
+725|Compression…
+726|Terminé
+727|Chargement du moteur de lecture et des fichiers de langue (première fois seulement)…
+728|Cochez au moins une langue.
+729|Lecture des pages…
+730|Aucun texte trouvé. Essayez « Lire chaque page » avec la bonne langue cochée.
+731|Aucune image trouvée dans ces PDF. Choisissez « Chaque page » pour transformer les pages en images.
+732|Conversion…
+733|Votre image est prête
+734|=
+735|Création de votre PDF…
+736|Tapez les plages de pages, par exemple 1-3, 4-
+737|Tapez les pages à extraire, par exemple 1, 3, 5-7
+738|Tapez la taille maximale de chaque partie, par exemple 10 Mo.
+739|Aucune page ne correspond. Vérifiez les numéros de page.
+740|Division…
+741|Chaque PDF
+742|Ce PDF
+743|Rotation…
+744|n'était pas protégé
+745|mot de passe retiré
+746|restrictions retirées
+747|Ces PDF demandent leur mot de passe pour s'ouvrir. Tapez-le, puis réessayez.
+748|Déverrouillage…
+749|Chiffrement…
+750|Tapez un mot de passe.
+751|Le mot de passe ne peut pas contenir de virgule (,).
+752|Les deux mots de passe ne sont pas identiques.
+753|Le mot de passe propriétaire ne peut pas contenir de virgule (,).
+754|Gardez le mot de passe en lieu sûr : il est impossible de le récupérer.
+755|Tapez le texte du filigrane.
+756|Choisissez l'image du filigrane.
+757|Ajout du filigrane…
+758|Tapez le texte des numéros de page.
+759|Numérotation des pages…
+760|Copier
+761|Supprimer
+762|Il ne reste aucune page. Ajoutez un fichier, ou cliquez sur « Recommencer ».
+763|Votre nouveau PDF est prêt
+764|Type
+765|Aucun nouveau texte trouvé.
+766|Glissez sur la page pour tracer la zone à garder, ou tapez les marges à couper.
+767|Rognage…
+768|Ajoutez le second PDF (la nouvelle version).
+769|Gardez seulement deux PDF : l'ancienne version et la nouvelle.
+770|Aucun changement visible sur cette page.
+771|Choisissez exactement deux PDF : l'ancienne version et la nouvelle.
+772|Comparaison des pages…
+773|Création du rapport…
+774|Votre rapport de comparaison est prêt
+775|Démarrage du modèle d'IA…
+776|Suppression de l'arrière-plan…
+777|Arrière-plan supprimé
+778|Avant
+779|Après
+780|M'envoyer le lien sur WhatsApp
+781|Copier le lien
+782|Mode clair
+783|Mode sombre
+784|(sans extension)
+785|Les fichiers des dossiers cochés (et des dossiers qu'ils contiennent) seront inclus.
+786|Oui
+787|Feuille
+788|fichiers
+789|Vos fichiers sont prêts. Cliquez sur Ouvrir pour que cette page puisse les lire.
+790|Toutes les pages ont été retirées. Ajoutez un fichier, ou cliquez sur « Recommencer ».
+791|Tourner ce fichier de 90° de plus
+792|Tourner ce fichier
+793|Aperçu de la page 1
+794|Ancien
+795|Supprimé (seulement dans l'ancienne version)
+796|Ajouté (seulement dans la nouvelle version)
+797|Zone modifiée
+798|Comparaison…
+799|Le texte est identique.
+800|Enregistrer dans un dossier
+801|Langue
+802|Fermer
+803|Copié ✓
+804|Copier le lien
+805|Envoi impossible. Veuillez réessayer.
+806|Outil sur mesure pour mon bureau
+807|Cela vous a-t-il fait gagner du temps ?
+808|Avis
+809|Bien reçu, merci !
+810|Un problème, une idée, ou besoin d'un outil sur mesure pour votre bureau ? Écrivez-nous.
+811|Idée ou nouvel outil
+812|Ouvrir sur mon ordinateur :
+813|Écrivez d'abord un message.
+814|Problème avec un outil
+815|Voir comment ça marche ↓
+816|M'envoyer le lien
+817|Envoyer
+818|L'envoi n'est pas encore activé.
+819|Envoi…
+820|Dites-nous ce que vous en pensez
+821|Merci ! Ça nous aide vraiment.
+822|Merci
+823|Cette adresse e-mail ne semble pas correcte.
+824|Sujet
+825|Qu'est-ce qui manquait ? Dites-le-nous
+826|Votre e-mail (facultatif, si vous voulez une réponse)
+827|Votre e-mail sert uniquement à vous répondre. Vos fichiers ne sont jamais envoyés.
+828|Votre message
+829|Votre nom (facultatif)
+830|Recommencer
+831|Ces outils fonctionnent sur ordinateur, car ils ouvrent des dossiers et des PDF depuis votre disque. Envoyez-vous le lien et ouvrez-le à votre bureau.
+832|Nous répondrons bientôt à votre e-mail.
+833|Non

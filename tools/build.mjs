@@ -13,6 +13,9 @@
 // - Guides (guides/*.html, guide: true): the same, with their Arabic text in tools/guides-ar.mjs (a
 //   dictionary used only here, so the long guide text is not loaded on every page), the screenshots
 //   swapped for the -ar ones, and FAQPage / HowTo JSON-LD built from the page's own FAQ and steps.
+// - More languages (fr/, es/, pt/, id/, tr/, hi/): the main tool pages only (CORE below), translated with
+//   the dictionaries in assets/lang/<code>.js. Links to pages that are not translated go to the English page.
+//   Text still missing from a dictionary is listed in tools/lang-missing/<code>.json.
 // - sitemap.xml and robots.txt.
 
 import fs from 'node:fs';
@@ -26,6 +29,15 @@ import GUIDES_AR from './guides-ar.mjs';
 const ROOT = process.cwd();
 const SITE = 'https://filemanagertoolkit.com/';
 const BRAND = 'File Manager Toolkit';
+
+// Languages besides English and Arabic, and the pages built in them.
+const LANGS = { fr: 'fr_FR', es: 'es_ES', pt: 'pt_BR', id: 'id_ID', tr: 'tr_TR', hi: 'hi_IN' };
+const CORE = new Set(['index.html', 'merge.html', 'compress.html', 'pdf-to-word.html', 'pdf-to-image.html', 'image-to-pdf.html',
+  'split.html', 'rotate.html', 'unlock.html', 'protect.html', 'watermark.html', 'page-numbers.html', 'pages.html', 'ocr.html',
+  'crop.html', 'compare.html', 'remove-bg.html']);
+const LOCALE = { en: 'en_US', ar: 'ar_AR', ...LANGS };
+const FONTS = { ar: 'Noto+Sans+Arabic', hi: 'Noto+Sans+Devanagari' };
+const langsOf = (file) => ['en', 'ar', ...(CORE.has(file) ? Object.keys(LANGS) : [])];
 
 // cat = colour of the share image: files (blue), pdf (red), qa (green).
 const PAGES = [
@@ -123,6 +135,14 @@ const PAGES = [
     ar: {
       title: `تحويل PDF إلى Word يدعم اللغة العربية، حتى الملفات الممسوحة، مجاناً | ${BRAND}`, name: 'PDF إلى Word', pitch: 'ملف Word تقدر تعدّل فيه، حتى لو الـ PDF ممسوح، والعربي مظبوط',
       desc: 'حوّل PDF إلى ملف Word قابل للتعديل (.docx) مجاناً، حتى الملفات الممسوحة ضوئياً. النص العربي يطلع من اليمين للشمال وبالترتيب الصحيح. بدون رفع وبدون تسجيل وبلا حد للصفحات.',
+    },
+  },
+  {
+    file: 'remove-bg.html', cat: 'files',
+    en: { title: `Remove Background from Images, Free and Private, No Upload | ${BRAND}`, name: 'Remove Background', pitch: 'Transparent PNG in one click, photos never uploaded' },
+    ar: {
+      title: `إزالة خلفية الصور مجاناً وبدون رفع | ${BRAND}`, name: 'إزالة الخلفية', pitch: 'صورة PNG شفافة بضغطة واحدة، وصورك ما بتترفعش',
+      desc: 'شيل خلفية الصور تلقائياً بالذكاء الاصطناعي اللي بيشتغل جوه المتصفح. PNG شفاف أو أبيض أو أي لون. صور كتير مرة واحدة وبالحجم الكامل، مجاني وبدون رفع وبدون تسجيل.',
     },
   },
   {
@@ -347,12 +367,18 @@ function loadTranslator() {
     },
   };
   sandbox.window = sandbox;
-  vm.runInNewContext(code, sandbox);
+  vm.createContext(sandbox);
+  for (const l of Object.keys(LANGS)) {
+    const lf = path.join(ROOT, 'assets/lang', l + '.js');
+    if (fs.existsSync(lf)) vm.runInContext(fs.readFileSync(lf, 'utf8'), sandbox);
+  }
+  vm.runInContext(code, sandbox);
   const t = sandbox.window.FMLang.t;
-  return (s, guide) => {
-    if (guide && Object.prototype.hasOwnProperty.call(GUIDES_AR, s)) return GUIDES_AR[s];
-    const out = t(s);
-    return out === s ? null : out;
+  return (s, guide, lang = 'ar') => {
+    if (lang === 'ar' && guide && Object.prototype.hasOwnProperty.call(GUIDES_AR, s)) return GUIDES_AR[s];
+    const out = t(s, lang);
+    if (out === s) return lang !== 'ar' && sandbox.window.FMLang.has(s, lang) ? s : null;
+    return out;
   };
 }
 
@@ -395,7 +421,7 @@ function isSkipped(stack) {
     || (e.tag === 'b' && stack.slice(0, i).some((p) => p.cls.has('mock-chip'))));
 }
 
-function translateBody(html, tr, missing, guide) {
+function translateBody(html, tr, missing, guide, lang = 'ar') {
   const re = /<!--[\s\S]*?-->|<(script|style|textarea|code)\b[\s\S]*?<\/\1>|<\/?[a-zA-Z][^>]*>|[^<]+/g;
   const stack = [];
   return html.replace(re, (tok, raw) => {
@@ -412,14 +438,14 @@ function translateBody(html, tr, missing, guide) {
       return tok.replace(/(\s(?:placeholder|title|aria-label|alt)\s*=\s*")([^"]*)"/g, (all, pre, v) => {
         const key = decode(v).replace(/\s+/g, ' ').trim();
         if (!key) return all;
-        const out = tr(key, guide);
-        if (out == null && guide && /[A-Za-z]/.test(key)) missing.add(key);
+        const out = tr(key, guide, lang);
+        if (out == null && (guide || lang !== 'ar') && /[A-Za-z]/.test(key)) missing.add(key);
         return out == null ? all : `${pre}${encodeAttr(out)}"`;
       });
     }
     const key = decode(tok).replace(/\s+/g, ' ').trim();
     if (!key || !/[A-Za-z→]/.test(key) || isSkipped(stack)) return tok;
-    const out = tr(key, guide);
+    const out = tr(key, guide, lang);
     if (out == null) { missing.add(key); return tok; }
     const lead = tok.match(/^\s*/)[0];
     const trail = tok.match(/\s*$/)[0];
@@ -429,33 +455,34 @@ function translateBody(html, tr, missing, guide) {
 
 // ---------- head blocks ----------
 
-const urlOf = (file, lang) => SITE + (lang === 'ar' ? 'ar/' : '') + (file === 'index.html' ? '' : file);
+const dirOf = (lang) => (lang === 'en' ? '' : lang + '/');
+const urlOf = (file, lang) => SITE + (langsOf(file).includes(lang) ? dirOf(lang) : '') + (file === 'index.html' ? '' : file);
 const slug = (file) => file.replace(/\.html$/, '').replace(/\//g, '-');
 // One '../' per folder level of a page: '../' for guides/x.html.
 const up = (file) => '../'.repeat(file.split('/').length - 1);
-const assetsOf = (file, lang) => (lang === 'ar' ? '../' : '') + up(file) + 'assets/';
+const assetsOf = (file, lang) => (lang === 'en' ? '' : '../') + up(file) + 'assets/';
 
 function seoBlock(page, lang, desc, jsonLd) {
   const p = page[lang];
   const assets = assetsOf(page.file, lang);
   // data-switch = where the language button goes, relative, so it also works on a local server.
   const rel = (to) => {
-    if (page.file === 'index.html') return lang === to ? './' : (to === 'ar' ? 'ar/' : '../');
-    if (lang === to) return path.posix.basename(page.file);
-    return (to === 'ar' ? up(page.file) + 'ar/' : '../' + up(page.file)) + page.file;
+    if (lang === to) return page.file === 'index.html' ? './' : path.posix.basename(page.file);
+    const back = (lang === 'en' ? '' : '../') + up(page.file);
+    const target = dirOf(to) + (page.file === 'index.html' ? '' : page.file);
+    return (back + target) || './';
   };
   const lines = [
     `<link rel="canonical" href="${urlOf(page.file, lang)}">`,
-    `<link rel="alternate" hreflang="en" href="${urlOf(page.file, 'en')}" data-switch="${rel('en')}">`,
-    `<link rel="alternate" hreflang="ar" href="${urlOf(page.file, 'ar')}" data-switch="${rel('ar')}">`,
+    ...langsOf(page.file).map((l) => `<link rel="alternate" hreflang="${l}" href="${urlOf(page.file, l)}" data-switch="${rel(l)}">`),
     `<link rel="alternate" hreflang="x-default" href="${urlOf(page.file, 'en')}">`,
     `<meta property="og:type" content="website">`,
     `<meta property="og:site_name" content="${BRAND}">`,
-    `<meta property="og:locale" content="${lang === 'ar' ? 'ar_AR' : 'en_US'}">`,
+    `<meta property="og:locale" content="${LOCALE[lang]}">`,
     `<meta property="og:title" content="${encodeAttr(p.title)}">`,
     `<meta property="og:description" content="${encodeAttr(desc)}">`,
     `<meta property="og:url" content="${urlOf(page.file, lang)}">`,
-    `<meta property="og:image" content="${SITE}assets/og/${slug(page.file)}-${lang}.png">`,
+    `<meta property="og:image" content="${SITE}assets/og/${slug(page.file)}-${lang === 'ar' ? 'ar' : 'en'}.png">`,
     `<meta property="og:image:width" content="1200">`,
     `<meta property="og:image:height" content="630">`,
     `<meta name="twitter:card" content="summary_large_image">`,
@@ -511,8 +538,8 @@ function toolJsonLd(html, page, lang, desc) {
       { '@context': 'https://schema.org', '@type': 'WebSite', name: BRAND, url, inLanguage: lang, description: desc, publisher: org },
       { '@context': 'https://schema.org', ...org, sameAs: ['https://github.com/scorpion30/file-manager-toolkit'] },
       {
-        '@context': 'https://schema.org', '@type': 'ItemList', name: lang === 'ar' ? 'كل الأدوات' : 'All tools',
-        itemListElement: tools.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x[lang].name, url: urlOf(x.file, lang) })),
+        '@context': 'https://schema.org', '@type': 'ItemList', name: lang === 'ar' ? 'كل الأدوات' : (tr('All tools', false, lang) || 'All tools'),
+        itemListElement: tools.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: (x[lang] || x.en).name, url: urlOf(x.file, lang) })),
       },
       ...faqLd,
     ];
@@ -522,7 +549,7 @@ function toolJsonLd(html, page, lang, desc) {
       '@context': 'https://schema.org', '@type': 'WebApplication', name: p.name, url, description: desc, inLanguage: lang,
       applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', browserRequirements: 'Requires a modern web browser',
       isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-      image: `${SITE}assets/og/${slug(page.file)}-${lang}.png`, publisher: org,
+      image: `${SITE}assets/og/${slug(page.file)}-${lang === 'ar' ? 'ar' : 'en'}.png`, publisher: org,
     },
     {
       '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
@@ -542,11 +569,33 @@ const missing = new Set();
 // Cache busting: every page links assets/x.css|js?v=<content hash>, so browsers fetch a file again as soon as it changes
 // (GitHub Pages lets browsers cache for 10 minutes, which otherwise mixes new pages with old styles).
 const assetHash = {};
+const hashOf = (rel) => crypto.createHash('sha1').update(fs.readFileSync(path.join(ROOT, 'assets', rel))).digest('hex').slice(0, 8);
 for (const f of fs.readdirSync(path.join(ROOT, 'assets'))) {
-  if (/\.(css|js)$/.test(f)) assetHash[f] = crypto.createHash('sha1').update(fs.readFileSync(path.join(ROOT, 'assets', f))).digest('hex').slice(0, 8);
+  if (/\.(css|js)$/.test(f)) assetHash[f] = hashOf(f);
 }
-const unversion = (html) => html.replace(/(assets\/[\w-]+\.(?:css|js))\?v=[0-9a-f]+/g, '$1');
-const version = (html) => html.replace(/(assets\/([\w-]+\.(?:css|js)))(?=")/g, (m, all, f) => (assetHash[f] ? `${all}?v=${assetHash[f]}` : all));
+for (const l of Object.keys(LANGS)) if (fs.existsSync(path.join(ROOT, 'assets/lang', l + '.js'))) assetHash[`lang/${l}.js`] = hashOf(`lang/${l}.js`);
+const unversion = (html) => html.replace(/(assets\/[\w/-]+\.(?:css|js))\?v=[0-9a-f]+/g, '$1');
+const version = (html) => html.replace(/(assets\/([\w/-]+\.(?:css|js)))(?=")/g, (m, all, f) => (assetHash[f] ? `${all}?v=${assetHash[f]}` : all));
+const missingIn = Object.fromEntries(Object.keys(LANGS).map((l) => [l, new Set()]));
+
+// Links inside a translated page in its own folder: pages that exist in the language stay in the
+// folder, all others (guides, tools not translated yet) go back to the English page.
+function relink(html) {
+  return html.replace(/(<a\b[^>]*?\shref=")([^"]*)"/g, (all, pre, href) => {
+    if (/^(?:[a-z]+:|#|\/|\.\.\/)/i.test(href)) return all;
+    const pagePart = href.split(/[?#]/)[0].replace(/^\.\//, '');
+    if (pagePart === '' || CORE.has(pagePart)) return all;
+    return `${pre}../${href.replace(/^\.\//, '')}"`;
+  });
+}
+
+// Title, name, pitch and description in every language, from the dictionaries.
+for (const page of PAGES) {
+  for (const l of Object.keys(LANGS)) {
+    const t = (s) => (s ? tr(s, false, l) || s : s);
+    page[l] = { title: t(page.en.title), name: t(page.en.name), pitch: t(page.en.pitch) };
+  }
+}
 fs.mkdirSync(path.join(ROOT, 'ar'), { recursive: true });
 
 for (const page of PAGES) {
@@ -570,16 +619,38 @@ for (const page of PAGES) {
   ar = ar.replace('<head>', `<head>\n  <!-- Generated by tools/build.mjs from ${up(page.file)}../${page.file} - do not edit. -->`);
   fs.mkdirSync(path.dirname(path.join(ROOT, 'ar', page.file)), { recursive: true });
   fs.writeFileSync(path.join(ROOT, 'ar', page.file), version(ar));
+
+  if (!CORE.has(page.file)) continue;
+  for (const l of Object.keys(LANGS)) {
+    const miss = missingIn[l];
+    const lAssets = assetsOf(page.file, l);
+    let h = en.replace(/<html[^>]*>/, `<html lang="${l}" data-lang-page="${l}">`);
+    h = h.replace(/<body[\s\S]*<\/body>/, (body) => relink(translateBody(body, tr, miss, false, l)));
+    const desc = tr(enDesc, false, l);
+    if (!desc) miss.add(enDesc);
+    if (page[l].title === page.en.title) miss.add(page.en.title);
+    page[l].desc = desc || enDesc;
+    h = setHead(h, page, l, page[l].desc);
+    h = h.split(`href="${enAssets}`).join(`href="${lAssets}`).split(`src="${enAssets}`).join(`src="${lAssets}`);
+    h = h.replace(`<script src="${lAssets}i18n.js"></script>`, `<script src="${lAssets}lang/${l}.js"></script>\n  <script src="${lAssets}i18n.js"></script>`);
+    if (FONTS[l]) {
+      h = h.replace(`<link rel="stylesheet" href="${lAssets}style.css">`,
+        `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=${FONTS[l]}:wght@400;500;600;700&display=swap" id="fm-${l}-font">\n  <link rel="stylesheet" href="${lAssets}style.css">`);
+    }
+    h = h.replace('<head>', `<head>\n  <!-- Generated by tools/build.mjs from ../${page.file} - do not edit. -->`);
+    fs.mkdirSync(path.join(ROOT, l), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, l, page.file), version(h));
+  }
 }
 
 const today = new Date().toISOString().slice(0, 10);
 const sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
 for (const page of PAGES) {
-  for (const lang of ['en', 'ar']) {
+  const langs = langsOf(page.file);
+  for (const lang of langs) {
     sitemap.push('  <url>', `    <loc>${urlOf(page.file, lang)}</loc>`, `    <lastmod>${today}</lastmod>`,
-      `    <xhtml:link rel="alternate" hreflang="en" href="${urlOf(page.file, 'en')}"/>`,
-      `    <xhtml:link rel="alternate" hreflang="ar" href="${urlOf(page.file, 'ar')}"/>`,
+      ...langs.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlOf(page.file, l)}"/>`),
       `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlOf(page.file, 'en')}"/>`, '  </url>');
   }
 }
@@ -587,7 +658,12 @@ sitemap.push('</urlset>', '');
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap.join('\n'));
 fs.writeFileSync(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}sitemap.xml\n`);
 
-console.log(`Built ${PAGES.length} English + ${PAGES.length} Arabic pages, sitemap.xml, robots.txt`);
+console.log(`Built ${PAGES.length} English + ${PAGES.length} Arabic pages, ${CORE.size} pages in each of ${Object.keys(LANGS).join(', ')}, sitemap.xml, robots.txt`);
+fs.mkdirSync(path.join(ROOT, 'tools/lang-missing'), { recursive: true });
+for (const [l, set] of Object.entries(missingIn)) {
+  fs.writeFileSync(path.join(ROOT, 'tools/lang-missing', l + '.json'), JSON.stringify([...set], null, 1) + '\n');
+  if (set.size) console.log(`  ${l}: ${set.size} text(s) not translated yet -> tools/lang-missing/${l}.json`);
+}
 if (missing.size) {
   console.log(`\nText with no Arabic in assets/i18n.js (${missing.size}), left in English:`);
   for (const m of missing) console.log('  - ' + m);

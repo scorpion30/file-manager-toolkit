@@ -1,6 +1,8 @@
-/* English / Arabic switch. Loaded in <head>: sets the page direction before it paints,
+/* Language switch. Loaded in <head>: sets the page direction before it paints,
  * then translates text, placeholders and titles - including text the tools create later -
- * using an English-to-Arabic dictionary. File names and user data are never translated. */
+ * using an English-to-<language> dictionary. Arabic lives in this file; the other languages
+ * (French, Spanish, ...) are in assets/lang/<code>.js, loaded before this file on their own pages,
+ * and set window.FM_LANG_DICTS[code] = { dict, patterns }. File names and user data are never translated. */
 (() => {
   'use strict';
   const KEY = 'fm-lang';
@@ -807,21 +809,30 @@
 
   const norm = (s) => s.replace(/\s+/g, ' ').trim();
 
+  // Native names, in the order shown in the language menu.
+  const NAMES = { en: 'English', ar: 'العربية', fr: 'Français', es: 'Español', pt: 'Português', id: 'Bahasa Indonesia', tr: 'Türkçe', hi: 'हिन्दी' };
+  const DICTS = window.FM_LANG_DICTS || (window.FM_LANG_DICTS = {});
+  const table = (l) => (l === 'ar' ? { dict: AR, patterns: PATTERNS } : DICTS[l] || null);
+  const active = () => lang !== 'en' && !!table(lang);
+
   // Arabic plural after numbers 3-10: "7 ملف" -> "7 ملفات", "5 صفحة" -> "5 صفحات".
   const PLURALS = { 'ملف': 'ملفات', 'صفحة': 'صفحات', 'فولدر': 'فولدرات', 'اسم': 'أسماء', 'نتيجة': 'نتائج' };
   const pluralize = (s) => s.replace(/(\d+) (ملف|صفحة|فولدر|اسم|نتيجة)(?![؀-ۿ])/g,
     (all, n, word) => (Number(n) >= 3 && Number(n) <= 10 ? `${n} ${PLURALS[word]}` : all));
 
-  function lookup(key) {
-    if (Object.prototype.hasOwnProperty.call(AR, key)) return AR[key];
-    for (const [re, rep] of PATTERNS) {
+  function lookupIn(l, key) {
+    const t = table(l);
+    if (!t) return null;
+    if (Object.prototype.hasOwnProperty.call(t.dict, key)) return t.dict[key];
+    for (const [re, rep] of t.patterns || []) {
       const m = key.match(re);
       if (!m) continue;
       const v = typeof rep === 'function' ? rep(...m.slice(1)) : key.replace(re, rep);
-      if (v != null) return pluralize(v);
+      if (v != null) return l === 'ar' ? pluralize(v) : v;
     }
     return null;
   }
+  const lookup = (key) => lookupIn(lang, key);
 
   function skipped(el) {
     if (!el) return true;
@@ -887,11 +898,11 @@
   let originalTitle = '';
   function applyTitle() {
     if (!originalTitle) originalTitle = document.title;
-    document.title = lang === 'ar' ? (lookup(originalTitle) || originalTitle) : originalTitle;
+    document.title = active() ? (lookup(originalTitle) || originalTitle) : originalTitle;
   }
 
   const observer = new MutationObserver((mutations) => {
-    if (lang !== 'ar') return;
+    if (!active()) return;
     for (const m of mutations) {
       if (m.type === 'childList') m.addedNodes.forEach(walk);
       else if (m.type === 'characterData') translateText(m.target);
@@ -900,16 +911,25 @@
   });
 
   function loadArabicFont() {
-    if (document.getElementById('fm-ar-font')) return;
+    const fam = { ar: 'Noto+Sans+Arabic', hi: 'Noto+Sans+Devanagari' }[lang];
+    if (!fam || document.getElementById('fm-' + lang + '-font')) return;
     const link = document.createElement('link');
-    link.id = 'fm-ar-font';
+    link.id = 'fm-' + lang + '-font';
     link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=' + fam + ':wght@400;500;600;700&display=swap';
     document.head.appendChild(link);
+  }
+
+  // Languages this page exists in (its <link rel="alternate" hreflang>), or English / Arabic on pages translated in place.
+  function pageLangs() {
+    const found = [...document.querySelectorAll('link[rel="alternate"][hreflang]')].map((l) => l.getAttribute('hreflang')).filter((l) => NAMES[l]);
+    const list = found.length ? found : ['en', 'ar'];
+    return Object.keys(NAMES).filter((l) => list.includes(l));
   }
 
   function paintButton() {
     document.querySelectorAll('[data-lang-toggle]').forEach((b) => {
+      if (b.tagName === 'SELECT') { b.value = lang; return; }
       b.textContent = lang === 'ar' ? 'EN' : 'عربي';
       b.title = lang === 'ar' ? 'English' : 'العربية';
       b.lang = lang === 'ar' ? 'en' : 'ar';
@@ -919,22 +939,40 @@
   function addButton() {
     const nav = document.querySelector('.site-header nav');
     if (!nav || nav.querySelector('[data-lang-toggle]')) return;
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'theme-btn lang-btn';
+    const langs = pageLangs();
+    const theme = nav.querySelector('[data-theme-toggle]');
+    let b;
+    let box;
+    if (langs.length > 2) {
+      // A menu when the page is in more than two languages: the button shows the language
+      // (its code on phones), and an invisible native <select> on top opens the list.
+      box = document.createElement('span');
+      box.className = 'theme-btn lang-btn lang-menu';
+      box.setAttribute('translate', 'no');
+      box.innerHTML = `<span class="ln-full">${NAMES[lang] || NAMES.en}</span><span class="ln-code">${lang.toUpperCase()}</span>`;
+      b = document.createElement('select');
+      b.setAttribute('aria-label', (active() && lookup('Language')) || 'Language');
+      b.innerHTML = langs.map((l) => `<option value="${l}" lang="${l}">${NAMES[l]}</option>`).join('');
+      b.addEventListener('change', () => setLang(b.value));
+      box.appendChild(b);
+    } else {
+      b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'theme-btn lang-btn';
+      b.addEventListener('click', () => setLang(lang === 'ar' ? 'en' : 'ar'));
+    }
     b.setAttribute('data-lang-toggle', '');
     b.setAttribute('translate', 'no');
-    const theme = nav.querySelector('[data-theme-toggle]');
-    nav.insertBefore(b, theme || nav.lastElementChild);
-    b.addEventListener('click', () => setLang(lang === 'ar' ? 'en' : 'ar'));
+    nav.insertBefore(box || b, theme || nav.lastElementChild);
   }
 
   function setLang(next) {
     try { localStorage.setItem(KEY, next); } catch { /* ignore */ }
     if (pageLang && altHref(next)) { location.href = altHref(next) + location.hash; return; }
+    if (next !== 'en' && next !== 'ar') return;
     lang = next;
     setDirection();
-    if (lang === 'ar') { loadArabicFont(); walk(document.body); } else restore();
+    if (active()) { loadArabicFont(); walk(document.body); } else restore();
     applyTitle();
     paintButton();
   }
@@ -943,7 +981,7 @@
     addButton();
     paintButton();
     applyTitle();
-    if (lang === 'ar') { loadArabicFont(); walk(document.body); }
+    if (active()) { loadArabicFont(); walk(document.body); }
     observer.observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS });
   });
 
@@ -1167,6 +1205,12 @@
     [/^(\d+) drawings split from one PDF, each named from its title block\.$/, '$1 لوحات اتقسمت من PDF واحد، وكل واحدة باسمها من الـ Title Block.'],
     [/^For example, page (\d+) is now “(.*)”$/, 'مثلًا، صفحة $1 بقت “$2”'],
     [/^Pages (\S+) have the same drawing number, so they went into one file$/, 'الصفحات $1 ليها نفس رقم اللوحة، فاتجمعت في ملف واحد'],
+  );
+  PATTERNS.push(
+    [/^Downloading the AI model, first time only: (d+) of (d+) MB$/, 'جارٍ تنزيل نموذج الذكاء الاصطناعي، أول مرة بس: $1 من $2 ميجا'],
+    [/^Finding the subject: (.*)$/, 'جارٍ تحديد الصورة الأساسية: $1'],
+    [/^Background removed from (d+) photos$/, 'الخلفية اتشالت من $1 صورة'],
+    [/^(d+) photo(s)$/, '$1 صورة'],
   );
   AR['PDF Comments to Excel'] = 'تعليقات PDF إلى Excel';
   AR['Picture quality'] = 'جودة الصور';
@@ -1519,6 +1563,43 @@
     'No. Everything runs on your own computer, so private documents stay with you. There is no page or file limit.': 'لأ. كل حاجة بتشتغل على جهازك، فالملفات الخاصة بتفضل معاك. ومفيش حد للصفحات أو الملفات.',
     'Tick at least one language.': 'علّم على لغة واحدة على الأقل.',
     'No text was found. Try "Read every page" with the right language ticked.': 'ملقيناش نص. جرّب "اقرا كل الصفحات" وعلّم على اللغة الصح.',
+    // ----- Remove background -----
+    'Remove Background': 'إزالة الخلفية',
+    'Cut out people, products and objects from photos in one click. Transparent or any colour.': 'قص الأشخاص والمنتجات والحاجات من الصور بضغطة واحدة. خلفية شفافة أو أي لون.',
+    'Cut the background out of photos with AI. Transparent PNG, white or any colour.': 'شيل خلفية الصور بالذكاء الاصطناعي. PNG شفاف أو أبيض أو أي لون.',
+    'Remove background': 'شيل الخلفية',
+    'Removing the background…': 'جارٍ إزالة الخلفية…',
+    'Background': 'الخلفية',
+    'Transparent': 'شفافة',
+    'White': 'أبيض',
+    'Edges': 'الحواف',
+    'Soft': 'ناعمة',
+    'Sharp': 'حادة',
+    'hair, fur': 'شعر، فرو',
+    'products': 'منتجات',
+    'Crop to the subject': 'قص على حدود الصورة الأساسية',
+    'JPG has no transparency, so the background will be white.': 'JPG مفيهوش شفافية، فالخلفية هتبقى بيضا.',
+    'The first run downloads the AI model (about 45 MB) once. After that it works offline. Your photos never leave your computer.': 'أول مرة بينزّل نموذج الذكاء الاصطناعي (حوالي 45 ميجا) مرة واحدة، وبعدها بيشتغل من غير نت. صورك عمرها ما بتخرج من جهازك.',
+    '<b>Select your photos</b>, or a whole folder. They open in your browser and are not uploaded.': '<b>اختار صورك</b> أو فولدر كامل. بتتفتح في المتصفح ومش بتترفع.',
+    '<b>Choose the background</b>: transparent, white or a colour of your choice.': '<b>اختار الخلفية</b>: شفافة أو بيضا أو أي لون تحبه.',
+    '<b>Remove background</b>, then download the images one by one or as a ZIP.': '<b>اضغط شيل الخلفية</b>، وبعدها نزّل الصور واحدة واحدة أو كلها في ZIP.',
+    'Is it really free with no limit?': 'مجاني فعلًا ومن غير حدود؟',
+    'Yes. The AI runs on your own computer, so there are no credits, no watermark and no size limit. You get the full-size image.': 'أيوه. الذكاء الاصطناعي بيشتغل على جهازك، فمفيش رصيد ولا علامة مائية ولا حد للحجم. وبتاخد الصورة بحجمها الكامل.',
+    'Are my photos uploaded?': 'صوري بتترفع؟',
+    'No. The model is downloaded to your browser once and every photo is processed on your device. This matters for ID photos and private pictures.': 'لأ. النموذج بيتنزّل في المتصفح مرة واحدة وكل صورة بتتعالج على جهازك. ودي حاجة مهمة مع صور البطاقات والصور الخاصة.',
+    'What works best?': 'إيه اللي بيشتغل أحسن؟',
+    'Photos where the subject stands out from the background: people, products, cars, animals. Choose "Soft" edges for hair and fur, "Sharp" for products with clean edges.': 'الصور اللي الحاجة الأساسية فيها باينة عن الخلفية: أشخاص، منتجات، عربيات، حيوانات. اختار حواف "ناعمة" للشعر والفرو، و"حادة" للمنتجات اللي حوافها واضحة.',
+    'Why is the first run slow?': 'ليه أول مرة بطيئة؟',
+    'The first time, your browser downloads the AI model (about 45 MB). It is saved, so the next photos start in seconds. A computer with a recent graphics card is faster.': 'أول مرة المتصفح بينزّل نموذج الذكاء الاصطناعي (حوالي 45 ميجا). بيتحفظ، فالصور اللي بعد كده بتبدأ في ثواني. والجهاز اللي فيه كارت شاشة حديث بيبقى أسرع.',
+    'Starting the AI model…': 'جارٍ تشغيل نموذج الذكاء الاصطناعي…',
+    'Background removed': 'الخلفية اتشالت',
+    'Before': 'قبل',
+    'How to use Remove Background': 'إزاي تستخدم إزالة الخلفية',
+    'Select your photos': 'اختار صورك',
+    'Choose the background': 'اختار الخلفية',
+    ': transparent, white or a colour of your choice.': ': شفافة أو بيضا أو أي لون تحبه.',
+    ', then download the images one by one or as a ZIP.': '، وبعدها نزّل الصور واحدة واحدة أو كلها في ZIP.',
+    'After': 'بعد',
     // ----- OCR -----
     'Make scanned PDFs searchable and copyable, in Arabic, English and more.': 'خلّي ملفات PDF الممسوحة تقدر تدوّر فيها وتنسخ منها، عربي وإنجليزي وغيرهم.',
     'Languages in the document': 'اللغات اللي في الملف',
@@ -1850,5 +1931,10 @@
     [/^Files to Excel$/, 'الملفات إلى Excel'],
     [/^· (.*[A-Za-z].*)$/, (rest) => { const t = lookup(rest); return t == null ? null : '· ' + t; }],
   );
-  window.FMLang = { get: () => lang, set: setLang, t: (s) => (lang === 'ar' ? lookup(norm(s)) || s : s) };
+  // t(s) translates into the page language; t(s, 'fr') into another one (used by tools/build.mjs).
+  window.FMLang = {
+    get: () => lang, set: setLang, names: NAMES,
+    t: (s, l) => { const to = l || lang; return to === 'en' ? s : lookupIn(to, norm(s)) || s; },
+    has: (s, l) => lookupIn(l || lang, norm(s)) != null,
+  };
 })();

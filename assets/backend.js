@@ -10,6 +10,14 @@
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbwOQ4Pxxbh48n5vvSuQliU3XUt7eYPAn0j7EfWz8D3u07ByQVKleONhLfNXs8pPNnMsIQ/exec';
   const local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
   const ar = document.documentElement.lang === 'ar';
+  const lang = document.documentElement.lang || 'en';
+  // Other languages (fr, es, ...): the English text below, run through the page's dictionary (assets/lang/<code>.js).
+  const loc = (o) => {
+    if (ar || lang === 'en' || !window.FMLang) return o;
+    const t = (v) => (typeof v === 'string' ? window.FMLang.t(v) : Array.isArray(v) ? v.map(t) : v);
+    for (const k of Object.keys(o)) o[k] = t(o[k]);
+    return o;
+  };
   const page = location.pathname.replace(/^.*\/file-manager-toolkit\//, '/').replace(/index\.html$/, '') || '/';
   // The owner's own visits and test runs are not counted: open any page once with ?nolog
   // (?nolog=0 turns it back on). Automated and headless browsers (link checkers) are skipped too.
@@ -81,7 +89,7 @@
     // because LinkedIn/Facebook apps often send no referrer and the visit looked "direct".
     if (srcTag) ref = 'src:' + srcTag;
     send({
-      kind: 'usage', visitor, isNew, page, lang: ar ? 'ar' : 'en',
+      kind: 'usage', visitor, isNew, page, lang,
       seconds: Math.round((Date.now() - started) / 1000), actions: actions.join(' '),
       referrer: ref, mobile: matchMedia('(max-width: 700px)').matches,
     }, true);
@@ -111,6 +119,7 @@
     empty: 'Please write a message first.', badEmail: 'That e-mail does not look right.', failed: 'Could not send. Please try again.',
     off: 'Sending is not switched on yet.',
   };
+  loc(T);
 
   function el(tag, attrs = {}, kids = []) {
     const n = document.createElement(tag);
@@ -158,7 +167,7 @@
       if (!ENDPOINT) { note.textContent = T.off; return; }
       sendBtn.disabled = true;
       note.textContent = T.sending;
-      const ok = await send({ kind: 'feedback', type: select.value, message: text, name: name.value.trim(), email: mail, page, lang: ar ? 'ar' : 'en', visitor });
+      const ok = await send({ kind: 'feedback', type: select.value, message: text, name: name.value.trim(), email: mail, page, lang, visitor });
       sendBtn.disabled = false;
       if (!ok) { note.textContent = T.failed; return; }
       form.replaceChildren(
@@ -195,6 +204,7 @@
   // ---------- one-tap rating after a tool finished ----------
   const R = ar ? { q: 'الأداة وفّرت عليك وقت؟', yes: 'أيوه', no: 'لأ', thanks: 'شكراً! ده بيساعدنا جداً.', more: 'إيه اللي كان ناقص؟ اكتبلنا', close: 'إغلاق' }
     : { q: 'Did this save you time?', yes: 'Yes', no: 'No', thanks: 'Thanks! That really helps.', more: 'What was missing? Tell us', close: 'Close' };
+  loc(R);
   function rateCard() {
     try { if (sessionStorage.getItem('fm-rated-' + page)) return; sessionStorage.setItem('fm-rated-' + page, '1'); } catch { /* ignore */ }
     if (document.querySelector('.rate-card')) return;
@@ -203,7 +213,7 @@
     x.onclick = () => card.remove();
     const vote = (up) => {
       window.FMlog(up ? 'rate-up' : 'rate-down');
-      if (!local && !noLog) send({ kind: 'feedback', type: up ? 'thanks' : 'problem', message: (up ? '👍 ' : '👎 ') + R.q + ' (' + page + ')', name: '', email: '', page, lang: ar ? 'ar' : 'en', visitor });
+      if (!local && !noLog) send({ kind: 'feedback', type: up ? 'thanks' : 'problem', message: (up ? '👍 ' : '👎 ') + R.q + ' (' + page + ')', name: '', email: '', page, lang, visitor });
       const kids = [el('span', { text: R.thanks })];
       if (!up) kids.push(Object.assign(el('button', { type: 'button', class: 'btn', text: R.more }), { onclick: () => { card.remove(); open('problem'); } }));
       card.replaceChildren(x, ...kids);
@@ -228,6 +238,7 @@
     share: 'Send me the link', copy: 'Copy link', copied: 'Copied ✓', how: 'See how it works ↓', close: 'Close',
     shareText: 'Open on my computer:',
   };
+  loc(P);
   function phoneNote() {
     const phone = matchMedia('(pointer: coarse) and (max-width: 820px)').matches;
     let closed = false;

@@ -66,6 +66,29 @@ const PAGES = [
       ['Can I make one PDF for each folder?', 'Yes. Select a folder with subfolders and choose "A PDF per folder": each folder becomes its own PDF.'],
     ],
   },
+  // ---------------------------------------------------------------- remove background
+  {
+    file: 'remove-bg.html', script: 'remove-bg.js', cat: 'convert', icon: 'removebg', accept: 'image',
+    title: 'Remove Background from Images, Free and Private, No Upload | File Manager Toolkit',
+    desc: 'Remove the background from photos automatically with AI that runs in your browser. Transparent PNG, white or any colour. Many photos at once, full size, free, no upload, no sign-up.',
+    h1: 'Remove Background', sub: 'Cut out people, products and objects from photos in one click. Transparent or any colour.',
+    pick: 'Select images', runLabel: 'Remove background', sort: true,
+    options: [
+      opt('Background', seg('bg', [['none', 'Transparent', null, true], ['white', 'White'], ['color', 'Colour']])
+        + '<div class="inline" id="bgColorRow" hidden><input type="color" class="color-in" id="bgColor" value="#2563eb" aria-label="Colour"></div>'),
+      opt('Format', seg('format', [['png', 'PNG', null, true], ['webp', 'WebP'], ['jpg', 'JPG']]) + '<p class="hint" id="jpgNote" hidden>JPG has no transparency, so the background will be white.</p>'),
+      opt('Edges', seg('edge', [['soft', 'Soft', 'hair, fur', true], ['sharp', 'Sharp', 'products']])),
+      '<label class="check"><input type="checkbox" id="cropSubject"> Crop to the subject</label>',
+      '<p class="hint">The first run downloads the AI model (about 45 MB) once. After that it works offline. Your photos never leave your computer.</p>',
+    ],
+    howto: ['<b>Select your photos</b>, or a whole folder. They open in your browser and are not uploaded.', '<b>Choose the background</b>: transparent, white or a colour of your choice.', '<b>Remove background</b>, then download the images one by one or as a ZIP.'],
+    faq: [
+      ['Is it really free with no limit?', 'Yes. The AI runs on your own computer, so there are no credits, no watermark and no size limit. You get the full-size image.'],
+      ['Are my photos uploaded?', 'No. The model is downloaded to your browser once and every photo is processed on your device. This matters for ID photos and private pictures.'],
+      ['What works best?', 'Photos where the subject stands out from the background: people, products, cars, animals. Choose "Soft" edges for hair and fur, "Sharp" for products with clean edges.'],
+      ['Why is the first run slow?', 'The first time, your browser downloads the AI model (about 45 MB). It is saved, so the next photos start in seconds. A computer with a recent graphics card is faster.'],
+    ],
+  },
   // ---------------------------------------------------------------- compress
   {
     file: 'compress.html', script: 'compress.js', cat: 'optimize', icon: 'compress',

@@ -1,0 +1,834 @@
+0|PDF Birleştir
+1|PDF Böl
+2|PDF Sıkıştır
+3|PDF'den JPG'ye
+4|Tüm araçlar
+5|PDF Düzenle
+6|PDF Döndür
+7|Sayfaları Düzenle
+8|PDF Optimize Et
+9|OCR PDF
+10|Dönüştür
+11|PDF'den Word'e
+12|Arka Planı Kaldır
+13|JPG'den PDF'ye
+14|Düzenle ve incele
+15|Filigran Ekle
+16|Sayfa Numarası Ekle
+17|PDF Kırp
+18|PDF Karşılaştır
+19|PDF Metnini Düzenle
+20|PDF güvenliği
+21|PDF Kilidini Aç
+22|PDF'yi Koru
+23|Dosya araçları
+24|Dosyaları Yeniden Adlandır
+25|Dosyalardan Excel'e
+26|Dosyaları Düzenle
+27|Mühendisler için
+28|PDF Böl ve Adlandır
+29|Antetten Yeniden Adlandır
+30|PDF'den Excel'e
+31|PDF Yorumlarından Excel'e
+32|Gönderim Öncesi Kontrol
+33|MIDP Kontrolü
+34|Açık veya koyu moda geç
+35|♥ Bağış yap
+36|İhtiyacınız olan tüm PDF ve dosya araçları.
+37|Hiçbir şey yüklenmez.
+38|PDF'leri birleştirin, bölün, sıkıştırın, dönüştürün ve koruyun ya da klasörlerin tamamını yeniden adlandırıp listeleyin. Ücretsiz, sınırsız ve kayıt gerektirmez, çünkü her şey tarayıcınızda, kendi bilgisayarınızda çalışır.
+39|✓ Ücretsiz, sınırsız
+40|✓ Yükleme yok
+41|✓ Klasörlerin tamamı tek seferde
+42|✓ Çevrimdışı çalışır
+43|✓ İngilizce ve Arapça
+44|Araçları göster
+45|Tümü
+46|✦ Sadece burada
+47|★ Favorilerim
+48|Araç bul…
+49|Araç bul
+50|Eşleşen araç yok. Başka bir kelime deneyin veya Geri bildirim düğmesiyle neye ihtiyacınız olduğunu yazın.
+51|PDF'leri ya da alt klasörleriyle birlikte bir klasörün tamamını, her biri için bir yer imiyle tek dosyada birleştirin.
+52|PDF'lerden düzenlenebilir Word dosyaları, taranmış olanlar da dahil. Arapça sağdan sola kalır.
+53|PDF'leri küçültün. Hedef boyut seçin, örneğin e-posta için 2 MB'ın altı.
+54|Sayfaları seçtiğiniz çözünürlükte JPG, PNG, WebP veya TIFF'e çevirin.
+55|Fotoğrafların arka planını yapay zekâyla kaldırın. Şeffaf PNG, beyaz veya istediğiniz renk.
+56|Fotoğraf ve görselleri PDF'ye çevirin: tek dosya ya da görsel veya klasör başına bir dosya.
+57|Sayfa aralığına, belirli sayfa sayısına, dosya boyutuna veya yer imlerine göre.
+58|Birçok dosyadaki sayfaları aynı anda doğru yöne çevirin ya da sadece yatay olanları.
+59|Açabildiğiniz PDF'lerden şifreyi ve kısıtlamaları kaldırın.
+60|Şifre ekleyin ve yazdırma, kopyalama veya düzenlemeye izin verip vermeyeceğinizi seçin.
+61|Her sayfaya istediğiniz dilde bir metin ya da logo basın.
+62|Birçok PDF'ye aynı anda sayfa numarası veya Bates numarası.
+63|Her sayfayı görün. Sıralamak için sürükleyin, döndürün, silin veya boş sayfa ekleyin.
+64|Taranmış PDF'leri İngilizce ve Arapça olarak aranabilir ve kopyalanabilir yapın.
+65|Saklanacak alanı çizin ya da beyaz kenar boşluklarını otomatik kırpın.
+66|Üst üste iki sürüm: neyin kaldırıldığı ve neyin eklendiği.
+67|Başka bir araca mı ihtiyacınız var?
+68|Hâlâ elle yaptığınız işi bize anlatın. En çok istenen araçlar önce yapılır.
+69|Sadece File Manager Toolkit'te
+70|Diğer PDF sitelerinde bulamayacağınız araçlar: klasörlerin tamamı, dosya adları, Excel listeleri ve çizim kontrolleri.
+71|Yeni
+72|Yüzlerce adda önek, sonek, bul ve değiştir, geri alma ile.
+73|Bir alandaki değeri birçok PDF'de aynı anda değiştirin.
+74|Bir klasördeki ve alt klasörlerindeki tüm dosyalar, Excel'de listelenmiş.
+75|Dosyaları türüne veya adındaki bir kelimeye göre klasörlere taşıyın veya kopyalayın.
+76|Birleşik bir setten pafta başına bir PDF, her biri antetinden adlandırılmış.
+77|Her PDF çizimi, antetindeki numara ve başlığa göre adlandırın.
+78|Her çizimden aynı kutuları bir tabloya okuyun. OCR dahil.
+79|İnceleme yorumlarını, her birinin görseliyle bir Excel yanıt tablosuna aktarın.
+80|Göndermeden önce tekrarlanan numaralar, yanlış adlar ve eksik çizimler.
+81|Bir teslimin tamamı MIDP ve TIDP'lere göre: eksik, fazla, yanlış revizyonlar.
+82|İnsanlar neden geçiyor
+83|Çevrimiçi PDF siteleri ve File Manager Toolkit
+84|Tipik çevrimiçi PDF siteleri
+85|File Manager Toolkit
+86|Dosyalarınız
+87|Sunucularına yüklenir ve saatlerce tutulur
+88|Bilgisayarınızdan asla çıkmaz
+89|Ücretsiz sınırlar
+90|Görev başına 2 dosya, OCR için 1 dosya, saatlik sınırlar
+91|Sınır yok, hesap yok
+92|Klasörler
+93|Dosyaları tek tek seçmek
+94|Alt klasörleriyle birlikte klasörlerin tamamı
+95|PDF'den JPG'ye kalite
+96|Normal veya Yüksek
+97|İstediğiniz DPI, JPG / PNG / WebP / TIFF, renkli, gri veya siyah beyaz
+98|Sıkıştırma
+99|3 sabit seviye, sonuç ancak indirdikten sonra
+100|Hedef boyut ve kaydetmeden önce her seviyenin boyutu
+101|Birleştirme
+102|Dosyaları sırayla sürüklemek
+103|Doğal sıralama, dosya başına yer imi, içindekiler
+104|Boyuta göre bölme, OCR, iş akışları
+105|Ücretli planlar
+106|Ücretsiz
+107|Büyük dosyalarda hız
+108|Yüklemeyi ve indirmeyi beklemek
+109|Hemen başlar, gönderilecek bir şey yok
+110|Reklamlar
+111|Evet, ücretsiz planda
+112|Yok
+113|Mimarlar ve mühendisler için
+114|Hiçbir PDF sitesinde olmayan araçlar
+115|Çizim setleri, antetler ve teslimler: eskiden bir öğleden sonrayı alan işler.
+116|Dosya adlarını Excel'e çıkar
+117|Bir klasördeki ve alt klasörlerindeki tüm dosyalar, klasör başına bir sekme ve her dosya türünün sayısı.
+118|Klasör seçin
+119|Dışa aktarın
+120|Excel hazır
+121|Aracı aç
+122|▷ Örnek
+123|=
+124|PDF'leri antetten yeniden adlandırın
+125|Her paftadan çizim numarasını ve başlığını okur, dosyayı bunlara göre adlandırır.
+126|Çizim numarasını işaretleyin
+127|Adları kontrol edin
+128|Yeniden adlandırın
+129|Antetlerden çizim listesi
+130|Numara, başlık ve revizyonu bir kez işaretleyin. Her PDF'den okunup Excel'e aktarılır.
+131|Değerleri işaretleyin
+132|Her PDF'yi okur
+133|Excel'i indirin
+134|Yüzlerce dosyayı yeniden adlandırın
+135|Tüm adlara aynı anda önek ekleyin, bir kelimeyi değiştirin veya revizyonu düzeltin, geri alma ile.
+136|Değişikliği yazın
+137|Önizlemeyi görün
+138|Uygula
+139|Bilerek sade
+140|Nasıl çalışır
+141|Dosyalarınızı seçin
+142|Dosyaları veya bir klasörün tamamını seçin ya da sayfaya bırakın. Tarayıcınız bunları kendi bilgisayarınızda açar.
+143|Seçenekleri belirleyin
+144|Bir şey değişmeden önce her sayfayı, adı veya boyutu görün.
+145|İndirin veya kaydedin
+146|Tek dosya, bir ZIP veya doğrudan bir klasöre. Sonra başka bir araçla devam edin.
+147|Ofisler için
+148|Ofisiniz için bir araca mı ihtiyacınız var?
+149|Her ofisin kendi listeleri, formları ve adlandırma kuralları vardır. Ekibinizin saatlerini alan işi bize anlatın, sizin için bir araç yapabiliriz.
+150|Neye ihtiyacınız olduğunu anlatın
+151|Sonsuza kadar ücretsiz
+152|Size bir öğleden sonra mı kazandırdı?
+153|File Manager Toolkit ücretsizdir ve öyle kalacak. Küçük bir bağış yeni araçların gelmesini sağlar.
+154|♥ PayPal ile bağış yap
+155|Sorular
+156|Başka bir şey mi? Geri bildirim düğmesini kullanın, yanıt verelim.
+157|Adım adım kılavuzlar →
+158|Dosyalarım bir yere yükleniyor mu?
+159|Hayır. Araçlar tarayıcınızda çalışır. Dosyalar bilgisayarınızdan okunur ve sonuçlar yine oraya kaydedilir. Sayfa yüklendikten sonra internet bağlantısını bile kesebilirsiniz.
+160|Gerçekten ücretsiz mi? Sınırlar neler?
+161|Ücretsizdir; hesap gerekmez, dosya veya görev sayısında sınır yoktur. Tek sınır, çok büyük dosyalarda bilgisayarınızın belleğidir.
+162|İnternetsiz çalışır mı?
+163|Evet. Bir aracı bir kez kullandıktan sonra sayfa ve PDF motoru tarayıcınızda saklanır, böylece araç çevrimdışı açılır ve çalışır.
+164|Hangi tarayıcıyı kullanmalıyım?
+165|Bilgisayarda Google Chrome veya Microsoft Edge, sonuçları doğrudan bir klasöre kaydedebilir ve dosyaları yerinde yeniden adlandırabilir. Diğer tarayıcılar da çalışır ve sonucu indirme olarak verir.
+166|OCR Arapça çalışır mı?
+167|Evet. OCR PDF ve PDF'den Excel'e araçları İngilizce, Arapça veya ikisini birden okur.
+168|Neden yapay zekâ sohbetleri veya yükleme siteleri yerine bunu kullanmalı?
+169|Dosyalarınız bilgisayarınızdan asla çıkmaz
+170|Yapay zekâ sohbetleri ve çevrimiçi dosya siteleri
+171|Çizimleriniz yüklenir ve başkasının sunucularında işlenir.
+172|İşi tarayıcınız kendi bilgisayarınızda yapar. Hiçbir şey yüklenmez.
+173|Klasörlerin tamamı tek seferde
+174|Sohbet başına birkaç dosya değil, tek seferde yüzlerce çizim.
+175|Tahmin değil, kesin
+176|Antetteki gerçek metni okur. Her sonucu önce görürsünüz ve geri alabilirsiniz.
+177|Üç tık, komut yok
+178|Klasörü seçin, önizlemeyi kontrol edin, uygulayın. Açıklanacak veya tekrar denenecek bir şey yok.
+179|Klasörünüzde biter
+180|Dosyalar bulundukları yerde yeniden adlandırılır ve kaydedilir. Sonradan indirme ve ayıklama yok.
+181|Tarayıcınızda çalışan ücretsiz PDF ve dosya araçları. Yükleme yok, kayıt yok, sınır yok.
+182|PDF araçları
+183|Dönüştür ve düzenle
+184|Güvenlik ve dosyalar
+185|Kılavuzlar
+186|Hakkında
+187|Bağış yap
+188|Kaynak kodu
+189|© File Manager Toolkit · Tüm işlemler tarayıcınızda, yerel olarak yapılır.
+190|PDF birleştirin, bölün, sıkıştırın ve dönüştürün; her çözünürlükte PDF'den JPG'ye, OCR, sayfa numaraları, filigranlar, şifreler ve toplu dosya araçları. Ücretsiz, sınırsız ve dosyalarınız cihazınızdan asla çıkmaz.
+191|File Manager Toolkit – Ücretsiz PDF ve dosya araçları, yükleme yok
+192|PDF'leri ya da alt klasörleriyle birlikte bir klasörün tamamını tek dosyada birleştirin.
+193|PDF dosyalarını seçin
+194|📁 Klasör seçin
+195|veya PDF dosyalarını ya da bir klasörü buraya bırakın
+196|Hiçbir şey yüklenmez
+197|Dosya sayısı veya boyut sınırı yok
+198|Ücretsiz, kayıt yok
+199|Dosyaları sırala
+200|Sırala…
+201|Ad A → Z
+202|Ad Z → A
+203|Önce en eski
+204|Önce en yeni
+205|Önce en küçük
+206|+ Dosya ekle
+207|+ Klasör
+208|Temizle
+209|Seçenekler
+210|Yer imleri
+211|Dosya başına bir
+212|Klasöre göre
+213|Her dosyanın içindeki yer imlerini koru
+214|İçindekiler sayfası ekle
+215|Daha fazla seçenek
+216|Her sayfanın altına dosya adını yazdır
+217|Çift taraflı baskı: tek sayıda sayfası olan dosyalardan sonra boş sayfa ekle
+218|Dosya adı
+219|Çalışıyor…
+220|← Seçenekleri değiştir
+221|Başka dosyalarla baştan başla
+222|Sonuçla devam edin
+223|PDF Birleştir nasıl kullanılır
+224|PDF'lerinizi ya da bir klasörün tamamını seçin
+225|. Alt klasörlerdeki dosyalar da doğal sırayla eklenir (10'dan önce 2).
+226|Sırayı değiştirmek için sürükleyin
+227|ya da ada veya tarihe göre sıralayın.
+228|. Her dosyaya bir yer imi eklenir, böylece birleşik PDF'de gezinmek kolaylaşır.
+229|Adım adım kılavuz:
+230|PDF dosyalarını yüklemeden birleştirme
+231|Bir klasördeki ve alt klasörlerindeki tüm PDF'leri birleştirebilir miyim?
+232|Evet. Klasörü seçin: içindeki her PDF, hangi derinlikte olursa olsun, klasör sırasıyla eklenir ve her klasör için bir yer imi oluşturabilirsiniz.
+233|"dosya 10", "dosya 2"den sonra mı gelecek?
+234|Evet. Adlar harf harf değil, insanların saydığı gibi sıralanır.
+235|Dosya sayısında sınır var mı?
+236|Hayır. Yüzlerce dosya sorun değil.
+237|İlgili araçlar
+238|PDF dosyalarını ya da alt klasörleriyle bir klasörün tamamını tek PDF'de birleştirin. Doğal sıralama, dosya başına yer imi, tıklanabilir içindekiler. Ücretsiz, yükleme yok, sınır yok.
+239|PDF Dosyalarını ve Klasörleri Yer İmleriyle Birleştirin, Ücretsiz, Yükleme Yok | File Manager Toolkit
+240|Sayfa aralığına, belirli sayfa sayısına, dosya boyutuna veya yer imlerine göre bölün.
+241|Bölme
+242|Sayfa aralıkları
+243|Her N sayfada
+244|Dosya boyutuna göre
+245|Yer imlerine göre
+246|Sayfa çıkar
+247|Her sayfa
+248|Aralıklar
+249|örn. 1-3, 4-6, 7-
+250|Her aralık için bir dosya. "4-", 4. sayfadan sona kadar demektir.
+251|Dosya başına sayfa
+252|En büyük dosya boyutu
+253|=
+254|Yer imi düzeyi
+255|Üst düzey
+256|İkinci düzey
+257|Her yer imi için, onun adını taşıyan bir dosya.
+258|Çıkarılacak sayfalar
+259|örn. 1, 3, 5-7
+260|Bu sırayla yeni bir PDF'ye kopyalanır.
+261|Dosya adları
+262|{name} = PDF adı, {part} = parça numarası veya yer imi, {pages} = sayfa aralığı
+263|PDF Böl nasıl kullanılır
+264|PDF'nizi seçin
+265|(veya birkaçını: her biri aynı şekilde bölünür).
+266|Nasıl bölüneceğini seçin
+267|: sayfa aralıkları, belirli sayfa sayısı, e-posta için boyut sınırı veya yer imleri.
+268|ve parçaları ZIP olarak ya da bir klasöre indirin.
+269|PDF çizim setini pafta başına bir dosyaya bölme
+270|Bir PDF'yi 10 MB'ın altındaki parçalara bölebilir miyim?
+271|Evet. "Dosya boyutuna göre"yi seçip 10 yazın. Her parça bu boyutun altında kalır ve hiçbir sayfa ortadan bölünmez.
+272|Bir PDF'yi bölümlere göre ayırabilir miyim?
+273|Evet, PDF'de yer imleri varsa: "Yer imlerine göre"yi seçin, her bölüm kendi adını taşıyan ayrı bir dosya olur.
+274|PDF dosyalarını sayfa aralığına, belirli sayfa sayısına, dosya boyutuna (örneğin 10 MB'lık parçalar) veya yer imlerine göre bölün ya da sayfaları yeni bir PDF'ye çıkarın. Ücretsiz, birçok dosya aynı anda, yükleme yok.
+275|PDF'yi Sayfaya, Her N Sayfaya, Boyuta veya Yer İmlerine Göre Bölün, Ücretsiz | File Manager Toolkit
+276|Her sayfayı görün. Sıralamak için sürükleyin, döndürün, silin veya boş sayfa ekleyin.
+277|Tüm sayfalar
+278|↺ Tümünü döndür
+279|↻ Tümünü döndür
+280|Sırayı ters çevir
+281|+ Boş sayfa
+282|Taşımak için bir sayfayı sürükleyin. Döndürmek, kopyalamak veya silmek için sayfadaki düğmeleri kullanın.
+283|PDF'yi kaydet
+284|Sayfaları Düzenle nasıl kullanılır
+285|Bir veya daha fazla PDF seçin
+286|. Tüm sayfaları küçük resim olarak görünür.
+287|Sayfaları sürükleyerek
+288|istediğiniz sıraya koyun, döndürün veya silin ya da boş sayfa ekleyin.
+289|Kaydedin:
+290|yeni PDF hazır.
+291|Farklı PDF'lerin sayfalarını birleştirebilir miyim?
+292|Evet. Birkaç PDF ekleyin: tüm sayfaları birlikte görünür ve istediğiniz sırayla karıştırabilirsiniz.
+293|Silinen bir sayfayı geri alabilir miyim?
+294|"Baştan başla"ya tıklayın veya dosyayı yeniden ekleyin. Orijinal dosyalarınızda hiçbir şey değişmez.
+295|PDF'lerinizin her sayfasını görün. Sayfaları sıralamak için sürükleyin, döndürün, silin, çoğaltın veya boş sayfa ekleyin ve birkaç PDF'nin sayfalarını birleştirin. Ücretsiz, yükleme yok.
+296|PDF Sayfalarını Düzenleyin: Sırala, Döndür, Sil, Ekle, Ücretsiz | File Manager Toolkit
+297|Sayfaları doğru yöne çevirip kaydedin, birçok dosyada aynı anda.
+298|Döndür
+299|↻ 90° sağa
+300|↺ 90° sola
+301|Hangi sayfalar
+302|Yatay
+303|Dikey
+304|Seç…
+305|örn. 1-3, 5
+306|Tek bir dosyayı da küçük resmindeki ↻ düğmesiyle döndürebilirsiniz.
+307|PDF Döndür nasıl kullanılır
+308|PDF'lerinizi seçin.
+309|Açıyı seçin
+310|ve hangi sayfalar olduğunu: tümü, sadece yatay veya dikey sayfalar ya da bir liste.
+311|ve indirin. Sayfalar döndürülmüş olarak kaydedilir, böylece her yerde doğru yönde açılır.
+312|Döndürme kaydediliyor mu?
+313|Evet. Yeni yön PDF'ye kaydedilir; böylece her okuyucuda doğru yönde açılır ve öyle yazdırılır.
+314|Sadece yatay sayfaları döndürebilir miyim?
+315|Evet. Sadece genişliği yüksekliğinden fazla olan sayfaları döndürmek için "Yatay"ı seçin, örneğin bir rapordaki çizimler.
+316|PDF sayfalarını döndürüp öyle kaydedin: tüm sayfalar, sadece yatay veya dikey olanlar ya da seçtiğiniz sayfalar, birçok dosyada aynı anda. Ücretsiz, yükleme yok.
+317|PDF Sayfalarını Döndürün, Birçok Dosya Aynı Anda, Ücretsiz | File Manager Toolkit
+318|PDF'leri e-posta ve yüklemeler için küçültün, kaydetmeden önce yeni boyutu görün.
+319|Sıkıştırma
+320|Hafif
+321|en iyi kalite
+322|Önerilen
+323|iyi kalite
+324|Güçlü
+325|en küçük
+326|Hedef boyut
+327|siz seçin
+328|Her seviyenin vereceği boyut ilk dosyanıza göre hesaplanır.
+329|Dosya başına hedef boyut
+330|Görselleri griye çevir (daha küçük)
+331|Belge bilgilerini kaldır (yazar, başlık, anahtar kelimeler)
+332|PDF Sıkıştır nasıl kullanılır
+333|PDF'lerinizi seçin
+334|ya da PDF'lerin bulunduğu bir klasörü.
+335|Bir seviye seçin veya hedef boyut yazın,
+336|örneğin 2 MB. Her seviyenin vereceği boyut başlamadan önce gösterilir.
+337|ve indirin ya da küçülen dosyaları bir klasöre kaydedin.
+338|PDF'im ne kadar küçülür?
+339|İçeriğine bağlıdır. Taramalar ve fotoğraflar çok küçülür, genellikle yüzde 60 ile 90 arası. Çoğunlukla metin veya CAD çizgilerinden oluşan PDF'ler zaten küçüktür ve az değişir.
+340|Bir PDF'yi 2 MB'ın altına sıkıştırabilir miyim?
+341|Evet. "Hedef boyut"u seçip 2 yazın. Araç, dosya sığana kadar daha güçlü ayarları dener ve o kadar küçültemezse size söyler.
+342|Metin ve çizimlerin kalitesi düşer mi?
+343|Hayır. Sadece görseller ve taramalar küçültülür. Metin, çizgiler ve vektör çizimler net kalır.
+344|PDF dosyalarını küçültün. Bir seviye veya e-posta için 2 MB gibi bir hedef boyut seçin ve kaydetmeden önce her seviyenin boyutunu görün. Birçok dosya aynı anda, yükleme yok, sınır yok.
+345|PDF'yi Hedef Boyuta Sıkıştırın (örn. 2 MB altı), Ücretsiz | File Manager Toolkit
+346|PDF'lerinizden düzenlenebilir Word dosyaları, taranmış olanlar da dahil. Arapça sağdan sola kalır.
+347|Okuma
+348|Otomatik
+349|metin veya tarama
+350|Her sayfayı oku
+351|taranmış
+352|Sadece metin
+353|hızlı
+354|Belgedeki diller
+355|Arapça
+356|İngilizce
+357|Fransızca
+358|Urduca
+359|Türkçe
+360|Hintçe
+361|Doğruluk
+362|Hızlı
+363|=
+364|Hassas
+365|=
+366|Sayfalar
+367|Tüm sayfalar veya örn. 1-3, 5, 8-
+368|Yazı tipi
+369|=
+370|=
+371|=
+372|=
+373|=
+374|=
+375|Her PDF sayfasını yeni bir Word sayfasında başlat
+376|Taranmış sayfalar: ilk seferde okuma motoru ve dil dosyaları (birkaç MB) indirilir, sonra çevrimdışı çalışır.
+377|Word'e dönüştür
+378|PDF'den Word'e nasıl kullanılır
+379|, yazılmış veya taranmış. Tarayıcınızda açılırlar ve yüklenmezler.
+380|Dilleri işaretleyin:
+381|belgede kullanılan diller. Arapça ve İngilizce zaten işaretli.
+382|ve .docx dosyasını düzenlemek için Word, Google Docs veya LibreOffice'te açın.
+383|Arapçayla çalışır mı?
+384|Evet. Arapça paragraflar Word'de sağdan sola, harfler doğru sırada yazılır; böylece hemen düzenleyebilirsiniz. Arapça ve İngilizce karışık belgeler de çalışır.
+385|Taranmış PDF'leri dönüştürebilir mi?
+386|Evet. Metin içermeyen sayfalar OCR ile okunur. 300 DPI'lık net taramalar en iyi sonucu verir. OCR bir harfi yanlış okuyabileceği için dönüştürmeden sonra adları ve sayıları kontrol edin.
+387|PDF'nin tıpatıp aynısı mı olacak?
+388|Metni temiz ve düzenlenebilir paragraflar halinde alırsınız; başlıklar daha büyük ve kalın kalır. Tablolar, sütunlar ve resimler henüz yeniden oluşturulmuyor, bu yüzden karmaşık düzenler Word'de biraz düzeltme gerektirir.
+389|Dosyalarım yükleniyor mu?
+390|Hayır. Her şey kendi bilgisayarınızda çalışır, böylece özel belgeler sizde kalır. Sayfa veya dosya sınırı yoktur.
+391|PDF'yi düzenlenebilir bir Word dosyasına (.docx) dönüştürün, taranmış PDF'ler dahil. Arapça metin sağdan sola ve doğru sırada çıkar. Ücretsiz, yükleme yok, kayıt yok, sayfa sınırı yok.
+392|Arapça Destekli PDF'den Word'e, Taranmış PDF'ler de, Ücretsiz | File Manager Toolkit
+393|Fotoğraflardaki insanları, ürünleri ve nesneleri tek tıkla dekupe edin. Şeffaf veya istediğiniz renkte arka plan.
+394|Görsel seçin
+395|veya görselleri ya da bir klasörü buraya bırakın
+396|Arka plan
+397|Şeffaf
+398|Beyaz
+399|Renk
+400|Biçim
+401|=
+402|=
+403|=
+404|JPG şeffaflığı desteklemez, bu yüzden arka plan beyaz olur.
+405|Kenarlar
+406|Yumuşak
+407|saç, tüy
+408|Keskin
+409|ürünler
+410|Nesneye göre kırp
+411|İlk seferde yapay zekâ modeli (yaklaşık 45 MB) bir kez indirilir. Sonra çevrimdışı çalışır. Fotoğraflarınız bilgisayarınızdan asla çıkmaz.
+412|Arka planı kaldır
+413|Arka Planı Kaldır nasıl kullanılır
+414|Fotoğraflarınızı seçin
+415|ya da bir klasörün tamamını. Tarayıcınızda açılırlar ve yüklenmezler.
+416|Arka planı seçin
+417|: şeffaf, beyaz veya istediğiniz bir renk.
+418|, sonra görselleri tek tek ya da ZIP olarak indirin.
+419|Gerçekten ücretsiz ve sınırsız mı?
+420|Evet. Yapay zekâ kendi bilgisayarınızda çalışır; kredi yok, filigran yok, boyut sınırı yok. Görseli tam boyutta alırsınız.
+421|Fotoğraflarım yükleniyor mu?
+422|Hayır. Model tarayıcınıza bir kez indirilir ve her fotoğraf cihazınızda işlenir. Bu, kimlik fotoğrafları ve özel resimler için önemlidir.
+423|En iyi ne işe yarar?
+424|Nesnenin arka plandan belirgin şekilde ayrıldığı fotoğraflar: insanlar, ürünler, arabalar, hayvanlar. Saç ve tüy için "Yumuşak", kenarları net ürünler için "Keskin" kenarları seçin.
+425|İlk sefer neden yavaş?
+426|İlk seferde tarayıcınız yapay zekâ modelini (yaklaşık 45 MB) indirir. Model saklanır, böylece sonraki fotoğraflar saniyeler içinde başlar. Yeni bir ekran kartı olan bilgisayar daha hızlıdır.
+427|Tarayıcınızda çalışan yapay zekâyla fotoğrafların arka planını otomatik kaldırın. Şeffaf PNG, beyaz veya istediğiniz renk. Birçok fotoğraf aynı anda, tam boyut, ücretsiz, yükleme yok, kayıt yok.
+428|Görsellerin Arka Planını Kaldırın, Ücretsiz ve Gizli, Yükleme Yok | File Manager Toolkit
+429|Taranmış PDF'leri Arapça, İngilizce ve diğer dillerde aranabilir ve kopyalanabilir yapın.
+430|Almanca
+431|İspanyolca
+432|Zaten metin içeren sayfaları atla
+433|İlk seferde okuma motoru ve dil dosyaları (birkaç MB) indirilir, sonra çevrimdışı çalışır.
+434|Aranabilir yap
+435|OCR PDF nasıl kullanılır
+436|Taranmış PDF'lerinizi seçin.
+437|belgede kullanılan diller.
+438|. Sayfalar aynı görünür, ama artık metni arayabilir, seçebilir ve kopyalayabilirsiniz.
+439|OCR'dan sonra PDF farklı mı görünür?
+440|Hayır. Sayfalar tam olarak olduğu gibi kalır. Üstüne görünmez bir metin katmanı eklenir, böylece arama ve kopyalama yapabilirsiniz.
+441|Arapça okur mu?
+442|Evet. Arapçayı ya da karışık belgeler için Arapça ve İngilizceyi işaretleyin.
+443|Sayfa sınırı var mı?
+444|Hayır. Uzun belgeler sadece daha uzun sürer, çünkü okuma kendi bilgisayarınızda yapılır.
+445|Taranmış PDF'leri metni kopyalanabilen, aranabilir PDF'lere dönüştürün. İngilizce, Arapça ve diğer diller. Birçok dosya ve sayfa, ücretsiz, yükleme yok, sınır yok.
+446|OCR PDF: Taranmış PDF'leri Aranabilir Yapın, İngilizce ve Arapça, Ücretsiz | File Manager Toolkit
+447|PDF sayfalarını ihtiyacınız olan çözünürlükte görsele çevirin ya da içindeki resimleri çıkarın.
+448|İçindeki resimler
+449|=
+450|Çözünürlük
+451|ekran
+452|e-posta
+453|baskı
+454|arşiv
+455|Diğer
+456|=
+457|DPI (20 ile 1200 arası)
+458|Gri
+459|Siyah beyaz
+460|Kalite
+461|{name} = PDF adı, {page} = sayfa numarası, {total} = sayfa sayısı
+462|Her PDF için çok sayfalı tek bir TIFF
+463|Şeffaf arka plan (PNG ve WebP)
+464|Görsele dönüştür
+465|PDF'den JPG'ye nasıl kullanılır
+466|Biçimi ve çözünürlüğü seçin.
+467|150 DPI e-posta ve ekran için, 300 DPI baskı için uygundur.
+468|, sonra görselleri ZIP olarak indirin ya da doğrudan bir klasöre kaydedin.
+469|Hangi DPI'ı seçmeliyim?
+470|Ekran ve sunumlar için 72 DPI, e-posta ve belgeler için 150 DPI, baskı için 300 DPI, arşiv ve ince çizimler için 600 DPI. Dönüştürmeden önce her görselin boyutu gösterilir.
+471|Hangi biçim en iyisi?
+472|JPG küçüktür, fotoğraf ve taramalar için iyidir. PNG metin ve çizimler için nettir. WebP ikisinden de küçüktür. TIFF baskı ve arşiv içindir ve tüm sayfaları tek dosyada tutabilir.
+473|Dosya veya sayfa sınırı var mı?
+474|Hayır. Her şey bilgisayarınızda çalışır; dosya sayısı veya boyut sınırı yoktur, sadece çok büyük sayfalar için bilgisayarınızın belleği.
+475|Sayfaların tamamı yerine PDF'deki resimleri alabilir miyim?
+476|Evet. PDF'deki her fotoğrafı ve resmi orijinal boyutunda kaydetmek için "İçindeki resimler"i seçin.
+477|PDF sayfalarını seçtiğiniz çözünürlükte JPG, PNG, WebP veya TIFF görsellere dönüştürün: 72, 150, 300, 600 DPI veya kendi değeriniz. Renkli, gri veya siyah beyaz. Ücretsiz, yükleme yok, dosya sınırı yok.
+478|Her DPI'da PDF'den JPG, PNG, WebP veya TIFF'e, Ücretsiz | File Manager Toolkit
+479|Fotoğrafları, taramaları ve ekran görüntülerini istediğiniz sırayla PDF'ye çevirin.
+480|Sayfa boyutu
+481|Görselle aynı
+482|=
+483|=
+484|=
+485|Yön
+486|Otomatik
+487|Kenar boşluğu
+488|Küçük
+489|Büyük
+490|Oluştur
+491|Tek PDF
+492|Görsel başına bir PDF
+493|Klasör başına bir PDF
+494|Görsel kalitesi
+495|Orijinal
+496|değişiklik yok
+497|Daha küçük dosya
+498|=
+499|PDF'ye dönüştür
+500|JPG'den PDF'ye nasıl kullanılır
+501|Görsellerinizi seçin
+502|ya da görsellerin bulunduğu bir klasörü. JPG, PNG, WebP, GIF, BMP ve TIFF'in hepsi çalışır.
+503|Sıraya koyun:
+504|sürükleyerek ya da ada veya tarihe göre sıralayarak.
+505|Sayfa boyutunu ve kenar boşluklarını seçin
+506|, sonra dönüştürüp PDF'yi indirin.
+507|Telefon fotoğraflarım yan mı çıkacak?
+508|Hayır. Telefon kamerasının kaydettiği döndürme bilgisi okunur, böylece her fotoğraf doğru yönde yerleştirilir.
+509|Dönüştürme kaliteyi düşürür mü?
+510|"Orijinal" ile hayır: JPG fotoğraflar PDF'ye olduğu gibi konur. "Daha küçük dosya" e-posta için 150 DPI'a düşürür.
+511|Her klasör için bir PDF oluşturabilir miyim?
+512|Evet. Alt klasörleri olan bir klasör seçin ve "Klasör başına bir PDF"yi seçin: her klasör kendi PDF'si olur.
+513|JPG, PNG, WebP ve diğer görselleri PDF'ye dönüştürün: tek PDF, görsel başına bir veya klasör başına bir. Sayfa boyutu, yön ve kenar boşlukları. Telefon fotoğrafları doğru yöne çevrilir. Ücretsiz ve gizli.
+514|JPG'den PDF'ye: Görsel ve Fotoğrafları PDF'ye Çevirin, Ücretsiz, Yükleme Yok | File Manager Toolkit
+515|Tek bir PDF'ye ya da yüzlercesine sayfa numarası veya Bates numarası.
+516|Konum
+517|Sol üst
+518|Orta üst
+519|Sağ üst
+520|Sol orta
+521|Orta
+522|Sağ orta
+523|Sol alt
+524|Orta alt
+525|Sağ alt
+526|Numaranın sayfadaki yeri
+527|Metin
+528|Sayfa 1
+529|Sayfa 1 / 10
+530|Özel…
+531|{n} = numara, {total} = son numara, {file} = dosya adı
+532|İlk numara
+533|Numaralanacak sayfalar
+534|Tüm sayfalar veya örn. 2-
+535|İlk sayfayı atla (kapak)
+536|Boyut ve renk
+537|Yazı boyutu
+538|=
+539|Kalın
+540|Kenardan uzaklık
+541|=
+542|Çift taraflı: çift sayfalarda sol ve sağı değiştir
+543|Bates numaralandırma: numaraları tüm dosyalarda sürdür
+544|Önek
+545|Basamak
+546|Sayfa numarası ekle
+547|Sayfa Numarası Ekle nasıl kullanılır
+548|ya da bir klasörü.
+549|Numaranın yerini seçin
+550|ve nasıl görüneceğini, örneğin "Sayfa 1 / 10".
+551|Numaraları ekleyin
+552|ve indirin.
+553|Kapak sayfasını atlayabilir miyim?
+554|Evet. "İlk sayfayı atla"yı işaretleyin ya da numaralanacak sayfaları yazın, örneğin 2. sayfadan sona kadar için 2-. Saymanın nereden başlayacağını seçmek için ilk numarayı ayarlayın.
+555|Bates numaralandırma nedir?
+556|Bir belge setinin tamamında, önekli ve kesintisiz bir numara, örneğin DOC-000001'den DOC-000250'ye. Hukuki ve sözleşme belgelerinde ve doküman kontrolünde kullanılır.
+557|Birçok PDF'yi aynı anda numaralandırabilir miyim?
+558|Evet. İstediğiniz kadar dosya ya da bir klasörün tamamını seçin. Her dosya kendi numaralarını alır ya da Bates numaralandırmayla kesintisiz bir numara.
+559|PDF dosyalarına sayfa numarası ekleyin: konum, biçim (Sayfa 1 / 10), ilk numara, atlanacak sayfalar veya birçok dosyada Bates numaralandırma. Ücretsiz, yükleme yok, sınır yok.
+560|PDF'ye Sayfa Numarası veya Bates Numarası Ekleyin, Ücretsiz | File Manager Toolkit
+561|Her sayfaya bir kelime veya logonuzu basın: TASLAK, GİZLİ, istediğiniz dilde.
+562|İlk sayfanın önizlemesi
+563|Filigran
+564|Görsel veya logo
+565|Görsel
+566|Görsel seç…
+567|PNG veya JPG
+568|Sayfa boyunca tekrarla
+569|Boyut
+570|sayfa genişliğinin
+571|Açı
+572|Opaklık
+573|Katman
+574|İçeriğin üstünde
+575|İçeriğin altında
+576|Filigran ekle
+577|Filigran Ekle nasıl kullanılır
+578|Metni yazın veya logonuzu seçin
+579|, sonra konumu, boyutu, açıyı ve saydamlığı ayarlayın. Önizleme ilk sayfayı gösterir.
+580|Filigranı ekleyin
+581|Filigranı Arapça yazabilir miyim?
+582|Evet. Arapça dahil her dil çalışır ve harfler doğru şekilde birleşir.
+583|İçeriğin üstünde mi altında mı?
+584|"Üstünde" her zaman görünür. "Altında" metin ve çizimlerin arkasında hafif bir arka plan gibi durur, ancak resim olan taranmış sayfalarda gizlenebilir.
+585|PDF sayfalarına metin veya görsel filigran basın: GİZLİ, TASLAK, logonuz, Arapça dahil her dilde. Konum, boyut, açı ve saydamlık. Birçok dosya aynı anda, yükleme yok.
+586|PDF'ye Filigran Ekleyin: Her Dilde Metin veya Logo, Ücretsiz | File Manager Toolkit
+587|Saklanacak alanı çizmek için sayfada sürükleyin.
+588|Yöntem
+589|Alanı çiz
+590|Beyaz kenarları kırp
+591|Kesilecek kenar boşlukları (mm)
+592|Üst
+593|Alt
+594|Sol
+595|Sağ
+596|İçeriğin etrafında bırakılacak boşluk
+597|PDF Kırp nasıl kullanılır
+598|Bir kutu sürükleyin:
+599|sayfada saklamak istediğiniz kısmın etrafına, ya da "Beyaz kenarları kırp"ı seçin.
+600|Kırp
+601|Kırpılan kısım siliniyor mu?
+602|Gizlenir: her PDF okuyucu sadece sakladığınız alanı gösterir ve yazdırır. Orijinal içerik dosyanın içinde kalır.
+603|Her sayfada farklı kenar boşlukları kırpabilir miyim?
+604|Evet. "Beyaz kenarları kırp" her sayfadaki içeriği ayrı ayrı bulur ve etrafından keser.
+605|Saklanacak alanı çizerek PDF sayfalarını kırpın ya da her sayfanın beyaz kenarlarını otomatik kırpın. Birçok dosya aynı anda, ücretsiz, yükleme yok.
+606|PDF Sayfalarını Kırpın veya Beyaz Kenarları Kesin, Ücretsiz | File Manager Toolkit
+607|Bir belgenin veya çizimin iki sürümü: neyin kaldırıldığını ve neyin eklendiğini tam olarak görün.
+608|İki PDF'yi seçin
+609|Göster
+610|Üst üste
+611|Yan yana
+612|Hassasiyet
+613|Düşük
+614|küçük kaymaları yok sayar
+615|Normal
+616|Yüksek
+617|her piksel
+618|Metni de karşılaştır
+619|İlk dosya eski sürüm, ikincisi yeni sürümdür. Yerlerini değiştirmek için sürükleyin.
+620|Raporu indir
+621|PDF Karşılaştır nasıl kullanılır
+622|İki sürümü seçin:
+623|önce eski PDF, sonra yeni olanı.
+624|Her sayfaya bakın
+625|: kaldırılan kısımlar kırmızı, eklenenler yeşildir. İsterseniz yan yana görünüme geçin.
+626|: değişen her sayfanın işaretlendiği, gönderilecek veya arşivlenecek bir PDF.
+627|Çizimlerde çalışır mı?
+628|Evet. Çizimler resim olarak, çizgi çizgi karşılaştırılır; taşınan duvarlar, yeni ölçüler ve silinen notların hepsi görünür. Taranmış sayfalarda da çalışır.
+629|Sayfalar farklı boyutlardaysa ne olur?
+630|Yeni sayfa eski sayfaya ölçeklenir, böylece farklı kâğıt boyutunda basılmış bir çizim de hizalı kalır.
+631|Hayır. İki PDF tarayıcınızda karşılaştırılır.
+632|Bir PDF'nin, çizimin veya belgenin iki sürümünü karşılaştırın. Kaldırılan kısımlar kırmızı, eklenenler yeşil, yan yana veya üst üste; ayrıca değişen metin ve bir PDF raporu. Ücretsiz, yükleme yok.
+633|İki PDF'yi Karşılaştırın: Neyin Değiştiğini Görün, Ücretsiz, Yükleme Yok | File Manager Toolkit
+634|PDF'leri şifreyle kilitleyin ve insanların onlarla ne yapabileceğini seçin.
+635|Şifre
+636|Tekrar yazın
+637|Şifreyi göster
+638|Açan kişiler şunları yapabilir
+639|Yazdırma
+640|Metin ve görselleri kopyalama
+641|Yorum ekleme ve form doldurma
+642|Düzenleme ve sayfa ekleme veya kaldırma
+643|Şifreleme
+644|=
+645|önerilen
+646|=
+647|eski okuyucular
+648|Sahip şifresi
+649|İsteğe bağlı
+650|İzinleri daha sonra değiştirmenizi sağlar. Girilmezse rastgele bir şifre kullanılır.
+651|PDF'yi Koru nasıl kullanılır
+652|Bir şifre yazın
+653|ve insanların ne yapabileceğini seçin: yazdırma, kopyalama, düzenleme.
+654|Koru
+655|ve indirin. PDF'ler açılırken şifre ister.
+656|Şifrem bir yere gönderiliyor mu?
+657|Hayır. Dosyalar tarayıcınızda şifrelenir. Ne dosyalar ne de şifre bilgisayarınızdan çıkar.
+658|Koruma ne kadar güçlü?
+659|AES-256, PDF'nin desteklediği en güçlü şifreleme. Uzun bir şifre kullanın: unutursanız kurtarılamaz.
+660|PDF dosyalarına AES-256 şifrelemeyle şifre ekleyin ve yazdırma, kopyalama veya düzenlemeye izin verip vermeyeceğinizi seçin. Birçok dosya aynı anda. Dosyalarınız ve şifreleriniz bilgisayarınızdan asla çıkmaz.
+661|PDF'yi Şifreyle Koruyun (AES-256), Ücretsiz, Yükleme Yok | File Manager Toolkit
+662|PDF'lerinizden şifreyi ve yazdırma, kopyalama, düzenleme kısıtlamalarını kaldırın.
+663|Sadece PDF şifre isterse
+664|🔒 işaretli dosyaların açılması için şifre gerekir. Sadece yazdırmayı veya kopyalamayı engelleyen dosyaların kilidi şifresiz açılır.
+665|PDF Kilidini Aç nasıl kullanılır
+666|Korumalı PDF'leri seçin.
+667|Şifreyi yazın,
+668|açarken şifre istiyorlarsa.
+669|Kilidi aç
+670|ve serbestçe açılan, yazdırılan ve kopyalanan PDF'leri indirin.
+671|Şifreyi bilmeden bir PDF'yi açabilir mi?
+672|Hayır. Dosyayı açan şifreye ihtiyacınız var. Yazdırma, kopyalama veya düzenleme kısıtlamaları şifresiz kaldırılır.
+673|Sadece izniniz olan dosyaların kilidini açın
+674|Kendi dosyalarınız veya sahibinin izin verdiği dosyalar için kullanın.
+675|Açmaya izniniz olan PDF dosyalarından şifreyi ve yazdırma, kopyalama, düzenleme kısıtlamalarını kaldırın. Birçok dosya aynı anda, ücretsiz, hiçbir şey yüklenmez.
+676|PDF Kilidini Açın: Şifreyi ve Kısıtlamaları Kaldırın, Ücretsiz | File Manager Toolkit
+677|hata
+678|Tamam
+679|İptal
+680|Gerekli bir kitaplık yüklenemedi. İnternet bağlantınızı kontrol edin.
+681|yok
+682|Klasörleri seç
+683|Onayla
+684|Hiçbir klasör seçilmedi.
+685|Geçerli bir PDF dosyası değil
+686|Bu PDF şifreyle korunuyor
+687|PDF dosyalarını buraya bırakın.
+688|Başlık
+689|Örnek dosyalar yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.
+690|Kendi klasörleriniz bilgisayarda, Chrome veya Edge'de çalışır. Ücretsiz, kayıt yok.
+691|Ücretsiz, kayıt yok. Dosyalarınız bilgisayarınızda kalır.
+692|Bağlantı kopyalandı.
+693|Aç
+694|Erişim verilmedi. Klasörü seçmek için düğmeyi kullanın.
+695|Bu klasördeki adları düzeltmeniz mi gerekiyor? Tüm adlara aynı anda önek ekleyin veya revizyonu düzeltin.
+696|Yeniden adlandırılan dosyaların, her dosya türünün sayısıyla bir Excel listesini oluşturun.
+697|Aynı PDF'lerden Excel'de bir çizim listesi oluşturun: numara, başlık ve revizyon.
+698|Bir teslim klasörünü göndermeden önce bu çizim listesiyle karşılaştırın.
+699|Sırada ne var?
+700|Bu klasörü şurada aç:
+701|sayfa
+702|Şifreyle korunuyor. Önce PDF Kilidini Aç ile kilidini açın.
+703|Orada PDF dosyası yok.
+704|Orada görsel yok.
+705|Kaldır
+706|Dosyalar okunana kadar bekleyin veya hatalı olanları kaldırın.
+707|Önce dosya ekleyin.
+708|Hiçbir şey oluşturulmadı. Seçenekleri kontrol edin.
+709|Dosyanız hazır
+710|İndir
+711|Tümünü indir (ZIP)
+712|Filtre
+713|Sığdır
+714|boş
+715|Kaydediliyor…
+716|Birleştiriliyor…
+717|Birleştirmek için en az iki PDF dosyası ekleyin.
+718|PDF'leriniz birleştirildi
+719|Bu dosya büyük: yeni boyut işlem bitince gösterilir.
+720|Her seviyenin boyutu hesaplanıyor…
+721|küçülmedi
+722|Dosyanızın boyutları, bilgisayarınızda hesaplandı.
+723|İhtiyacınız olan boyutu yazın, örneğin 2 MB.
+724|zaten küçük, olduğu gibi bırakıldı
+725|Sıkıştırılıyor…
+726|Bitti
+727|Okuma motoru ve dil dosyaları yükleniyor (sadece ilk sefer)…
+728|En az bir dil işaretleyin.
+729|Sayfalar okunuyor…
+730|Metin bulunamadı. Doğru dil işaretliyken "Her sayfayı oku"yu deneyin.
+731|Bu PDF'lerin içinde resim bulunamadı. Sayfaları görsele çevirmek için "Her sayfa"yı seçin.
+732|Dönüştürülüyor…
+733|Görseliniz hazır
+734|=
+735|PDF'niz oluşturuluyor…
+736|Sayfa aralıklarını yazın, örneğin 1-3, 4-
+737|Çıkarılacak sayfaları yazın, örneğin 1, 3, 5-7
+738|Her parçanın en büyük boyutunu yazın, örneğin 10 MB.
+739|Eşleşen sayfa yok. Sayfa numaralarını kontrol edin.
+740|Bölünüyor…
+741|Her PDF
+742|Bu PDF
+743|Döndürülüyor…
+744|korumalı değildi
+745|şifre kaldırıldı
+746|kısıtlamalar kaldırıldı
+747|Bu PDF'lerin açılması için şifre gerekiyor. Şifreyi yazıp tekrar deneyin.
+748|Kilit açılıyor…
+749|Şifreleniyor…
+750|Bir şifre yazın.
+751|Şifre virgül (,) içeremez.
+752|İki şifre aynı değil.
+753|Sahip şifresi virgül (,) içeremez.
+754|Şifreyi güvende tutun: kurtarılamaz.
+755|Filigran metnini yazın.
+756|Filigran için görseli seçin.
+757|Filigran ekleniyor…
+758|Sayfa numaraları için metni yazın.
+759|Sayfalar numaralandırılıyor…
+760|Kopyala
+761|Sil
+762|Hiç sayfa kalmadı. Bir dosya ekleyin veya "Baştan başla"ya tıklayın.
+763|Yeni PDF'niz hazır
+764|Tür
+765|Yeni metin bulunamadı.
+766|Saklanacak alanı çizmek için sayfada sürükleyin ya da kesilecek kenar boşluklarını yazın.
+767|Kırpılıyor…
+768|İkinci PDF'yi (yeni sürüm) ekleyin.
+769|Sadece iki PDF bırakın: eski sürüm ve yeni sürüm.
+770|Bu sayfada görünür bir değişiklik yok.
+771|Tam olarak iki PDF seçin: eski sürüm ve yeni sürüm.
+772|Sayfalar karşılaştırılıyor…
+773|Rapor oluşturuluyor…
+774|Karşılaştırma raporunuz hazır
+775|Yapay zekâ modeli başlatılıyor…
+776|Arka plan kaldırılıyor…
+777|Arka plan kaldırıldı
+778|Önce
+779|Sonra
+780|Bağlantıyı WhatsApp'tan bana gönder
+781|Bağlantıyı kopyala
+782|Açık mod
+783|Koyu mod
+784|(uzantısız)
+785|İşaretli klasörlerdeki (ve içlerindeki klasörlerdeki) dosyalar dahil edilecek.
+786|Evet
+787|Sayfa
+788|dosya
+789|Dosyalarınız hazır. Bu sayfanın okuyabilmesi için Aç'a tıklayın.
+790|Tüm sayfalar kaldırıldı. Bir dosya ekleyin veya "Baştan başla"ya tıklayın.
+791|Bu dosyayı 90° daha döndür
+792|Bu dosyayı döndür
+793|Sayfa 1 önizlemesi
+794|Eski
+795|Kaldırılan (sadece eski sürümde)
+796|Eklenen (sadece yeni sürümde)
+797|Değişen alan
+798|Karşılaştırılıyor…
+799|Metin aynı.
+800|Bir klasöre kaydet
+801|Dil
+802|Kapat
+803|Kopyalandı ✓
+804|Bağlantıyı kopyala
+805|Gönderilemedi. Lütfen tekrar deneyin.
+806|Ofisim için özel araç
+807|Size zaman kazandırdı mı?
+808|Geri bildirim
+809|Aldık, teşekkürler!
+810|Bir sorun mu yaşadınız, bir fikriniz mi var ya da ofisiniz için özel bir araç mı lazım? Bize yazın.
+811|Fikir veya yeni araç
+812|Bilgisayarımda aç:
+813|Lütfen önce bir mesaj yazın.
+814|Bir araçla ilgili sorun
+815|Nasıl çalıştığını görün ↓
+816|Bağlantıyı bana gönder
+817|Gönder
+818|Gönderme henüz açık değil.
+819|Gönderiliyor…
+820|Ne düşündüğünüzü söyleyin
+821|Teşekkürler! Gerçekten çok yardımcı oluyor.
+822|Teşekkürler
+823|Bu e-posta doğru görünmüyor.
+824|Konu
+825|Ne eksikti? Bize anlatın
+826|E-postanız (isteğe bağlı, yanıt istiyorsanız)
+827|E-postanız sadece size yanıt vermek için kullanılır. Dosyalarınız asla gönderilmez.
+828|Mesajınız
+829|Adınız (isteğe bağlı)
+830|Baştan başla
+831|Bu araçlar bilgisayarda çalışır, çünkü klasörleri ve PDF'leri diskinizden açar. Bağlantıyı kendinize gönderin ve masanızda açın.
+832|E-postanıza yakında yanıt vereceğiz.
+833|Hayır
