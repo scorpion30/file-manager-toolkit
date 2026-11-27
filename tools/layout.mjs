@@ -61,8 +61,10 @@ function footer(up) {
   </footer>`;
 }
 
-// Home grid: the tools people search for most, then our own tools (not on other PDF sites)
-// under their own heading, each with a NEW badge and a highlighted card.
+// Home grid, split in two side by side:
+//   left  - the tools people search for most (what every PDF site has)
+//   right - our own tools that other PDF sites don't have, in a highlighted column with NEW badges
+// On phones the right column moves above the grid and scrolls sideways.
 function grid() {
   const card = (t) => `<a class="tool-card cat-${t.cat}${t.unique ? ' unique' : ''}" href="${t.href}" data-cat="${t.cat}"${t.unique ? ' data-unique="1"' : ''}${t.drop ? ` data-drop="${t.drop}"` : ''}>
           ${t.unique ? '<span class="badge new-badge">New</span>' : ''}<span class="icon">${icon(t.icon)}</span>
@@ -70,16 +72,28 @@ function grid() {
           <p>${esc(t.desc)}</p>
         </a>`;
   const popular = TOOLS.filter((t) => !t.unique).map(card).join('\n        ');
-  const unique = TOOLS.filter((t) => t.unique).map(card).join('\n        ');
-  const divider = `<div class="grid-divider" role="presentation">
-          <h3><span aria-hidden="true">✦</span> Only on File Manager Toolkit</h3>
-          <p>Tools you won't find on other PDF sites: whole folders, file names, Excel lists and drawing checks.</p>
-        </div>`;
-  return `<!-- grid:start -->\n      <div class="tool-grid all-tools">\n        ${popular}\n        ${divider}\n        ${unique}\n        <a class="tool-card request" href="#feedback" data-feedback="idea" data-cat="request">
+  const unique = TOOLS.filter((t) => t.unique).map(card).join('\n          ');
+  return `<!-- grid:start -->
+      <div class="tools-split">
+      <div class="tool-grid all-tools main-tools">
+        ${popular}
+        <a class="tool-card request" href="#feedback" data-feedback="idea" data-cat="request">
           <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
           <h3>Need another tool?</h3>
           <p>Tell us what you still do by hand. The most requested tools get built next.</p>
-        </a>\n      </div>\n      <!-- grid:end -->`;
+        </a>
+      </div>
+      <aside class="only-here-col" aria-labelledby="onlyHereTitle">
+        <div class="only-head">
+          <h2 id="onlyHereTitle"><span aria-hidden="true">✦</span> Only on File Manager Toolkit</h2>
+          <p>Tools you won't find on other PDF sites: whole folders, file names, Excel lists and drawing checks.</p>
+        </div>
+        <div class="tool-grid all-tools unique-list">
+          ${unique}
+        </div>
+      </aside>
+      </div>
+      <!-- grid:end -->`;
 }
 
 // "Related tools" at the end of every tool page: the others in its category, then the most used ones.

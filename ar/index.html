@@ -33,11 +33,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" id="fm-ar-font">
-  <link rel="stylesheet" href="../assets/style.css?v=c00e9505">
+  <link rel="stylesheet" href="../assets/style.css?v=96d4cdb0">
   <script src="../assets/theme.js?v=1cd1a16e"></script>
   <script src="../assets/i18n.js?v=703a1b09"></script>
   <script src="../assets/demo.js?v=24717fe8" defer></script>
-  <script src="../assets/home.js?v=f764ce05" defer></script>
+  <script src="../assets/home.js?v=52296e95" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -98,7 +98,8 @@
     </div>
     <p class="no-results" id="noResults" hidden>مفيش أداة بالاسم ده. جرّب كلمة تانية، أو قولنا محتاج إيه من زرار "رأيك".</p>
     <!-- grid:start -->
-      <div class="tool-grid all-tools">
+      <div class="tools-split">
+      <div class="tool-grid all-tools main-tools">
         <a class="tool-card cat-organize" href="merge.html" data-cat="organize" data-drop="pdf">
           <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/></svg></span>
           <h3>دمج PDF</h3>
@@ -169,65 +170,70 @@
           <h3>مقارنة PDF</h3>
           <p>نسختين فوق بعض: إيه اللي اتشال وإيه اللي اتضاف.</p>
         </a>
-        <div class="grid-divider" role="presentation">
-          <h3><span aria-hidden="true">✦</span> موجودة بس في File Manager Toolkit</h3>
-          <p>أدوات مش هتلاقيها في مواقع الـ PDF التانية: فولدرات كاملة، أسماء الملفات، قوايم Excel، ومراجعة اللوحات.</p>
-        </div>
-        <a class="tool-card cat-files unique" href="rename.html" data-cat="files" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
-          <h3>إعادة تسمية الملفات</h3>
-          <p>بادئة، لاحقة، بحث واستبدال في مئات الأسماء، مع تراجع.</p>
-        </a>
-        <a class="tool-card cat-edit unique" href="edit.html" data-cat="edit" data-unique="1" data-drop="pdf">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>
-          <h3>تعديل نص PDF</h3>
-          <p>غيّر قيمة جوه منطقة معينة، في ملفات PDF كتير مرة واحدة.</p>
-        </a>
-        <a class="tool-card cat-files unique" href="list.html" data-cat="files" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>
-          <h3>قائمة الملفات إلى Excel</h3>
-          <p>كل ملف في الفولدر والفولدرات اللي جواه، في قائمة Excel.</p>
-        </a>
-        <a class="tool-card cat-files unique" href="organize.html" data-cat="files" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>
-          <h3>تنظيم الملفات</h3>
-          <p>انقل أو انسخ الملفات لفولدرات حسب النوع أو كلمة في الاسم.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="splitrename.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>
-          <h3>تقسيم وتسمية PDF</h3>
-          <p>ملف PDF لكل لوحة من ملف مجمّع، باسمها من الـ Title Block.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="titleblock.html" data-cat="eng" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
-          <h3>التسمية من الـ Title Block</h3>
-          <p>سمّي كل لوحة PDF برقمها واسمها من الـ Title Block.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="extract.html" data-cat="eng" data-unique="1" data-drop="pdf">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/></svg></span>
-          <h3>PDF إلى Excel</h3>
-          <p>اقرا نفس الخانات من كل لوحة في شيت Excel. والـ OCR موجود.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="comments.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
-          <h3>تعليقات PDF إلى Excel</h3>
-          <p>تعليقات المراجعة في شيت ردود Excel، مع صورة لكل تعليق.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="preflight.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-          <h3>فحص قبل التسليم</h3>
-          <p>أرقام مكررة، أسماء غلط ولوحات ناقصة، قبل ما تبعت.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="midp.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>
-          <h3>مراجعة الـ MIDP</h3>
-          <p>الـ Submission كله مقابل الـ MIDP والـ TIDPs: الناقص والزيادة والـ Revisions الغلط.</p>
-        </a>
         <a class="tool-card request" href="#feedback" data-feedback="idea" data-cat="request">
           <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
           <h3>محتاج أداة تانية؟</h3>
           <p>قولنا إيه اللي لسه بتعمله بإيدك. الأدوات الأكتر طلبًا هي اللي بتتعمل الأول.</p>
         </a>
+      </div>
+      <aside class="only-here-col" aria-labelledby="onlyHereTitle">
+        <div class="only-head">
+          <h2 id="onlyHereTitle"><span aria-hidden="true">✦</span> موجودة بس في File Manager Toolkit</h2>
+          <p>أدوات مش هتلاقيها في مواقع الـ PDF التانية: فولدرات كاملة، أسماء الملفات، قوايم Excel، ومراجعة اللوحات.</p>
+        </div>
+        <div class="tool-grid all-tools unique-list">
+          <a class="tool-card cat-files unique" href="rename.html" data-cat="files" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+          <h3>إعادة تسمية الملفات</h3>
+          <p>بادئة، لاحقة، بحث واستبدال في مئات الأسماء، مع تراجع.</p>
+        </a>
+          <a class="tool-card cat-edit unique" href="edit.html" data-cat="edit" data-unique="1" data-drop="pdf">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>
+          <h3>تعديل نص PDF</h3>
+          <p>غيّر قيمة جوه منطقة معينة، في ملفات PDF كتير مرة واحدة.</p>
+        </a>
+          <a class="tool-card cat-files unique" href="list.html" data-cat="files" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>
+          <h3>قائمة الملفات إلى Excel</h3>
+          <p>كل ملف في الفولدر والفولدرات اللي جواه، في قائمة Excel.</p>
+        </a>
+          <a class="tool-card cat-files unique" href="organize.html" data-cat="files" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>
+          <h3>تنظيم الملفات</h3>
+          <p>انقل أو انسخ الملفات لفولدرات حسب النوع أو كلمة في الاسم.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="splitrename.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>
+          <h3>تقسيم وتسمية PDF</h3>
+          <p>ملف PDF لكل لوحة من ملف مجمّع، باسمها من الـ Title Block.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="titleblock.html" data-cat="eng" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+          <h3>التسمية من الـ Title Block</h3>
+          <p>سمّي كل لوحة PDF برقمها واسمها من الـ Title Block.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="extract.html" data-cat="eng" data-unique="1" data-drop="pdf">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/></svg></span>
+          <h3>PDF إلى Excel</h3>
+          <p>اقرا نفس الخانات من كل لوحة في شيت Excel. والـ OCR موجود.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="comments.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <h3>تعليقات PDF إلى Excel</h3>
+          <p>تعليقات المراجعة في شيت ردود Excel، مع صورة لكل تعليق.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="preflight.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <h3>فحص قبل التسليم</h3>
+          <p>أرقام مكررة، أسماء غلط ولوحات ناقصة، قبل ما تبعت.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="midp.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">جديد</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>
+          <h3>مراجعة الـ MIDP</h3>
+          <p>الـ Submission كله مقابل الـ MIDP والـ TIDPs: الناقص والزيادة والـ Revisions الغلط.</p>
+        </a>
+        </div>
+      </aside>
       </div>
       <!-- grid:end -->
 

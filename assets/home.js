@@ -30,8 +30,14 @@
       w.hidden = !show;
       if (show) shown++;
     });
-    // The "Only on File Manager Toolkit" heading belongs to the full list only.
-    document.querySelectorAll('.all-tools .grid-divider').forEach((d) => { d.hidden = filter !== 'all' || !!q; });
+    // Hide the "Only on File Manager Toolkit" column when none of its tools match.
+    document.querySelectorAll('.only-here-col').forEach((col) => {
+      col.hidden = !col.querySelector('.tool-wrap:not([hidden])');
+      const split = col.closest('.tools-split');
+      const main = split?.querySelector('.main-tools');
+      if (main) main.hidden = !main.querySelector('.tool-wrap:not([hidden])');
+      split?.classList.toggle('one-col', col.hidden || !!main?.hidden);
+    });
     const none = document.getElementById('noResults');
     if (none) none.hidden = shown > 0;
   }
@@ -119,7 +125,7 @@
       tip.className = 'hx-droptip';
       tip.innerHTML = T('<b>Tip:</b> drag a folder from your computer onto a card to open it straight in that tool.',
         '<b>نصيحة:</b> اسحب فولدر من جهازك وارميه على أي كارت، يفتح على طول في الأداة دي.');
-      document.querySelector('.all-tools').after(tip);
+      (document.querySelector('.tools-split') || document.querySelector('.all-tools')).after(tip);
     }
 
     cards.forEach((card) => {

@@ -31,11 +31,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
-  <link rel="stylesheet" href="assets/style.css?v=c00e9505">
+  <link rel="stylesheet" href="assets/style.css?v=96d4cdb0">
   <script src="assets/theme.js?v=1cd1a16e"></script>
   <script src="assets/i18n.js?v=703a1b09"></script>
   <script src="assets/demo.js?v=24717fe8" defer></script>
-  <script src="assets/home.js?v=f764ce05" defer></script>
+  <script src="assets/home.js?v=52296e95" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -96,7 +96,8 @@
     </div>
     <p class="no-results" id="noResults" hidden>No tool matches that. Try another word, or tell us what you need with the Feedback button.</p>
     <!-- grid:start -->
-      <div class="tool-grid all-tools">
+      <div class="tools-split">
+      <div class="tool-grid all-tools main-tools">
         <a class="tool-card cat-organize" href="merge.html" data-cat="organize" data-drop="pdf">
           <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/></svg></span>
           <h3>Merge PDF</h3>
@@ -167,65 +168,70 @@
           <h3>Compare PDF</h3>
           <p>Two versions laid over each other: what was removed and what was added.</p>
         </a>
-        <div class="grid-divider" role="presentation">
-          <h3><span aria-hidden="true">✦</span> Only on File Manager Toolkit</h3>
-          <p>Tools you won't find on other PDF sites: whole folders, file names, Excel lists and drawing checks.</p>
-        </div>
-        <a class="tool-card cat-files unique" href="rename.html" data-cat="files" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
-          <h3>Rename Files</h3>
-          <p>Prefix, suffix, find and replace in hundreds of names, with undo.</p>
-        </a>
-        <a class="tool-card cat-edit unique" href="edit.html" data-cat="edit" data-unique="1" data-drop="pdf">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>
-          <h3>Edit PDF Text</h3>
-          <p>Replace a value inside an area, across many PDFs at once.</p>
-        </a>
-        <a class="tool-card cat-files unique" href="list.html" data-cat="files" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>
-          <h3>Files to Excel</h3>
-          <p>Every file in a folder and its subfolders, listed in Excel.</p>
-        </a>
-        <a class="tool-card cat-files unique" href="organize.html" data-cat="files" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>
-          <h3>Organize Files</h3>
-          <p>Move or copy files into folders by type or by a word in the name.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="splitrename.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>
-          <h3>Split &amp; Rename PDF</h3>
-          <p>One PDF per sheet from a combined set, named from each title block.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="titleblock.html" data-cat="eng" data-unique="1" data-drop="folder">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
-          <h3>Rename from Title Block</h3>
-          <p>Name each PDF drawing after the number and title in its title block.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="extract.html" data-cat="eng" data-unique="1" data-drop="pdf">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/></svg></span>
-          <h3>PDF to Excel</h3>
-          <p>Read the same boxes from every drawing into a spreadsheet. OCR included.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="comments.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
-          <h3>PDF Comments to Excel</h3>
-          <p>Review comments to an Excel response sheet, with a picture of each.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="preflight.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-          <h3>Pre-flight Check</h3>
-          <p>Duplicate numbers, wrong names and missing drawings, before you send.</p>
-        </a>
-        <a class="tool-card cat-eng unique" href="midp.html" data-cat="eng" data-unique="1">
-          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>
-          <h3>MIDP Check</h3>
-          <p>A whole submission against the MIDP and TIDPs: missing, extra, wrong revisions.</p>
-        </a>
         <a class="tool-card request" href="#feedback" data-feedback="idea" data-cat="request">
           <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
           <h3>Need another tool?</h3>
           <p>Tell us what you still do by hand. The most requested tools get built next.</p>
         </a>
+      </div>
+      <aside class="only-here-col" aria-labelledby="onlyHereTitle">
+        <div class="only-head">
+          <h2 id="onlyHereTitle"><span aria-hidden="true">✦</span> Only on File Manager Toolkit</h2>
+          <p>Tools you won't find on other PDF sites: whole folders, file names, Excel lists and drawing checks.</p>
+        </div>
+        <div class="tool-grid all-tools unique-list">
+          <a class="tool-card cat-files unique" href="rename.html" data-cat="files" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+          <h3>Rename Files</h3>
+          <p>Prefix, suffix, find and replace in hundreds of names, with undo.</p>
+        </a>
+          <a class="tool-card cat-edit unique" href="edit.html" data-cat="edit" data-unique="1" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h5"/><path d="M14 3v5h5"/><path d="M19.5 12.5a1.8 1.8 0 0 1 2.5 2.5L16 21l-3 .5.5-3Z"/></svg></span>
+          <h3>Edit PDF Text</h3>
+          <p>Replace a value inside an area, across many PDFs at once.</p>
+        </a>
+          <a class="tool-card cat-files unique" href="list.html" data-cat="files" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></span>
+          <h3>Files to Excel</h3>
+          <p>Every file in a folder and its subfolders, listed in Excel.</p>
+        </a>
+          <a class="tool-card cat-files unique" href="organize.html" data-cat="files" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M8 13h8M12 9v8"/></svg></span>
+          <h3>Organize Files</h3>
+          <p>Move or copy files into folders by type or by a word in the name.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="splitrename.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1"/><path d="M14 7h7M14 12h7M14 17h4"/></svg></span>
+          <h3>Split &amp; Rename PDF</h3>
+          <p>One PDF per sheet from a combined set, named from each title block.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="titleblock.html" data-cat="eng" data-unique="1" data-drop="folder">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+          <h3>Rename from Title Block</h3>
+          <p>Name each PDF drawing after the number and title in its title block.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="extract.html" data-cat="eng" data-unique="1" data-drop="pdf">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/></svg></span>
+          <h3>PDF to Excel</h3>
+          <p>Read the same boxes from every drawing into a spreadsheet. OCR included.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="comments.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <h3>PDF Comments to Excel</h3>
+          <p>Review comments to an Excel response sheet, with a picture of each.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="preflight.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <h3>Pre-flight Check</h3>
+          <p>Duplicate numbers, wrong names and missing drawings, before you send.</p>
+        </a>
+          <a class="tool-card cat-eng unique" href="midp.html" data-cat="eng" data-unique="1">
+          <span class="badge new-badge">New</span><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/></svg></span>
+          <h3>MIDP Check</h3>
+          <p>A whole submission against the MIDP and TIDPs: missing, extra, wrong revisions.</p>
+        </a>
+        </div>
+      </aside>
       </div>
       <!-- grid:end -->
 
