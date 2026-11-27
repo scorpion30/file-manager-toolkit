@@ -1643,3 +1643,10 @@ main#tools.home-main { padding-top: 26px; }
   .mega-btn { padding-inline: 10px; }
   .site-header nav a.donate-btn { padding: 7px 8px; font-size: 13px; }
 }
+
+/* "Related tools" at the end of each tool page */
+.related-tools { margin-top: 56px; }
+.related-tools h2 { font-size: 20px; margin: 0 0 14px; }
+.related-tools .tool-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .related-tools .tool-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .related-tools .tool-grid { grid-template-columns: 1fr; } }

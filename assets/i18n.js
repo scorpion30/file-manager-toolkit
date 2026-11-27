@@ -231,6 +231,7 @@
     'Free, no limits': 'مجاني بلا حدود',
     'No account, no watermark, no daily limit. If it saves you time, you can support it with a donation.': 'بدون حساب، بدون علامة مائية، بدون حد يومي. إذا وفّر لك وقتاً يمكنك دعمه بتبرع.',
     'Questions': 'أسئلة شائعة',
+    'Related tools': 'أدوات ذات صلة',
     'Are my files uploaded anywhere?': 'هل يتم رفع ملفاتي إلى أي مكان؟',
     'No. The tools run in your browser. Files are read from your computer and the results are saved back to it.': 'لا. الأدوات تعمل داخل متصفحك. الملفات تُقرأ من جهازك والنتائج تُحفظ عليه.',
     'Which browser should I use?': 'أي متصفح أستخدم؟',

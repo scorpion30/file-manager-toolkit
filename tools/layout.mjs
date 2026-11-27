@@ -5,7 +5,7 @@
 // Run from the repo root, before tools/build.mjs:   node tools/layout.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { CATS, TOOLS, icon } from './catalog.mjs';
+import { CATS, TOOLS, icon, byHref } from './catalog.mjs';
 
 const ROOT = process.cwd();
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -74,6 +74,27 @@ function grid() {
         </a>\n      </div>\n      <!-- grid:end -->`;
 }
 
+// "Related tools" at the end of every tool page: the others in its category, then the most used ones.
+const POPULAR = ['merge.html', 'compress.html', 'split.html', 'pdf-to-image.html', 'pages.html', 'rename.html', 'watermark.html', 'ocr.html'];
+function related(file) {
+  const me = byHref(file);
+  const picks = [...TOOLS.filter((t) => t.cat === me.cat && t.href !== file), ...POPULAR.map(byHref)]
+    .filter((t, i, all) => t.href !== file && all.findIndex((x) => x.href === t.href) === i).slice(0, 6);
+  const cards = picks.map((t) => `<a class="tool-card cat-${t.cat}" href="${t.href}">
+          <span class="icon">${icon(t.icon)}</span>
+          <h3>${esc(t.name)}</h3>
+          <p>${esc(t.desc)}</p>
+        </a>`).join('\n        ');
+  return `<!-- related:start -->
+    <section class="related-tools">
+      <h2>Related tools</h2>
+      <div class="tool-grid">
+        ${cards}
+      </div>
+    </section>
+    <!-- related:end -->`;
+}
+
 const pages = [
   ...fs.readdirSync(ROOT).filter((f) => f.endsWith('.html')).map((f) => ({ file: f, up: '' })),
   ...fs.readdirSync(path.join(ROOT, 'guides')).filter((f) => f.endsWith('.html')).map((f) => ({ file: 'guides/' + f, up: '../' })),
@@ -87,6 +108,10 @@ for (const { file, up } of pages) {
   html = html.replace(/<header class="site-header">[\s\S]*?<\/header>/, header(up));
   html = html.replace(/<footer class="site-footer">[\s\S]*?<\/footer>/, footer(up));
   if (file === 'index.html') html = html.replace(/<!-- grid:start -->[\s\S]*?<!-- grid:end -->/, grid());
+  else if (byHref(file)) {
+    html = html.replace(/\n?\s*<!-- related:start -->[\s\S]*?<!-- related:end -->/, '');
+    html = html.replace(/(\n\s*)<\/main>/, (m, ws) => `\n    ${related(file)}${ws}</main>`);
+  }
   if (html !== before) { fs.writeFileSync(p, html); n++; }
 }
 console.log(`layout: updated ${n} page(s), ${TOOLS.length} tools`);

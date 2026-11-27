@@ -462,7 +462,7 @@ function setHead(html, page, lang, desc) {
   html = html.replace(/\n?\s*<!-- seo:start -->[\s\S]*?<!-- seo:end -->/, '');
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${encodeText(page[lang].title)}</title>`);
   html = html.replace(/(<meta name="description" content=")[^"]*(">)/, `$1${encodeAttr(desc)}$2`);
-  const jsonLd = page.guide ? guideJsonLd(html, page, lang, desc) : null;
+  const jsonLd = page.guide ? guideJsonLd(html, page, lang, desc) : toolJsonLd(html, page, lang, desc);
   return html.replace(/(<meta name="description"[^>]*>)/, (m) => `${m}\n  ${seoBlock(page, lang, desc, jsonLd)}`);
 }
 
@@ -484,6 +484,45 @@ function guideJsonLd(html, page, lang, desc) {
       ...(img ? { image: `${SITE}assets/guides/${img}` } : {}), tool: { '@type': 'HowToTool', name: tool }, step: steps,
     },
     { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: faq },
+  ];
+}
+
+// Tool pages: WebApplication (free, runs in the browser) + breadcrumb + FAQPage from the page's own
+// questions (<details><summary>Q</summary><p>A</p></details>; "More options" boxes have a class and a <div>).
+// Home: WebSite + Organization + the list of tools.
+function toolJsonLd(html, page, lang, desc) {
+  const p = page[lang];
+  const url = urlOf(page.file, lang);
+  const faq = [...html.matchAll(/<details><summary>([\s\S]*?)<\/summary><p>([\s\S]*?)<\/p><\/details>/g)]
+    .map(([, q, a]) => ({ '@type': 'Question', name: plain(q), acceptedAnswer: { '@type': 'Answer', text: plain(a) } }));
+  const faqLd = faq.length ? [{ '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang, mainEntity: faq }] : [];
+  const org = { '@type': 'Organization', name: BRAND, url: SITE, logo: `${SITE}assets/og/index-en.png` };
+  if (page.file === 'index.html') {
+    const tools = PAGES.filter((x) => !x.guide && x.file !== 'index.html');
+    return [
+      { '@context': 'https://schema.org', '@type': 'WebSite', name: BRAND, url, inLanguage: lang, description: desc, publisher: org },
+      { '@context': 'https://schema.org', ...org, sameAs: ['https://github.com/scorpion30/file-manager-toolkit'] },
+      {
+        '@context': 'https://schema.org', '@type': 'ItemList', name: lang === 'ar' ? 'كل الأدوات' : 'All tools',
+        itemListElement: tools.map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x[lang].name, url: urlOf(x.file, lang) })),
+      },
+      ...faqLd,
+    ];
+  }
+  return [
+    {
+      '@context': 'https://schema.org', '@type': 'WebApplication', name: p.name, url, description: desc, inLanguage: lang,
+      applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any', browserRequirements: 'Requires a modern web browser',
+      isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      image: `${SITE}assets/og/${slug(page.file)}-${lang}.png`, publisher: org,
+    },
+    {
+      '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: BRAND, item: urlOf('index.html', lang) },
+        { '@type': 'ListItem', position: 2, name: p.name, item: url },
+      ],
+    },
+    ...faqLd,
   ];
 }
 
