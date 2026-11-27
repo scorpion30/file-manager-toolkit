@@ -1,4 +1,4 @@
-// Every tool on the site, in the order the home grid shows them.
+// Every tool on the site.
 // tools/layout.mjs uses it for the header menu ("All tools"), the home grid and the footer.
 // Category colours are in assets/style.css (.cat-<key>).
 
@@ -41,31 +41,33 @@ const I = {
 export const icon = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${I[k]}</svg>`;
 
 // drop: what a home card accepts when a folder / files are dropped on it (home.js).
+// Order = what people search for most first. unique: true = tools other PDF sites
+// (iLovePDF and the like) don't have; the home grid shows them in their own group with a NEW badge.
 export const TOOLS = [
   { href: 'merge.html', cat: 'organize', icon: 'merge', name: 'Merge PDF', desc: 'Combine PDFs, or a whole folder with its subfolders, into one file with a bookmark for each.', drop: 'pdf' },
+  { href: 'compress.html', cat: 'optimize', icon: 'compress', name: 'Compress PDF', desc: 'Make PDFs smaller. Pick a target size, like under 2 MB for email.', drop: 'pdf' },
+  { href: 'pdf-to-image.html', cat: 'convert', icon: 'toimg', name: 'PDF to JPG', desc: 'Pages to JPG, PNG, WebP or TIFF, at the resolution you choose.', drop: 'pdf' },
+  { href: 'image-to-pdf.html', cat: 'convert', icon: 'topdf', name: 'JPG to PDF', desc: 'Photos and images to PDF: one file, or one per image or folder.', drop: 'image' },
   { href: 'split.html', cat: 'organize', icon: 'split', name: 'Split PDF', desc: 'By page ranges, every few pages, file size or bookmarks.', drop: 'pdf' },
-  { href: 'pages.html', cat: 'organize', icon: 'pages', name: 'Organize Pages', desc: 'See every page. Drag to reorder, rotate, delete or add blank pages.', drop: 'pdf', isNew: true },
-  { href: 'rotate.html', cat: 'organize', icon: 'rotate', name: 'Rotate PDF', desc: 'Turn pages the right way in many files at once, or only the landscape ones.', drop: 'pdf', isNew: true },
-  { href: 'compress.html', cat: 'optimize', icon: 'compress', name: 'Compress PDF', desc: 'Make PDFs smaller. Pick a target size, like under 2 MB for email.', drop: 'pdf', isNew: true },
-  { href: 'ocr.html', cat: 'optimize', icon: 'ocr', name: 'OCR PDF', desc: 'Make scanned PDFs searchable and copyable, in English and Arabic.', drop: 'pdf', isNew: true },
-  { href: 'pdf-to-image.html', cat: 'convert', icon: 'toimg', name: 'PDF to JPG', desc: 'Pages to JPG, PNG, WebP or TIFF, at the resolution you choose.', drop: 'pdf', isNew: true },
-  { href: 'image-to-pdf.html', cat: 'convert', icon: 'topdf', name: 'JPG to PDF', desc: 'Photos and images to PDF: one file, or one per image or folder.', drop: 'image', isNew: true },
-  { href: 'page-numbers.html', cat: 'edit', icon: 'numbers', name: 'Add Page Numbers', desc: 'Page numbers or Bates numbers, on many PDFs at once.', drop: 'pdf', isNew: true },
-  { href: 'watermark.html', cat: 'edit', icon: 'watermark', name: 'Add Watermark', desc: 'Stamp text in any language, or a logo, on every page.', drop: 'pdf', isNew: true },
-  { href: 'crop.html', cat: 'edit', icon: 'crop', name: 'Crop PDF', desc: 'Draw the area to keep, or trim the white margins automatically.', drop: 'pdf', isNew: true },
-  { href: 'compare.html', cat: 'edit', icon: 'compare', name: 'Compare PDF', desc: 'Two versions laid over each other: what was removed and what was added.', isNew: true },
-  { href: 'edit.html', cat: 'edit', icon: 'edit', name: 'Edit PDF Text', desc: 'Replace a value inside an area, across many PDFs at once.', drop: 'pdf' },
-  { href: 'protect.html', cat: 'security', icon: 'protect', name: 'Protect PDF', desc: 'Add a password, and choose whether people can print, copy or edit.', drop: 'pdf', isNew: true },
-  { href: 'unlock.html', cat: 'security', icon: 'unlock', name: 'Unlock PDF', desc: 'Remove the password and restrictions from PDFs you can open.', drop: 'pdf', isNew: true },
-  { href: 'rename.html', cat: 'files', icon: 'rename', name: 'Rename Files', desc: 'Prefix, suffix, find and replace in hundreds of names, with undo.', drop: 'folder' },
-  { href: 'list.html', cat: 'files', icon: 'list', name: 'Files to Excel', desc: 'Every file in a folder and its subfolders, listed in Excel.', drop: 'folder' },
-  { href: 'organize.html', cat: 'files', icon: 'organize', name: 'Organize Files', desc: 'Move or copy files into folders by type or by a word in the name.', drop: 'folder' },
-  { href: 'titleblock.html', cat: 'eng', icon: 'titleblock', name: 'Rename from Title Block', desc: 'Name each PDF drawing after the number and title in its title block.', drop: 'folder' },
-  { href: 'splitrename.html', cat: 'eng', icon: 'splitrename', name: 'Split & Rename PDF', desc: 'One PDF per sheet from a combined set, named from each title block.' },
-  { href: 'extract.html', cat: 'eng', icon: 'extract', name: 'PDF to Excel', desc: 'Read the same boxes from every drawing into a spreadsheet. OCR included.', drop: 'pdf' },
-  { href: 'comments.html', cat: 'eng', icon: 'comments', name: 'PDF Comments to Excel', desc: 'Review comments to an Excel response sheet, with a picture of each.' },
-  { href: 'preflight.html', cat: 'eng', icon: 'preflight', name: 'Pre-flight Check', desc: 'Duplicate numbers, wrong names and missing drawings, before you send.' },
-  { href: 'midp.html', cat: 'eng', icon: 'midp', name: 'MIDP Check', desc: 'A whole submission against the MIDP and TIDPs: missing, extra, wrong revisions.' },
+  { href: 'rotate.html', cat: 'organize', icon: 'rotate', name: 'Rotate PDF', desc: 'Turn pages the right way in many files at once, or only the landscape ones.', drop: 'pdf' },
+  { href: 'unlock.html', cat: 'security', icon: 'unlock', name: 'Unlock PDF', desc: 'Remove the password and restrictions from PDFs you can open.', drop: 'pdf' },
+  { href: 'protect.html', cat: 'security', icon: 'protect', name: 'Protect PDF', desc: 'Add a password, and choose whether people can print, copy or edit.', drop: 'pdf' },
+  { href: 'watermark.html', cat: 'edit', icon: 'watermark', name: 'Add Watermark', desc: 'Stamp text in any language, or a logo, on every page.', drop: 'pdf' },
+  { href: 'page-numbers.html', cat: 'edit', icon: 'numbers', name: 'Add Page Numbers', desc: 'Page numbers or Bates numbers, on many PDFs at once.', drop: 'pdf' },
+  { href: 'pages.html', cat: 'organize', icon: 'pages', name: 'Organize Pages', desc: 'See every page. Drag to reorder, rotate, delete or add blank pages.', drop: 'pdf' },
+  { href: 'ocr.html', cat: 'optimize', icon: 'ocr', name: 'OCR PDF', desc: 'Make scanned PDFs searchable and copyable, in English and Arabic.', drop: 'pdf' },
+  { href: 'crop.html', cat: 'edit', icon: 'crop', name: 'Crop PDF', desc: 'Draw the area to keep, or trim the white margins automatically.', drop: 'pdf' },
+  { href: 'compare.html', cat: 'edit', icon: 'compare', name: 'Compare PDF', desc: 'Two versions laid over each other: what was removed and what was added.' },
+  { href: 'rename.html', cat: 'files', icon: 'rename', name: 'Rename Files', desc: 'Prefix, suffix, find and replace in hundreds of names, with undo.', drop: 'folder', unique: true },
+  { href: 'edit.html', cat: 'edit', icon: 'edit', name: 'Edit PDF Text', desc: 'Replace a value inside an area, across many PDFs at once.', drop: 'pdf', unique: true },
+  { href: 'list.html', cat: 'files', icon: 'list', name: 'Files to Excel', desc: 'Every file in a folder and its subfolders, listed in Excel.', drop: 'folder', unique: true },
+  { href: 'organize.html', cat: 'files', icon: 'organize', name: 'Organize Files', desc: 'Move or copy files into folders by type or by a word in the name.', drop: 'folder', unique: true },
+  { href: 'splitrename.html', cat: 'eng', icon: 'splitrename', name: 'Split & Rename PDF', desc: 'One PDF per sheet from a combined set, named from each title block.', unique: true },
+  { href: 'titleblock.html', cat: 'eng', icon: 'titleblock', name: 'Rename from Title Block', desc: 'Name each PDF drawing after the number and title in its title block.', drop: 'folder', unique: true },
+  { href: 'extract.html', cat: 'eng', icon: 'extract', name: 'PDF to Excel', desc: 'Read the same boxes from every drawing into a spreadsheet. OCR included.', drop: 'pdf', unique: true },
+  { href: 'comments.html', cat: 'eng', icon: 'comments', name: 'PDF Comments to Excel', desc: 'Review comments to an Excel response sheet, with a picture of each.', unique: true },
+  { href: 'preflight.html', cat: 'eng', icon: 'preflight', name: 'Pre-flight Check', desc: 'Duplicate numbers, wrong names and missing drawings, before you send.', unique: true },
+  { href: 'midp.html', cat: 'eng', icon: 'midp', name: 'MIDP Check', desc: 'A whole submission against the MIDP and TIDPs: missing, extra, wrong revisions.', unique: true },
 ];
 
 export const byHref = (href) => TOOLS.find((t) => t.href === href);

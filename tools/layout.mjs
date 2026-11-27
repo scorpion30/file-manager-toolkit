@@ -61,13 +61,21 @@ function footer(up) {
   </footer>`;
 }
 
+// Home grid: the tools people search for most, then our own tools (not on other PDF sites)
+// under their own heading, each with a NEW badge and a highlighted card.
 function grid() {
-  const cards = TOOLS.map((t) => `<a class="tool-card cat-${t.cat}" href="${t.href}" data-cat="${t.cat}"${t.drop ? ` data-drop="${t.drop}"` : ''}>
-          ${t.isNew ? '<span class="badge new-badge">New</span>' : ''}<span class="icon">${icon(t.icon)}</span>
+  const card = (t) => `<a class="tool-card cat-${t.cat}${t.unique ? ' unique' : ''}" href="${t.href}" data-cat="${t.cat}"${t.unique ? ' data-unique="1"' : ''}${t.drop ? ` data-drop="${t.drop}"` : ''}>
+          ${t.unique ? '<span class="badge new-badge">New</span>' : ''}<span class="icon">${icon(t.icon)}</span>
           <h3>${esc(t.name)}</h3>
           <p>${esc(t.desc)}</p>
-        </a>`).join('\n        ');
-  return `<!-- grid:start -->\n      <div class="tool-grid all-tools">\n        ${cards}\n        <a class="tool-card request" href="#feedback" data-feedback="idea" data-cat="request">
+        </a>`;
+  const popular = TOOLS.filter((t) => !t.unique).map(card).join('\n        ');
+  const unique = TOOLS.filter((t) => t.unique).map(card).join('\n        ');
+  const divider = `<div class="grid-divider" role="presentation">
+          <h3><span aria-hidden="true">✦</span> Only on File Manager Toolkit</h3>
+          <p>Tools you won't find on other PDF sites: whole folders, file names, Excel lists and drawing checks.</p>
+        </div>`;
+  return `<!-- grid:start -->\n      <div class="tool-grid all-tools">\n        ${popular}\n        ${divider}\n        ${unique}\n        <a class="tool-card request" href="#feedback" data-feedback="idea" data-cat="request">
           <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
           <h3>Need another tool?</h3>
           <p>Tell us what you still do by hand. The most requested tools get built next.</p>

@@ -1026,6 +1026,10 @@
   AR['Find a tool…'] = 'دوّر على أداة…';
   AR['Find a tool'] = 'دوّر على أداة';
   AR['★ My favorites'] = '★ المفضلة';
+  AR['✦ Only here'] = '✦ عندنا بس';
+  AR['Only on File Manager Toolkit'] = 'موجودة بس في File Manager Toolkit';
+  AR["Tools you won't find on other PDF sites: whole folders, file names, Excel lists and drawing checks."] =
+    'أدوات مش هتلاقيها في مواقع الـ PDF التانية: فولدرات كاملة، أسماء الملفات، قوايم Excel، ومراجعة اللوحات.';
   AR['No tool matches that. Try another word, or tell us what you need with the Feedback button.'] =
     'مفيش أداة بالاسم ده. جرّب كلمة تانية، أو قولنا محتاج إيه من زرار "رأيك".';
   AR['Drawing and file tools that'] ='أدوات للرسومات والملفات';

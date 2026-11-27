@@ -1650,3 +1650,19 @@ main#tools.home-main { padding-top: 26px; }
 .related-tools .tool-grid { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 900px) { .related-tools .tool-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .related-tools .tool-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Home: our own tools (not on other PDF sites) ---------- */
+.grid-divider { grid-column: 1 / -1; margin: 28px 0 4px; padding: 18px 22px; border-radius: 16px;
+  background: linear-gradient(120deg, var(--accent-soft), var(--success-soft)); border: 1px solid var(--border); }
+.grid-divider[hidden] { display: none; }
+.grid-divider h3 { margin: 0; font-size: 20px; letter-spacing: -.01em; }
+.grid-divider h3 span { color: var(--accent); }
+.grid-divider p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.tool-card.unique { border: 1.5px solid transparent;
+  background: linear-gradient(var(--surface), var(--surface)) padding-box,
+              linear-gradient(135deg, var(--accent), var(--success)) border-box; }
+.tool-card.unique::before { display: none; }
+a.tool-card.unique:hover { border-color: transparent; box-shadow: 0 10px 28px rgba(45, 107, 233, .22); }
+.badge.new-badge { background: linear-gradient(135deg, var(--accent), var(--success)); color: #fff; letter-spacing: .06em; text-transform: uppercase; }
+.filter .only-here { color: var(--accent); font-weight: 700; }
+.filter .only-here.on { background: linear-gradient(135deg, var(--accent), var(--success)); color: #fff; border-color: transparent; }

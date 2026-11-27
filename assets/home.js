@@ -3,7 +3,7 @@
  * Favourites are kept in this browser only (localStorage). */
 (() => {
   'use strict';
-  const groups = { organize: 1, optimize: 1, convert: 1, edit: 1, security: 1, files: 1, eng: 1, pdf: 'organize', review: 'eng' };
+  const groups = { unique: 1, organize: 1, optimize: 1, convert: 1, edit: 1, security: 1, files: 1, eng: 1, pdf: 'organize', review: 'eng' };
   const KEY = 'fm-favs';
   const ar = document.documentElement.lang === 'ar';
   let filter = 'all';
@@ -24,12 +24,14 @@
       const card = w.querySelector('.tool-card');
       const href = card.getAttribute('href');
       const cat = card.dataset.cat;
-      const okFilter = filter === 'all' || filter === cat || (filter === 'fav' && favs.includes(href));
+      const okFilter = filter === 'all' || filter === cat || (filter === 'fav' && favs.includes(href)) || (filter === 'unique' && card.dataset.unique);
       const okSearch = !q || norm(card.innerText).includes(q);
       const show = okFilter && okSearch && !(filter !== 'all' && cat === 'request');
       w.hidden = !show;
       if (show) shown++;
     });
+    // The "Only on File Manager Toolkit" heading belongs to the full list only.
+    document.querySelectorAll('.all-tools .grid-divider').forEach((d) => { d.hidden = filter !== 'all' || !!q; });
     const none = document.getElementById('noResults');
     if (none) none.hidden = shown > 0;
   }
