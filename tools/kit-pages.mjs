@@ -253,6 +253,38 @@ const PAGES = [
       ['Is there a page limit?', 'No. Long documents just take longer, because the reading happens on your own computer.'],
     ],
   },
+  // ---------------------------------------------------------------- PDF to Word
+  {
+    file: 'pdf-to-word.html', script: 'pdf-to-word.js', cat: 'convert', icon: 'toword',
+    title: 'PDF to Word with Arabic Support, Scanned PDFs too, Free | File Manager Toolkit',
+    desc: 'Convert PDF to an editable Word file (.docx), including scanned PDFs. Arabic text comes out right-to-left and in the right order. Free, no upload, no sign-up, no page limit.',
+    h1: 'PDF to Word', sub: 'Editable Word files from your PDFs, scanned ones too. Arabic stays right-to-left.',
+    pick: 'Select PDF files', runLabel: 'Convert to Word', sort: true,
+    options: [
+      opt('Read', seg('read', [['auto', 'Automatic', 'text or scan', true], ['ocr', 'Read every page', 'scanned'], ['text', 'Text only', 'fast']], { wrap: true })),
+      opt('Languages in the document', `<div class="row2">
+        <label class="check"><input type="checkbox" name="lang" value="ara" checked> Arabic</label>
+        <label class="check"><input type="checkbox" name="lang" value="eng" checked> English</label>
+        <label class="check"><input type="checkbox" name="lang" value="fra"> French</label>
+        <label class="check"><input type="checkbox" name="lang" value="urd"> Urdu</label>
+        <label class="check"><input type="checkbox" name="lang" value="tur"> Turkish</label>
+        <label class="check"><input type="checkbox" name="lang" value="hin"> Hindi</label></div>`, ' id="langOpt"'),
+      opt('Accuracy', seg('dpi', [['200', 'Fast', '200 DPI'], ['300', 'Accurate', '300 DPI', true]]), ' id="dpiOpt"'),
+      pagesField(),
+      `<details class="more"><summary>More options</summary><div>
+        ${opt('Font', '<select id="font" aria-label="Font"><option>Arial</option><option>Calibri</option><option>Times New Roman</option><option>Tahoma</option><option>Simplified Arabic</option><option>Traditional Arabic</option></select>')}
+        <label class="check"><input type="checkbox" id="pageBreaks" checked> Start each PDF page on a new Word page</label>
+      </div></details>`,
+      '<p class="hint">Scanned pages: the first run downloads the reading engine and language files (a few MB), then it works offline.</p>',
+    ],
+    howto: ['<b>Select your PDFs</b>, typed or scanned. They open in your browser and are not uploaded.', '<b>Tick the languages</b> written in them. Arabic and English are ticked already.', '<b>Convert to Word</b> and open the .docx in Word, Google Docs or LibreOffice to edit it.'],
+    faq: [
+      ['Does it work with Arabic?', 'Yes. Arabic paragraphs are written right-to-left in Word, with the letters in the right order, so you can edit them straight away. Mixed Arabic and English documents work too.'],
+      ['Can it convert scanned PDFs?', 'Yes. Pages without text are read with OCR. Clear scans at 300 DPI give the best result. Check names and numbers after converting, as OCR can misread a letter.'],
+      ['Will it look exactly like the PDF?', 'You get the text as clean, editable paragraphs, with headings kept bigger and bold. Tables, columns and pictures are not rebuilt yet, so complex layouts need some tidying in Word.'],
+      ['Are my files uploaded?', 'No. Everything runs on your own computer, so private documents stay with you. There is no page or file limit.'],
+    ],
+  },
   // ---------------------------------------------------------------- merge
   {
     file: 'merge.html', script: 'merge.js', cat: 'organize', icon: 'merge',

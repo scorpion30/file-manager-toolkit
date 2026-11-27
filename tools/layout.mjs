@@ -97,7 +97,7 @@ function grid() {
 }
 
 // "Related tools" at the end of every tool page: the others in its category, then the most used ones.
-const POPULAR = ['merge.html', 'compress.html', 'split.html', 'pdf-to-image.html', 'pages.html', 'rename.html', 'watermark.html', 'ocr.html'];
+const POPULAR = ['merge.html', 'pdf-to-word.html', 'compress.html', 'split.html', 'pdf-to-image.html', 'pages.html', 'rename.html', 'watermark.html', 'ocr.html'];
 function related(file) {
   const me = byHref(file);
   const picks = [...TOOLS.filter((t) => t.cat === me.cat && t.href !== file), ...POPULAR.map(byHref)]

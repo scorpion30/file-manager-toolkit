@@ -118,6 +118,14 @@ const PAGES = [
     },
   },
   {
+    file: 'pdf-to-word.html', cat: 'pdf',
+    en: { title: `PDF to Word with Arabic Support, Scanned PDFs too, Free | ${BRAND}`, name: 'PDF to Word', pitch: 'Editable Word files, scanned PDFs and Arabic included' },
+    ar: {
+      title: `تحويل PDF إلى Word يدعم اللغة العربية، حتى الملفات الممسوحة، مجاناً | ${BRAND}`, name: 'PDF إلى Word', pitch: 'ملف Word تقدر تعدّل فيه، حتى لو الـ PDF ممسوح، والعربي مظبوط',
+      desc: 'حوّل PDF إلى ملف Word قابل للتعديل (.docx) مجاناً، حتى الملفات الممسوحة ضوئياً. النص العربي يطلع من اليمين للشمال وبالترتيب الصحيح. بدون رفع وبدون تسجيل وبلا حد للصفحات.',
+    },
+  },
+  {
     file: 'ocr.html', cat: 'pdf',
     en: { title: `OCR PDF: Make Scanned PDFs Searchable, English and Arabic, Free | ${BRAND}`, name: 'OCR PDF', pitch: 'Scanned PDFs you can search and copy, in Arabic and English' },
     ar: {

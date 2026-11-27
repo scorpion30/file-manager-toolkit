@@ -19,6 +19,7 @@ const I = {
   rotate: '<path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/>',
   compress: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M12 10v3M12 17v1M10 11.5l2 2 2-2M10 16.5l2-2 2 2"/>',
   ocr: '<path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/>',
+  toword: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 11 1.5 6 2.5-4.5 2.5 4.5L16 11"/>',
   toimg: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/>',
   topdf: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 3-4 2 2 1.5-1.5L17 17Z"/>',
   numbers: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M10 15.5l1.5-1.5v5M10 19h3"/>',
@@ -45,6 +46,7 @@ export const icon = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${I[k]}<
 // (iLovePDF and the like) don't have; the home grid shows them in their own group with a NEW badge.
 export const TOOLS = [
   { href: 'merge.html', cat: 'organize', icon: 'merge', name: 'Merge PDF', desc: 'Combine PDFs, or a whole folder with its subfolders, into one file with a bookmark for each.', drop: 'pdf' },
+  { href: 'pdf-to-word.html', cat: 'convert', icon: 'toword', name: 'PDF to Word', desc: 'Editable Word files from PDFs, scanned ones too. Arabic stays right-to-left.', drop: 'pdf' },
   { href: 'compress.html', cat: 'optimize', icon: 'compress', name: 'Compress PDF', desc: 'Make PDFs smaller. Pick a target size, like under 2 MB for email.', drop: 'pdf' },
   { href: 'pdf-to-image.html', cat: 'convert', icon: 'toimg', name: 'PDF to JPG', desc: 'Pages to JPG, PNG, WebP or TIFF, at the resolution you choose.', drop: 'pdf' },
   { href: 'image-to-pdf.html', cat: 'convert', icon: 'topdf', name: 'JPG to PDF', desc: 'Photos and images to PDF: one file, or one per image or folder.', drop: 'image' },

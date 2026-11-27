@@ -19,7 +19,7 @@
       ['page-numbers.html', 'Add Page Numbers', 'numbers', 'edit'], ['watermark.html', 'Add Watermark', 'watermark', 'edit'],
       ['protect.html', 'Protect PDF', 'protect', 'security'], ['pdf-to-image.html', 'PDF to JPG', 'toimg', 'convert'],
       ['split.html', 'Split PDF', 'split', 'organize'], ['pages.html', 'Organize Pages', 'pages', 'organize'],
-      ['rotate.html', 'Rotate PDF', 'rotate', 'organize'], ['ocr.html', 'OCR PDF', 'ocr', 'optimize'], ['crop.html', 'Crop PDF', 'crop', 'edit'],
+      ['rotate.html', 'Rotate PDF', 'rotate', 'organize'], ['ocr.html', 'OCR PDF', 'ocr', 'optimize'], ['pdf-to-word.html', 'PDF to Word', 'toword', 'convert'], ['crop.html', 'Crop PDF', 'crop', 'edit'],
     ],
     image: [['image-to-pdf.html', 'JPG to PDF', 'topdf', 'convert']],
   };
@@ -29,6 +29,7 @@
     pages: '<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="9" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/>',
     rotate: '<path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/>',
     compress: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="M12 10v3M12 17v1M10 11.5l2 2 2-2M10 16.5l2-2 2 2"/>',
+    toword: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 11 1.5 6 2.5-4.5 2.5 4.5L16 11"/>',
     ocr: '<path d="M4 7V4h3M17 4h3v3M20 17v3h-3M7 20H4v-3"/><path d="M8 9h8M8 12h8M8 15h5"/>',
     toimg: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/>',
     topdf: '<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8Z"/><path d="M14 3v5h5"/><path d="m8 17 3-4 2 2 1.5-1.5L17 17Z"/>',
