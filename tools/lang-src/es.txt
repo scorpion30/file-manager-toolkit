@@ -1324,3 +1324,5 @@
 1323|Conversiones populares, con tablas listas
 1324|¿Puede convertir fechas hégira?
 1325|Sí. Abre la pestaña Fecha hégira para pasar una fecha gregoriana a hégira o al revés, con la fecha de hoy en los dos calendarios.
+1326|Porcentajes, descuentos e IVA
+1327|Porcentaje

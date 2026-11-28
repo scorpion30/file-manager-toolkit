@@ -138,9 +138,15 @@ function qrBody() {
 
 const num = (id, val = '', extra = '') => `<input type="text" inputmode="decimal" id="${id}" value="${val}" dir="ltr" translate="no" autocomplete="off"${extra}>`;
 
+// Percentage and VAT are two pages shown as one "Calculators" tool with link tabs on top.
+function calcNav(cur) {
+  const L = [['percentage-calculator.html', 'Percentage'], ['vat-calculator.html', 'VAT']];
+  return `<nav class="seg calc-nav" aria-label="Calculators">${L.map(([h, n]) => h === cur ? `<a href="${h}" aria-current="page">${n}</a>` : `<a href="${h}">${n}</a>`).join('')}</nav>`;
+}
 function percentBody() {
   const card = (k, q, out = '') => `<div class="pc-card" data-pc="${k}"><p class="pc-q">${q}</p><output class="pc-out" id="pc-${k}" role="status">${out}</output></div>`;
-  return `<section class="pc-grid">
+  return `${calcNav('percentage-calculator.html')}
+    <section class="pc-grid">
       ${card('of', `<span>What is</span> ${num('pcOfA', '15')} <span>% of</span> ${num('pcOfB', '200')}<span>?</span>`)}
       ${card('what', `${num('pcWhatA', '30')} <span>is what percent of</span> ${num('pcWhatB', '200')}<span>?</span>`)}
       ${card('change', `<span>Percentage change from</span> ${num('pcChA', '80')} <span>to</span> ${num('pcChB', '100')}`)}
@@ -154,7 +160,8 @@ function percentBody() {
 function vatBody() {
   const rates = [['5', 'UAE, Oman'], ['10', 'Bahrain'], ['14', 'Egypt'], ['15', 'Saudi Arabia'], ['16', 'Jordan'], ['20', 'UK, Morocco']];
   const res = (id, l) => `<button type="button" class="vat-res" id="${id}" data-copy=""><span>${l}</span><b dir="ltr" translate="no">0.00</b></button>`;
-  return `<section class="panel util-box vat">
+  return `${calcNav('vat-calculator.html')}
+    <section class="panel util-box vat">
       ${seg('vatMode', [['add', 'Add VAT', true], ['remove', 'Remove VAT (the price includes VAT)']])}
       <div class="vat-in">
         <label class="opt"><span class="opt-label">Amount</span>${num('vAmt', '1000')}</label>

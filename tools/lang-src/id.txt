@@ -1324,3 +1324,5 @@
 1323|Konversi populer, dengan tabel siap pakai
 1324|Bisakah mengonversi tanggal Hijriah?
 1325|Ya. Buka tab Tanggal Hijriah untuk mengubah tanggal Masehi ke Hijriah atau sebaliknya, dengan tanggal hari ini di kedua kalender.
+1326|Persentase, diskon, dan PPN
+1327|Persentase

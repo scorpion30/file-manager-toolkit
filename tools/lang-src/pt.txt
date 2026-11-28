@@ -1324,3 +1324,5 @@
 1323|Conversões populares, com tabelas prontas
 1324|Ele converte datas hijri?
 1325|Sim. Abra a aba Data hijri para converter uma data gregoriana em hijri ou o contrário, com a data de hoje nos dois calendários.
+1326|Porcentagens, descontos e IVA
+1327|Porcentagem

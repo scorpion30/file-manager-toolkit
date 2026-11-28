@@ -1326,7 +1326,9 @@
    "Hijri date": "Hicri tarih",
    "Popular conversions, with ready tables": "Popüler dönüşümler, hazır tablolarla",
    "Can it convert Hijri dates?": "Hicri tarih çevirebilir mi?",
-   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Evet. Hicri tarih sekmesini açıp Miladi tarihi Hicriye ya da tersine çevirin; bugünün tarihi iki takvimde görünür."
+   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Evet. Hicri tarih sekmesini açıp Miladi tarihi Hicriye ya da tersine çevirin; bugünün tarihi iki takvimde görünür.",
+   "Percentages, discounts and VAT": "Yüzde, indirim ve KDV",
+   "Percentage": "Yüzde"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 dosya hazır"],

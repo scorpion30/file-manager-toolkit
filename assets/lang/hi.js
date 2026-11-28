@@ -1326,7 +1326,9 @@
    "Hijri date": "हिजरी तारीख़",
    "Popular conversions, with ready tables": "लोकप्रिय कन्वर्ज़न, तैयार टेबल के साथ",
    "Can it convert Hijri dates?": "क्या यह हिजरी तारीख़ बदल सकता है?",
-   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "हाँ। हिजरी तारीख़ टैब खोलें और ग्रेगोरियन तारीख़ को हिजरी में या उल्टा बदलें, आज की तारीख़ दोनों कैलेंडर में दिखेगी।"
+   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "हाँ। हिजरी तारीख़ टैब खोलें और ग्रेगोरियन तारीख़ को हिजरी में या उल्टा बदलें, आज की तारीख़ दोनों कैलेंडर में दिखेगी।",
+   "Percentages, discounts and VAT": "प्रतिशत, छूट और VAT",
+   "Percentage": "प्रतिशत"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 फ़ाइलें तैयार हैं"],

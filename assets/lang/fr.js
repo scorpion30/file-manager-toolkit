@@ -1326,7 +1326,9 @@
    "Hijri date": "Date hégirienne",
    "Popular conversions, with ready tables": "Conversions courantes, avec tableaux prêts",
    "Can it convert Hijri dates?": "Peut-il convertir les dates hégiriennes ?",
-   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Oui. Ouvrez l’onglet Date hégirienne pour convertir une date grégorienne en hégirienne ou l’inverse, avec la date du jour dans les deux calendriers."
+   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Oui. Ouvrez l’onglet Date hégirienne pour convertir une date grégorienne en hégirienne ou l’inverse, avec la date du jour dans les deux calendriers.",
+   "Percentages, discounts and VAT": "Pourcentages, remises et TVA",
+   "Percentage": "Pourcentage"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 fichiers sont prêts"],

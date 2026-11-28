@@ -1326,7 +1326,9 @@
    "Hijri date": "Tanggal Hijriah",
    "Popular conversions, with ready tables": "Konversi populer, dengan tabel siap pakai",
    "Can it convert Hijri dates?": "Bisakah mengonversi tanggal Hijriah?",
-   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Ya. Buka tab Tanggal Hijriah untuk mengubah tanggal Masehi ke Hijriah atau sebaliknya, dengan tanggal hari ini di kedua kalender."
+   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Ya. Buka tab Tanggal Hijriah untuk mengubah tanggal Masehi ke Hijriah atau sebaliknya, dengan tanggal hari ini di kedua kalender.",
+   "Percentages, discounts and VAT": "Persentase, diskon, dan PPN",
+   "Percentage": "Persentase"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 file siap"],

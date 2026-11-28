@@ -116,6 +116,7 @@ const BIG = [
   ['text-case.html', 'Text tools', 'Change case, clean up, count words and characters'],
   ['qr-code.html', 'QR Code Generator', 'Links, Wi-Fi, WhatsApp. Never expires'],
   ['unit-converter.html', 'Unit Converter', 'Length, weight, area, temperature, Hijri dates'],
+  ['percentage-calculator.html', 'Calculators', 'Percentages, discounts and VAT'],
 ];
 function big() {
   return `<div class="big-tools" id="bigTools">

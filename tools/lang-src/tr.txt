@@ -1324,3 +1324,5 @@
 1323|Popüler dönüşümler, hazır tablolarla
 1324|Hicri tarih çevirebilir mi?
 1325|Evet. Hicri tarih sekmesini açıp Miladi tarihi Hicriye ya da tersine çevirin; bugünün tarihi iki takvimde görünür.
+1326|Yüzde, indirim ve KDV
+1327|Yüzde

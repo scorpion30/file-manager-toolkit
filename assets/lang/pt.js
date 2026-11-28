@@ -1326,7 +1326,9 @@
    "Hijri date": "Data hijri",
    "Popular conversions, with ready tables": "Conversões populares, com tabelas prontas",
    "Can it convert Hijri dates?": "Ele converte datas hijri?",
-   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Sim. Abra a aba Data hijri para converter uma data gregoriana em hijri ou o contrário, com a data de hoje nos dois calendários."
+   "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Sim. Abra a aba Data hijri para converter uma data gregoriana em hijri ou o contrário, com a data de hoje nos dois calendários.",
+   "Percentages, discounts and VAT": "Porcentagens, descontos e IVA",
+   "Percentage": "Porcentagem"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 arquivos prontos"],

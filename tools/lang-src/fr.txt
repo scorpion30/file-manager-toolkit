@@ -1324,3 +1324,5 @@
 1323|Conversions courantes, avec tableaux prêts
 1324|Peut-il convertir les dates hégiriennes ?
 1325|Oui. Ouvrez l’onglet Date hégirienne pour convertir une date grégorienne en hégirienne ou l’inverse, avec la date du jour dans les deux calendriers.
+1326|Pourcentages, remises et TVA
+1327|Pourcentage

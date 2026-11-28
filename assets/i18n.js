@@ -1868,6 +1868,8 @@
     'Helvetica / Arial': 'Helvetica / Arial',
     'Download': 'نزّل',
     'Save into a folder': 'احفظ في فولدر',
+    'Percentages, discounts and VAT': 'النسبة المئوية والخصم والضريبة',
+    'Percentage': 'النسبة المئوية',
     'Change case, clean up, count words and characters': 'حروف كبيرة وصغيرة، تنظيف، وعدّ الكلمات والحروف',
     'Links, Wi-Fi, WhatsApp. Never expires': 'روابط وواي فاي وواتساب. ما بينتهيش أبداً',
     'Length, weight, area, temperature, Hijri dates': 'طول ووزن ومساحة وحرارة وتاريخ هجري',
