@@ -5,7 +5,7 @@
 // Run from the repo root, before tools/build.mjs:   node tools/layout.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { CATS, TOOLS, icon, byHref } from './catalog.mjs';
+import { CATS, TOOLS, icon, byHref, EVERYDAY } from './catalog.mjs';
 
 const ROOT = process.cwd();
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -55,6 +55,7 @@ function footer(up) {
       ${col('Convert &amp; edit', ['convert', 'edit'])}
       ${col('Security &amp; files', ['security', 'files'])}
       ${col('For engineers', ['eng'])}
+      ${col('Everyday tools', EVERYDAY)}
       <div class="f-col"><h4>Guides</h4>${guides}<h4 style="margin-top:14px">About</h4><a href="https://www.paypal.com/paypalme/FileManagerApp/5" target="_blank" rel="noopener">Donate</a><a href="https://github.com/scorpion30/file-manager-toolkit" target="_blank" rel="noopener">Source code</a></div>
     </div>
     <div class="f-bottom">© File Manager Toolkit · All processing happens locally in your browser.</div>
@@ -71,7 +72,8 @@ function grid() {
           <h3>${esc(t.name)}</h3>
           <p>${esc(t.desc)}</p>
         </a>`;
-  const popular = TOOLS.filter((t) => !t.unique).map(card).join('\n        ');
+  const popular = TOOLS.filter((t) => !t.unique && !EVERYDAY.includes(t.cat)).map(card).join('\n        ');
+  const everyday = TOOLS.filter((t) => EVERYDAY.includes(t.cat)).map(card).join('\n          ');
   const unique = TOOLS.filter((t) => t.unique).map(card).join('\n          ');
   return `<!-- grid:start -->
       <div class="tools-split">
@@ -93,6 +95,15 @@ function grid() {
         </div>
       </aside>
       </div>
+      <section class="everyday" aria-labelledby="everydayTitle">
+        <div class="everyday-head">
+          <h2 id="everydayTitle">Everyday tools</h2>
+          <p>Text, unit converters, Hijri dates and QR codes. Free, instant, nothing to install.</p>
+        </div>
+        <div class="tool-grid all-tools everyday-list">
+          ${everyday}
+        </div>
+      </section>
       <!-- grid:end -->`;
 }
 

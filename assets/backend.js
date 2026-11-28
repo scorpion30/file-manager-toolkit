@@ -243,7 +243,8 @@
     const phone = matchMedia('(pointer: coarse) and (max-width: 820px)').matches;
     let closed = false;
     try { closed = sessionStorage.getItem('fm-phone-note') === 'closed'; } catch { /* ignore */ }
-    if (!phone || closed || document.querySelector('.phone-note')) return;
+    // Everyday tools (text, converters, Hijri, QR) work on a phone, so no note there.
+    if (!phone || closed || document.querySelector('.phone-note, main.util')) return;
 
     const url = location.origin + location.pathname;
     const title = document.title;

@@ -832,3 +832,341 @@
 831|Estas ferramentas funcionam no computador, porque abrem pastas e PDFs do seu disco. Envie o link para você e abra na sua mesa.
 832|Responderemos no seu e-mail em breve.
 833|Não
+834|Ferramentas de texto
+835|Conversor de maiúsculas e minúsculas
+836|Contador de palavras
+837|Conversores
+838|Conversor de unidades
+839|Kg para libras
+840|Cm para polegadas
+841|Metros para pés
+842|Km para milhas
+843|Metros quadrados para pés quadrados
+844|Feddan para metros quadrados
+845|Celsius para Fahrenheit
+846|Litros para galões
+847|Conversor de data hijri
+848|Geradores
+849|Gerador de QR Code
+850|Ferramentas do dia a dia
+851|Texto, conversão de unidades, datas hijri e QR Codes. Grátis, na hora, sem instalar nada.
+852|MAIÚSCULAS, minúsculas, Title Case e mais. Limpe espaços, linhas e sinais diacríticos árabes.
+853|Palavras, caracteres, frases, linhas e tempo de leitura enquanto você digita.
+854|Comprimento, peso, área, volume, temperatura e velocidade em um só lugar.
+855|Quilos para libras e vice-versa, com uma tabela pronta.
+856|Centímetros para polegadas e vice-versa, com uma tabela pronta.
+857|Metros para pés e vice-versa, também em pés e polegadas.
+858|Quilômetros para milhas e vice-versa, com uma tabela pronta.
+859|m² para ft² e vice-versa, para apartamentos, terrenos e plantas.
+860|Feddan, qirat, dunam, acre e hectare para m² e vice-versa.
+861|°C para °F e vice-versa, com a fórmula e uma tabela pronta.
+862|Litros para galões americanos ou britânicos e vice-versa.
+863|De hijri para gregoriano e vice-versa, com a data de hoje nos dois calendários.
+864|QR Codes para links, Wi-Fi, WhatsApp e contatos. Grátis para sempre, nunca expiram.
+865|Cole seu texto e escolha o formato. Limpe também espaços e linhas.
+866|Palavras
+867|Caracteres
+868|Caracteres sem espaços
+869|Frases
+870|Linhas
+871|Tempo de leitura
+872|Mudar maiúsculas/minúsculas
+873|MAIÚSCULAS
+874|minúsculas
+875|Primeira Letra Maiúscula
+876|Primeira letra da frase
+877|Inverter maiúsculas
+878|camelCase
+879|snake_case
+880|kebab-case
+881|Limpar
+882|Remover espaços extras
+883|Remover quebras de linha
+884|Remover linhas vazias
+885|Remover linhas duplicadas
+886|Ordenar linhas A → Z
+887|Remover diacríticos árabes
+888|Copiar texto
+889|Baixar .txt
+890|Desfazer
+891|Como usar o conversor de maiúsculas e minúsculas
+892|Cole ou digite
+893|seu texto na caixa.
+894|Clique em um botão
+895|: MAIÚSCULAS, minúsculas, Title Case ou uma limpeza como remover espaços extras.
+896|Copie o resultado
+897|ou baixe como arquivo .txt. Desfazer volta um passo.
+898|O que é Title Case?
+899|Cada palavra começa com letra maiúscula, como um título de livro: "The Quick Brown Fox". O formato de frase só coloca maiúscula na primeira palavra de cada frase.
+900|Ele remove os diacríticos de um texto árabe?
+901|Sim. "Remover diacríticos árabes" tira o tashkeel (fatha, damma, kasra, shadda e os demais) e o tatweel, e mantém as letras.
+902|Meu texto é enviado para algum lugar?
+903|Não. Tudo acontece no seu navegador. Nada é enviado nem salvo.
+904|Mude o texto para MAIÚSCULAS, minúsculas, Title Case, formato de frase, camelCase ou snake_case. Remova espaços extras, quebras de linha, linhas duplicadas e diacríticos árabes. Grátis, nada é enviado.
+905|Conversor de maiúsculas e minúsculas: MAIÚSCULAS, Title Case, grátis | File Manager Toolkit
+906|Palavras, caracteres, frases e tempo de leitura enquanto você digita.
+907|Como usar o contador de palavras
+908|Veja os números
+909|no topo: eles mudam enquanto você digita.
+910|o texto com os botões abaixo se precisar e depois copie.
+911|Ele conta palavras em árabe corretamente?
+912|Sim. As palavras são contadas pelos espaços entre elas, então árabe, inglês e texto misto são contados do mesmo jeito.
+913|Como o tempo de leitura é calculado?
+914|Com cerca de 200 palavras por minuto, uma velocidade de leitura normal para a maioria das pessoas.
+915|Conte palavras, caracteres (com e sem espaços), frases, linhas e tempo de leitura enquanto digita. Funciona com inglês, árabe e qualquer idioma. Grátis, nada é enviado.
+916|Contador de palavras: conte palavras e caracteres online, grátis | File Manager Toolkit
+917|Seu texto
+918|Digite ou cole seu texto aqui
+919|Nada mudou
+920|Copiado
+921|Comprimento
+922|Peso
+923|Área
+924|Volume
+925|Temperatura
+926|Velocidade
+927|Valor a converter
+928|De
+929|Trocar unidades
+930|Resultado
+931|Para
+932|O mesmo valor em cada unidade
+933|Como usar o conversor de unidades
+934|Digite um número
+935|em qualquer uma das caixas. A outra muda enquanto você digita.
+936|Escolha outras unidades
+937|nas listas, ou toque em ⇄ para trocá-las.
+938|Copie qualquer resultado
+939|: clique em um valor da lista para copiá-lo.
+940|Quais unidades estão incluídas?
+941|Unidades métricas e imperiais de comprimento, peso, área, volume, temperatura e velocidade, além de feddan, qirat e dunam para terrenos.
+942|Este conversor é grátis?
+943|Sim, grátis e sem cadastro. Funciona no seu navegador, até offline depois que a página carrega.
+944|Converta comprimento, peso, área, volume, temperatura e velocidade: metros, pés, quilos, libras, metros quadrados, feddan, litros, galões, °C e °F. Grátis, na hora, sem anúncios no caminho.
+945|Conversor de unidades: comprimento, peso, área, volume, temperatura, velocidade | File Manager Toolkit
+946|Quilos para libras e vice-versa. 1 kg = 2,20462 lb.
+947|Tabelas de conversão
+948|Quilograma
+949|Libra
+950|Como converter kg para libras
+951|Quantas libras tem um quilo?
+952|Um quilo tem 2,20462 libras. Para passar de kg para lb, multiplique por 2,20462. Para passar de lb para kg, multiplique por 0,453592.
+953|Converta quilos em libras (kg para lb) e libras em kg na hora. 1 kg = 2,20462 lb. Tabela pronta de 1 a 100 kg. Grátis.
+954|Conversor de kg para lb: quilos para libras, com tabela | File Manager Toolkit
+955|Centímetros para polegadas e vice-versa. 1 polegada = 2,54 cm.
+956|Centímetro
+957|Polegada
+958|Como converter cm para polegadas
+959|Quantos centímetros tem uma polegada?
+960|Uma polegada tem exatamente 2,54 cm. Para passar de cm para polegadas, divida por 2,54.
+961|Converta centímetros em polegadas (cm para in) e polegadas em cm na hora. 1 polegada = 2,54 cm. Tabela pronta. Grátis.
+962|Conversor de cm para polegadas, com tabela | File Manager Toolkit
+963|Metros para pés e vice-versa. 1 m = 3,28084 ft.
+964|Metro
+965|Pé
+966|Como converter metros para pés
+967|Quantos pés tem um metro?
+968|Um metro tem 3,28084 pés. Um pé tem exatamente 0,3048 metro.
+969|Como escrevo metros em pés e polegadas?
+970|Digite os metros: abaixo do resultado aparecem também pés e polegadas, como 1,8 m = 5 ft 10.9 in.
+971|Converta metros em pés (m para ft) e pés em metros na hora. 1 m = 3,28084 ft. Tabela pronta, também em pés e polegadas. Grátis.
+972|Conversor de metros para pés: m para ft, com tabela | File Manager Toolkit
+973|Quilômetros para milhas e vice-versa. 1 km = 0,621371 mi.
+974|Quilômetro
+975|Milha
+976|Como converter km para milhas
+977|Quantas milhas tem um quilômetro?
+978|Um quilômetro tem 0,621371 milha. Uma milha tem 1,609344 km.
+979|Converta quilômetros em milhas (km para mi) e milhas em km na hora. 1 km = 0,621371 mi. Tabela pronta com 5K, 10K, meia e maratona. Grátis.
+980|Conversor de km para milhas, com tabela | File Manager Toolkit
+981|m² para ft² e vice-versa. 1 m² = 10,7639 ft².
+982|Metro quadrado
+983|Pé quadrado
+984|Como converter m² para pés quadrados
+985|Quantos pés quadrados tem um metro quadrado?
+986|Um metro quadrado tem 10,7639 pés quadrados. Para passar de ft² para m², multiplique por 0,092903.
+987|Por que os anúncios de imóveis usam pés quadrados?
+988|Nos Emirados, nos EUA e no Reino Unido os apartamentos costumam ser vendidos por pé quadrado. Digite a área aqui para vê-la em metros quadrados.
+989|Converta metros quadrados em pés quadrados (m² para ft²) e vice-versa, para apartamentos, casas, terrenos e plantas. 1 m² = 10,7639 ft². Tabela pronta. Grátis.
+990|Metros quadrados para pés quadrados: conversor m² para ft², com tabela | File Manager Toolkit
+991|1 feddan = 4.200,83 m² = 24 qirat. Também dunam, acre e hectare.
+992|Feddan
+993|Como converter feddan para metros quadrados
+994|Quantos metros quadrados tem um feddan?
+995|Um feddan tem 4.200,83 metros quadrados, o mesmo que 24 qirat. Um qirat tem cerca de 175 m².
+996|O que é um dunam?
+997|Um dunam tem 1.000 metros quadrados na maioria dos países que o usam hoje.
+998|Quantos metros quadrados tem um feddan? 1 feddan = 4.200,83 m² = 24 qirat. Converta feddan, qirat, dunam, acre e hectare em metros quadrados e vice-versa. Grátis.
+999|Feddan para metros quadrados: conversor de feddan, qirat, dunam, acre | File Manager Toolkit
+1000|°C para °F e vice-versa. °F = °C × 9/5 + 32.
+1001|Celsius
+1002|Fahrenheit
+1003|Como converter Celsius para Fahrenheit
+1004|Qual é a fórmula?
+1005|Fahrenheit = Celsius × 9 ÷ 5 + 32. Celsius = (Fahrenheit − 32) × 5 ÷ 9.
+1006|Qual é a temperatura normal do corpo em Fahrenheit?
+1007|Cerca de 37 °C, que são 98,6 °F.
+1008|Converta Celsius em Fahrenheit (°C para °F) e Fahrenheit em Celsius na hora. Fórmula: °F = °C × 9/5 + 32. Tabela pronta para clima, corpo e forno. Grátis.
+1009|Conversor de Celsius para Fahrenheit: °C para °F, com fórmula e tabela | File Manager Toolkit
+1010|Litro
+1011|Galão americano
+1012|Como converter litros para galões
+1013|O galão americano é igual ao britânico?
+1014|Não. Um galão americano tem 3,785 litros e um britânico (imperial) 4,546 litros. Escolha o que precisa na lista.
+1015|Converta litros em galões (americano ou britânico) e galões em litros na hora. 1 galão americano = 3,78541 L, 1 galão britânico = 4,54609 L. Tabela pronta. Grátis.
+1016|Conversor de litros para galões: L para galões americanos e britânicos | File Manager Toolkit
+1017|De hijri para gregoriano e vice-versa, com a data de hoje nos dois calendários.
+1018|Gregoriano para hijri
+1019|Data gregoriana
+1020|Hijri para gregoriano
+1021|Dia
+1022|Dia hijri
+1023|Mês hijri
+1024|Ano
+1025|Ano hijri
+1026|Calendário
+1027|Umm al-Qura (Arábia Saudita)
+1028|Padrão (civil)
+1029|Alguns países começam o mês um dia antes ou depois, conforme a observação da lua.
+1030|Como usar o conversor de data hijri
+1031|A data de hoje
+1032|aparece no topo nos dois calendários.
+1033|Escolha uma data gregoriana
+1034|para vê-la em hijri, ou digite dia, mês e ano hijri para vê-la em gregoriano.
+1035|Escolha o calendário
+1036|: Umm al-Qura, usado na Arábia Saudita, ou o civil padrão.
+1037|Por que a data do meu país pode variar um dia?
+1038|O mês hijri começa quando a lua nova é vista, e alguns países o anunciam um dia antes ou depois do calendário Umm al-Qura.
+1039|Quais anos ele cobre?
+1040|Anos hijri de 1300 a 1600 (cerca de 1882 a 2174) com Umm al-Qura.
+1041|É grátis?
+1042|Sim, grátis e sem cadastro. Funciona no seu navegador.
+1043|Converta datas hijri em gregorianas e vice-versa com o calendário Umm al-Qura. Veja a data hijri de hoje e o dia da semana. Grátis.
+1044|Conversor de data hijri: hijri para gregoriano e vice-versa, data de hoje | File Manager Toolkit
+1045|Links, Wi-Fi, WhatsApp e contatos. Grátis para sempre: estes QR Codes nunca expiram.
+1046|Link
+1047|Wi-Fi
+1048|WhatsApp
+1049|Telefone
+1050|E-mail
+1051|Contato
+1052|https://example.com
+1053|Nome da rede
+1054|Segurança
+1055|WPA/WPA2
+1056|WEP
+1057|Rede oculta
+1058|Número com código do país
+1059|Mensagem (opcional)
+1060|Número de telefone
+1061|Endereço de e-mail
+1062|name@example.com
+1063|Assunto (opcional)
+1064|Nome completo
+1065|Empresa
+1066|Cargo
+1067|Site
+1068|Estilo
+1069|Fundo transparente
+1070|512 px
+1071|1024 px
+1072|2048 px
+1073|Correção de erros
+1074|Média
+1075|Boa
+1076|Logo no centro (opcional)
+1077|Escolher um logo
+1078|Remover o logo
+1079|Prévia do QR Code
+1080|Baixar PNG
+1081|Baixar SVG
+1082|Copiar imagem
+1083|O QR Code contém o próprio link ou texto, não um redirecionamento, então funciona para sempre. Teste com a câmera do celular antes de imprimir.
+1084|Como usar o gerador de QR Code
+1085|Escolha o que o QR Code abre
+1086|: um link, Wi-Fi, WhatsApp, um telefone, um e-mail ou um cartão de contato.
+1087|Preencha os dados
+1088|. Mude as cores ou adicione seu logo, se quiser.
+1089|o PNG para telas ou o SVG para imprimir em qualquer tamanho.
+1090|Estes QR Codes expiram?
+1091|Nunca. O QR Code contém o próprio link ou texto. Alguns sites fazem QR Codes "dinâmicos" que passam pelo servidor deles e param quando você deixa de pagar. Estes não.
+1092|Posso adicionar meu logo?
+1093|Sim. Escolha um logo e ele fica no centro. A correção de erros vai para Alta para o código continuar legível.
+1094|Como funciona o QR Code de Wi-Fi?
+1095|Os convidados apontam a câmera do celular e entram na sua rede sem digitar a senha.
+1096|Crie QR Codes para links, texto, Wi-Fi, WhatsApp, telefone, e-mail e cartões de contato. Adicione suas cores e logo, baixe PNG ou SVG. Grátis para sempre, sem cadastro, nunca expiram.
+1097|Gerador de QR Code grátis: links, Wi-Fi, WhatsApp, sem expiração | File Manager Toolkit
+1098|Grama
+1099|Miligrama
+1100|Tonelada
+1101|Onça
+1102|Stone
+1103|Tonelada curta americana
+1104|Milímetro
+1105|Jarda
+1106|Milha náutica
+1107|Centímetro quadrado
+1108|Quilômetro quadrado
+1109|Hectare
+1110|Jarda quadrada
+1111|Acre
+1112|Milha quadrada
+1113|Qirat (Egito)
+1114|Dunam
+1115|Mililitro
+1116|Metro cúbico
+1117|Galão britânico
+1118|Quarto americano
+1119|Xícara americana
+1120|Onça fluida americana
+1121|Pé cúbico
+1122|Kelvin
+1123|Quilômetros por hora
+1124|Metros por segundo
+1125|Milhas por hora
+1126|Nó
+1127|Pés por segundo
+1128|Muharram
+1129|Safar
+1130|Rabi al-Awwal
+1131|Rabi al-Thani
+1132|Jumada al-Ula
+1133|Jumada al-Akhirah
+1134|Rajab
+1135|Shaban
+1136|Ramadã
+1137|Shawwal
+1138|Dhu al-Qadah
+1139|Dhu al-Hijjah
+1140|Janeiro
+1141|Fevereiro
+1142|Março
+1143|Abril
+1144|Maio
+1145|Junho
+1146|Julho
+1147|Agosto
+1148|Setembro
+1149|Outubro
+1150|Novembro
+1151|Dezembro
+1152|Domingo
+1153|Segunda-feira
+1154|Terça-feira
+1155|Quarta-feira
+1156|Quinta-feira
+1157|Sexta-feira
+1158|Sábado
+1159|Hoje
+1160|H
+1161|Confira o dia e o ano.
+1162|Este mês tem só 29 dias neste calendário.
+1163|Preencha os dados para criar seu QR Code.
+1164|Texto demais para um QR Code. Deixe mais curto.
+1165|Código claro em fundo escuro: alguns celulares não conseguem ler. Escuro em fundo claro funciona melhor.
+1166|As cores estão parecidas demais. Use mais contraste para os celulares lerem.
+1167|Pronto. Com logo, teste com a câmera do celular antes de imprimir.
+1168|Pronto. Aponte a câmera do celular para testar.
+1169|Carregando…
+1170|Seu navegador não copia imagens. Baixe o PNG.
+1171|Qualquer texto

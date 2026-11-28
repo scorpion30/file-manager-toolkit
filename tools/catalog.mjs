@@ -10,7 +10,12 @@ export const CATS = [
   { key: 'security', name: 'PDF security' },
   { key: 'files', name: 'File tools' },
   { key: 'eng', name: 'For engineers' },
+  { key: 'text', name: 'Text tools' },
+  { key: 'units', name: 'Converters' },
+  { key: 'generate', name: 'Generators' },
 ];
+// The everyday tools (not about files): their own block on the home page.
+export const EVERYDAY = ['text', 'units', 'generate'];
 
 const I = {
   merge: '<rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/>',
@@ -38,6 +43,16 @@ const I = {
   extract: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/><path d="M13 13h5M13 17h3"/>',
   comments: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/>',
   preflight: '<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  textcase: '<path d="M3 18 7.5 6 12 18M4.7 14h5.6"/><path d="M15 12.5a3 3 0 1 1 0 4.6M21 11v7"/>',
+  counter: '<path d="M4 6h16M4 12h10M4 18h7"/><path d="M17 15v6M20 18h-6"/>',
+  units: '<path d="M3 17 17 3l4 4L7 21Z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/>',
+  weight: '<path d="M6 8h12l2 12H4Z"/><circle cx="12" cy="5" r="2"/>',
+  length: '<path d="M2 12h20M5 9v6M19 9v6"/><path d="m8 9-3 3 3 3M16 9l3 3-3 3"/>',
+  area: '<rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h3M4 14h3M9 4v3M14 4v3"/>',
+  temp: '<path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0Z"/><path d="M12 10v6"/>',
+  volume: '<path d="M7 3h10M8 3v4l-3 5v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8l-3-5V3"/><path d="M5 14h14"/>',
+  hijri: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M14.5 13.5a3 3 0 1 0 1 4.5 2.4 2.4 0 0 1-1-4.5Z"/>',
+  qr: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M17 20h4v-3M14 20v.01"/>',
   midp: '<path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/>',
 };
 export const icon = (k) => `<svg viewBox="0 0 24 24" aria-hidden="true">${I[k]}</svg>`;
@@ -72,6 +87,20 @@ export const TOOLS = [
   { href: 'comments.html', cat: 'eng', icon: 'comments', name: 'PDF Comments to Excel', desc: 'Review comments to an Excel response sheet, with a picture of each.', unique: true },
   { href: 'preflight.html', cat: 'eng', icon: 'preflight', name: 'Pre-flight Check', desc: 'Duplicate numbers, wrong names and missing drawings, before you send.', unique: true },
   { href: 'midp.html', cat: 'eng', icon: 'midp', name: 'MIDP Check', desc: 'A whole submission against the MIDP and TIDPs: missing, extra, wrong revisions.', unique: true },
+  // everyday tools (EVERYDAY categories)
+  { href: 'text-case.html', cat: 'text', icon: 'textcase', name: 'Text Case Converter', desc: 'UPPERCASE, lowercase, Title Case and more. Clean up spaces, lines and Arabic diacritics.' },
+  { href: 'word-counter.html', cat: 'text', icon: 'counter', name: 'Word Counter', desc: 'Words, characters, sentences, lines and reading time, as you type.' },
+  { href: 'unit-converter.html', cat: 'units', icon: 'units', name: 'Unit Converter', desc: 'Length, weight, area, volume, temperature and speed, in one place.' },
+  { href: 'kg-to-lbs.html', cat: 'units', icon: 'weight', name: 'Kg to Lbs', desc: 'Kilograms to pounds and back, with a ready table.' },
+  { href: 'cm-to-inches.html', cat: 'units', icon: 'length', name: 'Cm to Inches', desc: 'Centimetres to inches and back, with a ready table.' },
+  { href: 'meters-to-feet.html', cat: 'units', icon: 'length', name: 'Meters to Feet', desc: 'Metres to feet and back, with feet and inches.' },
+  { href: 'km-to-miles.html', cat: 'units', icon: 'length', name: 'Km to Miles', desc: 'Kilometres to miles and back, with a ready table.' },
+  { href: 'sqm-to-sqft.html', cat: 'units', icon: 'area', name: 'Square Meters to Square Feet', desc: 'm² to ft² and back, for flats, plots and floor plans.' },
+  { href: 'feddan-to-sqm.html', cat: 'units', icon: 'area', name: 'Feddan to Square Meters', desc: 'Feddan, qirat, dunam, acre and hectare to m² and back.' },
+  { href: 'celsius-to-fahrenheit.html', cat: 'units', icon: 'temp', name: 'Celsius to Fahrenheit', desc: '°C to °F and back, with the formula and a ready table.' },
+  { href: 'liters-to-gallons.html', cat: 'units', icon: 'volume', name: 'Liters to Gallons', desc: 'Litres to US or UK gallons and back.' },
+  { href: 'hijri-converter.html', cat: 'units', icon: 'hijri', name: 'Hijri Date Converter', desc: 'Hijri to Gregorian and back, and today’s date in both calendars.' },
+  { href: 'qr-code.html', cat: 'generate', icon: 'qr', name: 'QR Code Generator', desc: 'QR codes for links, Wi-Fi, WhatsApp and contacts. Free forever, they never expire.' },
 ];
 
 export const byHref = (href) => TOOLS.find((t) => t.href === href);

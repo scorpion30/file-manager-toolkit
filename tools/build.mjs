@@ -37,7 +37,9 @@ const seoTitle = (t) => (t.length > 60 && t.endsWith(` | ${BRAND}`) ? t.slice(0,
 const LANGS = { fr: 'fr_FR', es: 'es_ES', pt: 'pt_BR', id: 'id_ID', tr: 'tr_TR', hi: 'hi_IN' };
 const CORE = new Set(['index.html', 'merge.html', 'compress.html', 'pdf-to-word.html', 'pdf-to-image.html', 'image-to-pdf.html',
   'split.html', 'rotate.html', 'unlock.html', 'protect.html', 'watermark.html', 'page-numbers.html', 'pages.html', 'ocr.html',
-  'crop.html', 'compare.html', 'remove-bg.html']);
+  'crop.html', 'compare.html', 'remove-bg.html',
+  'text-case.html', 'word-counter.html', 'unit-converter.html', 'kg-to-lbs.html', 'cm-to-inches.html', 'meters-to-feet.html', 'km-to-miles.html',
+  'sqm-to-sqft.html', 'feddan-to-sqm.html', 'celsius-to-fahrenheit.html', 'liters-to-gallons.html', 'hijri-converter.html', 'qr-code.html']);
 const LOCALE = { en: 'en_US', ar: 'ar_AR', ...LANGS };
 const FONTS = { ar: 'Noto+Sans+Arabic', hi: 'Noto+Sans+Devanagari' };
 const langsOf = (file) => ['en', 'ar', ...(CORE.has(file) ? Object.keys(LANGS) : [])];
@@ -146,6 +148,111 @@ const PAGES = [
     ar: {
       title: `إزالة خلفية الصور مجاناً وبدون رفع | ${BRAND}`, name: 'إزالة الخلفية', pitch: 'صورة PNG شفافة بضغطة واحدة، وصورك ما بتترفعش',
       desc: 'شيل خلفية الصور تلقائياً بالذكاء الاصطناعي اللي بيشتغل جوه المتصفح. PNG شفاف أو أبيض أو أي لون. صور كتير مرة واحدة وبالحجم الكامل، مجاني وبدون رفع وبدون تسجيل.',
+    },
+  },
+  // ---------- everyday tools (tools/util-pages.mjs) ----------
+  {
+    file: 'text-case.html', cat: 'files',
+    en: { title: `Text Case Converter: UPPERCASE, lowercase, Title Case, Free | ${BRAND}`, name: 'Text Case Converter', pitch: 'UPPERCASE, lowercase and Title Case in one click' },
+    ar: {
+      title: `تحويل حالة الأحرف الإنجليزية: كبيرة وصغيرة مجاناً | ${BRAND}`, name: 'تحويل حالة الأحرف', pitch: 'UPPERCASE وlowercase وTitle Case بضغطة واحدة',
+      desc: 'حوّل النص لحروف كبيرة UPPERCASE أو صغيرة lowercase أو Title Case أو Sentence case أو camelCase. وشيل المسافات الزيادة وفواصل الأسطر والأسطر المكررة والتشكيل من النص العربي. مجاني والنص ما بيترفعش.',
+    },
+  },
+  {
+    file: 'word-counter.html', cat: 'files',
+    en: { title: `Word Counter: Count Words and Characters Online, Free | ${BRAND}`, name: 'Word Counter', pitch: 'Words, characters and reading time as you type' },
+    ar: {
+      title: `عداد الكلمات والحروف أونلاين مجاناً | ${BRAND}`, name: 'عداد الكلمات', pitch: 'كلمات وحروف وجمل ووقت قراءة وأنت بتكتب',
+      desc: 'اعرف عدد الكلمات والحروف (بالمسافات ومن غيرها) والجمل والأسطر ووقت القراءة وأنت بتكتب. بيشتغل مع العربي والإنجليزي وكل اللغات. مجاني والنص ما بيترفعش.',
+    },
+  },
+  {
+    file: 'unit-converter.html', cat: 'files',
+    en: { title: `Unit Converter: Length, Weight, Area, Volume, Temperature, Speed | ${BRAND}`, name: 'Unit Converter', pitch: 'Length, weight, area, volume, temperature and speed' },
+    ar: {
+      title: `محول الوحدات: الطول والوزن والمساحة والحرارة | ${BRAND}`, name: 'محول الوحدات', pitch: 'طول ووزن ومساحة وحجم وحرارة وسرعة في مكان واحد',
+      desc: 'حوّل الطول والوزن والمساحة والحجم والحرارة والسرعة: متر وقدم وكيلو وباوند ومتر مربع وفدان ولتر وجالون ودرجات مئوية وفهرنهايت. مجاني وفوري.',
+    },
+  },
+  {
+    file: 'kg-to-lbs.html', cat: 'files',
+    en: { title: `Kg to Lbs Converter: Kilograms to Pounds, with Table | ${BRAND}`, name: 'Kg to Lbs', pitch: '1 kg = 2.20462 lb, with a ready table' },
+    ar: {
+      title: `تحويل كيلو إلى باوند (kg to lbs) مع جدول | ${BRAND}`, name: 'كيلو إلى باوند', pitch: '1 كيلو = 2.20462 باوند، مع جدول جاهز',
+      desc: 'حوّل الكيلوجرام إلى باوند والباوند إلى كيلو فوراً. 1 كيلو = 2.20462 باوند، مع جدول جاهز من 1 لـ 100 كيلو. مجاني.',
+    },
+  },
+  {
+    file: 'cm-to-inches.html', cat: 'files',
+    en: { title: `Cm to Inches Converter: Centimetres to Inches, with Table | ${BRAND}`, name: 'Cm to Inches', pitch: '1 inch = 2.54 cm, with a ready table' },
+    ar: {
+      title: `تحويل سم إلى إنش (cm to inches) مع جدول | ${BRAND}`, name: 'سم إلى إنش', pitch: '1 إنش = 2.54 سم، مع جدول جاهز',
+      desc: 'حوّل السنتيمتر إلى إنش والإنش إلى سنتيمتر فوراً. 1 إنش = 2.54 سم، مع جدول تحويل جاهز. مجاني.',
+    },
+  },
+  {
+    file: 'meters-to-feet.html', cat: 'files',
+    en: { title: `Meters to Feet Converter: m to ft, with Table | ${BRAND}`, name: 'Meters to Feet', pitch: '1 m = 3.28084 ft, feet and inches too' },
+    ar: {
+      title: `تحويل متر إلى قدم (m to ft) مع جدول | ${BRAND}`, name: 'متر إلى قدم', pitch: '1 متر = 3.28084 قدم، وبالقدم والإنش كمان',
+      desc: 'حوّل المتر إلى قدم والقدم إلى متر فوراً. 1 متر = 3.28084 قدم، مع جدول جاهز وبالقدم والإنش كمان. مجاني.',
+    },
+  },
+  {
+    file: 'km-to-miles.html', cat: 'files',
+    en: { title: `Km to Miles Converter: Kilometres to Miles, with Table | ${BRAND}`, name: 'Km to Miles', pitch: '1 km = 0.621371 mi, with a ready table' },
+    ar: {
+      title: `تحويل كيلومتر إلى ميل (km to miles) مع جدول | ${BRAND}`, name: 'كيلومتر إلى ميل', pitch: '1 كم = 0.621371 ميل، مع جدول جاهز',
+      desc: 'حوّل الكيلومتر إلى ميل والميل إلى كيلومتر فوراً. 1 كم = 0.621371 ميل، مع جدول فيه 5 و10 كم ونص الماراثون والماراثون. مجاني.',
+    },
+  },
+  {
+    file: 'sqm-to-sqft.html', cat: 'files',
+    en: { title: `Square Meters to Square Feet: m² to ft² Converter, with Table | ${BRAND}`, name: 'Square Meters to Square Feet', pitch: '1 m² = 10.7639 ft², for flats, plots and plans' },
+    ar: {
+      title: `تحويل متر مربع إلى قدم مربع (m² to ft²) مع جدول | ${BRAND}`, name: 'متر مربع إلى قدم مربع', pitch: '1 م² = 10.7639 قدم²، للشقق والأراضي والمخططات',
+      desc: 'حوّل المتر المربع إلى قدم مربع والعكس للشقق والفلل والأراضي والمخططات. 1 م² = 10.7639 قدم²، مع جدول جاهز. مجاني.',
+    },
+  },
+  {
+    file: 'feddan-to-sqm.html', cat: 'files',
+    en: { title: `Feddan to Square Meters: Feddan, Qirat, Dunam, Acre Converter | ${BRAND}`, name: 'Feddan to Square Meters', pitch: '1 feddan = 4,200.83 m² = 24 qirat' },
+    ar: {
+      title: `الفدان كم متر؟ تحويل فدان وقيراط إلى متر مربع | ${BRAND}`, name: 'فدان إلى متر مربع', pitch: '1 فدان = 4,200.83 م² = 24 قيراط',
+      desc: 'الفدان كم متر مربع؟ 1 فدان = 4,200.83 م² = 24 قيراط. حوّل الفدان والقيراط والدونم والإيكر والهكتار إلى متر مربع والعكس. مجاني.',
+    },
+  },
+  {
+    file: 'celsius-to-fahrenheit.html', cat: 'files',
+    en: { title: `Celsius to Fahrenheit Converter: °C to °F, with Formula and Table | ${BRAND}`, name: 'Celsius to Fahrenheit', pitch: '°F = °C × 9/5 + 32, with a ready table' },
+    ar: {
+      title: `تحويل مئوية إلى فهرنهايت (°C to °F) مع القانون | ${BRAND}`, name: 'مئوية إلى فهرنهايت', pitch: '°F = °C × 9/5 + 32، مع جدول جاهز',
+      desc: 'حوّل درجة الحرارة من مئوية إلى فهرنهايت والعكس فوراً. القانون: °F = °C × 9/5 + 32، مع جدول للطقس وحرارة الجسم والفرن. مجاني.',
+    },
+  },
+  {
+    file: 'liters-to-gallons.html', cat: 'files',
+    en: { title: `Liters to Gallons Converter: L to US and UK Gallons | ${BRAND}`, name: 'Liters to Gallons', pitch: 'Litres to US or UK gallons and back' },
+    ar: {
+      title: `تحويل لتر إلى جالون أمريكي وبريطاني | ${BRAND}`, name: 'لتر إلى جالون', pitch: 'لتر إلى جالون أمريكي أو بريطاني والعكس',
+      desc: 'حوّل اللتر إلى جالون (أمريكي أو بريطاني) والجالون إلى لتر فوراً. 1 جالون أمريكي = 3.78541 لتر، و1 جالون بريطاني = 4.54609 لتر. مجاني.',
+    },
+  },
+  {
+    file: 'hijri-converter.html', cat: 'qa',
+    en: { title: `Hijri Date Converter: Hijri to Gregorian and Back, Today’s Hijri Date | ${BRAND}`, name: 'Hijri Date Converter', pitch: 'Hijri to Gregorian and back, and today’s date' },
+    ar: {
+      title: `تحويل التاريخ من هجري إلى ميلادي والعكس | ${BRAND}`, name: 'تحويل التاريخ الهجري', pitch: 'هجري وميلادي، وتاريخ النهارده بالتقويمين',
+      desc: 'حوّل التاريخ من هجري لميلادي ومن ميلادي لهجري بتقويم أم القرى، واعرف تاريخ النهارده هجري ويوم الأسبوع. مجاني.',
+    },
+  },
+  {
+    file: 'qr-code.html', cat: 'qa',
+    en: { title: `Free QR Code Generator: Links, Wi-Fi, WhatsApp, No Expiry | ${BRAND}`, name: 'QR Code Generator', pitch: 'Free QR codes that never expire' },
+    ar: {
+      title: `إنشاء QR Code مجاناً: رابط وواي فاي وواتساب | ${BRAND}`, name: 'إنشاء QR Code', pitch: 'QR Code مجاني ما بينتهيش أبداً',
+      desc: 'اعمل QR Code لرابط أو نص أو واي فاي أو واتساب أو رقم تليفون أو إيميل أو كارت تواصل. غيّر الألوان وحط اللوجو ونزّله PNG أو SVG. مجاني للأبد وبدون تسجيل وما بينتهيش.',
     },
   },
   {

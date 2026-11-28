@@ -832,3 +832,341 @@
 831|Ces outils fonctionnent sur ordinateur, car ils ouvrent des dossiers et des PDF depuis votre disque. Envoyez-vous le lien et ouvrez-le à votre bureau.
 832|Nous répondrons bientôt à votre e-mail.
 833|Non
+834|Outils texte
+835|Convertisseur de casse
+836|Compteur de mots
+837|Convertisseurs
+838|Convertisseur d’unités
+839|Kg en livres
+840|Cm en pouces
+841|Mètres en pieds
+842|Km en miles
+843|Mètres carrés en pieds carrés
+844|Feddan en mètres carrés
+845|Celsius en Fahrenheit
+846|Litres en gallons
+847|Convertisseur de date hégirienne
+848|Générateurs
+849|Générateur de QR code
+850|Outils du quotidien
+851|Texte, conversions d’unités, dates hégiriennes et QR codes. Gratuit, instantané, rien à installer.
+852|MAJUSCULES, minuscules, Title Case et plus. Nettoyez les espaces, les lignes et les signes diacritiques arabes.
+853|Mots, caractères, phrases, lignes et temps de lecture, pendant que vous tapez.
+854|Longueur, poids, surface, volume, température et vitesse, au même endroit.
+855|Kilogrammes en livres et inversement, avec un tableau prêt.
+856|Centimètres en pouces et inversement, avec un tableau prêt.
+857|Mètres en pieds et inversement, en pieds et pouces aussi.
+858|Kilomètres en miles et inversement, avec un tableau prêt.
+859|m² en ft² et inversement, pour appartements, terrains et plans.
+860|Feddan, qirat, dunam, acre et hectare en m² et inversement.
+861|°C en °F et inversement, avec la formule et un tableau prêt.
+862|Litres en gallons US ou UK et inversement.
+863|De l’hégire au grégorien et inversement, avec la date du jour dans les deux calendriers.
+864|QR codes pour liens, Wi-Fi, WhatsApp et contacts. Gratuits pour toujours, ils n’expirent jamais.
+865|Collez votre texte et choisissez une casse. Nettoyez aussi les espaces et les lignes.
+866|Mots
+867|Caractères
+868|Caractères sans espaces
+869|Phrases
+870|Lignes
+871|Temps de lecture
+872|Changer la casse
+873|MAJUSCULES
+874|minuscules
+875|Majuscule à chaque mot
+876|Majuscule en début de phrase
+877|Inverser la casse
+878|camelCase
+879|snake_case
+880|kebab-case
+881|Nettoyer
+882|Supprimer les espaces en trop
+883|Supprimer les sauts de ligne
+884|Supprimer les lignes vides
+885|Supprimer les lignes en double
+886|Trier les lignes A → Z
+887|Supprimer les diacritiques arabes
+888|Copier le texte
+889|Télécharger en .txt
+890|Annuler
+891|Comment utiliser le convertisseur de casse
+892|Collez ou tapez
+893|votre texte dans la zone.
+894|Cliquez sur un bouton
+895|: MAJUSCULES, minuscules, Title Case, ou un nettoyage comme supprimer les espaces en trop.
+896|Copiez le résultat
+897|ou téléchargez-le en fichier .txt. Annuler revient d’une étape.
+898|Qu’est-ce que le Title Case ?
+899|Chaque mot commence par une majuscule, comme un titre de livre : « The Quick Brown Fox ». La casse de phrase ne met une majuscule qu’au premier mot de chaque phrase.
+900|Peut-il supprimer les diacritiques d’un texte arabe ?
+901|Oui. « Supprimer les diacritiques arabes » enlève le tashkeel (fatha, damma, kasra, shadda, etc.) et le tatweel, et garde les lettres.
+902|Mon texte est-il envoyé quelque part ?
+903|Non. Tout se passe dans votre navigateur. Rien n’est envoyé ni enregistré.
+904|Passez un texte en MAJUSCULES, minuscules, Title Case, casse de phrase, camelCase ou snake_case. Supprimez les espaces en trop, les sauts de ligne, les lignes en double et les diacritiques arabes. Gratuit, rien n’est envoyé.
+905|Convertisseur de casse : MAJUSCULES, minuscules, Title Case, gratuit | File Manager Toolkit
+906|Mots, caractères, phrases et temps de lecture, pendant que vous tapez.
+907|Comment utiliser le compteur de mots
+908|Lisez les chiffres
+909|en haut : ils se mettent à jour pendant que vous tapez.
+910|le texte avec les boutons ci-dessous si besoin, puis copiez-le.
+911|Compte-t-il bien les mots arabes ?
+912|Oui. Les mots sont comptés grâce aux espaces entre eux : l’arabe, l’anglais et les textes mixtes sont comptés de la même façon.
+913|Comment le temps de lecture est-il calculé ?
+914|Sur une base d’environ 200 mots par minute, une vitesse de lecture normale pour la plupart des gens.
+915|Comptez les mots, les caractères (avec et sans espaces), les phrases, les lignes et le temps de lecture pendant que vous tapez. Pour l’anglais, l’arabe et toutes les langues. Gratuit, rien n’est envoyé.
+916|Compteur de mots : compter les mots et les caractères en ligne, gratuit | File Manager Toolkit
+917|Votre texte
+918|Tapez ou collez votre texte ici
+919|Aucun changement
+920|Copié
+921|Longueur
+922|Poids
+923|Surface
+924|Volume
+925|Température
+926|Vitesse
+927|Valeur à convertir
+928|De
+929|Inverser les unités
+930|Résultat
+931|Vers
+932|La même valeur dans chaque unité
+933|Comment utiliser le convertisseur d’unités
+934|Tapez un nombre
+935|dans l’une des deux cases. L’autre se met à jour pendant que vous tapez.
+936|Choisissez d’autres unités
+937|dans les listes, ou appuyez sur ⇄ pour les inverser.
+938|Copiez n’importe quel résultat
+939|: cliquez sur une valeur de la liste pour la copier.
+940|Quelles unités sont incluses ?
+941|Unités métriques et impériales pour la longueur, le poids, la surface, le volume, la température et la vitesse, plus le feddan, le qirat et le dunam pour les terrains.
+942|Ce convertisseur est-il gratuit ?
+943|Oui, gratuit et sans inscription. Il fonctionne dans votre navigateur, même hors ligne une fois la page chargée.
+944|Convertissez longueur, poids, surface, volume, température et vitesse : mètres, pieds, kilos, livres, mètres carrés, feddan, litres, gallons, °C et °F. Gratuit, instantané, sans pub gênante.
+945|Convertisseur d’unités : longueur, poids, surface, volume, température, vitesse | File Manager Toolkit
+946|Kilogrammes en livres et inversement. 1 kg = 2,20462 lb.
+947|Tableaux de conversion
+948|Kilogramme
+949|Livre
+950|Comment convertir kg en livres
+951|Combien de livres dans un kilogramme ?
+952|Un kilogramme vaut 2,20462 livres. Pour passer des kg aux lbs, multipliez par 2,20462. Pour passer des lbs aux kg, multipliez par 0,453592.
+953|Convertissez instantanément les kilogrammes en livres (kg en lbs) et inversement. 1 kg = 2,20462 lb. Tableau prêt de 1 à 100 kg. Gratuit.
+954|Convertisseur kg en lbs : kilogrammes en livres, avec tableau | File Manager Toolkit
+955|Centimètres en pouces et inversement. 1 pouce = 2,54 cm.
+956|Centimètre
+957|Pouce
+958|Comment convertir cm en pouces
+959|Combien de centimètres dans un pouce ?
+960|Un pouce vaut exactement 2,54 cm. Pour passer des cm aux pouces, divisez par 2,54.
+961|Convertissez instantanément les centimètres en pouces (cm en in) et inversement. 1 pouce = 2,54 cm. Tableau prêt. Gratuit.
+962|Convertisseur cm en pouces, avec tableau | File Manager Toolkit
+963|Mètres en pieds et inversement. 1 m = 3,28084 ft.
+964|Mètre
+965|Pied
+966|Comment convertir mètres en pieds
+967|Combien de pieds dans un mètre ?
+968|Un mètre vaut 3,28084 pieds. Un pied vaut exactement 0,3048 mètre.
+969|Comment écrire des mètres en pieds et pouces ?
+970|Tapez les mètres : sous le résultat, vous avez aussi les pieds et pouces, par ex. 1,8 m = 5 ft 10.9 in.
+971|Convertissez instantanément les mètres en pieds (m en ft) et inversement. 1 m = 3,28084 ft. Tableau prêt, en pieds et pouces aussi. Gratuit.
+972|Convertisseur mètres en pieds : m en ft, avec tableau | File Manager Toolkit
+973|Kilomètres en miles et inversement. 1 km = 0,621371 mi.
+974|Kilomètre
+975|Mile
+976|Comment convertir km en miles
+977|Combien de miles fait un kilomètre ?
+978|Un kilomètre vaut 0,621371 mile. Un mile vaut 1,609344 km.
+979|Convertissez instantanément les kilomètres en miles (km en mi) et inversement. 1 km = 0,621371 mi. Tableau prêt avec 5 km, 10 km, semi et marathon. Gratuit.
+980|Convertisseur km en miles, avec tableau | File Manager Toolkit
+981|m² en ft² et inversement. 1 m² = 10,7639 ft².
+982|Mètre carré
+983|Pied carré
+984|Comment convertir m² en pieds carrés
+985|Combien de pieds carrés dans un mètre carré ?
+986|Un mètre carré vaut 10,7639 pieds carrés. Pour passer des ft² aux m², multipliez par 0,092903.
+987|Pourquoi les annonces immobilières utilisent-elles les pieds carrés ?
+988|Aux Émirats, aux États-Unis et au Royaume-Uni, les appartements se vendent souvent au pied carré. Tapez la surface ici pour la voir en mètres carrés.
+989|Convertissez les mètres carrés en pieds carrés (m² en ft²) et inversement, pour appartements, villas, terrains et plans. 1 m² = 10,7639 ft². Tableau prêt. Gratuit.
+990|Mètres carrés en pieds carrés : convertisseur m² en ft², avec tableau | File Manager Toolkit
+991|1 feddan = 4 200,83 m² = 24 qirat. Dunam, acre et hectare aussi.
+992|Feddan
+993|Comment convertir feddan en mètres carrés
+994|Combien de mètres carrés fait un feddan ?
+995|Un feddan vaut 4 200,83 mètres carrés, soit 24 qirat. Un qirat fait environ 175 m².
+996|Qu’est-ce qu’un dunam ?
+997|Un dunam vaut 1 000 mètres carrés dans la plupart des pays qui l’utilisent aujourd’hui.
+998|Combien de mètres carrés dans un feddan ? 1 feddan = 4 200,83 m² = 24 qirat. Convertissez feddan, qirat, dunam, acre et hectare en mètres carrés et inversement. Gratuit.
+999|Feddan en mètres carrés : convertisseur feddan, qirat, dunam, acre | File Manager Toolkit
+1000|°C en °F et inversement. °F = °C × 9/5 + 32.
+1001|Celsius
+1002|Fahrenheit
+1003|Comment convertir Celsius en Fahrenheit
+1004|Quelle est la formule ?
+1005|Fahrenheit = Celsius × 9 ÷ 5 + 32. Celsius = (Fahrenheit − 32) × 5 ÷ 9.
+1006|Quelle est la température normale du corps en Fahrenheit ?
+1007|Environ 37 °C, soit 98,6 °F.
+1008|Convertissez instantanément Celsius en Fahrenheit (°C en °F) et inversement. Formule : °F = °C × 9/5 + 32. Tableau prêt pour la météo, le corps et le four. Gratuit.
+1009|Convertisseur Celsius en Fahrenheit : °C en °F, formule et tableau | File Manager Toolkit
+1010|Litre
+1011|Gallon US
+1012|Comment convertir litres en gallons
+1013|Le gallon US est-il le même que le gallon UK ?
+1014|Non. Un gallon US fait 3,785 litres et un gallon UK (impérial) 4,546 litres. Choisissez celui qu’il vous faut dans la liste.
+1015|Convertissez instantanément les litres en gallons (US ou UK) et inversement. 1 gallon US = 3,78541 L, 1 gallon UK = 4,54609 L. Tableau prêt. Gratuit.
+1016|Convertisseur litres en gallons : L en gallons US et UK | File Manager Toolkit
+1017|De l’hégire au grégorien et inversement, avec la date du jour dans les deux calendriers.
+1018|Grégorien vers hégirien
+1019|Date grégorienne
+1020|Hégirien vers grégorien
+1021|Jour
+1022|Jour hégirien
+1023|Mois hégirien
+1024|Année
+1025|Année hégirienne
+1026|Calendrier
+1027|Umm al-Qura (Arabie saoudite)
+1028|Standard (civil)
+1029|Certains pays commencent le mois un jour plus tôt ou plus tard, selon l’observation de la lune.
+1030|Comment utiliser le convertisseur de date hégirienne
+1031|La date du jour
+1032|s’affiche en haut dans les deux calendriers.
+1033|Choisissez une date grégorienne
+1034|pour la voir en hégirien, ou tapez un jour, un mois et une année hégiriens pour la voir en grégorien.
+1035|Choisissez le calendrier
+1036|: Umm al-Qura, utilisé en Arabie saoudite, ou le calendrier civil standard.
+1037|Pourquoi la date de mon pays peut-elle différer d’un jour ?
+1038|Le mois hégirien commence quand la nouvelle lune est observée, et certains pays l’annoncent un jour avant ou après le calendrier Umm al-Qura.
+1039|Quelles années couvre-t-il ?
+1040|Les années hégiriennes 1300 à 1600 (environ 1882 à 2174) avec Umm al-Qura.
+1041|Est-ce gratuit ?
+1042|Oui, gratuit et sans inscription. Il fonctionne dans votre navigateur.
+1043|Convertissez les dates hégiriennes en grégoriennes et inversement avec le calendrier Umm al-Qura. Voyez la date hégirienne du jour et le jour de la semaine. Gratuit.
+1044|Convertisseur de date hégirienne : hégirien en grégorien et inversement, date du jour | File Manager Toolkit
+1045|Liens, Wi-Fi, WhatsApp et contacts. Gratuit pour toujours : ces QR codes n’expirent jamais.
+1046|Lien
+1047|Wi-Fi
+1048|WhatsApp
+1049|Téléphone
+1050|E-mail
+1051|Contact
+1052|https://example.com
+1053|Nom du réseau
+1054|Sécurité
+1055|WPA/WPA2
+1056|WEP
+1057|Réseau masqué
+1058|Numéro avec l’indicatif du pays
+1059|Message (facultatif)
+1060|Numéro de téléphone
+1061|Adresse e-mail
+1062|name@example.com
+1063|Objet (facultatif)
+1064|Nom complet
+1065|Entreprise
+1066|Poste
+1067|Site web
+1068|Style
+1069|Fond transparent
+1070|512 px
+1071|1024 px
+1072|2048 px
+1073|Correction d’erreur
+1074|Moyen
+1075|Bon
+1076|Logo au centre (facultatif)
+1077|Choisir un logo
+1078|Retirer le logo
+1079|Aperçu du QR code
+1080|Télécharger PNG
+1081|Télécharger SVG
+1082|Copier l’image
+1083|Le QR code contient votre lien ou texte lui-même, pas une redirection : il fonctionne pour toujours. Testez-le avec l’appareil photo de votre téléphone avant d’imprimer.
+1084|Comment utiliser le générateur de QR code
+1085|Choisissez ce que le QR code ouvre
+1086|: un lien, le Wi-Fi, WhatsApp, un numéro, un e-mail ou une fiche contact.
+1087|Remplissez les informations
+1088|. Changez les couleurs ou ajoutez votre logo si vous voulez.
+1089|le PNG pour les écrans ou le SVG pour imprimer à n’importe quelle taille.
+1090|Ces QR codes expirent-ils ?
+1091|Jamais. Le QR code contient votre lien ou texte lui-même. Certains sites font des QR codes « dynamiques » qui passent par leur serveur et cessent de marcher quand vous arrêtez de payer. Pas ceux-ci.
+1092|Puis-je ajouter mon logo ?
+1093|Oui. Choisissez un logo, il est placé au centre. La correction d’erreur passe en Élevée pour que le code reste lisible.
+1094|Comment fonctionne le QR code Wi-Fi ?
+1095|Vos invités pointent l’appareil photo de leur téléphone et rejoignent votre réseau sans taper le mot de passe.
+1096|Créez des QR codes pour liens, texte, Wi-Fi, WhatsApp, téléphone, e-mail et fiches contact. Ajoutez vos couleurs et votre logo, téléchargez en PNG ou SVG. Gratuit pour toujours, sans inscription, sans expiration.
+1097|Générateur de QR code gratuit : liens, Wi-Fi, WhatsApp, sans expiration | File Manager Toolkit
+1098|Gramme
+1099|Milligramme
+1100|Tonne
+1101|Once
+1102|Stone
+1103|Tonne courte US
+1104|Millimètre
+1105|Yard
+1106|Mille marin
+1107|Centimètre carré
+1108|Kilomètre carré
+1109|Hectare
+1110|Yard carré
+1111|Acre
+1112|Mile carré
+1113|Qirat (Égypte)
+1114|Dunam
+1115|Millilitre
+1116|Mètre cube
+1117|Gallon UK
+1118|Quart US
+1119|Tasse US
+1120|Once liquide US
+1121|Pied cube
+1122|Kelvin
+1123|Kilomètres par heure
+1124|Mètres par seconde
+1125|Miles par heure
+1126|Nœud
+1127|Pieds par seconde
+1128|Mouharram
+1129|Safar
+1130|Rabia al-Awal
+1131|Rabia al-Thani
+1132|Joumada al-Oula
+1133|Joumada al-Akhira
+1134|Rajab
+1135|Chaabane
+1136|Ramadan
+1137|Chawwal
+1138|Dhou al-Qi’da
+1139|Dhou al-Hijja
+1140|Janvier
+1141|Février
+1142|Mars
+1143|Avril
+1144|Mai
+1145|Juin
+1146|Juillet
+1147|Août
+1148|Septembre
+1149|Octobre
+1150|Novembre
+1151|Décembre
+1152|Dimanche
+1153|Lundi
+1154|Mardi
+1155|Mercredi
+1156|Jeudi
+1157|Vendredi
+1158|Samedi
+1159|Aujourd’hui
+1160|H
+1161|Vérifiez le jour et l’année.
+1162|Ce mois n’a que 29 jours dans ce calendrier.
+1163|Remplissez les informations pour créer votre QR code.
+1164|Trop de texte pour un seul QR code. Raccourcissez-le.
+1165|Code clair sur fond sombre : certains téléphones ne peuvent pas le lire. Foncé sur clair se lit le mieux.
+1166|Les couleurs sont trop proches. Augmentez le contraste pour que les téléphones puissent le lire.
+1167|Prêt. Avec un logo, testez-le avec l’appareil photo du téléphone avant d’imprimer.
+1168|Prêt. Pointez l’appareil photo du téléphone dessus pour tester.
+1169|Chargement…
+1170|Votre navigateur ne peut pas copier d’images. Téléchargez plutôt le PNG.
+1171|N’importe quel texte

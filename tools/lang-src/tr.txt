@@ -832,3 +832,341 @@
 831|Bu araçlar bilgisayarda çalışır, çünkü klasörleri ve PDF'leri diskinizden açar. Bağlantıyı kendinize gönderin ve masanızda açın.
 832|E-postanıza yakında yanıt vereceğiz.
 833|Hayır
+834|Metin araçları
+835|Büyük küçük harf dönüştürücü
+836|Kelime sayacı
+837|Dönüştürücüler
+838|Birim dönüştürücü
+839|Kg’dan pound’a
+840|Cm’den inç’e
+841|Metreden feet’e
+842|Km’den mile
+843|Metrekareden fit kareye
+844|Feddan’dan metrekareye
+845|Celsius’tan Fahrenheit’a
+846|Litreden galona
+847|Hicri tarih çevirici
+848|Oluşturucular
+849|QR kod oluşturucu
+850|Günlük araçlar
+851|Metin, birim dönüştürme, Hicri tarih ve QR kod. Ücretsiz, anında, kurulum yok.
+852|BÜYÜK HARF, küçük harf, Başlık Düzeni ve dahası. Boşlukları, satırları ve Arapça harekeleri temizleyin.
+853|Yazarken kelime, karakter, cümle, satır ve okuma süresi.
+854|Uzunluk, ağırlık, alan, hacim, sıcaklık ve hız tek yerde.
+855|Kilogramdan pound’a ve tersi, hazır tabloyla.
+856|Santimetreden inç’e ve tersi, hazır tabloyla.
+857|Metreden feet’e ve tersi, feet ve inç olarak da.
+858|Kilometreden mile ve tersi, hazır tabloyla.
+859|m²’den ft²’ye ve tersi; daire, arsa ve kat planları için.
+860|Feddan, kırat, dönüm, akre ve hektardan m²’ye ve tersi.
+861|°C’den °F’ye ve tersi, formül ve hazır tabloyla.
+862|Litreden ABD veya İngiliz galonuna ve tersi.
+863|Hicriden Miladiye ve tersi, bugünün tarihi iki takvimde.
+864|Bağlantı, Wi-Fi, WhatsApp ve kişiler için QR kod. Sonsuza dek ücretsiz, süresi hiç dolmaz.
+865|Metninizi yapıştırın ve harf düzenini seçin. Boşlukları ve satırları da temizleyin.
+866|Kelime
+867|Karakter
+868|Boşluksuz karakter
+869|Cümle
+870|Satır
+871|Okuma süresi
+872|Harf düzenini değiştir
+873|BÜYÜK HARF
+874|küçük harf
+875|Her Kelime Büyük
+876|Cümle düzeni
+877|Harfleri ters çevir
+878|camelCase
+879|snake_case
+880|kebab-case
+881|Temizle
+882|Fazla boşlukları sil
+883|Satır sonlarını sil
+884|Boş satırları sil
+885|Yinelenen satırları sil
+886|Satırları sırala A → Z
+887|Arapça harekeleri sil
+888|Metni kopyala
+889|.txt olarak indir
+890|Geri al
+891|Büyük küçük harf dönüştürücü nasıl kullanılır
+892|Yapıştırın veya yazın
+893|metninizi kutuya.
+894|Bir düğmeye tıklayın
+895|: BÜYÜK HARF, küçük harf, Başlık Düzeni ya da fazla boşlukları silmek gibi bir temizlik.
+896|Sonucu kopyalayın
+897|ya da .txt dosyası olarak indirin. Geri al bir adım geri gider.
+898|Başlık Düzeni nedir?
+899|Her kelime büyük harfle başlar, kitap başlığı gibi: "The Quick Brown Fox". Cümle düzeni yalnızca her cümlenin ilk kelimesini büyütür.
+900|Arapça metindeki harekeleri silebilir mi?
+901|Evet. "Arapça harekeleri sil" teşkili (üstün, ötre, esre, şedde ve diğerleri) ve tatvili kaldırır, harfleri bırakır.
+902|Metnim bir yere gönderiliyor mu?
+903|Hayır. Her şey tarayıcınızda olur. Hiçbir şey yüklenmez veya kaydedilmez.
+904|Metni BÜYÜK HARF, küçük harf, Başlık Düzeni, cümle düzeni, camelCase veya snake_case yapın. Fazla boşlukları, satır sonlarını, yinelenen satırları ve Arapça harekeleri silin. Ücretsiz, hiçbir şey yüklenmez.
+905|Büyük küçük harf dönüştürücü: BÜYÜK HARF, küçük harf, ücretsiz | File Manager Toolkit
+906|Yazarken kelime, karakter, cümle ve okuma süresi.
+907|Kelime sayacı nasıl kullanılır
+908|Sayılara bakın
+909|yukarıda: siz yazdıkça güncellenir.
+910|gerekirse metni aşağıdaki düğmelerle, sonra kopyalayın.
+911|Arapça kelimeleri doğru sayar mı?
+912|Evet. Kelimeler aralarındaki boşluklarla sayılır; Arapça, İngilizce ve karışık metin aynı şekilde sayılır.
+913|Okuma süresi nasıl hesaplanır?
+914|Dakikada yaklaşık 200 kelimeyle; çoğu insan için normal okuma hızı.
+915|Yazarken kelime, karakter (boşluklu ve boşluksuz), cümle, satır ve okuma süresini sayın. İngilizce, Arapça ve her dilde çalışır. Ücretsiz, hiçbir şey yüklenmez.
+916|Kelime sayacı: kelime ve karakter sayma, ücretsiz | File Manager Toolkit
+917|Metniniz
+918|Metninizi buraya yazın veya yapıştırın
+919|Değişiklik yok
+920|Kopyalandı
+921|Uzunluk
+922|Ağırlık
+923|Alan
+924|Hacim
+925|Sıcaklık
+926|Hız
+927|Dönüştürülecek değer
+928|Kaynak
+929|Birimleri değiştir
+930|Sonuç
+931|Hedef
+932|Aynı değer her birimde
+933|Birim dönüştürücü nasıl kullanılır
+934|Bir sayı yazın
+935|iki kutudan birine. Diğeri siz yazdıkça güncellenir.
+936|Başka birimler seçin
+937|listelerden ya da ⇄ ile yer değiştirin.
+938|Herhangi bir sonucu kopyalayın
+939|: listedeki bir değere tıklayınca kopyalanır.
+940|Hangi birimler var?
+941|Uzunluk, ağırlık, alan, hacim, sıcaklık ve hız için metrik ve İngiliz birimleri; arazi için feddan, kırat ve dönüm.
+942|Bu dönüştürücü ücretsiz mi?
+943|Evet, ücretsiz ve kayıtsız. Tarayıcınızda çalışır; sayfa yüklendikten sonra çevrimdışı bile.
+944|Uzunluk, ağırlık, alan, hacim, sıcaklık ve hız dönüştürün: metre, feet, kilogram, pound, metrekare, feddan, litre, galon, °C ve °F. Ücretsiz, anında, araya giren reklam yok.
+945|Birim dönüştürücü: uzunluk, ağırlık, alan, hacim, sıcaklık, hız | File Manager Toolkit
+946|Kilogramdan pound’a ve tersi. 1 kg = 2,20462 lb.
+947|Dönüşüm tabloları
+948|Kilogram
+949|Pound
+950|Kg’dan pound’a nasıl çevrilir
+951|Bir kilogram kaç pound?
+952|Bir kilogram 2,20462 pound’dur. Kg’dan lb’ye çevirmek için 2,20462 ile, lb’den kg’ye çevirmek için 0,453592 ile çarpın.
+953|Kilogramı pound’a (kg’dan lbs’ye) ve pound’u kg’ye anında çevirin. 1 kg = 2,20462 lb. 1–100 kg hazır tablo. Ücretsiz.
+954|Kg’dan lbs’ye çevirici: kilogramdan pound’a, tablolu | File Manager Toolkit
+955|Santimetreden inç’e ve tersi. 1 inç = 2,54 cm.
+956|Santimetre
+957|İnç
+958|Cm’den inç’e nasıl çevrilir
+959|Bir inç kaç santimetre?
+960|Bir inç tam 2,54 cm’dir. Cm’yi inç’e çevirmek için 2,54’e bölün.
+961|Santimetreyi inç’e (cm’den in’e) ve inç’i cm’ye anında çevirin. 1 inç = 2,54 cm. Hazır tablo. Ücretsiz.
+962|Cm’den inç’e çevirici, tablolu | File Manager Toolkit
+963|Metreden feet’e ve tersi. 1 m = 3,28084 ft.
+964|Metre
+965|Feet
+966|Metreden feet’e nasıl çevrilir
+967|Bir metre kaç feet?
+968|Bir metre 3,28084 feet’tir. Bir feet tam 0,3048 metredir.
+969|Metreyi feet ve inç olarak nasıl yazarım?
+970|Metreyi yazın: sonucun altında feet ve inç de görünür, örneğin 1,8 m = 5 ft 10.9 in.
+971|Metreyi feet’e (m’den ft’ye) ve feet’i metreye anında çevirin. 1 m = 3,28084 ft. Hazır tablo, feet ve inç de. Ücretsiz.
+972|Metreden feet’e çevirici: m’den ft’ye, tablolu | File Manager Toolkit
+973|Kilometreden mile ve tersi. 1 km = 0,621371 mi.
+974|Kilometre
+975|Mil
+976|Km’den mile nasıl çevrilir
+977|Bir kilometre kaç mil?
+978|Bir kilometre 0,621371 mildir. Bir mil 1,609344 km’dir.
+979|Kilometreyi mile (km’den mi’ye) ve mili km’ye anında çevirin. 1 km = 0,621371 mi. 5K, 10K, yarı ve tam maraton içeren hazır tablo. Ücretsiz.
+980|Km’den mile çevirici, tablolu | File Manager Toolkit
+981|m²’den ft²’ye ve tersi. 1 m² = 10,7639 ft².
+982|Metrekare
+983|Fit kare
+984|Metrekareden fit kareye nasıl çevrilir
+985|Bir metrekare kaç fit kare?
+986|Bir metrekare 10,7639 fit karedir. Ft²’yi m²’ye çevirmek için 0,092903 ile çarpın.
+987|Emlak ilanları neden fit kare kullanır?
+988|BAE, ABD ve İngiltere’de daireler genelde fit kare ile satılır. Ölçüyü buraya yazıp metrekare olarak görün.
+989|Metrekareyi fit kareye (sqm’den sqft’ye) ve tersine çevirin; daire, villa, arsa ve kat planları için. 1 m² = 10,7639 ft². Hazır tablo. Ücretsiz.
+990|Metrekareden fit kareye: m²’den ft²’ye çevirici, tablolu | File Manager Toolkit
+991|1 feddan = 4.200,83 m² = 24 kırat. Dönüm, akre ve hektar da var.
+992|Feddan
+993|Feddan’dan metrekareye nasıl çevrilir
+994|Bir feddan kaç metrekare?
+995|Bir feddan 4.200,83 metrekaredir, yani 24 kırat. Bir kırat yaklaşık 175 m²’dir.
+996|Dönüm nedir?
+997|Bir dönüm, bugün kullanan çoğu ülkede 1.000 metrekaredir.
+998|Bir feddan kaç metrekare? 1 feddan = 4.200,83 m² = 24 kırat. Feddan, kırat, dönüm, akre ve hektarı metrekareye ve tersine çevirin. Ücretsiz.
+999|Feddan’dan metrekareye: feddan, kırat, dönüm, akre çevirici | File Manager Toolkit
+1000|°C’den °F’ye ve tersi. °F = °C × 9/5 + 32.
+1001|Celsius
+1002|Fahrenheit
+1003|Celsius’tan Fahrenheit’a nasıl çevrilir
+1004|Formül nedir?
+1005|Fahrenheit = Celsius × 9 ÷ 5 + 32. Celsius = (Fahrenheit − 32) × 5 ÷ 9.
+1006|Normal vücut sıcaklığı kaç Fahrenheit?
+1007|Yaklaşık 37 °C, yani 98,6 °F.
+1008|Celsius’u Fahrenheit’a (°C’den °F’ye) ve tersine anında çevirin. Formül: °F = °C × 9/5 + 32. Hava, vücut ve fırın için hazır tablo. Ücretsiz.
+1009|Celsius’tan Fahrenheit’a çevirici: °C’den °F’ye, formül ve tablo | File Manager Toolkit
+1010|Litre
+1011|ABD galonu
+1012|Litreden galona nasıl çevrilir
+1013|ABD galonu İngiliz galonuyla aynı mı?
+1014|Hayır. ABD galonu 3,785 litre, İngiliz (imperial) galonu 4,546 litredir. Listeden gerekeni seçin.
+1015|Litreyi galona (ABD veya İngiliz) ve galonu litreye anında çevirin. 1 ABD galonu = 3,78541 L, 1 İngiliz galonu = 4,54609 L. Hazır tablo. Ücretsiz.
+1016|Litreden galona çevirici: L’den ABD ve İngiliz galonuna | File Manager Toolkit
+1017|Hicriden Miladiye ve tersi, bugünün tarihi iki takvimde.
+1018|Miladiden Hicriye
+1019|Miladi tarih
+1020|Hicriden Miladiye
+1021|Gün
+1022|Hicri gün
+1023|Hicri ay
+1024|Yıl
+1025|Hicri yıl
+1026|Takvim
+1027|Ümmülkura (Suudi Arabistan)
+1028|Standart (sivil)
+1029|Bazı ülkeler ayı, hilal görüldükten sonra bir gün önce veya sonra başlatır.
+1030|Hicri tarih çevirici nasıl kullanılır
+1031|Bugünün tarihi
+1032|üstte iki takvimde gösterilir.
+1033|Bir Miladi tarih seçin
+1034|Hicri halini görmek için; ya da Hicri gün, ay ve yıl yazıp Miladi halini görün.
+1035|Takvimi seçin
+1036|: Suudi Arabistan’da kullanılan Ümmülkura ya da standart sivil takvim.
+1037|Ülkemin tarihi neden bir gün farklı olabilir?
+1038|Hicri ay hilal görülünce başlar; bazı ülkeler bunu Ümmülkura takviminden bir gün önce veya sonra ilan eder.
+1039|Hangi yılları kapsar?
+1040|Ümmülkura ile Hicri 1300–1600 yılları (yaklaşık 1882–2174).
+1041|Ücretsiz mi?
+1042|Evet, ücretsiz ve kayıtsız. Tarayıcınızda çalışır.
+1043|Hicri tarihleri Miladiye ve Miladiyi Hicriye Ümmülkura takvimiyle çevirin. Bugünün Hicri tarihini ve haftanın gününü görün. Ücretsiz.
+1044|Hicri tarih çevirici: Hicriden Miladiye ve tersi, bugünün Hicri tarihi | File Manager Toolkit
+1045|Bağlantı, Wi-Fi, WhatsApp ve kişiler. Sonsuza dek ücretsiz: bu QR kodların süresi dolmaz.
+1046|Bağlantı
+1047|Wi-Fi
+1048|WhatsApp
+1049|Telefon
+1050|E-posta
+1051|Kişi
+1052|https://example.com
+1053|Ağ adı
+1054|Güvenlik
+1055|WPA/WPA2
+1056|WEP
+1057|Gizli ağ
+1058|Ülke koduyla telefon numarası
+1059|Mesaj (isteğe bağlı)
+1060|Telefon numarası
+1061|E-posta adresi
+1062|name@example.com
+1063|Konu (isteğe bağlı)
+1064|Ad soyad
+1065|Şirket
+1066|Unvan
+1067|Web sitesi
+1068|Stil
+1069|Şeffaf arka plan
+1070|512 px
+1071|1024 px
+1072|2048 px
+1073|Hata düzeltme
+1074|Orta
+1075|İyi
+1076|Ortada logo (isteğe bağlı)
+1077|Logo seçin
+1078|Logoyu kaldır
+1079|QR kod önizlemesi
+1080|PNG indir
+1081|SVG indir
+1082|Resmi kopyala
+1083|QR kod, yönlendirme değil bağlantınızın ya da metninizin kendisini taşır; sonsuza dek çalışır. Yazdırmadan önce telefon kamerasıyla deneyin.
+1084|QR kod oluşturucu nasıl kullanılır
+1085|QR kodun ne açacağını seçin
+1086|: bağlantı, Wi-Fi, WhatsApp, telefon numarası, e-posta ya da kişi kartı.
+1087|Bilgileri doldurun
+1088|. İsterseniz renkleri değiştirin veya logonuzu ekleyin.
+1089|ekranlar için PNG’yi, her boyutta baskı için SVG’yi.
+1090|Bu QR kodların süresi dolar mı?
+1091|Asla. QR kod bağlantınızın ya da metninizin kendisini taşır. Bazı siteler sunucularından geçen "dinamik" QR kodlar yapar ve ödemeyi bırakınca çalışmaz. Bunlar öyle değil.
+1092|Logomu ekleyebilir miyim?
+1093|Evet. Bir logo seçin, ortaya yerleştirilir. Kodun okunması için hata düzeltme Yüksek’e ayarlanır.
+1094|Wi-Fi QR kodu nasıl çalışır?
+1095|Misafirler telefon kamerasını tutar ve şifre yazmadan ağınıza bağlanır.
+1096|Bağlantı, metin, Wi-Fi, WhatsApp, telefon, e-posta ve kişi kartları için QR kod yapın. Renk ve logo ekleyin, PNG veya SVG indirin. Sonsuza dek ücretsiz, kayıtsız, süresi dolmaz.
+1097|Ücretsiz QR kod oluşturucu: bağlantı, Wi-Fi, WhatsApp, süresiz | File Manager Toolkit
+1098|Gram
+1099|Miligram
+1100|Ton
+1101|Ons
+1102|Stone
+1103|ABD tonu
+1104|Milimetre
+1105|Yarda
+1106|Deniz mili
+1107|Santimetrekare
+1108|Kilometrekare
+1109|Hektar
+1110|Yarda kare
+1111|Akre
+1112|Mil kare
+1113|Kırat (Mısır)
+1114|Dönüm
+1115|Mililitre
+1116|Metreküp
+1117|İngiliz galonu
+1118|ABD kuartı
+1119|ABD su bardağı
+1120|ABD sıvı onsu
+1121|Fit küp
+1122|Kelvin
+1123|Kilometre/saat
+1124|Metre/saniye
+1125|Mil/saat
+1126|Knot
+1127|Feet/saniye
+1128|Muharrem
+1129|Safer
+1130|Rebiülevvel
+1131|Rebiülahir
+1132|Cemaziyelevvel
+1133|Cemaziyelahir
+1134|Recep
+1135|Şaban
+1136|Ramazan
+1137|Şevval
+1138|Zilkade
+1139|Zilhicce
+1140|Ocak
+1141|Şubat
+1142|Mart
+1143|Nisan
+1144|Mayıs
+1145|Haziran
+1146|Temmuz
+1147|Ağustos
+1148|Eylül
+1149|Ekim
+1150|Kasım
+1151|Aralık
+1152|Pazar
+1153|Pazartesi
+1154|Salı
+1155|Çarşamba
+1156|Perşembe
+1157|Cuma
+1158|Cumartesi
+1159|Bugün
+1160|H
+1161|Günü ve yılı kontrol edin.
+1162|Bu ay bu takvimde yalnızca 29 gün.
+1163|QR kodunuzu yapmak için bilgileri doldurun.
+1164|Tek bir QR kod için metin çok uzun. Kısaltın.
+1165|Koyu zemin üzerinde açık kod: bazı telefonlar okuyamaz. Açık zeminde koyu kod en iyi okunur.
+1166|Renkler birbirine çok yakın. Telefonların okuyabilmesi için kontrastı artırın.
+1167|Hazır. Logoluysa yazdırmadan önce telefon kamerasıyla deneyin.
+1168|Hazır. Denemek için telefon kamerasını tutun.
+1169|Yükleniyor…
+1170|Tarayıcınız resim kopyalayamıyor. Bunun yerine PNG’yi indirin.
+1171|Herhangi bir metin

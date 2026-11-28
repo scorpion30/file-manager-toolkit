@@ -832,3 +832,341 @@
 831|Alat ini berjalan di komputer, karena membuka folder dan PDF dari disk Anda. Kirim tautannya ke diri sendiri dan buka di meja kerja Anda.
 832|Kami akan segera membalas ke email Anda.
 833|Tidak
+834|Alat teks
+835|Pengubah huruf besar kecil
+836|Penghitung kata
+837|Konverter
+838|Konverter satuan
+839|Kg ke pon
+840|Cm ke inci
+841|Meter ke kaki
+842|Km ke mil
+843|Meter persegi ke kaki persegi
+844|Feddan ke meter persegi
+845|Celsius ke Fahrenheit
+846|Liter ke galon
+847|Konverter tanggal Hijriah
+848|Generator
+849|Pembuat kode QR
+850|Alat sehari-hari
+851|Teks, konversi satuan, tanggal Hijriah, dan kode QR. Gratis, instan, tanpa instal apa pun.
+852|HURUF BESAR, huruf kecil, Title Case, dan lainnya. Rapikan spasi, baris, dan harakat Arab.
+853|Kata, karakter, kalimat, baris, dan waktu baca saat Anda mengetik.
+854|Panjang, berat, luas, volume, suhu, dan kecepatan dalam satu tempat.
+855|Kilogram ke pon dan sebaliknya, dengan tabel siap pakai.
+856|Sentimeter ke inci dan sebaliknya, dengan tabel siap pakai.
+857|Meter ke kaki dan sebaliknya, juga dalam kaki dan inci.
+858|Kilometer ke mil dan sebaliknya, dengan tabel siap pakai.
+859|m² ke ft² dan sebaliknya, untuk apartemen, tanah, dan denah.
+860|Feddan, qirat, dunam, are, dan hektare ke m² dan sebaliknya.
+861|°C ke °F dan sebaliknya, dengan rumus dan tabel siap pakai.
+862|Liter ke galon AS atau Inggris dan sebaliknya.
+863|Hijriah ke Masehi dan sebaliknya, plus tanggal hari ini di kedua kalender.
+864|Kode QR untuk tautan, Wi-Fi, WhatsApp, dan kontak. Gratis selamanya, tidak pernah kedaluwarsa.
+865|Tempel teks Anda dan pilih jenis huruf. Rapikan juga spasi dan baris.
+866|Kata
+867|Karakter
+868|Karakter tanpa spasi
+869|Kalimat
+870|Baris
+871|Waktu baca
+872|Ubah huruf
+873|HURUF BESAR
+874|huruf kecil
+875|Huruf Awal Kapital
+876|Huruf awal kalimat
+877|Balik huruf
+878|camelCase
+879|snake_case
+880|kebab-case
+881|Rapikan
+882|Hapus spasi berlebih
+883|Hapus jeda baris
+884|Hapus baris kosong
+885|Hapus baris duplikat
+886|Urutkan baris A → Z
+887|Hapus harakat Arab
+888|Salin teks
+889|Unduh .txt
+890|Urungkan
+891|Cara memakai pengubah huruf besar kecil
+892|Tempel atau ketik
+893|teks Anda di kotak.
+894|Klik tombol
+895|: HURUF BESAR, huruf kecil, Title Case, atau perapian seperti menghapus spasi berlebih.
+896|Salin hasilnya
+897|atau unduh sebagai file .txt. Urungkan kembali satu langkah.
+898|Apa itu Title Case?
+899|Setiap kata diawali huruf kapital, seperti judul buku: "The Quick Brown Fox". Huruf awal kalimat hanya mengkapitalkan kata pertama setiap kalimat.
+900|Bisakah menghapus harakat dari teks Arab?
+901|Ya. "Hapus harakat Arab" menghapus tasykil (fathah, dammah, kasrah, syaddah, dan lainnya) serta tatwil, dan huruf tetap ada.
+902|Apakah teks saya dikirim ke mana pun?
+903|Tidak. Semuanya terjadi di browser Anda. Tidak ada yang diunggah atau disimpan.
+904|Ubah teks menjadi HURUF BESAR, huruf kecil, Title Case, huruf awal kalimat, camelCase, atau snake_case. Hapus spasi berlebih, jeda baris, baris duplikat, dan harakat Arab. Gratis, tidak ada yang diunggah.
+905|Pengubah huruf besar kecil: HURUF BESAR, huruf kecil, Title Case, gratis | File Manager Toolkit
+906|Kata, karakter, kalimat, dan waktu baca saat Anda mengetik.
+907|Cara memakai penghitung kata
+908|Lihat hitungannya
+909|di bagian atas: berubah saat Anda mengetik.
+910|teks dengan tombol di bawah jika perlu, lalu salin.
+911|Apakah kata bahasa Arab dihitung dengan benar?
+912|Ya. Kata dihitung dari spasi di antaranya, jadi teks Arab, Inggris, dan campuran dihitung dengan cara yang sama.
+913|Bagaimana waktu baca dihitung?
+914|Sekitar 200 kata per menit, kecepatan baca normal bagi kebanyakan orang.
+915|Hitung kata, karakter (dengan dan tanpa spasi), kalimat, baris, dan waktu baca saat mengetik. Untuk bahasa Inggris, Arab, dan semua bahasa. Gratis, tidak ada yang diunggah.
+916|Penghitung kata: hitung kata dan karakter online, gratis | File Manager Toolkit
+917|Teks Anda
+918|Ketik atau tempel teks Anda di sini
+919|Tidak ada perubahan
+920|Disalin
+921|Panjang
+922|Berat
+923|Luas
+924|Volume
+925|Suhu
+926|Kecepatan
+927|Nilai yang dikonversi
+928|Dari
+929|Tukar satuan
+930|Hasil
+931|Ke
+932|Nilai yang sama di setiap satuan
+933|Cara memakai konverter satuan
+934|Ketik angka
+935|di salah satu kotak. Kotak lainnya berubah saat Anda mengetik.
+936|Pilih satuan lain
+937|dari daftar, atau tekan ⇄ untuk menukarnya.
+938|Salin hasil mana pun
+939|: klik nilai di daftar untuk menyalinnya.
+940|Satuan apa saja yang ada?
+941|Satuan metrik dan imperial untuk panjang, berat, luas, volume, suhu, dan kecepatan, plus feddan, qirat, dan dunam untuk tanah.
+942|Apakah konverter ini gratis?
+943|Ya, gratis dan tanpa daftar. Berjalan di browser Anda, bahkan offline setelah halaman dimuat.
+944|Konversi panjang, berat, luas, volume, suhu, dan kecepatan: meter, kaki, kilogram, pon, meter persegi, feddan, liter, galon, °C, dan °F. Gratis, instan, tanpa iklan mengganggu.
+945|Konverter satuan: panjang, berat, luas, volume, suhu, kecepatan | File Manager Toolkit
+946|Kilogram ke pon dan sebaliknya. 1 kg = 2,20462 lb.
+947|Tabel konversi
+948|Kilogram
+949|Pon
+950|Cara mengubah kg ke pon
+951|Berapa pon dalam satu kilogram?
+952|Satu kilogram sama dengan 2,20462 pon. Untuk kg ke lb, kalikan 2,20462. Untuk lb ke kg, kalikan 0,453592.
+953|Ubah kilogram ke pon (kg ke lbs) dan pon ke kg secara instan. 1 kg = 2,20462 lb. Tabel siap pakai 1 sampai 100 kg. Gratis.
+954|Konverter kg ke lbs: kilogram ke pon, dengan tabel | File Manager Toolkit
+955|Sentimeter ke inci dan sebaliknya. 1 inci = 2,54 cm.
+956|Sentimeter
+957|Inci
+958|Cara mengubah cm ke inci
+959|Berapa sentimeter dalam satu inci?
+960|Satu inci tepat 2,54 cm. Untuk cm ke inci, bagi dengan 2,54.
+961|Ubah sentimeter ke inci (cm ke in) dan inci ke cm secara instan. 1 inci = 2,54 cm. Tabel siap pakai. Gratis.
+962|Konverter cm ke inci, dengan tabel | File Manager Toolkit
+963|Meter ke kaki dan sebaliknya. 1 m = 3,28084 ft.
+964|Meter
+965|Kaki
+966|Cara mengubah meter ke kaki
+967|Berapa kaki dalam satu meter?
+968|Satu meter sama dengan 3,28084 kaki. Satu kaki tepat 0,3048 meter.
+969|Bagaimana menulis meter dalam kaki dan inci?
+970|Ketik meternya: di bawah hasil ada juga kaki dan inci, misalnya 1,8 m = 5 ft 10.9 in.
+971|Ubah meter ke kaki (m ke ft) dan kaki ke meter secara instan. 1 m = 3,28084 ft. Tabel siap pakai, juga kaki dan inci. Gratis.
+972|Konverter meter ke kaki: m ke ft, dengan tabel | File Manager Toolkit
+973|Kilometer ke mil dan sebaliknya. 1 km = 0,621371 mi.
+974|Kilometer
+975|Mil
+976|Cara mengubah km ke mil
+977|Berapa mil satu kilometer?
+978|Satu kilometer sama dengan 0,621371 mil. Satu mil sama dengan 1,609344 km.
+979|Ubah kilometer ke mil (km ke mi) dan mil ke km secara instan. 1 km = 0,621371 mi. Tabel siap pakai dengan 5K, 10K, half dan full marathon. Gratis.
+980|Konverter km ke mil, dengan tabel | File Manager Toolkit
+981|m² ke ft² dan sebaliknya. 1 m² = 10,7639 ft².
+982|Meter persegi
+983|Kaki persegi
+984|Cara mengubah m² ke kaki persegi
+985|Berapa kaki persegi dalam satu meter persegi?
+986|Satu meter persegi sama dengan 10,7639 kaki persegi. Untuk ft² ke m², kalikan 0,092903.
+987|Mengapa iklan properti memakai kaki persegi?
+988|Di UEA, AS, dan Inggris, apartemen biasanya dijual per kaki persegi. Ketik ukurannya di sini untuk melihatnya dalam meter persegi.
+989|Ubah meter persegi ke kaki persegi (sqm ke sqft) dan sebaliknya, untuk apartemen, vila, tanah, dan denah. 1 m² = 10,7639 ft². Tabel siap pakai. Gratis.
+990|Meter persegi ke kaki persegi: konverter m² ke ft², dengan tabel | File Manager Toolkit
+991|1 feddan = 4.200,83 m² = 24 qirat. Juga dunam, are, dan hektare.
+992|Feddan
+993|Cara mengubah feddan ke meter persegi
+994|Berapa meter persegi satu feddan?
+995|Satu feddan sama dengan 4.200,83 meter persegi, sama dengan 24 qirat. Satu qirat sekitar 175 m².
+996|Apa itu dunam?
+997|Satu dunam sama dengan 1.000 meter persegi di kebanyakan negara yang memakainya sekarang.
+998|Berapa meter persegi dalam satu feddan? 1 feddan = 4.200,83 m² = 24 qirat. Ubah feddan, qirat, dunam, are, dan hektare ke meter persegi dan sebaliknya. Gratis.
+999|Feddan ke meter persegi: konverter feddan, qirat, dunam, are | File Manager Toolkit
+1000|°C ke °F dan sebaliknya. °F = °C × 9/5 + 32.
+1001|Celsius
+1002|Fahrenheit
+1003|Cara mengubah Celsius ke Fahrenheit
+1004|Apa rumusnya?
+1005|Fahrenheit = Celsius × 9 ÷ 5 + 32. Celsius = (Fahrenheit − 32) × 5 ÷ 9.
+1006|Berapa suhu tubuh normal dalam Fahrenheit?
+1007|Sekitar 37 °C, yaitu 98,6 °F.
+1008|Ubah Celsius ke Fahrenheit (°C ke °F) dan sebaliknya secara instan. Rumus: °F = °C × 9/5 + 32. Tabel siap pakai untuk cuaca, suhu tubuh, dan oven. Gratis.
+1009|Konverter Celsius ke Fahrenheit: °C ke °F, rumus dan tabel | File Manager Toolkit
+1010|Liter
+1011|Galon AS
+1012|Cara mengubah liter ke galon
+1013|Apakah galon AS sama dengan galon Inggris?
+1014|Tidak. Galon AS 3,785 liter dan galon Inggris (imperial) 4,546 liter. Pilih yang Anda perlukan dari daftar.
+1015|Ubah liter ke galon (AS atau Inggris) dan galon ke liter secara instan. 1 galon AS = 3,78541 L, 1 galon Inggris = 4,54609 L. Tabel siap pakai. Gratis.
+1016|Konverter liter ke galon: L ke galon AS dan Inggris | File Manager Toolkit
+1017|Hijriah ke Masehi dan sebaliknya, dengan tanggal hari ini di kedua kalender.
+1018|Masehi ke Hijriah
+1019|Tanggal Masehi
+1020|Hijriah ke Masehi
+1021|Hari
+1022|Hari Hijriah
+1023|Bulan Hijriah
+1024|Tahun
+1025|Tahun Hijriah
+1026|Kalender
+1027|Umm al-Qura (Arab Saudi)
+1028|Standar (sipil)
+1029|Beberapa negara memulai bulan sehari lebih awal atau lebih lambat, setelah hilal terlihat.
+1030|Cara memakai konverter tanggal Hijriah
+1031|Tanggal hari ini
+1032|ditampilkan di atas dalam kedua kalender.
+1033|Pilih tanggal Masehi
+1034|untuk melihatnya dalam Hijriah, atau ketik hari, bulan, dan tahun Hijriah untuk melihatnya dalam Masehi.
+1035|Pilih kalender
+1036|: Umm al-Qura yang dipakai di Arab Saudi, atau kalender sipil standar.
+1037|Mengapa tanggal di negara saya bisa berbeda sehari?
+1038|Bulan Hijriah dimulai saat hilal terlihat, dan beberapa negara mengumumkannya sehari lebih awal atau lebih lambat dari kalender Umm al-Qura.
+1039|Tahun berapa saja yang dicakup?
+1040|Tahun Hijriah 1300 sampai 1600 (sekitar 1882 sampai 2174) dengan Umm al-Qura.
+1041|Apakah gratis?
+1042|Ya, gratis dan tanpa daftar. Berjalan di browser Anda.
+1043|Ubah tanggal Hijriah ke Masehi dan sebaliknya dengan kalender Umm al-Qura. Lihat tanggal Hijriah hari ini dan nama harinya. Gratis.
+1044|Konverter tanggal Hijriah: Hijriah ke Masehi dan sebaliknya, tanggal hari ini | File Manager Toolkit
+1045|Tautan, Wi-Fi, WhatsApp, dan kontak. Gratis selamanya: kode QR ini tidak pernah kedaluwarsa.
+1046|Tautan
+1047|Wi-Fi
+1048|WhatsApp
+1049|Telepon
+1050|Email
+1051|Kontak
+1052|https://example.com
+1053|Nama jaringan
+1054|Keamanan
+1055|WPA/WPA2
+1056|WEP
+1057|Jaringan tersembunyi
+1058|Nomor telepon dengan kode negara
+1059|Pesan (opsional)
+1060|Nomor telepon
+1061|Alamat email
+1062|name@example.com
+1063|Subjek (opsional)
+1064|Nama lengkap
+1065|Perusahaan
+1066|Jabatan
+1067|Situs web
+1068|Gaya
+1069|Latar transparan
+1070|512 px
+1071|1024 px
+1072|2048 px
+1073|Koreksi kesalahan
+1074|Sedang
+1075|Baik
+1076|Logo di tengah (opsional)
+1077|Pilih logo
+1078|Hapus logo
+1079|Pratinjau kode QR
+1080|Unduh PNG
+1081|Unduh SVG
+1082|Salin gambar
+1083|Kode QR berisi tautan atau teks Anda sendiri, bukan pengalihan, jadi berfungsi selamanya. Uji dengan kamera ponsel sebelum mencetak.
+1084|Cara memakai pembuat kode QR
+1085|Pilih apa yang dibuka kode QR
+1086|: tautan, Wi-Fi, WhatsApp, nomor telepon, email, atau kartu kontak.
+1087|Isi detailnya
+1088|. Ubah warna atau tambahkan logo jika mau.
+1089|PNG untuk layar atau SVG untuk cetak di ukuran berapa pun.
+1090|Apakah kode QR ini kedaluwarsa?
+1091|Tidak pernah. Kode QR berisi tautan atau teks Anda sendiri. Beberapa situs membuat kode QR "dinamis" yang lewat server mereka dan berhenti saat Anda berhenti membayar. Yang ini tidak.
+1092|Bisakah saya menambahkan logo?
+1093|Ya. Pilih logo dan logo ditempatkan di tengah. Koreksi kesalahan diatur ke Tinggi agar kode tetap terbaca.
+1094|Bagaimana kode QR Wi-Fi bekerja?
+1095|Tamu mengarahkan kamera ponsel ke kode dan tersambung ke jaringan Anda tanpa mengetik kata sandi.
+1096|Buat kode QR untuk tautan, teks, Wi-Fi, WhatsApp, telepon, email, dan kartu kontak. Tambahkan warna dan logo, unduh PNG atau SVG. Gratis selamanya, tanpa daftar, tidak pernah kedaluwarsa.
+1097|Pembuat kode QR gratis: tautan, Wi-Fi, WhatsApp, tanpa kedaluwarsa | File Manager Toolkit
+1098|Gram
+1099|Miligram
+1100|Ton
+1101|Ons
+1102|Stone
+1103|Ton AS
+1104|Milimeter
+1105|Yard
+1106|Mil laut
+1107|Sentimeter persegi
+1108|Kilometer persegi
+1109|Hektare
+1110|Yard persegi
+1111|Acre
+1112|Mil persegi
+1113|Qirat (Mesir)
+1114|Dunam
+1115|Mililiter
+1116|Meter kubik
+1117|Galon Inggris
+1118|Quart AS
+1119|Cangkir AS
+1120|Ons cair AS
+1121|Kaki kubik
+1122|Kelvin
+1123|Kilometer per jam
+1124|Meter per detik
+1125|Mil per jam
+1126|Knot
+1127|Kaki per detik
+1128|Muharram
+1129|Safar
+1130|Rabiul Awal
+1131|Rabiul Akhir
+1132|Jumadil Awal
+1133|Jumadil Akhir
+1134|Rajab
+1135|Syakban
+1136|Ramadan
+1137|Syawal
+1138|Zulkaidah
+1139|Zulhijah
+1140|Januari
+1141|Februari
+1142|Maret
+1143|April
+1144|Mei
+1145|Juni
+1146|Juli
+1147|Agustus
+1148|September
+1149|Oktober
+1150|November
+1151|Desember
+1152|Minggu
+1153|Senin
+1154|Selasa
+1155|Rabu
+1156|Kamis
+1157|Jumat
+1158|Sabtu
+1159|Hari ini
+1160|H
+1161|Periksa hari dan tahunnya.
+1162|Bulan ini hanya 29 hari di kalender ini.
+1163|Isi detail untuk membuat kode QR Anda.
+1164|Teks terlalu panjang untuk satu kode QR. Persingkat.
+1165|Kode terang di latar gelap: beberapa ponsel tidak bisa membacanya. Gelap di atas terang paling mudah dipindai.
+1166|Warnanya terlalu mirip. Pakai kontras lebih tinggi agar ponsel bisa membacanya.
+1167|Siap. Dengan logo, uji dengan kamera ponsel sebelum mencetak.
+1168|Siap. Arahkan kamera ponsel untuk mengujinya.
+1169|Memuat…
+1170|Browser Anda tidak bisa menyalin gambar. Unduh PNG saja.
+1171|Teks apa saja

@@ -3,7 +3,7 @@
  * Favourites are kept in this browser only (localStorage). */
 (() => {
   'use strict';
-  const groups = { unique: 1, organize: 1, optimize: 1, convert: 1, edit: 1, security: 1, files: 1, eng: 1, pdf: 'organize', review: 'eng' };
+  const groups = { unique: 1, organize: 1, optimize: 1, convert: 1, edit: 1, security: 1, files: 1, eng: 1, text: 1, units: 1, generate: 1, pdf: 'organize', review: 'eng' };
   const KEY = 'fm-favs';
   const ar = document.documentElement.lang === 'ar';
   let filter = 'all';
@@ -31,7 +31,7 @@
       if (show) shown++;
     });
     // Hide the "Only on File Manager Toolkit" column when none of its tools match.
-    document.querySelectorAll('.only-here-col').forEach((col) => {
+    document.querySelectorAll('.only-here-col, .everyday').forEach((col) => {
       col.hidden = !col.querySelector('.tool-wrap:not([hidden])');
       const split = col.closest('.tools-split');
       const main = split?.querySelector('.main-tools');

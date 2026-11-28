@@ -1,0 +1,348 @@
+// Writes the everyday tool pages (no files: text, unit converters, Hijri dates, QR codes) from one template.
+// Run from the repo root:  node tools/util-pages.mjs && node tools/layout.mjs && node tools/build.mjs
+// Edit the page text here, not in the .html files (they are overwritten).
+import fs from 'node:fs';
+import vm from 'node:vm';
+import { CATS, icon } from './catalog.mjs';
+
+const catName = (k) => CATS.find((c) => c.key === k).name;
+const sb = {}; sb.globalThis = sb; vm.createContext(sb);
+vm.runInContext(fs.readFileSync('assets/units-data.js', 'utf8'), sb);
+const { U, convert, fmt } = sb.FMUnits;
+
+const seg = (name, items) => `<div class="seg${items.length > 4 ? " wrap" : ""}" role="radiogroup">${items.map(([v, l, on]) =>
+  `<label><input type="radio" name="${name}" value="${v}"${on ? ' checked' : ''}><span>${l}</span></label>`).join('')}</div>`;
+
+// ------------------------------------------------------------------ bodies
+function textBody(counter) {
+  const stats = [['w', 'Words'], ['c', 'Characters'], ['cn', 'Characters without spaces'], ['s', 'Sentences'], ['l', 'Lines'], ['r', 'Reading time']]
+    .map(([k, l]) => `<div><b id="st-${k}" translate="no">0</b><span>${l}</span></div>`).join('');
+  const btn = (a, l) => `<button type="button" class="btn" data-tx="${a}">${l}</button>`;
+  return `<section class="panel util-box tx${counter ? ' tx-counter' : ''}">
+      ${counter ? `<div class="tx-stats">${stats}</div>` : ''}
+      <textarea id="txIn" dir="auto" spellcheck="false" placeholder="Type or paste your text here" aria-label="Your text"></textarea>
+      ${counter ? '' : `<div class="tx-stats small">${stats}</div>`}
+      <div class="tx-groups">
+        <div><h3>Change case</h3><div class="tx-btns">${btn('upper', 'UPPERCASE')}${btn('lower', 'lowercase')}${btn('title', 'Title Case')}${btn('sentence', 'Sentence case')}${btn('swap', 'Swap case')}${btn('camel', 'camelCase')}${btn('snake', 'snake_case')}${btn('kebab', 'kebab-case')}</div></div>
+        <div><h3>Clean up</h3><div class="tx-btns">${btn('spaces', 'Remove extra spaces')}${btn('breaks', 'Remove line breaks')}${btn('empty', 'Remove empty lines')}${btn('dupes', 'Remove duplicate lines')}${btn('sort', 'Sort lines A → Z')}${btn('tashkeel', 'Remove Arabic diacritics')}</div></div>
+      </div>
+      <div class="tx-foot">
+        <button type="button" class="btn primary" id="txCopy">Copy text</button>
+        <button type="button" class="btn" id="txSave">Download .txt</button>
+        <button type="button" class="btn ghost" id="txUndo" disabled>Undo</button>
+        <button type="button" class="btn ghost" id="txClear">Clear</button>
+        <span class="tx-msg" id="txMsg" role="status"></span>
+      </div>
+    </section>`;
+}
+
+function convBody(c) {
+  const tabs = c.hub ? `<div class="conv-tabs">${seg('convCat', Object.entries(U).map(([k, v], i) => [k, v.name, i === 0]))}</div>` : '';
+  return `<section class="panel util-box conv" id="conv" data-cat="${c.cat}" data-from="${c.from}" data-to="${c.to}"${c.hub ? ' data-hub="1"' : ''}>
+      ${tabs}
+      <div class="conv-row">
+        <label class="conv-side"><input type="text" inputmode="decimal" id="convA" value="1" dir="ltr" aria-label="Value to convert"><select id="convUA" aria-label="From"></select></label>
+        <button type="button" class="conv-swap" id="convSwap" aria-label="Swap units" title="Swap units">⇄</button>
+        <label class="conv-side"><input type="text" inputmode="decimal" id="convB" dir="ltr" aria-label="Result"><select id="convUB" aria-label="To"></select></label>
+      </div>
+      <p class="conv-formula" id="convFormula" dir="ltr" translate="no"></p>
+      <div class="conv-all"><h3>The same value in every unit</h3><ul id="convAll"></ul></div>
+    </section>`;
+}
+
+function convTable(c) {
+  if (!c.table) return '';
+  const rows = (from, to, vals) => vals.map((v) => `<tr><td>${fmt(v)}</td><td>${fmt(convert(c.cat, from, to, v))}</td></tr>`).join('');
+  const th = (u) => `<th><span>${U[c.cat].units[u].name}</span> <span translate="no">(${U[c.cat].units[u].sym})</span></th>`;
+  const t = (from, to, vals) => `<table class="conv-tbl" dir="ltr"><thead><tr>${th(from)}${th(to)}</tr></thead><tbody translate="no">${rows(from, to, vals)}</tbody></table>`;
+  return `<section class="panel conv-tables">
+      <h2>Conversion tables</h2>
+      <p class="conv-formula" dir="ltr" translate="no">1 ${U[c.cat].units[c.from].sym} = ${fmt(convert(c.cat, c.from, c.to, 1))} ${U[c.cat].units[c.to].sym} · 1 ${U[c.cat].units[c.to].sym} = ${fmt(convert(c.cat, c.to, c.from, 1))} ${U[c.cat].units[c.from].sym}</p>
+      <div class="conv-tbls">${t(c.from, c.to, c.table)}${t(c.to, c.from, c.table2 || c.table)}</div>
+    </section>`;
+}
+
+function hijriBody() {
+  return `<section class="panel util-box hj">
+      <div class="hj-today" id="hjToday" aria-live="polite"></div>
+      <div class="hj-grid">
+        <div class="hj-card">
+          <h2>Gregorian to Hijri</h2>
+          <input type="date" id="gIn" aria-label="Gregorian date">
+          <div class="hj-out" id="gOut"></div>
+        </div>
+        <div class="hj-card">
+          <h2>Hijri to Gregorian</h2>
+          <div class="hj-in">
+            <input type="number" id="hD" min="1" max="30" placeholder="Day" aria-label="Hijri day">
+            <select id="hM" aria-label="Hijri month"></select>
+            <input type="number" id="hY" min="1300" max="1600" placeholder="Year" aria-label="Hijri year">
+          </div>
+          <div class="hj-out" id="hOut"></div>
+        </div>
+      </div>
+      <div class="opt"><span class="opt-label">Calendar</span>${seg('hjCal', [['islamic-umalqura', 'Umm al-Qura (Saudi Arabia)', true], ['islamic-civil', 'Standard (civil)']])}</div>
+      <p class="hint">Some countries start a month one day earlier or later, after the moon is sighted.</p>
+    </section>`;
+}
+
+function qrBody() {
+  const f = (t, html) => `<div class="qr-fields" data-qt="${t}"${t === 'url' ? '' : ' hidden'}>${html}</div>`;
+  const inp = (id, l, type = 'text', ph = '', extra = '') => `<label class="opt"><span class="opt-label">${l}</span><input type="${type}" id="${id}" placeholder="${ph}"${extra}></label>`;
+  return `<section class="util-split qr">
+      <div class="panel">
+        ${seg('qrType', [['url', 'Link', true], ['text', 'Text'], ['wifi', 'Wi-Fi'], ['wa', 'WhatsApp'], ['tel', 'Phone'], ['email', 'Email'], ['vcard', 'Contact']])}
+        ${f('url', inp('qUrl', 'Link', 'url', 'https://example.com', ' dir="ltr" value="https://filemanagertoolkit.com"'))}
+        ${f('text', '<label class="opt"><span class="opt-label">Text</span><textarea id="qText" rows="4" dir="auto" placeholder="Any text"></textarea></label>')}
+        ${f('wifi', inp('qSsid', 'Network name', 'text', '', ' dir="auto"') + inp('qPass', 'Password', 'text', '', ' dir="ltr"') + `<div class="opt"><span class="opt-label">Security</span>${seg('qEnc', [['WPA', 'WPA/WPA2', true], ['WEP', 'WEP'], ['nopass', 'None']])}</div><label class="check"><input type="checkbox" id="qHidden"> Hidden network</label>`)}
+        ${f('wa', inp('qWaNum', 'Phone number with country code', 'tel', '971501234567', ' dir="ltr"') + '<label class="opt"><span class="opt-label">Message (optional)</span><textarea id="qWaMsg" rows="3" dir="auto"></textarea></label>')}
+        ${f('tel', inp('qTel', 'Phone number', 'tel', '+971501234567', ' dir="ltr"'))}
+        ${f('email', inp('qMail', 'Email address', 'email', 'name@example.com', ' dir="ltr"') + inp('qSubj', 'Subject (optional)', 'text', '', ' dir="auto"') + '<label class="opt"><span class="opt-label">Message (optional)</span><textarea id="qBody" rows="3" dir="auto"></textarea></label>')}
+        ${f('vcard', inp('qName', 'Full name', 'text', '', ' dir="auto"') + inp('qOrg', 'Company', 'text', '', ' dir="auto"') + inp('qTitle', 'Job title', 'text', '', ' dir="auto"') + inp('qPhone', 'Phone', 'tel', '', ' dir="ltr"') + inp('qVmail', 'Email', 'email', '', ' dir="ltr"') + inp('qWeb', 'Website', 'url', '', ' dir="ltr"'))}
+        <details class="more qr-style" open>
+          <summary>Style</summary>
+          <div class="qr-colors">
+            <label class="opt"><span class="opt-label">Colour</span><input type="color" id="qFg" value="#111827"></label>
+            <label class="opt"><span class="opt-label">Background</span><input type="color" id="qBg" value="#ffffff"></label>
+            <label class="check"><input type="checkbox" id="qTransparent"> Transparent background</label>
+          </div>
+          <div class="opt"><span class="opt-label">Size</span>${seg('qSize', [['512', '512 px'], ['1024', '1024 px', true], ['2048', '2048 px']])}</div>
+          <div class="opt"><span class="opt-label">Error correction</span>${seg('qEc', [['L', 'Low'], ['M', 'Medium', true], ['Q', 'Good'], ['H', 'High']])}</div>
+          <div class="opt"><span class="opt-label">Logo in the middle (optional)</span><div class="inline"><button type="button" class="btn" id="qLogoBtn">Choose a logo</button><button type="button" class="btn ghost" id="qLogoDel" hidden>Remove logo</button></div><input type="file" id="qLogo" accept="image/*" hidden></div>
+        </details>
+      </div>
+      <div class="panel qr-out">
+        <div class="qr-stage"><canvas id="qrCanvas" width="1024" height="1024" aria-label="QR code preview"></canvas></div>
+        <p class="qr-note" id="qrNote" role="status"></p>
+        <div class="dl-row">
+          <button type="button" class="btn primary" id="qPng">Download PNG</button>
+          <button type="button" class="btn" id="qSvg">Download SVG</button>
+          <button type="button" class="btn ghost" id="qCopy">Copy image</button>
+        </div>
+        <p class="hint">The QR code holds your link or text itself, not a redirect, so it keeps working forever. Test it with your phone camera before you print.</p>
+      </div>
+    </section>`;
+}
+
+// ------------------------------------------------------------------ pages
+const convHow = ['<b>Type a number</b> in either box. The other box updates as you type.', '<b>Pick other units</b> from the lists, or press ⇄ to swap them.', '<b>Copy any result</b>: click a value in the list to copy it.'];
+const convFaqCommon = ['Is this converter free?', 'Yes, free and without sign-up. It works in your browser, even offline once the page has loaded.'];
+const lin = (a, b, step = 1) => Array.from({ length: Math.floor((b - a) / step) + 1 }, (_, i) => +(a + i * step).toFixed(4));
+
+const PAGES = [
+  {
+    file: 'text-case.html', script: 'textcase.js', cat: 'text', icon: 'textcase',
+    title: 'Text Case Converter: UPPERCASE, lowercase, Title Case, Free | File Manager Toolkit',
+    desc: 'Change text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase or snake_case. Remove extra spaces, line breaks, duplicate lines and Arabic diacritics. Free, nothing is uploaded.',
+    h1: 'Text Case Converter', sub: 'Paste your text and pick a case. Clean up spaces and lines too.',
+    body: textBody(false),
+    howto: ['<b>Paste or type</b> your text in the box.', '<b>Click a button</b>: UPPERCASE, lowercase, Title Case, or a clean-up like removing extra spaces.', '<b>Copy the result</b> or download it as a .txt file. Undo goes back one step.'],
+    faq: [
+      ['What is Title Case?', 'Every word starts with a capital letter, like a book title: "The Quick Brown Fox". Sentence case only capitalises the first word of each sentence.'],
+      ['Can it remove the diacritics from Arabic text?', 'Yes. "Remove Arabic diacritics" takes out the tashkeel (fatha, damma, kasra, shadda and the rest) and the tatweel, and keeps the letters.'],
+      ['Is my text sent anywhere?', 'No. Everything happens in your browser. Nothing is uploaded or saved.'],
+    ],
+  },
+  {
+    file: 'word-counter.html', script: 'textcase.js', cat: 'text', icon: 'counter',
+    title: 'Word Counter: Count Words and Characters Online, Free | File Manager Toolkit',
+    desc: 'Count words, characters (with and without spaces), sentences, lines and reading time as you type. Works for English, Arabic and every language. Free, nothing is uploaded.',
+    h1: 'Word Counter', sub: 'Words, characters, sentences and reading time, as you type.',
+    body: textBody(true),
+    howto: ['<b>Paste or type</b> your text in the box.', '<b>Read the counts</b> at the top: they update as you type.', '<b>Clean up</b> the text with the buttons below if you need to, then copy it.'],
+    faq: [
+      ['Does it count Arabic words correctly?', 'Yes. Words are counted by the spaces between them, so Arabic, English and mixed text are all counted the same way.'],
+      ['How is reading time worked out?', 'At about 200 words a minute, a normal reading speed for most people.'],
+      ['Is my text sent anywhere?', 'No. Everything happens in your browser. Nothing is uploaded or saved.'],
+    ],
+  },
+  {
+    file: 'unit-converter.html', cat: 'units', icon: 'units', conv: { cat: 'length', from: 'm', to: 'ft', hub: true },
+    title: 'Unit Converter: Length, Weight, Area, Volume, Temperature, Speed | File Manager Toolkit',
+    desc: 'Convert length, weight, area, volume, temperature and speed: metres, feet, kilograms, pounds, square metres, feddan, litres, gallons, °C and °F. Free, instant, no ads in the way.',
+    h1: 'Unit Converter', sub: 'Length, weight, area, volume, temperature and speed, in one place.',
+    faq: [
+      ['Which units are included?', 'Metric and imperial units for length, weight, area, volume, temperature and speed, plus feddan, qirat and dunam for land.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'kg-to-lbs.html', cat: 'units', icon: 'weight', conv: { cat: 'mass', from: 'kg', to: 'lb', table: [...lin(1, 20), 25, 30, 40, 50, 60, 70, 75, 80, 90, 100] },
+    title: 'Kg to Lbs Converter: Kilograms to Pounds, with Table | File Manager Toolkit',
+    desc: 'Convert kilograms to pounds (kg to lbs) and pounds to kg instantly. 1 kg = 2.20462 lb. Ready conversion table from 1 to 100 kg. Free.',
+    h1: 'Kg to Lbs', sub: 'Kilograms to pounds and back. 1 kg = 2.20462 lb.',
+    faq: [
+      ['How many pounds are in a kilogram?', 'One kilogram is 2.20462 pounds. To change kg to lbs, multiply by 2.20462. To change lbs to kg, multiply by 0.453592.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'cm-to-inches.html', cat: 'units', icon: 'length', conv: { cat: 'length', from: 'cm', to: 'in', table: [...lin(1, 30), 40, 50, 60, 70, 80, 90, 100, 150, 200] },
+    title: 'Cm to Inches Converter: Centimetres to Inches, with Table | File Manager Toolkit',
+    desc: 'Convert centimetres to inches (cm to in) and inches to cm instantly. 1 inch = 2.54 cm. Ready conversion table. Free.',
+    h1: 'Cm to Inches', sub: 'Centimetres to inches and back. 1 inch = 2.54 cm.',
+    faq: [
+      ['How many centimetres are in an inch?', 'One inch is exactly 2.54 cm. To change cm to inches, divide by 2.54.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'meters-to-feet.html', cat: 'units', icon: 'length', conv: { cat: 'length', from: 'm', to: 'ft', table: [...lin(1, 20), 25, 30, 40, 50, 75, 100, 200, 500, 1000] },
+    title: 'Meters to Feet Converter: m to ft, with Table | File Manager Toolkit',
+    desc: 'Convert metres to feet (m to ft) and feet to metres instantly. 1 m = 3.28084 ft. Ready conversion table, feet and inches too. Free.',
+    h1: 'Meters to Feet', sub: 'Metres to feet and back. 1 m = 3.28084 ft.',
+    faq: [
+      ['How many feet are in a metre?', 'One metre is 3.28084 feet. One foot is exactly 0.3048 metres.'],
+      ['How do I write metres in feet and inches?', 'Type the metres: under the result you also get feet and inches, like 1.8 m = 5 ft 10.9 in.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'km-to-miles.html', cat: 'units', icon: 'length', conv: { cat: 'length', from: 'km', to: 'mi', table: [1, 2, 3, 4, 5, 10, 15, 20, 21.0975, 25, 30, 40, 42.195, 50, 60, 70, 80, 90, 100, 120, 150, 200, 500, 1000] },
+    title: 'Km to Miles Converter: Kilometres to Miles, with Table | File Manager Toolkit',
+    desc: 'Convert kilometres to miles (km to mi) and miles to km instantly. 1 km = 0.621371 mi. Ready table with 5K, 10K, half and full marathon. Free.',
+    h1: 'Km to Miles', sub: 'Kilometres to miles and back. 1 km = 0.621371 mi.',
+    faq: [
+      ['How many miles is a kilometre?', 'One kilometre is 0.621371 miles. One mile is 1.609344 km.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'sqm-to-sqft.html', cat: 'units', icon: 'area', conv: { cat: 'area', from: 'm2', to: 'ft2', table: [1, 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 100, 120, 150, 200, 250, 300, 400, 500, 750, 1000], table2: [10, 50, 100, 200, 300, 500, 750, 1000, 1200, 1500, 2000, 2500, 3000, 5000, 10000] },
+    title: 'Square Meters to Square Feet: m² to ft² Converter, with Table | File Manager Toolkit',
+    desc: 'Convert square metres to square feet (sqm to sqft) and back, for flats, villas, plots and floor plans. 1 m² = 10.7639 ft². Ready table. Free.',
+    h1: 'Square Meters to Square Feet', sub: 'm² to ft² and back. 1 m² = 10.7639 ft².',
+    faq: [
+      ['How many square feet are in a square metre?', 'One square metre is 10.7639 square feet. To change ft² to m², multiply by 0.092903.'],
+      ['Why do property listings use square feet?', 'In the UAE, the USA and the UK flats are usually sold by the square foot. Type the size here to see it in square metres.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'feddan-to-sqm.html', cat: 'units', icon: 'area', conv: { cat: 'area', from: 'feddan', to: 'm2', table: [0.25, 0.5, 1, 2, 3, 4, 5, 10, 20, 50, 100] },
+    title: 'Feddan to Square Meters: Feddan, Qirat, Dunam, Acre Converter | File Manager Toolkit',
+    desc: 'How many square metres in a feddan? 1 feddan = 4,200.83 m² = 24 qirat. Convert feddan, qirat, dunam, acre and hectare to square metres and back. Free.',
+    h1: 'Feddan to Square Meters', sub: '1 feddan = 4,200.83 m² = 24 qirat. Dunam, acre and hectare too.',
+    faq: [
+      ['How many square metres is one feddan?', 'One feddan is 4,200.83 square metres, the same as 24 qirat. One qirat is about 175 m².'],
+      ['What is a dunam?', 'A dunam is 1,000 square metres in most countries that use it today.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'celsius-to-fahrenheit.html', cat: 'units', icon: 'temp', conv: { cat: 'temp', from: 'c', to: 'f', table: [-40, -30, -20, -10, -5, 0, 5, 10, 15, 20, 25, 30, 35, 36.6, 37, 38, 39, 40, 45, 50, 60, 70, 80, 90, 100, 180, 200], table2: [0, 32, 50, 68, 77, 86, 95, 98.6, 100, 104, 212, 350, 400] },
+    title: 'Celsius to Fahrenheit Converter: °C to °F, with Formula and Table | File Manager Toolkit',
+    desc: 'Convert Celsius to Fahrenheit (°C to °F) and Fahrenheit to Celsius instantly. Formula: °F = °C × 9/5 + 32. Ready table for weather, body and oven temperatures. Free.',
+    h1: 'Celsius to Fahrenheit', sub: '°C to °F and back. °F = °C × 9/5 + 32.',
+    faq: [
+      ['What is the formula?', 'Fahrenheit = Celsius × 9 ÷ 5 + 32. Celsius = (Fahrenheit − 32) × 5 ÷ 9.'],
+      ['What is normal body temperature in Fahrenheit?', 'About 37 °C, which is 98.6 °F.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'liters-to-gallons.html', cat: 'units', icon: 'volume', conv: { cat: 'volume', from: 'l', to: 'galus', table: [1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50, 60, 75, 100, 200, 500, 1000] },
+    title: 'Liters to Gallons Converter: L to US and UK Gallons | File Manager Toolkit',
+    desc: 'Convert litres to gallons (US or UK) and gallons to litres instantly. 1 US gallon = 3.78541 L, 1 UK gallon = 4.54609 L. Ready table. Free.',
+    h1: 'Liters to Gallons', sub: 'Litres to US or UK gallons and back.',
+    faq: [
+      ['Is a US gallon the same as a UK gallon?', 'No. A US gallon is 3.785 litres and a UK (imperial) gallon is 4.546 litres. Pick the one you need from the list.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'hijri-converter.html', script: 'hijri.js', cat: 'units', icon: 'hijri',
+    title: 'Hijri Date Converter: Hijri to Gregorian and Back, Today’s Hijri Date | File Manager Toolkit',
+    desc: 'Convert Hijri dates to Gregorian and Gregorian to Hijri with the Umm al-Qura calendar. See today’s Hijri date and the day of the week. Free.',
+    h1: 'Hijri Date Converter', sub: 'Hijri to Gregorian and back, with today’s date in both calendars.',
+    body: hijriBody(),
+    howto: ['<b>Today’s date</b> is shown at the top in both calendars.', '<b>Pick a Gregorian date</b> to see it in Hijri, or type a Hijri day, month and year to see it in Gregorian.', '<b>Choose the calendar</b>: Umm al-Qura, used in Saudi Arabia, or the standard civil one.'],
+    faq: [
+      ['Why can my country’s date differ by one day?', 'The Hijri month starts when the new moon is seen, and some countries announce it a day earlier or later than the Umm al-Qura calendar.'],
+      ['Which years does it cover?', 'Hijri years 1300 to 1600 (about 1882 to 2174) with Umm al-Qura.'],
+      ['Is it free?', 'Yes, free and without sign-up. It works in your browser.'],
+    ],
+  },
+  {
+    file: 'qr-code.html', script: 'qr.js', cat: 'generate', icon: 'qr',
+    title: 'Free QR Code Generator: Links, Wi-Fi, WhatsApp, No Expiry | File Manager Toolkit',
+    desc: 'Make QR codes for links, text, Wi-Fi, WhatsApp, phone, email and contact cards. Add your colours and logo, download PNG or SVG. Free forever, no sign-up, they never expire.',
+    h1: 'QR Code Generator', sub: 'Links, Wi-Fi, WhatsApp and contacts. Free forever: these QR codes never expire.',
+    body: qrBody(),
+    howto: ['<b>Pick what the QR code opens</b>: a link, Wi-Fi, WhatsApp, a phone number, an email or a contact card.', '<b>Fill in the details</b>. Change the colours or add your logo if you like.', '<b>Download</b> the PNG for screens or the SVG for printing at any size.'],
+    faq: [
+      ['Do these QR codes expire?', 'Never. The QR code holds your link or text itself. Some sites make "dynamic" QR codes that go through their server and stop working when you stop paying. These don’t.'],
+      ['Can I add my logo?', 'Yes. Choose a logo and it is placed in the middle. Error correction is set to High so the code still scans.'],
+      ['How does the Wi-Fi QR code work?', 'Guests point their phone camera at it and join your network without typing the password.'],
+    ],
+  },
+];
+
+// ------------------------------------------------------------------ template
+function page(p) {
+  const conv = p.conv;
+  const body = conv ? convBody(conv) : p.body;
+  const howto = p.howto || convHow;
+  const scripts = conv ? ['units-data.js', 'units.js'] : [p.script];
+  return `<!doctype html>
+<html lang="en" data-lang-page="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${p.title}</title>
+  <meta name="description" content="${p.desc}">
+  <!-- seo:start -->
+  <!-- seo:end -->
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/theme.js"></script>
+  <script src="assets/i18n.js"></script>
+</head>
+<body>
+  <header class="site-header"></header>
+
+  <main class="kit util cat-${p.cat}">
+    <div class="tool-head">
+      <div>
+        <div class="crumb"><a href="./">All tools</a> / <a href="./#${p.cat}">${catName(p.cat)}</a></div>
+        <div class="tool-title">
+          <span class="tool-icon cat-${p.cat}">${icon(p.icon)}</span>
+          <div><h1>${p.h1}</h1><p>${p.sub}</p></div>
+        </div>
+      </div>
+    </div>
+
+    ${body}
+    ${conv ? convTable(conv) : ''}
+
+    <section class="kit-about">
+      <div>
+        <h2>How to use ${p.h1}</h2>
+        <ol>${howto.map((h) => `<li>${h}</li>`).join('')}</ol>
+      </div>
+      <div>
+        <h2>Questions</h2>
+        ${p.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('\n        ')}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"></footer>
+
+  <script src="assets/common.js"></script>
+${scripts.map((s) => `  <script src="assets/${s}"></script>`).join('\n')}
+</body>
+</html>
+`;
+}
+
+const only = process.argv.slice(2);
+for (const p of PAGES) {
+  if (only.length && !only.includes(p.file)) continue;
+  fs.writeFileSync(p.file, page(p));
+}
+console.log(`util-pages: wrote ${only.length || PAGES.length} page(s)`);
+export { PAGES };
