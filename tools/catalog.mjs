@@ -110,6 +110,17 @@ export const TOOLS = [
   { href: 'invoice-generator.html', cat: 'generate', icon: 'invoice', name: 'Invoice Generator', desc: 'A clean invoice with VAT and the total in words, in Arabic or English. Save it as PDF.' },
   { href: 'password-generator.html', cat: 'generate', icon: 'password', name: 'Password Generator', desc: 'Strong random passwords, made in your browser. Nothing is sent or saved.' },
   { href: 'qr-code.html', cat: 'generate', icon: 'qr', name: 'QR Code Generator', desc: 'QR codes for links, Wi-Fi, WhatsApp and contacts. Free forever, they never expire.' },
+  { href: 'hijri-date-today.html', hidden: true, cat: 'units', icon: 'hijri', name: 'Today’s Hijri Date', desc: 'The Islamic date today, with the Gregorian date and the day of the week.' },
+  { href: 'vat-calculator-uae.html', hidden: true, cat: 'calc', icon: 'vat', name: 'UAE VAT Calculator (5%)', desc: 'Add 5% VAT to a price or take it out of a total, in dirhams.' },
+  { href: 'vat-calculator-saudi.html', hidden: true, cat: 'calc', icon: 'vat', name: 'Saudi VAT Calculator (15%)', desc: 'Add 15% VAT to a price or take it out of a total, in riyals.' },
+  { href: 'vat-calculator-egypt.html', hidden: true, cat: 'calc', icon: 'vat', name: 'Egypt VAT Calculator (14%)', desc: 'Add 14% VAT to a price or take it out of a total, in Egyptian pounds.' },
+  { href: 'sqft-to-sqm.html', hidden: true, cat: 'units', icon: 'area', name: 'Square Feet to Square Meters', desc: 'ft² to m² and back, for flats, villas and offices.' },
+  { href: 'lbs-to-kg.html', hidden: true, cat: 'units', icon: 'weight', name: 'Lbs to Kg', desc: 'Pounds to kilograms and back, with a ready table.' },
+  { href: 'inches-to-cm.html', hidden: true, cat: 'units', icon: 'length', name: 'Inches to Cm', desc: 'Inches to centimetres and back, with a ready table.' },
+  { href: 'feet-to-meters.html', hidden: true, cat: 'units', icon: 'length', name: 'Feet to Meters', desc: 'Feet to metres and back, with a ready table.' },
+  { href: 'miles-to-km.html', hidden: true, cat: 'units', icon: 'length', name: 'Miles to Km', desc: 'Miles to kilometres and back, with a ready table.' },
+  { href: 'fahrenheit-to-celsius.html', hidden: true, cat: 'units', icon: 'temp', name: 'Fahrenheit to Celsius', desc: '°F to °C and back, with the formula and a ready table.' },
+  { href: 'qirat-to-sqm.html', hidden: true, cat: 'units', icon: 'area', name: 'Qirat to Square Meters', desc: '1 qirat = 175.03 m². Qirat to square metres and back.' },
 ];
 
 export const byHref = (href) => TOOLS.find((t) => t.href === href);

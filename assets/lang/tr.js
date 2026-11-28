@@ -1328,7 +1328,21 @@
    "Can it convert Hijri dates?": "Hicri tarih çevirebilir mi?",
    "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Evet. Hicri tarih sekmesini açıp Miladi tarihi Hicriye ya da tersine çevirin; bugünün tarihi iki takvimde görünür.",
    "Percentages, discounts and VAT": "Yüzde, indirim ve KDV",
-   "Percentage": "Yüzde"
+   "Percentage": "Yüzde",
+   "Lbs to Kg": "Pound'dan Kg'a",
+   "Inches to Cm": "İnçten Cm'ye",
+   "Feet to Meters": "Feet'ten Metreye",
+   "Miles to Km": "Milden Km'ye",
+   "Square Feet to Square Meters": "Feet Kareden Metrekareye",
+   "Qirat to Square Meters": "Kıratı Metrekareye",
+   "Fahrenheit to Celsius": "Fahrenheit'tan Celsius'a",
+   "Today’s Hijri Date": "Bugünün Hicri Tarihi",
+   "More date tools": "Diğer tarih araçları",
+   "VAT calculator for your country": "Ülkeniz için KDV hesaplayıcı",
+   "UAE VAT Calculator (5%)": "BAE KDV Hesaplama (%5)",
+   "Saudi VAT Calculator (15%)": "Suudi Arabistan KDV Hesaplama (%15)",
+   "Egypt VAT Calculator (14%)": "Mısır KDV Hesaplama (%14)",
+   "VAT Calculator, any rate": "KDV Hesaplama, her oran"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 dosya hazır"],

@@ -1326,3 +1326,17 @@
 1325|Evet. Hicri tarih sekmesini açıp Miladi tarihi Hicriye ya da tersine çevirin; bugünün tarihi iki takvimde görünür.
 1326|Yüzde, indirim ve KDV
 1327|Yüzde
+1328|Pound'dan Kg'a
+1329|İnçten Cm'ye
+1330|Feet'ten Metreye
+1331|Milden Km'ye
+1332|Feet Kareden Metrekareye
+1333|Kıratı Metrekareye
+1334|Fahrenheit'tan Celsius'a
+1335|Bugünün Hicri Tarihi
+1336|Diğer tarih araçları
+1337|Ülkeniz için KDV hesaplayıcı
+1338|BAE KDV Hesaplama (%5)
+1339|Suudi Arabistan KDV Hesaplama (%15)
+1340|Mısır KDV Hesaplama (%14)
+1341|KDV Hesaplama, her oran

@@ -1326,5 +1326,19 @@
  "Can it convert Hijri dates?",
  "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.",
  "Percentages, discounts and VAT",
- "Percentage"
+ "Percentage",
+ "Lbs to Kg",
+ "Inches to Cm",
+ "Feet to Meters",
+ "Miles to Km",
+ "Square Feet to Square Meters",
+ "Qirat to Square Meters",
+ "Fahrenheit to Celsius",
+ "Today’s Hijri Date",
+ "More date tools",
+ "VAT calculator for your country",
+ "UAE VAT Calculator (5%)",
+ "Saudi VAT Calculator (15%)",
+ "Egypt VAT Calculator (14%)",
+ "VAT Calculator, any rate"
 ]

@@ -1326,3 +1326,17 @@
 1325|Sí. Abre la pestaña Fecha hégira para pasar una fecha gregoriana a hégira o al revés, con la fecha de hoy en los dos calendarios.
 1326|Porcentajes, descuentos e IVA
 1327|Porcentaje
+1328|Libras a kg
+1329|Pulgadas a cm
+1330|Pies a metros
+1331|Millas a km
+1332|Pies cuadrados a metros cuadrados
+1333|Qirat a metros cuadrados
+1334|Fahrenheit a Celsius
+1335|Fecha hijri de hoy
+1336|Más herramientas de fechas
+1337|Calculadora de IVA para tu país
+1338|Calculadora de IVA EAU (5 %)
+1339|Calculadora de IVA Arabia Saudita (15 %)
+1340|Calculadora de IVA Egipto (14 %)
+1341|Calculadora de IVA, cualquier tasa

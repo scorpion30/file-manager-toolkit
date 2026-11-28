@@ -1326,3 +1326,17 @@
 1325|Oui. Ouvrez l’onglet Date hégirienne pour convertir une date grégorienne en hégirienne ou l’inverse, avec la date du jour dans les deux calendriers.
 1326|Pourcentages, remises et TVA
 1327|Pourcentage
+1328|Livres en kg
+1329|Pouces en cm
+1330|Pieds en mètres
+1331|Miles en km
+1332|Pieds carrés en mètres carrés
+1333|Qirat en mètres carrés
+1334|Fahrenheit en Celsius
+1335|Date hégirienne du jour
+1336|Autres outils de date
+1337|Calculateur de TVA pour votre pays
+1338|Calculateur de TVA Émirats (5 %)
+1339|Calculateur de TVA Arabie saoudite (15 %)
+1340|Calculateur de TVA Égypte (14 %)
+1341|Calculateur de TVA, tout taux

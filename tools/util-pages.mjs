@@ -94,7 +94,7 @@ function hijriInner() {
 
 // Links from the unit converter to the single-conversion pages (they are not in the menus any more).
 function popularLinks() {
-  const L = [['kg-to-lbs.html', 'Kg to Lbs'], ['cm-to-inches.html', 'Cm to Inches'], ['meters-to-feet.html', 'Meters to Feet'], ['km-to-miles.html', 'Km to Miles'], ['sqm-to-sqft.html', 'Square Meters to Square Feet'], ['feddan-to-sqm.html', 'Feddan to Square Meters'], ['celsius-to-fahrenheit.html', 'Celsius to Fahrenheit'], ['liters-to-gallons.html', 'Liters to Gallons'], ['hijri-converter.html', 'Hijri Date Converter']];
+  const L = [['kg-to-lbs.html', 'Kg to Lbs'], ['cm-to-inches.html', 'Cm to Inches'], ['meters-to-feet.html', 'Meters to Feet'], ['km-to-miles.html', 'Km to Miles'], ['sqm-to-sqft.html', 'Square Meters to Square Feet'], ['feddan-to-sqm.html', 'Feddan to Square Meters'], ['celsius-to-fahrenheit.html', 'Celsius to Fahrenheit'], ['liters-to-gallons.html', 'Liters to Gallons'], ['lbs-to-kg.html', 'Lbs to Kg'], ['inches-to-cm.html', 'Inches to Cm'], ['feet-to-meters.html', 'Feet to Meters'], ['miles-to-km.html', 'Miles to Km'], ['sqft-to-sqm.html', 'Square Feet to Square Meters'], ['qirat-to-sqm.html', 'Qirat to Square Meters'], ['fahrenheit-to-celsius.html', 'Fahrenheit to Celsius'], ['hijri-converter.html', 'Hijri Date Converter'], ['hijri-date-today.html', 'Today’s Hijri Date']];
   return `<section class="conv-popular"><h2>Popular conversions, with ready tables</h2><div class="chips">${L.map(([h, n]) => `<a class="chip" href="${h}">${n}</a>`).join('')}</div></section>`;
 }
 
@@ -157,7 +157,7 @@ function percentBody() {
     <p class="hint pc-hint">Click a result to copy it.</p>`;
 }
 
-function vatBody() {
+function vatBody(rate = '5') {
   const rates = [['5', 'UAE, Oman'], ['10', 'Bahrain'], ['14', 'Egypt'], ['15', 'Saudi Arabia'], ['16', 'Jordan'], ['20', 'UK, Morocco']];
   const res = (id, l) => `<button type="button" class="vat-res" id="${id}" data-copy=""><span>${l}</span><b dir="ltr" translate="no">0.00</b></button>`;
   return `${calcNav('vat-calculator.html')}
@@ -165,7 +165,7 @@ function vatBody() {
       ${seg('vatMode', [['add', 'Add VAT', true], ['remove', 'Remove VAT (the price includes VAT)']])}
       <div class="vat-in">
         <label class="opt"><span class="opt-label">Amount</span>${num('vAmt', '1000')}</label>
-        <label class="opt vat-rate"><span class="opt-label">VAT rate (%)</span>${num('vRate', '5')}</label>
+        <label class="opt vat-rate"><span class="opt-label">VAT rate (%)</span>${num('vRate', rate)}</label>
       </div>
       <div class="vat-rates" role="group" aria-label="VAT rate">${rates.map(([r, c]) => `<button type="button" class="chip" data-rate="${r}"><b translate="no">${r}%</b><small>${c}</small></button>`).join('')}</div>
       <div class="vat-out">
@@ -251,6 +251,28 @@ function invoiceBody() {
 const convHow = ['<b>Type a number</b> in either box. The other box updates as you type.', '<b>Pick other units</b> from the lists, or press ⇄ to swap them.', '<b>Copy any result</b>: click a value in the list to copy it.'];
 const convFaqCommon = ['Is this converter free?', 'Yes, free and without sign-up. It works in your browser, even offline once the page has loaded.'];
 const lin = (a, b, step = 1) => Array.from({ length: Math.floor((b - a) / step) + 1 }, (_, i) => +(a + i * step).toFixed(4));
+
+
+// Links between related landing pages (shown under the tool).
+const linkRow = (title, L) => `<section class="conv-popular"><h2>${title}</h2><div class="chips">${L.map(([h, n]) => `<a class="chip" href="${h}">${n}</a>`).join('')}</div></section>`;
+const vatLinks = linkRow('VAT calculator for your country', [['vat-calculator-uae.html', 'UAE VAT Calculator (5%)'], ['vat-calculator-saudi.html', 'Saudi VAT Calculator (15%)'], ['vat-calculator-egypt.html', 'Egypt VAT Calculator (14%)'], ['vat-calculator.html', 'VAT Calculator, any rate']]);
+const hijriLinks = linkRow('More date tools', [['hijri-date-today.html', 'Today’s Hijri Date'], ['hijri-converter.html', 'Hijri Date Converter']]);
+function hijriMonths() {
+  const M = [['Muharram', '30'], ['Safar', '29'], ['Rabi al-Awwal', '30'], ['Rabi al-Thani', '29'], ['Jumada al-Ula', '30'], ['Jumada al-Akhirah', '29'], ['Rajab', '30'], ['Shaban', '29'], ['Ramadan', '30'], ['Shawwal', '29'], ['Dhu al-Qadah', '30'], ['Dhu al-Hijjah', '29 / 30']];
+  return `<section class="panel conv-tables">
+      <h2>The 12 Hijri months</h2>
+      <p class="hint">In the tabular (civil) calendar the months take turns at 30 and 29 days. In Umm al-Qura and in countries that follow the moon sighting, any month can have 29 or 30 days.</p>
+      <table class="conv-tbl"><thead><tr><th>#</th><th>Month</th><th>Days (civil)</th></tr></thead><tbody>${M.map(([m, d], i) => `<tr><td translate="no">${i + 1}</td><td>${m}</td><td translate="no">${d}</td></tr>`).join('')}</tbody></table>
+    </section>`;
+}
+function vatCountry(o) {
+  return {
+    file: o.file, script: 'calc.js', cat: 'calc', icon: 'vat', body: vatBody(o.rate), extra: vatLinks,
+    title: o.title, desc: o.desc, h1: o.h1, sub: o.sub,
+    howto: [`<b>Choose</b> Add VAT, or Remove VAT if your price already includes the ${o.rate}%.`, '<b>Type the amount</b>. The rate is already set for you.', '<b>Read</b> the amount without VAT, the VAT and the total. Click a number to copy it.'],
+    faq: o.faq,
+  };
+}
 
 const PAGES = [
   {
@@ -380,7 +402,7 @@ const PAGES = [
     title: 'Hijri Date Converter: Hijri to Gregorian and Back, Today’s Hijri Date | File Manager Toolkit',
     desc: 'Convert Hijri dates to Gregorian and Gregorian to Hijri with the Umm al-Qura calendar. See today’s Hijri date and the day of the week. Free.',
     h1: 'Hijri Date Converter', sub: 'Hijri to Gregorian and back, with today’s date in both calendars.',
-    body: hijriBody(),
+    body: hijriBody(), extra: hijriLinks,
     howto: ['<b>Today’s date</b> is shown at the top in both calendars.', '<b>Pick a Gregorian date</b> to see it in Hijri, or type a Hijri day, month and year to see it in Gregorian.', '<b>Choose the calendar</b>: Umm al-Qura, used in Saudi Arabia, or the standard civil one.'],
     faq: [
       ['Why can my country’s date differ by one day?', 'The Hijri month starts when the new moon is seen, and some countries announce it a day earlier or later than the Umm al-Qura calendar.'],
@@ -406,7 +428,7 @@ const PAGES = [
     title: 'VAT Calculator: Add or Remove VAT, 5%, 14%, 15% | File Manager Toolkit',
     desc: 'Add VAT to a price or take VAT out of a total. UAE and Oman 5%, Bahrain 10%, Egypt 14%, Saudi Arabia 15%, or any rate. Free, instant.',
     h1: 'VAT Calculator', sub: 'Add VAT to a price or take it out of a total. Any rate.',
-    body: vatBody(),
+    body: vatBody(), extra: vatLinks,
     howto: ['<b>Choose</b> Add VAT, or Remove VAT if your price already includes it.', '<b>Type the amount</b> and pick the rate: 5%, 14%, 15% or your own.', '<b>Read</b> the amount without VAT, the VAT and the total. Click a number to copy it.'],
     faq: [
       ['How do I add VAT to a price?', 'Multiply by 1 + rate ÷ 100. With 5% VAT, 1,000 becomes 1,000 × 1.05 = 1,050.'],
@@ -453,6 +475,134 @@ const PAGES = [
       ['How does the Wi-Fi QR code work?', 'Guests point their phone camera at it and join your network without typing the password.'],
     ],
   },
+  // ---------------- search landing pages (EN + AR): today's Hijri date, VAT by country, the other direction of each converter
+  {
+    file: 'hijri-date-today.html', script: 'hijri.js', cat: 'units', icon: 'hijri',
+    title: 'Today’s Hijri Date: What Is the Islamic Date Today? | File Manager Toolkit',
+    desc: 'Today’s Hijri date in the Umm al-Qura calendar, with today’s Gregorian date and the day of the week. Convert any date between Hijri and Gregorian. Free.',
+    h1: 'Today’s Hijri Date', sub: 'The Islamic date today, with the Gregorian date and the day of the week.',
+    body: hijriBody(), extra: hijriMonths() + hijriLinks,
+    howto: ['<b>Today’s Hijri date</b> is at the top, with the Gregorian date under it. It follows your device’s date.', '<b>Pick another day</b> to see it in Hijri, or type a Hijri date to see it in Gregorian.', '<b>Choose the calendar</b>: Umm al-Qura, used in Saudi Arabia, or the standard civil one.'],
+    faq: [
+      ['Which calendar is today’s date taken from?', 'Umm al-Qura, the official calendar of Saudi Arabia, used by most Gulf countries. You can switch to the standard civil calendar.'],
+      ['Why can today’s Hijri date differ by one day in my country?', 'Each month starts when the new moon is seen. Some countries announce it a day earlier or later than Umm al-Qura, mostly for Ramadan, Shawwal and Dhu al-Hijjah.'],
+      ['How many days are in a Hijri year?', '354 or 355 days, about 11 days shorter than the Gregorian year. That is why Ramadan comes about 11 days earlier every year.'],
+      ['Is it free?', 'Yes, free and without sign-up. It works in your browser.'],
+    ],
+  },
+  vatCountry({
+    file: 'vat-calculator-uae.html', rate: '5',
+    title: 'UAE VAT Calculator 5%: Add or Remove VAT in AED | File Manager Toolkit',
+    desc: 'Add 5% UAE VAT to a price or take it out of a total in dirhams. Amount before VAT, the VAT and the total, as you type. Free.',
+    h1: 'UAE VAT Calculator (5%)', sub: 'Add 5% VAT to a price or take it out of a total, in dirhams.',
+    faq: [
+      ['What is the VAT rate in the UAE?', '5%. VAT started in the UAE on 1 January 2018 and is run by the Federal Tax Authority (FTA). Some supplies are 0% or exempt.'],
+      ['How do I take 5% VAT out of a price?', 'Divide by 1.05. A total of AED 1,050 is AED 1,000 before VAT, so the VAT is AED 50.'],
+      ['How do I add 5% VAT?', 'Multiply by 1.05. AED 1,000 plus VAT is AED 1,050.'],
+      ['When must a business register for VAT?', 'When its taxable sales pass AED 375,000 a year. Between AED 187,500 and 375,000 it can register if it wants to.'],
+    ],
+  }),
+  vatCountry({
+    file: 'vat-calculator-saudi.html', rate: '15',
+    title: 'Saudi VAT Calculator 15%: Add or Remove VAT in SAR | File Manager Toolkit',
+    desc: 'Add 15% Saudi VAT to a price or take it out of a total in riyals. Amount before VAT, the VAT and the total, as you type. Free.',
+    h1: 'Saudi VAT Calculator (15%)', sub: 'Add 15% VAT to a price or take it out of a total, in riyals.',
+    faq: [
+      ['What is the VAT rate in Saudi Arabia?', '15% since 1 July 2020. It was 5% when VAT started in January 2018. It is run by ZATCA.'],
+      ['How do I take 15% VAT out of a price?', 'Divide by 1.15. A total of SAR 1,150 is SAR 1,000 before VAT, so the VAT is SAR 150.'],
+      ['How do I add 15% VAT?', 'Multiply by 1.15. SAR 1,000 plus VAT is SAR 1,150.'],
+      ['Can I use it for e-invoices (Fatoora)?', 'It works out the numbers. Tax invoices in Saudi Arabia must be issued from an e-invoicing system that meets ZATCA rules.'],
+    ],
+  }),
+  vatCountry({
+    file: 'vat-calculator-egypt.html', rate: '14',
+    title: 'Egypt VAT Calculator 14%: Add or Remove VAT in EGP | File Manager Toolkit',
+    desc: 'Add 14% Egyptian VAT to a price or take it out of a total in pounds. Amount before VAT, the VAT and the total, as you type. Free.',
+    h1: 'Egypt VAT Calculator (14%)', sub: 'Add 14% VAT to a price or take it out of a total, in Egyptian pounds.',
+    faq: [
+      ['What is the VAT rate in Egypt?', '14% since July 2017 (it started at 13% in 2016). Some goods and services have other rates or are exempt. It is run by the Egyptian Tax Authority.'],
+      ['How do I take 14% VAT out of a price?', 'Divide by 1.14. A total of EGP 1,140 is EGP 1,000 before VAT, so the VAT is EGP 140.'],
+      ['How do I add 14% VAT?', 'Multiply by 1.14. EGP 1,000 plus VAT is EGP 1,140.'],
+      ['When must a business register for VAT?', 'When its sales pass EGP 500,000 a year.'],
+    ],
+  }),
+  {
+    file: 'sqft-to-sqm.html', cat: 'units', icon: 'area', conv: { cat: 'area', from: 'ft2', to: 'm2', table: [100, 200, 300, 400, 500, 600, 700, 750, 800, 900, 1000, 1200, 1500, 1800, 2000, 2500, 3000, 4000, 5000, 10000], table2: [1, 10, 20, 50, 75, 100, 120, 150, 200, 250, 300, 500, 1000] },
+    title: 'Square Feet to Square Meters: ft² to m² Converter, with Table | File Manager Toolkit',
+    desc: 'Convert square feet to square metres (sqft to sqm) for flats, villas and offices. 1 ft² = 0.092903 m². Ready table from 100 to 10,000 sq ft. Free.',
+    h1: 'Square Feet to Square Meters', sub: 'ft² to m² and back. 1 ft² = 0.092903 m².',
+    faq: [
+      ['How do I change square feet to square metres?', 'Multiply by 0.092903, or divide by 10.7639. A 1,000 sq ft flat is 92.9 m².'],
+      ['Why are flats in the UAE sold in square feet?', 'Developers and listings in Dubai and the other emirates use square feet, so the size here helps you compare with square metres.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'lbs-to-kg.html', cat: 'units', icon: 'weight', conv: { cat: 'mass', from: 'lb', to: 'kg', table: [...lin(1, 20), 25, 30, 40, 50, 60, 70, 80, 90, 100, 120, 150, 180, 200, 250, 300] },
+    title: 'Lbs to Kg Converter: Pounds to Kilograms, with Table | File Manager Toolkit',
+    desc: 'Convert pounds to kilograms (lbs to kg) and kg to lbs instantly. 1 lb = 0.453592 kg. Ready table from 1 to 300 lbs. Free.',
+    h1: 'Lbs to Kg', sub: 'Pounds to kilograms and back. 1 lb = 0.453592 kg.',
+    faq: [
+      ['How many kilograms is a pound?', 'One pound is 0.453592 kg. To change lbs to kg, multiply by 0.453592, or divide by 2.20462.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'inches-to-cm.html', cat: 'units', icon: 'length', conv: { cat: 'length', from: 'in', to: 'cm', table: [...lin(1, 24), 30, 32, 36, 40, 42, 43, 50, 55, 60, 65, 70, 75, 85] },
+    title: 'Inches to Cm Converter: Inches to Centimetres, with Table | File Manager Toolkit',
+    desc: 'Convert inches to centimetres (in to cm) and cm to inches instantly. 1 inch = 2.54 cm. Ready table, TV and screen sizes too. Free.',
+    h1: 'Inches to Cm', sub: 'Inches to centimetres and back. 1 inch = 2.54 cm.',
+    faq: [
+      ['How many centimetres is an inch?', 'Exactly 2.54 cm. To change inches to cm, multiply by 2.54.'],
+      ['How big is a 55-inch TV in cm?', 'TV sizes are measured corner to corner: 55 inches is 139.7 cm diagonally.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'feet-to-meters.html', cat: 'units', icon: 'length', conv: { cat: 'length', from: 'ft', to: 'm', table: [...lin(1, 20), 25, 30, 40, 50, 100, 200, 500, 1000, 5000, 10000] },
+    title: 'Feet to Meters Converter: ft to m, with Table | File Manager Toolkit',
+    desc: 'Convert feet to metres (ft to m) and metres to feet instantly. 1 ft = 0.3048 m. Ready conversion table. Free.',
+    h1: 'Feet to Meters', sub: 'Feet to metres and back. 1 ft = 0.3048 m.',
+    faq: [
+      ['How many metres is a foot?', 'Exactly 0.3048 metres. To change feet to metres, multiply by 0.3048.'],
+      ['How do I convert feet and inches to metres?', 'Multiply the feet by 0.3048 and the inches by 0.0254, then add them. 5 ft 10 in = 1.524 + 0.254 = 1.778 m.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'miles-to-km.html', cat: 'units', icon: 'length', conv: { cat: 'length', from: 'mi', to: 'km', table: [1, 2, 3, 3.1, 5, 6.2, 10, 13.1, 15, 20, 25, 26.2, 30, 40, 50, 60, 70, 80, 100, 200, 500, 1000] },
+    title: 'Miles to Km Converter: Miles to Kilometres, with Table | File Manager Toolkit',
+    desc: 'Convert miles to kilometres (mi to km) and km to miles instantly. 1 mile = 1.609344 km. Ready table, mph to km/h too. Free.',
+    h1: 'Miles to Km', sub: 'Miles to kilometres and back. 1 mile = 1.609344 km.',
+    faq: [
+      ['How many kilometres is a mile?', 'One mile is 1.609344 km. To change miles to km, multiply by 1.609344.'],
+      ['How do I change mph to km/h?', 'The same way: multiply by 1.609344. 60 mph is 96.6 km/h.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'fahrenheit-to-celsius.html', cat: 'units', icon: 'temp', conv: { cat: 'temp', from: 'f', to: 'c', table: [-40, 0, 10, 20, 32, 40, 50, 60, 68, 70, 75, 77, 80, 86, 90, 95, 98.6, 100, 101, 102, 103, 104, 110, 120, 212, 300, 350, 375, 400, 425, 450], table2: [-20, -10, 0, 10, 20, 25, 30, 37, 38, 40, 100, 180, 200] },
+    title: 'Fahrenheit to Celsius Converter: °F to °C, with Formula and Table | File Manager Toolkit',
+    desc: 'Convert Fahrenheit to Celsius (°F to °C) and Celsius to Fahrenheit instantly. Formula: °C = (°F − 32) × 5/9. Table for fever, weather and oven. Free.',
+    h1: 'Fahrenheit to Celsius', sub: '°F to °C and back. °C = (°F − 32) × 5/9.',
+    faq: [
+      ['What is the formula?', 'Celsius = (Fahrenheit − 32) × 5 ÷ 9. Fahrenheit = Celsius × 9 ÷ 5 + 32.'],
+      ['Is 100 °F a fever?', '100 °F is 37.8 °C. A temperature of 100.4 °F (38 °C) or more is usually counted as a fever.'],
+      ['What is 350 °F in an oven?', '350 °F is about 177 °C, usually set as 180 °C.'],
+      convFaqCommon,
+    ],
+  },
+  {
+    file: 'qirat-to-sqm.html', cat: 'units', icon: 'area', conv: { cat: 'area', from: 'qirat', to: 'm2', table: [0.5, 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 18, 20, 24, 48, 72, 96, 120] },
+    title: 'Qirat to Square Meters: How Many m² in a Qirat? | File Manager Toolkit',
+    desc: 'How many square metres in a qirat? 1 qirat = 175.03 m², and 24 qirat = 1 feddan. Convert qirat to square metres and back, with a ready table. Free.',
+    h1: 'Qirat to Square Meters', sub: '1 qirat = 175.03 m². 24 qirat = 1 feddan.',
+    faq: [
+      ['How many square metres is one qirat?', 'One qirat is 175.03 square metres. It is 1/24 of a feddan (4,200.83 m²).'],
+      ['How many sahm are in a qirat?', '24 sahm. One sahm is about 7.29 m².'],
+      convFaqCommon,
+    ],
+  },
 ];
 
 // ------------------------------------------------------------------ template
@@ -494,6 +644,7 @@ function page(p) {
 
     ${body}
     ${conv ? convTable(conv) : ''}
+    ${p.extra || ''}
 
     <section class="kit-about">
       <div>

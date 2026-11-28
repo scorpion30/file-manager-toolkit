@@ -1328,7 +1328,21 @@
    "Can it convert Hijri dates?": "Bisakah mengonversi tanggal Hijriah?",
    "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Ya. Buka tab Tanggal Hijriah untuk mengubah tanggal Masehi ke Hijriah atau sebaliknya, dengan tanggal hari ini di kedua kalender.",
    "Percentages, discounts and VAT": "Persentase, diskon, dan PPN",
-   "Percentage": "Persentase"
+   "Percentage": "Persentase",
+   "Lbs to Kg": "Pon ke Kg",
+   "Inches to Cm": "Inci ke Cm",
+   "Feet to Meters": "Kaki ke Meter",
+   "Miles to Km": "Mil ke Km",
+   "Square Feet to Square Meters": "Kaki Persegi ke Meter Persegi",
+   "Qirat to Square Meters": "Qirat ke Meter Persegi",
+   "Fahrenheit to Celsius": "Fahrenheit ke Celsius",
+   "Today’s Hijri Date": "Tanggal Hijriah Hari Ini",
+   "More date tools": "Alat tanggal lainnya",
+   "VAT calculator for your country": "Kalkulator PPN untuk negara Anda",
+   "UAE VAT Calculator (5%)": "Kalkulator PPN UEA (5%)",
+   "Saudi VAT Calculator (15%)": "Kalkulator PPN Arab Saudi (15%)",
+   "Egypt VAT Calculator (14%)": "Kalkulator PPN Mesir (14%)",
+   "VAT Calculator, any rate": "Kalkulator PPN, tarif apa pun"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 file siap"],

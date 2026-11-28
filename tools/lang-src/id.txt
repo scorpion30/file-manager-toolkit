@@ -1326,3 +1326,17 @@
 1325|Ya. Buka tab Tanggal Hijriah untuk mengubah tanggal Masehi ke Hijriah atau sebaliknya, dengan tanggal hari ini di kedua kalender.
 1326|Persentase, diskon, dan PPN
 1327|Persentase
+1328|Pon ke Kg
+1329|Inci ke Cm
+1330|Kaki ke Meter
+1331|Mil ke Km
+1332|Kaki Persegi ke Meter Persegi
+1333|Qirat ke Meter Persegi
+1334|Fahrenheit ke Celsius
+1335|Tanggal Hijriah Hari Ini
+1336|Alat tanggal lainnya
+1337|Kalkulator PPN untuk negara Anda
+1338|Kalkulator PPN UEA (5%)
+1339|Kalkulator PPN Arab Saudi (15%)
+1340|Kalkulator PPN Mesir (14%)
+1341|Kalkulator PPN, tarif apa pun

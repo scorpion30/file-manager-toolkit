@@ -1328,7 +1328,21 @@
    "Can it convert Hijri dates?": "¿Puede convertir fechas hégira?",
    "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "Sí. Abre la pestaña Fecha hégira para pasar una fecha gregoriana a hégira o al revés, con la fecha de hoy en los dos calendarios.",
    "Percentages, discounts and VAT": "Porcentajes, descuentos e IVA",
-   "Percentage": "Porcentaje"
+   "Percentage": "Porcentaje",
+   "Lbs to Kg": "Libras a kg",
+   "Inches to Cm": "Pulgadas a cm",
+   "Feet to Meters": "Pies a metros",
+   "Miles to Km": "Millas a km",
+   "Square Feet to Square Meters": "Pies cuadrados a metros cuadrados",
+   "Qirat to Square Meters": "Qirat a metros cuadrados",
+   "Fahrenheit to Celsius": "Fahrenheit a Celsius",
+   "Today’s Hijri Date": "Fecha hijri de hoy",
+   "More date tools": "Más herramientas de fechas",
+   "VAT calculator for your country": "Calculadora de IVA para tu país",
+   "UAE VAT Calculator (5%)": "Calculadora de IVA EAU (5 %)",
+   "Saudi VAT Calculator (15%)": "Calculadora de IVA Arabia Saudita (15 %)",
+   "Egypt VAT Calculator (14%)": "Calculadora de IVA Egipto (14 %)",
+   "VAT Calculator, any rate": "Calculadora de IVA, cualquier tasa"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 archivos listos"],

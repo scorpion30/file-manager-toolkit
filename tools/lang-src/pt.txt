@@ -1326,3 +1326,17 @@
 1325|Sim. Abra a aba Data hijri para converter uma data gregoriana em hijri ou o contrário, com a data de hoje nos dois calendários.
 1326|Porcentagens, descontos e IVA
 1327|Porcentagem
+1328|Libras para kg
+1329|Polegadas para cm
+1330|Pés para metros
+1331|Milhas para km
+1332|Pés quadrados para metros quadrados
+1333|Qirat para metros quadrados
+1334|Fahrenheit para Celsius
+1335|Data hijri de hoje
+1336|Mais ferramentas de data
+1337|Calculadora de IVA do seu país
+1338|Calculadora de IVA EAU (5%)
+1339|Calculadora de IVA Arábia Saudita (15%)
+1340|Calculadora de IVA Egito (14%)
+1341|Calculadora de IVA, qualquer taxa

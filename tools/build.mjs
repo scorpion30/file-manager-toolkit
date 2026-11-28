@@ -289,6 +289,94 @@ const PAGES = [
     },
   },
   {
+    file: 'hijri-date-today.html', cat: 'qa',
+    en: { title: `Today’s Hijri Date: What Is the Islamic Date Today? | ${BRAND}`, name: 'Today’s Hijri Date', pitch: 'The Islamic date today, and the Gregorian date' },
+    ar: {
+      title: `التاريخ الهجري اليوم وتاريخ اليوم ميلادي | ${BRAND}`, name: 'التاريخ الهجري اليوم', pitch: 'تاريخ اليوم هجري وميلادي ويوم الأسبوع',
+      desc: 'التاريخ الهجري اليوم بتقويم أم القرى، مع تاريخ اليوم الميلادي ويوم الأسبوع. وحوّل أي تاريخ من هجري لميلادي والعكس. مجاني.',
+    },
+  },
+  {
+    file: 'vat-calculator-uae.html', cat: 'qa',
+    en: { title: `UAE VAT Calculator 5%: Add or Remove VAT in AED | ${BRAND}`, name: 'UAE VAT Calculator (5%)', pitch: 'Add or remove 5% VAT, in dirhams' },
+    ar: {
+      title: `حاسبة الضريبة الإمارات 5%: إضافة أو استخراج الضريبة | ${BRAND}`, name: 'حاسبة الضريبة في الإمارات (5%)', pitch: 'ضيف 5% ضريبة أو طلّعها من السعر بالدرهم',
+      desc: 'احسب ضريبة القيمة المضافة في الإمارات 5%: ضيفها على السعر أو استخرجها من الإجمالي بالدرهم. المبلغ قبل الضريبة والضريبة والإجمالي وأنت بتكتب. مجاني.',
+    },
+  },
+  {
+    file: 'vat-calculator-saudi.html', cat: 'qa',
+    en: { title: `Saudi VAT Calculator 15%: Add or Remove VAT in SAR | ${BRAND}`, name: 'Saudi VAT Calculator (15%)', pitch: 'Add or remove 15% VAT, in riyals' },
+    ar: {
+      title: `حاسبة الضريبة السعودية 15%: إضافة أو استخراج الضريبة | ${BRAND}`, name: 'حاسبة الضريبة في السعودية (15%)', pitch: 'ضيف 15% ضريبة أو طلّعها من السعر بالريال',
+      desc: 'حاسبة ضريبة القيمة المضافة في السعودية 15%: ضيف الضريبة على السعر أو استخرجها من الإجمالي بالريال. المبلغ قبل الضريبة والضريبة والإجمالي وأنت بتكتب. مجاني.',
+    },
+  },
+  {
+    file: 'vat-calculator-egypt.html', cat: 'qa',
+    en: { title: `Egypt VAT Calculator 14%: Add or Remove VAT in EGP | ${BRAND}`, name: 'Egypt VAT Calculator (14%)', pitch: 'Add or remove 14% VAT, in Egyptian pounds' },
+    ar: {
+      title: `حاسبة ضريبة القيمة المضافة مصر 14% | ${BRAND}`, name: 'حاسبة الضريبة في مصر (14%)', pitch: 'ضيف 14% ضريبة أو طلّعها من السعر بالجنيه',
+      desc: 'احسب ضريبة القيمة المضافة في مصر 14%: ضيفها على السعر أو استخرجها من الإجمالي بالجنيه. المبلغ قبل الضريبة والضريبة والإجمالي وأنت بتكتب. مجاني.',
+    },
+  },
+  {
+    file: 'sqft-to-sqm.html', cat: 'files',
+    en: { title: `Square Feet to Square Meters: ft² to m² Converter, with Table | ${BRAND}`, name: 'Square Feet to Square Meters', pitch: '1 ft² = 0.092903 m², with a ready table' },
+    ar: {
+      title: `تحويل قدم مربع إلى متر مربع (sqft to m²) مع جدول | ${BRAND}`, name: 'قدم مربع إلى متر مربع', pitch: '1 قدم² = 0.092903 م²، مع جدول جاهز',
+      desc: 'حوّل القدم المربع إلى متر مربع والعكس للشقق والفلل والمكاتب. 1 قدم² = 0.092903 م²، مع جدول جاهز من 100 لـ 10,000 قدم مربع. مجاني.',
+    },
+  },
+  {
+    file: 'lbs-to-kg.html', cat: 'files',
+    en: { title: `Lbs to Kg Converter: Pounds to Kilograms, with Table | ${BRAND}`, name: 'Lbs to Kg', pitch: '1 lb = 0.453592 kg, with a ready table' },
+    ar: {
+      title: `تحويل باوند إلى كيلو (lbs to kg) مع جدول | ${BRAND}`, name: 'باوند إلى كيلو', pitch: '1 باوند = 0.453592 كجم، مع جدول جاهز',
+      desc: 'حوّل الباوند إلى كيلوجرام والكيلو إلى باوند فوراً. 1 باوند = 0.453592 كجم، مع جدول جاهز من 1 لـ 300 باوند. مجاني.',
+    },
+  },
+  {
+    file: 'inches-to-cm.html', cat: 'files',
+    en: { title: `Inches to Cm Converter: Inches to Centimetres, with Table | ${BRAND}`, name: 'Inches to Cm', pitch: '1 inch = 2.54 cm, with a ready table' },
+    ar: {
+      title: `تحويل إنش إلى سم (inches to cm) مع جدول | ${BRAND}`, name: 'إنش إلى سم', pitch: '1 إنش = 2.54 سم، مع جدول جاهز',
+      desc: 'حوّل الإنش (البوصة) إلى سنتيمتر والسم إلى إنش فوراً. 1 إنش = 2.54 سم، مع جدول جاهز ومقاسات الشاشات. مجاني.',
+    },
+  },
+  {
+    file: 'feet-to-meters.html', cat: 'files',
+    en: { title: `Feet to Meters Converter: ft to m, with Table | ${BRAND}`, name: 'Feet to Meters', pitch: '1 ft = 0.3048 m, with a ready table' },
+    ar: {
+      title: `تحويل قدم إلى متر (ft to m) مع جدول | ${BRAND}`, name: 'قدم إلى متر', pitch: '1 قدم = 0.3048 متر، مع جدول جاهز',
+      desc: 'حوّل القدم إلى متر والمتر إلى قدم فوراً. 1 قدم = 0.3048 متر، مع جدول تحويل جاهز. مجاني.',
+    },
+  },
+  {
+    file: 'miles-to-km.html', cat: 'files',
+    en: { title: `Miles to Km Converter: Miles to Kilometres, with Table | ${BRAND}`, name: 'Miles to Km', pitch: '1 mile = 1.609344 km, with a ready table' },
+    ar: {
+      title: `تحويل ميل إلى كيلومتر (miles to km) مع جدول | ${BRAND}`, name: 'ميل إلى كيلومتر', pitch: '1 ميل = 1.609344 كم، مع جدول جاهز',
+      desc: 'حوّل الميل إلى كيلومتر والكيلومتر إلى ميل فوراً. 1 ميل = 1.609344 كم، مع جدول جاهز وتحويل mph إلى كم/س. مجاني.',
+    },
+  },
+  {
+    file: 'fahrenheit-to-celsius.html', cat: 'files',
+    en: { title: `Fahrenheit to Celsius Converter: °F to °C, with Formula and Table | ${BRAND}`, name: 'Fahrenheit to Celsius', pitch: '°C = (°F − 32) × 5/9, with a ready table' },
+    ar: {
+      title: `تحويل فهرنهايت إلى مئوية (°F to °C) مع القانون | ${BRAND}`, name: 'فهرنهايت إلى مئوية', pitch: '°C = (°F − 32) × 5/9، مع جدول جاهز',
+      desc: 'حوّل درجة الحرارة من فهرنهايت إلى مئوية والعكس فوراً. القانون: °C = (°F − 32) × 5/9، مع جدول للحرارة والطقس والفرن. مجاني.',
+    },
+  },
+  {
+    file: 'qirat-to-sqm.html', cat: 'files',
+    en: { title: `Qirat to Square Meters: How Many m² in a Qirat? | ${BRAND}`, name: 'Qirat to Square Meters', pitch: '1 qirat = 175.03 m², 24 qirat = 1 feddan' },
+    ar: {
+      title: `القيراط كم متر؟ تحويل قيراط إلى متر مربع مع جدول | ${BRAND}`, name: 'قيراط إلى متر مربع', pitch: '1 قيراط = 175.03 م²، و24 قيراط = فدان',
+      desc: 'القيراط كم متر مربع؟ 1 قيراط = 175.03 م²، و24 قيراط = 1 فدان. حوّل القيراط إلى متر مربع والعكس مع جدول جاهز. مجاني.',
+    },
+  },
+  {
     file: 'ocr.html', cat: 'pdf',
     en: { title: `OCR PDF: Make Scanned PDFs Searchable, English and Arabic, Free | ${BRAND}`, name: 'OCR PDF', pitch: 'Scanned PDFs you can search and copy, in Arabic and English' },
     ar: {

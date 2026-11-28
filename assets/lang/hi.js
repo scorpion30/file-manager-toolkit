@@ -1328,7 +1328,21 @@
    "Can it convert Hijri dates?": "क्या यह हिजरी तारीख़ बदल सकता है?",
    "Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.": "हाँ। हिजरी तारीख़ टैब खोलें और ग्रेगोरियन तारीख़ को हिजरी में या उल्टा बदलें, आज की तारीख़ दोनों कैलेंडर में दिखेगी।",
    "Percentages, discounts and VAT": "प्रतिशत, छूट और VAT",
-   "Percentage": "प्रतिशत"
+   "Percentage": "प्रतिशत",
+   "Lbs to Kg": "पाउंड से किलो",
+   "Inches to Cm": "इंच से सेमी",
+   "Feet to Meters": "फ़ुट से मीटर",
+   "Miles to Km": "मील से किमी",
+   "Square Feet to Square Meters": "वर्ग फ़ुट से वर्ग मीटर",
+   "Qirat to Square Meters": "क़िरात से वर्ग मीटर",
+   "Fahrenheit to Celsius": "फ़ारेनहाइट से सेल्सियस",
+   "Today’s Hijri Date": "आज की हिजरी तारीख़",
+   "More date tools": "तारीख़ के और टूल",
+   "VAT calculator for your country": "आपके देश के लिए VAT कैलकुलेटर",
+   "UAE VAT Calculator (5%)": "UAE VAT कैलकुलेटर (5%)",
+   "Saudi VAT Calculator (15%)": "सऊदी अरब VAT कैलकुलेटर (15%)",
+   "Egypt VAT Calculator (14%)": "मिस्र VAT कैलकुलेटर (14%)",
+   "VAT Calculator, any rate": "VAT कैलकुलेटर, कोई भी दर"
   },
   patterns: [
     [/^(\d+) files are ready$/, "$1 फ़ाइलें तैयार हैं"],
