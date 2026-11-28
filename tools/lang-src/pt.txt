@@ -1170,3 +1170,157 @@
 1169|Carregando…
 1170|Seu navegador não copia imagens. Baixe o PNG.
 1171|Qualquer texto
+1172|Calculadoras
+1173|Calculadora de porcentagem
+1174|Calculadora de IVA
+1175|Gerador de faturas
+1176|Gerador de senhas
+1177|Ver tudo ↓
+1178|Faturas, IVA e porcentagens, QR Codes, senhas, conversão de unidades, datas hijri e texto. Grátis, na hora, sem instalar nada.
+1179|X% de Y, qual porcentagem, aumento, redução e descontos. Respostas enquanto você digita.
+1180|Adicione o IVA a um preço ou retire-o. 5%, 14%, 15% ou qualquer taxa.
+1181|Uma fatura caprichada com IVA e o total por extenso, em árabe ou inglês. Salve em PDF.
+1182|Senhas fortes e aleatórias, criadas no seu navegador. Nada é enviado nem salvo.
+1183|Quanto é
+1184|% de
+1185|é qual porcentagem de
+1186|Variação percentual de
+1187|para
+1188|aumentado em
+1189|reduzido em
+1190|Preço
+1191|com desconto de
+1192|Clique em um resultado para copiá-lo.
+1193|Como usar a calculadora de porcentagem
+1194|Escolha a pergunta
+1195|que combina com a sua: X% de Y, qual porcentagem, variação, aumento, redução ou desconto.
+1196|Digite seus números
+1197|. A resposta aparece na hora.
+1198|Clique na resposta
+1199|para copiá-la.
+1200|Como calculo a porcentagem de um número?
+1201|Multiplique o número pela porcentagem e divida por 100. 15% de 200 = 200 × 15 ÷ 100 = 30.
+1202|Como se calcula a variação percentual?
+1203|(Novo − Antigo) ÷ Antigo × 100. De 80 para 100 é (100 − 80) ÷ 80 × 100 = 25% a mais.
+1204|Como calculo um desconto?
+1205|Preço × (1 − desconto ÷ 100). 250 com 20% de desconto é 250 × 0,8 = 200, então você economiza 50.
+1206|Calcule X% de Y, quanto um número representa de outro, aumento ou redução percentual e o preço após desconto. Respostas enquanto você digita. Grátis.
+1207|Calculadora de porcentagem: X% de Y, aumento, redução, desconto | File Manager Toolkit
+1208|Adicione o IVA a um preço ou retire-o de um total. Qualquer taxa.
+1209|Adicionar IVA
+1210|Retirar IVA (o preço inclui IVA)
+1211|Valor
+1212|Taxa de IVA (%)
+1213|Taxa de IVA
+1214|Emirados, Omã
+1215|Bahrein
+1216|Egito
+1217|Arábia Saudita
+1218|Jordânia
+1219|Reino Unido, Marrocos
+1220|Valor sem IVA
+1221|IVA
+1222|Total com IVA
+1223|Clique em um número para copiá-lo. Precisa de uma fatura completa?
+1224|Crie com o gerador de faturas
+1225|Como usar a calculadora de IVA
+1226|Escolha
+1227|Adicionar IVA, ou Retirar IVA se o preço já o inclui.
+1228|Digite o valor
+1229|e escolha a taxa: 5%, 14%, 15% ou a sua.
+1230|o valor sem IVA, o IVA e o total. Clique em um número para copiá-lo.
+1231|Como adiciono IVA a um preço?
+1232|Multiplique por 1 + taxa ÷ 100. Com 5% de IVA, 1.000 vira 1.000 × 1,05 = 1.050.
+1233|Como retiro o IVA de um preço que já o inclui?
+1234|Divida por 1 + taxa ÷ 100. Um total de 1.050 com 5% de IVA é 1.050 ÷ 1,05 = 1.000 sem IVA, então o IVA é 50.
+1235|Quais são as taxas de IVA nos países árabes?
+1236|Emirados e Omã 5%, Bahrein 10%, Egito 14%, Arábia Saudita 15%, Jordânia 16% (imposto sobre vendas). Kuwait e Catar ainda não têm IVA. Confira taxas especiais com a sua receita.
+1237|Adicione o IVA a um preço ou retire-o de um total. Emirados e Omã 5%, Bahrein 10%, Egito 14%, Arábia Saudita 15% ou qualquer taxa. Grátis, na hora.
+1238|Calculadora de IVA: adicionar ou retirar IVA, 5%, 14%, 15% | File Manager Toolkit
+1239|Fatura
+1240|Idioma da fatura
+1241|English + العربية
+1242|Número da fatura
+1243|Moeda
+1244|Data
+1245|Vencimento (opcional)
+1246|De (sua empresa)
+1247|Nome da empresa
+1248|Endereço
+1249|Número fiscal (TRN)
+1250|Logo (opcional)
+1251|Cobrar de
+1252|Nome do cliente
+1253|Número fiscal do cliente (opcional)
+1254|Itens
+1255|+ Adicionar item
+1256|Desconto (valor)
+1257|Observações ou condições de pagamento (opcional)
+1258|Baixar PDF
+1259|Nova fatura
+1260|Limpar tudo
+1261|Baixar PDF abre a janela de impressão: escolha
+1262|Salvar como PDF
+1263|. Seus dados ficam neste navegador para a próxima vez, nunca são enviados.
+1264|Como usar o gerador de faturas
+1265|Preencha sua empresa e seu cliente
+1266|. Seus próprios dados ficam salvos para a próxima vez.
+1267|Adicione os itens
+1268|, o desconto e a taxa de IVA. Os totais e o valor por extenso mudam enquanto você digita.
+1269|e escolha Salvar como PDF na janela de impressão. Nova fatura passa para o próximo número.
+1270|É uma fatura fiscal?
+1271|Quando a taxa de IVA é maior que 0, o título vira "Fatura fiscal" com seu número fiscal. Ela não é ligada a sistemas de fatura eletrônica como ZATCA na Arábia Saudita ou ETA no Egito, então use onde uma fatura impressa ou em PDF é aceita.
+1272|Ele escreve o total por extenso em árabe?
+1273|Sim. O total é escrito por extenso (tafqeet) em árabe, inglês ou ambos, com a moeda, por exemplo "فقط ألف وخمسون درهماً إماراتياً لا غير".
+1274|Minhas faturas são enviadas?
+1275|Não. Tudo fica no seu navegador. Os dados da sua empresa ficam neste aparelho para você não digitar de novo.
+1276|Crie uma fatura ou fatura fiscal caprichada em inglês, árabe ou ambos, com IVA, desconto, seu logo e o total por extenso (tafqeet). Salve em PDF. Grátis, sem cadastro, nada é enviado.
+1277|Gerador de faturas grátis: árabe e inglês, IVA, total por extenso | File Manager Toolkit
+1278|Sua nova senha
+1279|Nova senha
+1280|Maiúsculas (A–Z)
+1281|Minúsculas (a–z)
+1282|Números (0–9)
+1283|Símbolos (!@#$…)
+1284|Evitar caracteres parecidos (O 0 l 1 I)
+1285|Mais senhas
+1286|Como usar o gerador de senhas
+1287|Escolha o tamanho
+1288|: 16 ou mais é uma boa escolha.
+1289|Escolha os caracteres
+1290|: maiúsculas e minúsculas, números e símbolos.
+1291|a senha, ou clique em uma da lista abaixo. Toque em ↻ para uma nova.
+1292|É seguro criar uma senha aqui?
+1293|Sim. A senha é criada no seu navegador com crypto.getRandomValues, o gerador aleatório seguro embutido nele. Nunca é enviada nem salva.
+1294|Qual deve ser o tamanho de uma senha?
+1295|Pelo menos 12 caracteres, e 16 ou mais para e-mail e banco. O tamanho importa mais que os símbolos.
+1296|Como vou lembrar?
+1297|Use um gerenciador de senhas, como o do navegador ou do celular. Use uma senha diferente para cada site.
+1298|Crie senhas fortes e aleatórias com letras, números e símbolos, de até 64 caracteres. Criadas no seu navegador com aleatoriedade segura: nada é enviado nem salvo. Grátis.
+1299|Gerador de senhas: senhas fortes e aleatórias, grátis | File Manager Toolkit
+1300|aumento
+1301|redução
+1302|Você paga
+1303|você economiza
+1304|Fraca
+1305|Razoável
+1306|Muito forte
+1307|Descrição
+1308|Qtd.
+1309|Remover item
+1310|Limpar tudo, incluindo os dados da sua empresa?
+1311|Maiúsculas, limpeza, contar palavras e caracteres
+1312|→
+1313|Links, Wi-Fi, WhatsApp. Nunca expira
+1314|Comprimento, peso, área, temperatura, datas hijri
+1315|MAIÚSCULAS, minúsculas, Title Case, limpeza e contador de palavras e caracteres.
+1316|Comprimento, peso, área, volume, temperatura, velocidade e datas hijri em um só lugar.
+1317|Mude maiúsculas e minúsculas, limpe espaços e linhas e conte palavras e caracteres.
+1318|Contador
+1319|Caracteres com espaços
+1320|Ele conta palavras e caracteres?
+1321|Sim. O contador mostra caracteres com e sem espaços, palavras, frases, linhas e tempo de leitura, e muda enquanto você digita.
+1322|Data hijri
+1323|Conversões populares, com tabelas prontas
+1324|Ele converte datas hijri?
+1325|Sim. Abra a aba Data hijri para converter uma data gregoriana em hijri ou o contrário, com a data de hoje nos dois calendários.

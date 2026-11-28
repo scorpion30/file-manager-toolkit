@@ -15,16 +15,16 @@ const seg = (name, items) => `<div class="seg${items.length > 4 ? " wrap" : ""}"
 
 // ------------------------------------------------------------------ bodies
 function textBody(counter) {
-  const stats = [['w', 'Words'], ['c', 'Characters'], ['cn', 'Characters without spaces'], ['s', 'Sentences'], ['l', 'Lines'], ['r', 'Reading time']]
+  const stats = [['c', 'Characters with spaces'], ['cn', 'Characters without spaces'], ['w', 'Words'], ['s', 'Sentences'], ['l', 'Lines'], ['r', 'Reading time']]
     .map(([k, l]) => `<div><b id="st-${k}" translate="no">0</b><span>${l}</span></div>`).join('');
   const btn = (a, l) => `<button type="button" class="btn" data-tx="${a}">${l}</button>`;
   return `<section class="panel util-box tx${counter ? ' tx-counter' : ''}">
       ${counter ? `<div class="tx-stats">${stats}</div>` : ''}
       <textarea id="txIn" dir="auto" spellcheck="false" placeholder="Type or paste your text here" aria-label="Your text"></textarea>
-      ${counter ? '' : `<div class="tx-stats small">${stats}</div>`}
       <div class="tx-groups">
         <div><h3>Change case</h3><div class="tx-btns">${btn('upper', 'UPPERCASE')}${btn('lower', 'lowercase')}${btn('title', 'Title Case')}${btn('sentence', 'Sentence case')}${btn('swap', 'Swap case')}${btn('camel', 'camelCase')}${btn('snake', 'snake_case')}${btn('kebab', 'kebab-case')}</div></div>
         <div><h3>Clean up</h3><div class="tx-btns">${btn('spaces', 'Remove extra spaces')}${btn('breaks', 'Remove line breaks')}${btn('empty', 'Remove empty lines')}${btn('dupes', 'Remove duplicate lines')}${btn('sort', 'Sort lines A → Z')}${btn('tashkeel', 'Remove Arabic diacritics')}</div></div>
+        ${counter ? '' : `<div class="tx-count"><h3>Counter</h3><div class="tx-stats">${stats}</div></div>`}
       </div>
       <div class="tx-foot">
         <button type="button" class="btn primary" id="txCopy">Copy text</button>
@@ -37,9 +37,10 @@ function textBody(counter) {
 }
 
 function convBody(c) {
-  const tabs = c.hub ? `<div class="conv-tabs">${seg('convCat', Object.entries(U).map(([k, v], i) => [k, v.name, i === 0]))}</div>` : '';
+  const tabs = c.hub ? `<div class="conv-tabs">${seg('convCat', [...Object.entries(U).map(([k, v], i) => [k, v.name, i === 0]), ['date', 'Hijri date']])}</div>` : '';
   return `<section class="panel util-box conv" id="conv" data-cat="${c.cat}" data-from="${c.from}" data-to="${c.to}"${c.hub ? ' data-hub="1"' : ''}>
       ${tabs}
+      <div id="convMain">
       <div class="conv-row">
         <label class="conv-side"><input type="text" inputmode="decimal" id="convA" value="1" dir="ltr" aria-label="Value to convert"><select id="convUA" aria-label="From"></select></label>
         <button type="button" class="conv-swap" id="convSwap" aria-label="Swap units" title="Swap units">⇄</button>
@@ -47,7 +48,10 @@ function convBody(c) {
       </div>
       <p class="conv-formula" id="convFormula" dir="ltr" translate="no"></p>
       <div class="conv-all"><h3>The same value in every unit</h3><ul id="convAll"></ul></div>
-    </section>`;
+      </div>
+      ${c.hub ? `<div id="convDate" class="hj" hidden>${hijriInner()}</div>` : ''}
+    </section>
+    ${c.hub ? popularLinks() : ''}`;
 }
 
 function convTable(c) {
@@ -63,7 +67,10 @@ function convTable(c) {
 }
 
 function hijriBody() {
-  return `<section class="panel util-box hj">
+  return `<section class="panel util-box hj">${hijriInner()}</section>`;
+}
+function hijriInner() {
+  return `
       <div class="hj-today" id="hjToday" aria-live="polite"></div>
       <div class="hj-grid">
         <div class="hj-card">
@@ -82,8 +89,13 @@ function hijriBody() {
         </div>
       </div>
       <div class="opt"><span class="opt-label">Calendar</span>${seg('hjCal', [['islamic-umalqura', 'Umm al-Qura (Saudi Arabia)', true], ['islamic-civil', 'Standard (civil)']])}</div>
-      <p class="hint">Some countries start a month one day earlier or later, after the moon is sighted.</p>
-    </section>`;
+      <p class="hint">Some countries start a month one day earlier or later, after the moon is sighted.</p>`;
+}
+
+// Links from the unit converter to the single-conversion pages (they are not in the menus any more).
+function popularLinks() {
+  const L = [['kg-to-lbs.html', 'Kg to Lbs'], ['cm-to-inches.html', 'Cm to Inches'], ['meters-to-feet.html', 'Meters to Feet'], ['km-to-miles.html', 'Km to Miles'], ['sqm-to-sqft.html', 'Square Meters to Square Feet'], ['feddan-to-sqm.html', 'Feddan to Square Meters'], ['celsius-to-fahrenheit.html', 'Celsius to Fahrenheit'], ['liters-to-gallons.html', 'Liters to Gallons'], ['hijri-converter.html', 'Hijri Date Converter']];
+  return `<section class="conv-popular"><h2>Popular conversions, with ready tables</h2><div class="chips">${L.map(([h, n]) => `<a class="chip" href="${h}">${n}</a>`).join('')}</div></section>`;
 }
 
 function qrBody() {
@@ -124,6 +136,110 @@ function qrBody() {
     </section>`;
 }
 
+const num = (id, val = '', extra = '') => `<input type="text" inputmode="decimal" id="${id}" value="${val}" dir="ltr" translate="no" autocomplete="off"${extra}>`;
+
+function percentBody() {
+  const card = (k, q, out = '') => `<div class="pc-card" data-pc="${k}"><p class="pc-q">${q}</p><output class="pc-out" id="pc-${k}" role="status">${out}</output></div>`;
+  return `<section class="pc-grid">
+      ${card('of', `<span>What is</span> ${num('pcOfA', '15')} <span>% of</span> ${num('pcOfB', '200')}<span>?</span>`)}
+      ${card('what', `${num('pcWhatA', '30')} <span>is what percent of</span> ${num('pcWhatB', '200')}<span>?</span>`)}
+      ${card('change', `<span>Percentage change from</span> ${num('pcChA', '80')} <span>to</span> ${num('pcChB', '100')}`)}
+      ${card('inc', `${num('pcIncA', '200')} <span>increased by</span> ${num('pcIncB', '10')} <span>%</span>`)}
+      ${card('dec', `${num('pcDecA', '200')} <span>decreased by</span> ${num('pcDecB', '10')} <span>%</span>`)}
+      ${card('disc', `<span>Price</span> ${num('pcDiscA', '250')} <span>with a discount of</span> ${num('pcDiscB', '20')} <span>%</span>`)}
+    </section>
+    <p class="hint pc-hint">Click a result to copy it.</p>`;
+}
+
+function vatBody() {
+  const rates = [['5', 'UAE, Oman'], ['10', 'Bahrain'], ['14', 'Egypt'], ['15', 'Saudi Arabia'], ['16', 'Jordan'], ['20', 'UK, Morocco']];
+  const res = (id, l) => `<button type="button" class="vat-res" id="${id}" data-copy=""><span>${l}</span><b dir="ltr" translate="no">0.00</b></button>`;
+  return `<section class="panel util-box vat">
+      ${seg('vatMode', [['add', 'Add VAT', true], ['remove', 'Remove VAT (the price includes VAT)']])}
+      <div class="vat-in">
+        <label class="opt"><span class="opt-label">Amount</span>${num('vAmt', '1000')}</label>
+        <label class="opt vat-rate"><span class="opt-label">VAT rate (%)</span>${num('vRate', '5')}</label>
+      </div>
+      <div class="vat-rates" role="group" aria-label="VAT rate">${rates.map(([r, c]) => `<button type="button" class="chip" data-rate="${r}"><b translate="no">${r}%</b><small>${c}</small></button>`).join('')}</div>
+      <div class="vat-out">
+        ${res('vNet', 'Amount without VAT')}
+        ${res('vVat', 'VAT')}
+        ${res('vTot', 'Total with VAT')}
+      </div>
+      <p class="vat-formula" id="vFormula" dir="ltr" translate="no"></p>
+      <p class="hint">Click a number to copy it. Need a full invoice? <a href="invoice-generator.html">Make one with the Invoice Generator</a>.</p>
+    </section>`;
+}
+
+function passwordBody() {
+  const chk = (id, l, on = true) => `<label class="check"><input type="checkbox" id="${id}"${on ? ' checked' : ''}> ${l}</label>`;
+  return `<section class="panel util-box pw">
+      <div class="pw-out">
+        <input type="text" id="pwOut" readonly dir="ltr" translate="no" aria-label="Your new password" spellcheck="false">
+        <button type="button" class="btn ghost pw-new" id="pwNew" aria-label="New password" title="New password">↻</button>
+        <button type="button" class="btn primary" id="pwCopy">Copy</button>
+      </div>
+      <div class="pw-meter" aria-hidden="true"><i id="pwBar"></i></div>
+      <p class="pw-strength" id="pwStrength" role="status"></p>
+      <label class="opt pw-len"><span class="opt-label">Length</span><input type="range" id="pwLen" min="6" max="64" value="16"><b id="pwLenV" translate="no">16</b></label>
+      <div class="pw-checks">
+        ${chk('pwUp', 'Uppercase (A–Z)')}${chk('pwLow', 'Lowercase (a–z)')}${chk('pwNum', 'Numbers (0–9)')}${chk('pwSym', 'Symbols (!@#$…)')}${chk('pwSimilar', 'Avoid look-alike characters (O 0 l 1 I)', false)}
+      </div>
+      <div class="pw-more"><h3>More passwords</h3><ul id="pwList"></ul></div>
+    </section>`;
+}
+
+function invoiceBody() {
+  const inp = (id, l, type = 'text', extra = '') => `<label class="opt"><span class="opt-label">${l}</span><input type="${type}" id="${id}" dir="auto"${extra}></label>`;
+  const area = (id, l, rows = 2) => `<label class="opt"><span class="opt-label">${l}</span><textarea id="${id}" rows="${rows}" dir="auto"></textarea></label>`;
+  const cur = ['AED', 'SAR', 'EGP', 'KWD', 'QAR', 'BHD', 'OMR', 'JOD', 'USD', 'EUR', 'GBP'];
+  return `<section class="util-split inv">
+      <div class="panel inv-form">
+        <fieldset><legend>Invoice</legend>
+          <div class="opt"><span class="opt-label">Invoice language</span>${seg('invLang', [['en', 'English'], ['ar', 'العربية'], ['both', 'English + العربية']])}</div>
+          <div class="inv-row2">
+            ${inp('iNo', 'Invoice number', 'text', ' value="INV-0001"')}
+            <label class="opt"><span class="opt-label">Currency</span><select id="iCur" translate="no">${cur.map((c) => `<option>${c}</option>`).join('')}</select></label>
+          </div>
+          <div class="inv-row2">
+            ${inp('iDate', 'Date', 'date')}
+            ${inp('iDue', 'Due date (optional)', 'date')}
+          </div>
+        </fieldset>
+        <fieldset><legend>From (your business)</legend>
+          ${inp('sName', 'Business name')}
+          ${area('sAddr', 'Address')}
+          <div class="inv-row2">${inp('sTrn', 'Tax number (TRN)')}${inp('sPhone', 'Phone', 'tel')}</div>
+          ${inp('sMail', 'Email', 'email')}
+          <div class="opt"><span class="opt-label">Logo (optional)</span><div class="inline"><button type="button" class="btn" id="sLogoBtn">Choose a logo</button><button type="button" class="btn ghost" id="sLogoDel" hidden>Remove logo</button></div><input type="file" id="sLogo" accept="image/*" hidden></div>
+        </fieldset>
+        <fieldset><legend>Bill to</legend>
+          ${inp('cName', 'Customer name')}
+          ${area('cAddr', 'Address')}
+          ${inp('cTrn', 'Customer tax number (optional)')}
+        </fieldset>
+        <fieldset><legend>Items</legend>
+          <div class="inv-items" id="iItems"></div>
+          <button type="button" class="btn" id="iAdd">+ Add item</button>
+          <div class="inv-row2">
+            <label class="opt"><span class="opt-label">Discount (amount)</span>${num('iDisc', '0')}</label>
+            <label class="opt"><span class="opt-label">VAT rate (%)</span>${num('iVat', '5')}</label>
+          </div>
+          ${area('iNotes', 'Notes or payment terms (optional)', 3)}
+        </fieldset>
+      </div>
+      <div class="inv-side">
+        <div class="inv-paper" id="invPaper" translate="no"></div>
+        <div class="dl-row">
+          <button type="button" class="btn primary" id="iPdf">Download PDF</button>
+          <button type="button" class="btn" id="iNew">New invoice</button>
+          <button type="button" class="btn ghost" id="iReset">Clear all</button>
+        </div>
+        <p class="hint">Download PDF opens the print window: choose <b>Save as PDF</b>. Your details are kept in this browser for next time, never uploaded.</p>
+      </div>
+    </section>`;
+}
+
 // ------------------------------------------------------------------ pages
 const convHow = ['<b>Type a number</b> in either box. The other box updates as you type.', '<b>Pick other units</b> from the lists, or press ⇄ to swap them.', '<b>Copy any result</b>: click a value in the list to copy it.'];
 const convFaqCommon = ['Is this converter free?', 'Yes, free and without sign-up. It works in your browser, even offline once the page has loaded.'];
@@ -134,12 +250,13 @@ const PAGES = [
     file: 'text-case.html', script: 'textcase.js', cat: 'text', icon: 'textcase',
     title: 'Text Case Converter: UPPERCASE, lowercase, Title Case, Free | File Manager Toolkit',
     desc: 'Change text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase or snake_case. Remove extra spaces, line breaks, duplicate lines and Arabic diacritics. Free, nothing is uploaded.',
-    h1: 'Text Case Converter', sub: 'Paste your text and pick a case. Clean up spaces and lines too.',
+    h1: 'Text Case Converter', sub: 'Change the case, clean up spaces and lines, and count words and characters.',
     body: textBody(false),
     howto: ['<b>Paste or type</b> your text in the box.', '<b>Click a button</b>: UPPERCASE, lowercase, Title Case, or a clean-up like removing extra spaces.', '<b>Copy the result</b> or download it as a .txt file. Undo goes back one step.'],
     faq: [
       ['What is Title Case?', 'Every word starts with a capital letter, like a book title: "The Quick Brown Fox". Sentence case only capitalises the first word of each sentence.'],
       ['Can it remove the diacritics from Arabic text?', 'Yes. "Remove Arabic diacritics" takes out the tashkeel (fatha, damma, kasra, shadda and the rest) and the tatweel, and keeps the letters.'],
+      ['Can it count words and characters?', 'Yes. The Counter shows characters with and without spaces, words, sentences, lines and reading time, and updates as you type.'],
       ['Is my text sent anywhere?', 'No. Everything happens in your browser. Nothing is uploaded or saved.'],
     ],
   },
@@ -157,12 +274,13 @@ const PAGES = [
     ],
   },
   {
-    file: 'unit-converter.html', cat: 'units', icon: 'units', conv: { cat: 'length', from: 'm', to: 'ft', hub: true },
+    file: 'unit-converter.html', cat: 'units', icon: 'units', conv: { cat: 'length', from: 'm', to: 'ft', hub: true }, extraScripts: ['hijri.js'],
     title: 'Unit Converter: Length, Weight, Area, Volume, Temperature, Speed | File Manager Toolkit',
     desc: 'Convert length, weight, area, volume, temperature and speed: metres, feet, kilograms, pounds, square metres, feddan, litres, gallons, °C and °F. Free, instant, no ads in the way.',
-    h1: 'Unit Converter', sub: 'Length, weight, area, volume, temperature and speed, in one place.',
+    h1: 'Unit Converter', sub: 'Length, weight, area, volume, temperature, speed and Hijri dates, in one place.',
     faq: [
       ['Which units are included?', 'Metric and imperial units for length, weight, area, volume, temperature and speed, plus feddan, qirat and dunam for land.'],
+      ['Can it convert Hijri dates?', 'Yes. Open the Hijri date tab to change a Gregorian date to Hijri or back, with today’s date in both calendars.'],
       convFaqCommon,
     ],
   },
@@ -264,6 +382,58 @@ const PAGES = [
     ],
   },
   {
+    file: 'percentage-calculator.html', script: 'calc.js', cat: 'calc', icon: 'percent',
+    title: 'Percentage Calculator: X% of Y, Increase, Decrease, Discount | File Manager Toolkit',
+    desc: 'Work out X% of Y, what percent one number is of another, percentage increase or decrease and the price after a discount. Answers as you type. Free.',
+    h1: 'Percentage Calculator', sub: 'X% of Y, what percent, increase, decrease and discounts. Answers as you type.',
+    body: percentBody(),
+    howto: ['<b>Pick the question</b> that matches yours: X% of Y, what percent, change, increase, decrease or discount.', '<b>Type your numbers</b>. The answer shows straight away.', '<b>Click the answer</b> to copy it.'],
+    faq: [
+      ['How do I work out a percentage of a number?', 'Multiply the number by the percentage and divide by 100. 15% of 200 = 200 × 15 ÷ 100 = 30.'],
+      ['How is percentage change worked out?', '(New − Old) ÷ Old × 100. From 80 to 100 is (100 − 80) ÷ 80 × 100 = 25% up.'],
+      ['How do I work out a discount?', 'Price × (1 − discount ÷ 100). 250 with 20% off is 250 × 0.8 = 200, so you save 50.'],
+    ],
+  },
+  {
+    file: 'vat-calculator.html', script: 'calc.js', cat: 'calc', icon: 'vat',
+    title: 'VAT Calculator: Add or Remove VAT, 5%, 14%, 15% | File Manager Toolkit',
+    desc: 'Add VAT to a price or take VAT out of a total. UAE and Oman 5%, Bahrain 10%, Egypt 14%, Saudi Arabia 15%, or any rate. Free, instant.',
+    h1: 'VAT Calculator', sub: 'Add VAT to a price or take it out of a total. Any rate.',
+    body: vatBody(),
+    howto: ['<b>Choose</b> Add VAT, or Remove VAT if your price already includes it.', '<b>Type the amount</b> and pick the rate: 5%, 14%, 15% or your own.', '<b>Read</b> the amount without VAT, the VAT and the total. Click a number to copy it.'],
+    faq: [
+      ['How do I add VAT to a price?', 'Multiply by 1 + rate ÷ 100. With 5% VAT, 1,000 becomes 1,000 × 1.05 = 1,050.'],
+      ['How do I take VAT out of a price that includes it?', 'Divide by 1 + rate ÷ 100. A total of 1,050 with 5% VAT is 1,050 ÷ 1.05 = 1,000 before VAT, so the VAT is 50.'],
+      ['What are the VAT rates in the Arab countries?', 'UAE and Oman 5%, Bahrain 10%, Egypt 14%, Saudi Arabia 15%, Jordan 16% (sales tax). Kuwait and Qatar have no VAT yet. Check with your tax office for special rates.'],
+    ],
+  },
+  {
+    file: 'invoice-generator.html', script: 'invoice.js', extraScripts: ['words.js'], cat: 'generate', icon: 'invoice',
+    title: 'Free Invoice Generator: Arabic and English, VAT, Total in Words | File Manager Toolkit',
+    desc: 'Make a clean invoice or tax invoice in English, Arabic or both, with VAT, discount, your logo and the total in words (tafqeet). Save it as PDF. Free, no sign-up, nothing uploaded.',
+    h1: 'Invoice Generator', sub: 'A clean invoice with VAT and the total in words, in Arabic or English. Save it as PDF.',
+    body: invoiceBody(),
+    howto: ['<b>Fill in your business and your customer</b>. Your own details are remembered for next time.', '<b>Add the items</b>, the discount and the VAT rate. Totals and the amount in words update as you type.', '<b>Download PDF</b> and choose Save as PDF in the print window. New invoice moves to the next number.'],
+    faq: [
+      ['Is it a tax invoice?', 'When the VAT rate is above 0 the title becomes "Tax invoice" with your tax number. It is not connected to e-invoicing systems like ZATCA in Saudi Arabia or the ETA in Egypt, so use it where a printed or PDF invoice is accepted.'],
+      ['Can it write the total in Arabic words?', 'Yes. The total is written in words (tafqeet) in Arabic, English or both, with the currency, for example "فقط ألف وخمسون درهماً إماراتياً لا غير".'],
+      ['Are my invoices uploaded?', 'No. Everything stays in your browser. Your business details are kept on this device so you do not type them again.'],
+    ],
+  },
+  {
+    file: 'password-generator.html', script: 'password.js', cat: 'generate', icon: 'password',
+    title: 'Password Generator: Strong Random Passwords, Free | File Manager Toolkit',
+    desc: 'Make strong random passwords with letters, numbers and symbols, any length up to 64. Made in your browser with secure randomness: nothing is sent or saved. Free.',
+    h1: 'Password Generator', sub: 'Strong random passwords, made in your browser. Nothing is sent or saved.',
+    body: passwordBody(),
+    howto: ['<b>Pick the length</b>: 16 or more is a good choice.', '<b>Choose the characters</b>: upper and lower case, numbers and symbols.', '<b>Copy</b> the password, or click one from the list below. Press ↻ for a new one.'],
+    faq: [
+      ['Is it safe to make a password here?', 'Yes. The password is made in your browser with crypto.getRandomValues, the secure random generator built into it. It is never sent anywhere or saved.'],
+      ['How long should a password be?', 'At least 12 characters, and 16 or more for email and banking. Length matters more than symbols.'],
+      ['How do I remember it?', 'Use a password manager, like the one built into your browser or phone. Use a different password for every site.'],
+    ],
+  },
+  {
     file: 'qr-code.html', script: 'qr.js', cat: 'generate', icon: 'qr',
     title: 'Free QR Code Generator: Links, Wi-Fi, WhatsApp, No Expiry | File Manager Toolkit',
     desc: 'Make QR codes for links, text, Wi-Fi, WhatsApp, phone, email and contact cards. Add your colours and logo, download PNG or SVG. Free forever, no sign-up, they never expire.',
@@ -283,7 +453,7 @@ function page(p) {
   const conv = p.conv;
   const body = conv ? convBody(conv) : p.body;
   const howto = p.howto || convHow;
-  const scripts = conv ? ['units-data.js', 'units.js'] : [p.script];
+  const scripts = conv ? ['units-data.js', 'units.js', ...(p.extraScripts || [])] : [...(p.extraScripts || []), p.script];
   return `<!doctype html>
 <html lang="en" data-lang-page="en">
 <head>

@@ -1,4 +1,4 @@
-// Every tool on the site.
+// Every tool on the site. hidden: true = the page stays online (and in the sitemap) but is not in the menus or the home grid.
 // tools/layout.mjs uses it for the header menu ("All tools"), the home grid and the footer.
 // Category colours are in assets/style.css (.cat-<key>).
 
@@ -12,10 +12,11 @@ export const CATS = [
   { key: 'eng', name: 'For engineers' },
   { key: 'text', name: 'Text tools' },
   { key: 'units', name: 'Converters' },
+  { key: 'calc', name: 'Calculators' },
   { key: 'generate', name: 'Generators' },
 ];
 // The everyday tools (not about files): their own block on the home page.
-export const EVERYDAY = ['text', 'units', 'generate'];
+export const EVERYDAY = ['text', 'units', 'calc', 'generate'];
 
 const I = {
   merge: '<rect x="3" y="3" width="8" height="11" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><path d="M7 14v3a2 2 0 0 0 2 2h4"/>',
@@ -52,6 +53,10 @@ const I = {
   temp: '<path d="M14 14.8V5a2 2 0 0 0-4 0v9.8a4 4 0 1 0 4 0Z"/><path d="M12 10v6"/>',
   volume: '<path d="M7 3h10M8 3v4l-3 5v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8l-3-5V3"/><path d="M5 14h14"/>',
   hijri: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M14.5 13.5a3 3 0 1 0 1 4.5 2.4 2.4 0 0 1-1-4.5Z"/>',
+  percent: '<path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/>',
+  vat: '<path d="M4 4h16v16l-2.5-1.5L15 20l-3-1.5L9 20l-2.5-1.5L4 20Z"/><path d="M15 8.5 9 14.5"/><circle cx="9.5" cy="9" r="1"/><circle cx="14.5" cy="14" r="1"/>',
+  password: '<rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/><path d="M8 15.5h.01M12 15.5h.01M16 15.5h.01"/>',
+  invoice: '<path d="M6 2h9l5 5v15H6Z"/><path d="M15 2v5h5"/><path d="M9 12h7M9 16h7M9 8h3"/>',
   qr: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M17 20h4v-3M14 20v.01"/>',
   midp: '<path d="M4 4h10l6 6v10H4Z"/><path d="M14 4v6h6"/><path d="m8 15 2.5 2.5L16 12"/>',
 };
@@ -88,18 +93,22 @@ export const TOOLS = [
   { href: 'preflight.html', cat: 'eng', icon: 'preflight', name: 'Pre-flight Check', desc: 'Duplicate numbers, wrong names and missing drawings, before you send.', unique: true },
   { href: 'midp.html', cat: 'eng', icon: 'midp', name: 'MIDP Check', desc: 'A whole submission against the MIDP and TIDPs: missing, extra, wrong revisions.', unique: true },
   // everyday tools (EVERYDAY categories)
-  { href: 'text-case.html', cat: 'text', icon: 'textcase', name: 'Text Case Converter', desc: 'UPPERCASE, lowercase, Title Case and more. Clean up spaces, lines and Arabic diacritics.' },
-  { href: 'word-counter.html', cat: 'text', icon: 'counter', name: 'Word Counter', desc: 'Words, characters, sentences, lines and reading time, as you type.' },
-  { href: 'unit-converter.html', cat: 'units', icon: 'units', name: 'Unit Converter', desc: 'Length, weight, area, volume, temperature and speed, in one place.' },
-  { href: 'kg-to-lbs.html', cat: 'units', icon: 'weight', name: 'Kg to Lbs', desc: 'Kilograms to pounds and back, with a ready table.' },
-  { href: 'cm-to-inches.html', cat: 'units', icon: 'length', name: 'Cm to Inches', desc: 'Centimetres to inches and back, with a ready table.' },
-  { href: 'meters-to-feet.html', cat: 'units', icon: 'length', name: 'Meters to Feet', desc: 'Metres to feet and back, with feet and inches.' },
-  { href: 'km-to-miles.html', cat: 'units', icon: 'length', name: 'Km to Miles', desc: 'Kilometres to miles and back, with a ready table.' },
-  { href: 'sqm-to-sqft.html', cat: 'units', icon: 'area', name: 'Square Meters to Square Feet', desc: 'm² to ft² and back, for flats, plots and floor plans.' },
-  { href: 'feddan-to-sqm.html', cat: 'units', icon: 'area', name: 'Feddan to Square Meters', desc: 'Feddan, qirat, dunam, acre and hectare to m² and back.' },
-  { href: 'celsius-to-fahrenheit.html', cat: 'units', icon: 'temp', name: 'Celsius to Fahrenheit', desc: '°C to °F and back, with the formula and a ready table.' },
-  { href: 'liters-to-gallons.html', cat: 'units', icon: 'volume', name: 'Liters to Gallons', desc: 'Litres to US or UK gallons and back.' },
-  { href: 'hijri-converter.html', cat: 'units', icon: 'hijri', name: 'Hijri Date Converter', desc: 'Hijri to Gregorian and back, and today’s date in both calendars.' },
+  { href: 'text-case.html', cat: 'text', icon: 'textcase', name: 'Text Case Converter', desc: 'UPPERCASE, lowercase, Title Case, clean-ups, and a word and character counter.' },
+  { href: 'word-counter.html', hidden: true, cat: 'text', icon: 'counter', name: 'Word Counter', desc: 'Words, characters, sentences, lines and reading time, as you type.' },
+  { href: 'unit-converter.html', cat: 'units', icon: 'units', name: 'Unit Converter', desc: 'Length, weight, area, volume, temperature, speed and Hijri dates, in one place.' },
+  { href: 'kg-to-lbs.html', hidden: true, cat: 'units', icon: 'weight', name: 'Kg to Lbs', desc: 'Kilograms to pounds and back, with a ready table.' },
+  { href: 'cm-to-inches.html', hidden: true, cat: 'units', icon: 'length', name: 'Cm to Inches', desc: 'Centimetres to inches and back, with a ready table.' },
+  { href: 'meters-to-feet.html', hidden: true, cat: 'units', icon: 'length', name: 'Meters to Feet', desc: 'Metres to feet and back, with feet and inches.' },
+  { href: 'km-to-miles.html', hidden: true, cat: 'units', icon: 'length', name: 'Km to Miles', desc: 'Kilometres to miles and back, with a ready table.' },
+  { href: 'sqm-to-sqft.html', hidden: true, cat: 'units', icon: 'area', name: 'Square Meters to Square Feet', desc: 'm² to ft² and back, for flats, plots and floor plans.' },
+  { href: 'feddan-to-sqm.html', hidden: true, cat: 'units', icon: 'area', name: 'Feddan to Square Meters', desc: 'Feddan, qirat, dunam, acre and hectare to m² and back.' },
+  { href: 'celsius-to-fahrenheit.html', hidden: true, cat: 'units', icon: 'temp', name: 'Celsius to Fahrenheit', desc: '°C to °F and back, with the formula and a ready table.' },
+  { href: 'liters-to-gallons.html', hidden: true, cat: 'units', icon: 'volume', name: 'Liters to Gallons', desc: 'Litres to US or UK gallons and back.' },
+  { href: 'hijri-converter.html', hidden: true, cat: 'units', icon: 'hijri', name: 'Hijri Date Converter', desc: 'Hijri to Gregorian and back, and today’s date in both calendars.' },
+  { href: 'percentage-calculator.html', cat: 'calc', icon: 'percent', name: 'Percentage Calculator', desc: 'X% of Y, what percent, increase, decrease and discounts. Answers as you type.' },
+  { href: 'vat-calculator.html', cat: 'calc', icon: 'vat', name: 'VAT Calculator', desc: 'Add VAT to a price or take it out. 5%, 14%, 15% or any rate.' },
+  { href: 'invoice-generator.html', cat: 'generate', icon: 'invoice', name: 'Invoice Generator', desc: 'A clean invoice with VAT and the total in words, in Arabic or English. Save it as PDF.' },
+  { href: 'password-generator.html', cat: 'generate', icon: 'password', name: 'Password Generator', desc: 'Strong random passwords, made in your browser. Nothing is sent or saved.' },
   { href: 'qr-code.html', cat: 'generate', icon: 'qr', name: 'QR Code Generator', desc: 'QR codes for links, Wi-Fi, WhatsApp and contacts. Free forever, they never expire.' },
 ];
 

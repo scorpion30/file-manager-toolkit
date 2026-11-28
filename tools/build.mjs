@@ -39,7 +39,8 @@ const CORE = new Set(['index.html', 'merge.html', 'compress.html', 'pdf-to-word.
   'split.html', 'rotate.html', 'unlock.html', 'protect.html', 'watermark.html', 'page-numbers.html', 'pages.html', 'ocr.html',
   'crop.html', 'compare.html', 'remove-bg.html',
   'text-case.html', 'word-counter.html', 'unit-converter.html', 'kg-to-lbs.html', 'cm-to-inches.html', 'meters-to-feet.html', 'km-to-miles.html',
-  'sqm-to-sqft.html', 'feddan-to-sqm.html', 'celsius-to-fahrenheit.html', 'liters-to-gallons.html', 'hijri-converter.html', 'qr-code.html']);
+  'sqm-to-sqft.html', 'feddan-to-sqm.html', 'celsius-to-fahrenheit.html', 'liters-to-gallons.html', 'hijri-converter.html', 'qr-code.html',
+  'percentage-calculator.html', 'vat-calculator.html', 'invoice-generator.html', 'password-generator.html']);
 const LOCALE = { en: 'en_US', ar: 'ar_AR', ...LANGS };
 const FONTS = { ar: 'Noto+Sans+Arabic', hi: 'Noto+Sans+Devanagari' };
 const langsOf = (file) => ['en', 'ar', ...(CORE.has(file) ? Object.keys(LANGS) : [])];
@@ -245,6 +246,38 @@ const PAGES = [
     ar: {
       title: `تحويل التاريخ من هجري إلى ميلادي والعكس | ${BRAND}`, name: 'تحويل التاريخ الهجري', pitch: 'هجري وميلادي، وتاريخ النهارده بالتقويمين',
       desc: 'حوّل التاريخ من هجري لميلادي ومن ميلادي لهجري بتقويم أم القرى، واعرف تاريخ النهارده هجري ويوم الأسبوع. مجاني.',
+    },
+  },
+  {
+    file: 'percentage-calculator.html', cat: 'qa',
+    en: { title: `Percentage Calculator: X% of Y, Increase, Decrease, Discount | ${BRAND}`, name: 'Percentage Calculator', pitch: 'Percentages and discounts, answered as you type' },
+    ar: {
+      title: `حاسبة النسبة المئوية: نسبة من رقم، زيادة، نقص، خصم | ${BRAND}`, name: 'حاسبة النسبة المئوية', pitch: 'النسب والخصومات، والإجابة وأنت بتكتب',
+      desc: 'احسب كام في المية من رقم، والرقم ده يمثل كام في المية من رقم تاني، ونسبة الزيادة أو النقص، والسعر بعد الخصم. الإجابة بتظهر وأنت بتكتب. مجاني.',
+    },
+  },
+  {
+    file: 'vat-calculator.html', cat: 'qa',
+    en: { title: `VAT Calculator: Add or Remove VAT, 5%, 14%, 15% | ${BRAND}`, name: 'VAT Calculator', pitch: 'Add VAT or take it out, any rate' },
+    ar: {
+      title: `حاسبة ضريبة القيمة المضافة: إضافة أو استخراج الضريبة 5% و14% و15% | ${BRAND}`, name: 'حاسبة ضريبة القيمة المضافة', pitch: 'ضيف الضريبة أو طلّعها من السعر، بأي نسبة',
+      desc: 'ضيف ضريبة القيمة المضافة على السعر أو استخرجها من الإجمالي. الإمارات وعُمان 5%، البحرين 10%، مصر 14%، السعودية 15%، أو أي نسبة. مجاني وفوري.',
+    },
+  },
+  {
+    file: 'invoice-generator.html', cat: 'qa',
+    en: { title: `Free Invoice Generator: Arabic and English, VAT, Total in Words | ${BRAND}`, name: 'Invoice Generator', pitch: 'Invoices with VAT and the total in words, saved as PDF' },
+    ar: {
+      title: `عمل فاتورة مجاناً: عربي وإنجليزي، ضريبة، تفقيط المبلغ | ${BRAND}`, name: 'إنشاء فاتورة', pitch: 'فاتورة بالضريبة والمبلغ بالحروف، وتحفظها PDF',
+      desc: 'اعمل فاتورة أو فاتورة ضريبية بالعربي أو الإنجليزي أو الاتنين، بالضريبة والخصم واللوجو والمبلغ بالحروف (تفقيط). احفظها PDF. مجاني ومن غير تسجيل ومن غير رفع أي حاجة.',
+    },
+  },
+  {
+    file: 'password-generator.html', cat: 'qa',
+    en: { title: `Password Generator: Strong Random Passwords, Free | ${BRAND}`, name: 'Password Generator', pitch: 'Strong random passwords, nothing sent or saved' },
+    ar: {
+      title: `مولّد كلمات السر: باسورد قوي وعشوائي مجاناً | ${BRAND}`, name: 'مولّد كلمات السر', pitch: 'باسوردات قوية وعشوائية، ولا حاجة بتتبعت أو بتتحفظ',
+      desc: 'اعمل باسورد قوي وعشوائي بحروف وأرقام ورموز وبأي طول لحد 64. بيتعمل في المتصفح بعشوائية آمنة ومش بيتبعت أو بيتحفظ في أي مكان. مجاني.',
     },
   },
   {

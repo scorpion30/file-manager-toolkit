@@ -11,7 +11,7 @@ if (!lang) throw new Error('usage: node tools/lang-worklist.mjs <code>');
 const ROOT = process.cwd();
 const SCRIPTS = ['common.js', 'kit.js', 'pdfops.js', 'merge.js', 'compress.js', 'pdf-to-word.js', 'pdf-to-image.js', 'image-to-pdf.js',
   'split.js', 'rotate.js', 'unlock.js', 'protect.js', 'watermark.js', 'page-numbers.js', 'pages.js', 'ocr.js', 'crop.js', 'compare.js', 'remove-bg.js',
-  'textcase.js', 'units.js', 'hijri.js', 'qr.js'];
+  'textcase.js', 'units.js', 'hijri.js', 'qr.js', 'calc.js', 'password.js', 'invoice.js'];
 
 // Arabic dictionary keys, read by running i18n.js in a sandbox and exposing AR.
 const code = fs.readFileSync(path.join(ROOT, 'assets/i18n.js'), 'utf8').replace("const AR = {", "const AR = window.__AR = {");

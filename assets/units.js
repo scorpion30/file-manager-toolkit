@@ -77,14 +77,27 @@
     a.value = b.value || a.value;
     render('a');
   });
-  document.querySelectorAll('input[name="convCat"]').forEach((r) => r.addEventListener('change', () => {
-    cat = r.value;
+  // The hub page also has a "Hijri date" tab (assets/hijri.js runs inside #convDate).
+  function showTab(v) {
+    const date = v === 'date';
+    if ($('convMain')) $('convMain').hidden = date;
+    if ($('convDate')) $('convDate').hidden = !date;
+    if (date) return;
+    cat = v;
     fill(ua, DEFAULTS[cat][0]); fill(ub, DEFAULTS[cat][1]);
     a.value = cat === 'temp' ? '25' : '1';
     render('a');
+  }
+  document.querySelectorAll('input[name="convCat"]').forEach((r) => r.addEventListener('change', () => {
+    showTab(r.value);
+    try { history.replaceState(null, '', r.value === 'length' ? location.pathname : '#' + r.value); } catch { /* ignore */ }
   }));
 
   fill(ua, root.dataset.from); fill(ub, root.dataset.to);
   render('a');
+  // unit-converter.html#date (or #mass, #area…) opens that tab
+  const start = location.hash.slice(1);
+  const tab = start && document.querySelector(`input[name="convCat"][value="${CSS.escape(start)}"]`);
+  if (tab) { tab.checked = true; showTab(start); }
   window.__units = { parse, render };
 })();

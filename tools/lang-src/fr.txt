@@ -1170,3 +1170,157 @@
 1169|Chargement…
 1170|Votre navigateur ne peut pas copier d’images. Téléchargez plutôt le PNG.
 1171|N’importe quel texte
+1172|Calculatrices
+1173|Calculateur de pourcentage
+1174|Calculateur de TVA
+1175|Générateur de factures
+1176|Générateur de mots de passe
+1177|Tout voir ↓
+1178|Factures, TVA et pourcentages, QR codes, mots de passe, conversions d’unités, dates hégiriennes et texte. Gratuit, instantané, rien à installer.
+1179|X % de Y, quel pourcentage, hausse, baisse et remises. Réponses pendant la saisie.
+1180|Ajoutez la TVA à un prix ou retirez-la. 5 %, 14 %, 15 % ou tout autre taux.
+1181|Une facture soignée avec TVA et le total en lettres, en arabe ou en anglais. Enregistrez-la en PDF.
+1182|Des mots de passe forts et aléatoires, créés dans votre navigateur. Rien n’est envoyé ni enregistré.
+1183|Combien font
+1184|% de
+1185|représente quel pourcentage de
+1186|Variation en pourcentage de
+1187|à
+1188|augmenté de
+1189|diminué de
+1190|Prix
+1191|avec une remise de
+1192|Cliquez sur un résultat pour le copier.
+1193|Comment utiliser le calculateur de pourcentage
+1194|Choisissez la question
+1195|qui correspond à la vôtre : X % de Y, quel pourcentage, variation, hausse, baisse ou remise.
+1196|Tapez vos nombres
+1197|. La réponse s’affiche aussitôt.
+1198|Cliquez sur la réponse
+1199|pour la copier.
+1200|Comment calculer un pourcentage d’un nombre ?
+1201|Multipliez le nombre par le pourcentage et divisez par 100. 15 % de 200 = 200 × 15 ÷ 100 = 30.
+1202|Comment calcule-t-on une variation en pourcentage ?
+1203|(Nouveau − Ancien) ÷ Ancien × 100. De 80 à 100 : (100 − 80) ÷ 80 × 100 = +25 %.
+1204|Comment calculer une remise ?
+1205|Prix × (1 − remise ÷ 100). 250 avec 20 % de remise = 250 × 0,8 = 200 : vous économisez 50.
+1206|Calculez X % de Y, le pourcentage qu’un nombre représente d’un autre, une hausse ou une baisse en pourcentage et le prix après remise. Réponses pendant la saisie. Gratuit.
+1207|Calculateur de pourcentage : X % de Y, hausse, baisse, remise | File Manager Toolkit
+1208|Ajoutez la TVA à un prix ou retirez-la d’un total. Tout taux.
+1209|Ajouter la TVA
+1210|Retirer la TVA (le prix inclut la TVA)
+1211|Montant
+1212|Taux de TVA (%)
+1213|Taux de TVA
+1214|Émirats, Oman
+1215|Bahreïn
+1216|Égypte
+1217|Arabie saoudite
+1218|Jordanie
+1219|Royaume-Uni, Maroc
+1220|Montant hors TVA
+1221|TVA
+1222|Total TTC
+1223|Cliquez sur un nombre pour le copier. Besoin d’une facture complète ?
+1224|Créez-la avec le générateur de factures
+1225|Comment utiliser le calculateur de TVA
+1226|Choisissez
+1227|Ajouter la TVA, ou Retirer la TVA si votre prix l’inclut déjà.
+1228|Tapez le montant
+1229|et choisissez le taux : 5 %, 14 %, 15 % ou le vôtre.
+1230|le montant hors TVA, la TVA et le total. Cliquez sur un nombre pour le copier.
+1231|Comment ajouter la TVA à un prix ?
+1232|Multipliez par 1 + taux ÷ 100. Avec 5 % de TVA, 1 000 devient 1 000 × 1,05 = 1 050.
+1233|Comment retirer la TVA d’un prix qui l’inclut ?
+1234|Divisez par 1 + taux ÷ 100. Un total de 1 050 avec 5 % de TVA donne 1 050 ÷ 1,05 = 1 000 HT : la TVA est de 50.
+1235|Quels sont les taux de TVA dans les pays arabes ?
+1236|Émirats et Oman 5 %, Bahreïn 10 %, Égypte 14 %, Arabie saoudite 15 %, Jordanie 16 % (taxe sur les ventes). Le Koweït et le Qatar n’ont pas encore de TVA. Vérifiez les taux spéciaux auprès de votre administration fiscale.
+1237|Ajoutez la TVA à un prix ou retirez-la d’un total. Émirats et Oman 5 %, Bahreïn 10 %, Égypte 14 %, Arabie saoudite 15 %, ou tout autre taux. Gratuit, instantané.
+1238|Calculateur de TVA : ajouter ou retirer la TVA, 5 %, 14 %, 15 % | File Manager Toolkit
+1239|Facture
+1240|Langue de la facture
+1241|English + العربية
+1242|Numéro de facture
+1243|Devise
+1244|Date
+1245|Date d’échéance (facultatif)
+1246|De (votre entreprise)
+1247|Nom de l’entreprise
+1248|Adresse
+1249|Numéro fiscal (TRN)
+1250|Logo (facultatif)
+1251|Facturer à
+1252|Nom du client
+1253|Numéro fiscal du client (facultatif)
+1254|Articles
+1255|+ Ajouter un article
+1256|Remise (montant)
+1257|Notes ou conditions de paiement (facultatif)
+1258|Télécharger le PDF
+1259|Nouvelle facture
+1260|Tout effacer
+1261|Télécharger le PDF ouvre la fenêtre d’impression : choisissez
+1262|Enregistrer au format PDF
+1263|. Vos informations restent dans ce navigateur pour la prochaine fois, jamais envoyées.
+1264|Comment utiliser le générateur de factures
+1265|Remplissez votre entreprise et votre client
+1266|. Vos propres informations sont mémorisées pour la prochaine fois.
+1267|Ajoutez les articles
+1268|, la remise et le taux de TVA. Les totaux et le montant en lettres se mettent à jour pendant la saisie.
+1269|et choisissez Enregistrer au format PDF dans la fenêtre d’impression. Nouvelle facture passe au numéro suivant.
+1270|Est-ce une facture fiscale ?
+1271|Quand le taux de TVA est supérieur à 0, le titre devient « Facture fiscale » avec votre numéro fiscal. Elle n’est pas reliée aux systèmes de facturation électronique comme ZATCA en Arabie saoudite ou l’ETA en Égypte : utilisez-la là où une facture imprimée ou PDF est acceptée.
+1272|Peut-il écrire le total en lettres arabes ?
+1273|Oui. Le total est écrit en lettres (tafqeet) en arabe, en anglais ou les deux, avec la devise, par exemple « فقط ألف وخمسون درهماً إماراتياً لا غير ».
+1274|Mes factures sont-elles envoyées ?
+1275|Non. Tout reste dans votre navigateur. Les informations de votre entreprise restent sur cet appareil pour ne pas les retaper.
+1276|Créez une facture ou une facture fiscale soignée en anglais, en arabe ou les deux, avec TVA, remise, votre logo et le total en lettres (tafqeet). Enregistrez-la en PDF. Gratuit, sans inscription, rien n’est envoyé.
+1277|Générateur de factures gratuit : arabe et anglais, TVA, total en lettres | File Manager Toolkit
+1278|Votre nouveau mot de passe
+1279|Nouveau mot de passe
+1280|Majuscules (A–Z)
+1281|Minuscules (a–z)
+1282|Chiffres (0–9)
+1283|Symboles (!@#$…)
+1284|Éviter les caractères ressemblants (O 0 l 1 I)
+1285|Autres mots de passe
+1286|Comment utiliser le générateur de mots de passe
+1287|Choisissez la longueur
+1288|: 16 ou plus, c’est un bon choix.
+1289|Choisissez les caractères
+1290|: majuscules et minuscules, chiffres et symboles.
+1291|le mot de passe, ou cliquez sur l’un de ceux de la liste ci-dessous. Appuyez sur ↻ pour en avoir un nouveau.
+1292|Est-ce sûr de créer un mot de passe ici ?
+1293|Oui. Le mot de passe est créé dans votre navigateur avec crypto.getRandomValues, le générateur aléatoire sécurisé intégré. Il n’est jamais envoyé ni enregistré.
+1294|Quelle longueur pour un mot de passe ?
+1295|Au moins 12 caractères, et 16 ou plus pour l’e-mail et la banque. La longueur compte plus que les symboles.
+1296|Comment m’en souvenir ?
+1297|Utilisez un gestionnaire de mots de passe, comme celui intégré à votre navigateur ou téléphone. Un mot de passe différent pour chaque site.
+1298|Créez des mots de passe forts et aléatoires avec lettres, chiffres et symboles, jusqu’à 64 caractères. Créés dans votre navigateur avec un aléa sécurisé : rien n’est envoyé ni enregistré. Gratuit.
+1299|Générateur de mots de passe : mots de passe forts et aléatoires, gratuit | File Manager Toolkit
+1300|hausse
+1301|baisse
+1302|Vous payez
+1303|vous économisez
+1304|Faible
+1305|Moyen
+1306|Très fort
+1307|Description
+1308|Qté
+1309|Retirer l’article
+1310|Tout effacer, y compris les informations de votre entreprise ?
+1311|Casse, nettoyage, nombre de mots et de caractères
+1312|→
+1313|Liens, Wi-Fi, WhatsApp. N’expire jamais
+1314|Longueur, poids, surface, température, dates hégiriennes
+1315|MAJUSCULES, minuscules, Title Case, nettoyage et compteur de mots et de caractères.
+1316|Longueur, poids, surface, volume, température, vitesse et dates hégiriennes, au même endroit.
+1317|Changez la casse, nettoyez espaces et lignes, et comptez mots et caractères.
+1318|Compteur
+1319|Caractères avec espaces
+1320|Peut-il compter les mots et les caractères ?
+1321|Oui. Le compteur affiche les caractères avec et sans espaces, les mots, les phrases, les lignes et le temps de lecture, en direct.
+1322|Date hégirienne
+1323|Conversions courantes, avec tableaux prêts
+1324|Peut-il convertir les dates hégiriennes ?
+1325|Oui. Ouvrez l’onglet Date hégirienne pour convertir une date grégorienne en hégirienne ou l’inverse, avec la date du jour dans les deux calendriers.

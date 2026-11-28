@@ -3,7 +3,7 @@
  * Favourites are kept in this browser only (localStorage). */
 (() => {
   'use strict';
-  const groups = { unique: 1, organize: 1, optimize: 1, convert: 1, edit: 1, security: 1, files: 1, eng: 1, text: 1, units: 1, generate: 1, pdf: 'organize', review: 'eng' };
+  const groups = { unique: 1, organize: 1, optimize: 1, convert: 1, edit: 1, security: 1, files: 1, eng: 1, text: 1, units: 1, calc: 1, generate: 1, pdf: 'organize', review: 'eng' };
   const KEY = 'fm-favs';
   const ar = document.documentElement.lang === 'ar';
   let filter = 'all';
@@ -38,6 +38,9 @@
       if (main) main.hidden = !main.querySelector('.tool-wrap:not([hidden])');
       split?.classList.toggle('one-col', col.hidden || !!main?.hidden);
     });
+    // The three big everyday buttons only show on the full list, not while filtering or searching.
+    const big = document.getElementById('bigTools');
+    if (big) big.hidden = filter !== 'all' || !!q;
     const none = document.getElementById('noResults');
     if (none) none.hidden = shown > 0;
   }

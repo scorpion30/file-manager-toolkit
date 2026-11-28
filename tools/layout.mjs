@@ -5,7 +5,10 @@
 // Run from the repo root, before tools/build.mjs:   node tools/layout.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { CATS, TOOLS, icon, byHref, EVERYDAY } from './catalog.mjs';
+import { CATS, TOOLS as ALL_TOOLS, icon, byHref, EVERYDAY } from './catalog.mjs';
+
+// Tools shown in the menus and on the home page (hidden ones are search landing pages only).
+const TOOLS = ALL_TOOLS.filter((t) => !t.hidden);
 
 const ROOT = process.cwd();
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -14,7 +17,7 @@ function header(up) {
   const cols = CATS.map((c) => {
     const links = TOOLS.filter((t) => t.cat === c.key)
       .map((t) => `<a href="${up}${t.href}"><span class="mi cat-${t.cat}">${icon(t.icon)}</span>${esc(t.name)}</a>`).join('');
-    return `<div class="mega-col"><h4>${esc(c.name)}</h4>${links}</div>`;
+    return `<div class="mega-col"><h4>${esc(c.name)}${EVERYDAY.includes(c.key) ? '<span class="mini-new">New</span>' : ''}</h4>${links}</div>`;
   }).join('\n          ');
   return `<header class="site-header">
     <div class="inner">
@@ -68,7 +71,7 @@ function footer(up) {
 // On phones the right column moves above the grid and scrolls sideways.
 function grid() {
   const card = (t) => `<a class="tool-card cat-${t.cat}${t.unique ? ' unique' : ''}" href="${t.href}" data-cat="${t.cat}"${t.unique ? ' data-unique="1"' : ''}${t.drop ? ` data-drop="${t.drop}"` : ''}>
-          ${t.unique ? '<span class="badge new-badge">New</span>' : ''}<span class="icon">${icon(t.icon)}</span>
+          ${t.unique || EVERYDAY.includes(t.cat) ? '<span class="badge new-badge">New</span>' : ''}<span class="icon">${icon(t.icon)}</span>
           <h3>${esc(t.name)}</h3>
           <p>${esc(t.desc)}</p>
         </a>`;
@@ -76,6 +79,7 @@ function grid() {
   const everyday = TOOLS.filter((t) => EVERYDAY.includes(t.cat)).map(card).join('\n          ');
   const unique = TOOLS.filter((t) => t.unique).map(card).join('\n          ');
   return `<!-- grid:start -->
+      ${big()}
       <div class="tools-split">
       <div class="tool-grid all-tools main-tools">
         ${popular}
@@ -95,16 +99,28 @@ function grid() {
         </div>
       </aside>
       </div>
-      <section class="everyday" aria-labelledby="everydayTitle">
+      <section class="everyday" id="everyday" aria-labelledby="everydayTitle">
         <div class="everyday-head">
           <h2 id="everydayTitle">Everyday tools</h2>
-          <p>Text, unit converters, Hijri dates and QR codes. Free, instant, nothing to install.</p>
+          <p>Invoices, VAT and percentages, QR codes, passwords, unit converters, Hijri dates and text. Free, instant, nothing to install.</p>
         </div>
         <div class="tool-grid all-tools everyday-list">
           ${everyday}
         </div>
       </section>
       <!-- grid:end -->`;
+}
+
+// Three big coloured buttons between the search box and the grid, for the everyday tools people look for most.
+const BIG = [
+  ['text-case.html', 'Text tools', 'Change case, clean up, count words and characters'],
+  ['qr-code.html', 'QR Code Generator', 'Links, Wi-Fi, WhatsApp. Never expires'],
+  ['unit-converter.html', 'Unit Converter', 'Length, weight, area, temperature, Hijri dates'],
+];
+function big() {
+  return `<div class="big-tools" id="bigTools">
+        ${BIG.map(([href, name, sub]) => { const t = byHref(href); return `<a class="big-tool cat-${t.cat}" href="${href}"><span class="bt-icon">${icon(t.icon)}</span><span class="bt-text"><b>${name}</b><small>${sub}</small></span><span class="bt-go" aria-hidden="true">→</span></a>`; }).join('\n        ')}
+      </div>`;
 }
 
 // "Related tools" at the end of every tool page: the others in its category, then the most used ones.
@@ -140,7 +156,7 @@ for (const { file, up } of pages) {
   const before = html;
   html = html.replace(/<header class="site-header">[\s\S]*?<\/header>/, header(up));
   html = html.replace(/<footer class="site-footer">[\s\S]*?<\/footer>/, footer(up));
-  if (file === 'index.html') html = html.replace(/<!-- grid:start -->[\s\S]*?<!-- grid:end -->/, grid());
+  if (file === 'index.html') html = html.replace(/<!-- grid:start -->[\s\S]*?<!-- grid:end -->/, grid()).replace(/\n?\s*<!-- quick:start -->[\s\S]*?<!-- quick:end -->/, '');
   else if (byHref(file)) {
     html = html.replace(/\n?\s*<!-- related:start -->[\s\S]*?<!-- related:end -->/, '');
     html = html.replace(/(\n\s*)<\/main>/, (m, ws) => `\n    ${related(file)}${ws}</main>`);

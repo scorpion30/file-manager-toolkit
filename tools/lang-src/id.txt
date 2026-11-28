@@ -1170,3 +1170,157 @@
 1169|Memuat…
 1170|Browser Anda tidak bisa menyalin gambar. Unduh PNG saja.
 1171|Teks apa saja
+1172|Kalkulator
+1173|Kalkulator persentase
+1174|Kalkulator PPN
+1175|Pembuat faktur
+1176|Pembuat kata sandi
+1177|Lihat semua ↓
+1178|Faktur, PPN dan persentase, kode QR, kata sandi, konversi satuan, tanggal Hijriah, dan teks. Gratis, instan, tanpa instal apa pun.
+1179|X% dari Y, berapa persen, kenaikan, penurunan, dan diskon. Jawaban saat Anda mengetik.
+1180|Tambahkan PPN ke harga atau keluarkan. 5%, 14%, 15%, atau tarif apa pun.
+1181|Faktur rapi dengan PPN dan total terbilang, dalam bahasa Arab atau Inggris. Simpan sebagai PDF.
+1182|Kata sandi kuat dan acak, dibuat di browser Anda. Tidak ada yang dikirim atau disimpan.
+1183|Berapa
+1184|% dari
+1185|adalah berapa persen dari
+1186|Perubahan persentase dari
+1187|ke
+1188|dinaikkan
+1189|diturunkan
+1190|Harga
+1191|dengan diskon
+1192|Klik hasil untuk menyalinnya.
+1193|Cara memakai kalkulator persentase
+1194|Pilih pertanyaan
+1195|yang sesuai: X% dari Y, berapa persen, perubahan, kenaikan, penurunan, atau diskon.
+1196|Ketik angka Anda
+1197|. Jawabannya langsung muncul.
+1198|Klik jawabannya
+1199|untuk menyalinnya.
+1200|Bagaimana menghitung persentase dari suatu angka?
+1201|Kalikan angka dengan persentase lalu bagi 100. 15% dari 200 = 200 × 15 ÷ 100 = 30.
+1202|Bagaimana perubahan persentase dihitung?
+1203|(Baru − Lama) ÷ Lama × 100. Dari 80 ke 100 adalah (100 − 80) ÷ 80 × 100 = naik 25%.
+1204|Bagaimana menghitung diskon?
+1205|Harga × (1 − diskon ÷ 100). 250 dengan diskon 20% adalah 250 × 0,8 = 200, jadi Anda hemat 50.
+1206|Hitung X% dari Y, berapa persen satu angka dari angka lain, kenaikan atau penurunan persentase, dan harga setelah diskon. Jawaban saat mengetik. Gratis.
+1207|Kalkulator persentase: X% dari Y, kenaikan, penurunan, diskon | File Manager Toolkit
+1208|Tambahkan PPN ke harga atau keluarkan dari total. Tarif apa pun.
+1209|Tambah PPN
+1210|Keluarkan PPN (harga sudah termasuk PPN)
+1211|Jumlah
+1212|Tarif PPN (%)
+1213|Tarif PPN
+1214|UEA, Oman
+1215|Bahrain
+1216|Mesir
+1217|Arab Saudi
+1218|Yordania
+1219|Inggris, Maroko
+1220|Jumlah tanpa PPN
+1221|PPN
+1222|Total dengan PPN
+1223|Klik angka untuk menyalinnya. Perlu faktur lengkap?
+1224|Buat dengan pembuat faktur
+1225|Cara memakai kalkulator PPN
+1226|Pilih
+1227|Tambah PPN, atau Keluarkan PPN jika harga sudah termasuk PPN.
+1228|Ketik jumlahnya
+1229|dan pilih tarif: 5%, 14%, 15%, atau tarif Anda sendiri.
+1230|jumlah tanpa PPN, PPN, dan total. Klik angka untuk menyalinnya.
+1231|Bagaimana menambahkan PPN ke harga?
+1232|Kalikan dengan 1 + tarif ÷ 100. Dengan PPN 5%, 1.000 menjadi 1.000 × 1,05 = 1.050.
+1233|Bagaimana mengeluarkan PPN dari harga yang sudah termasuk PPN?
+1234|Bagi dengan 1 + tarif ÷ 100. Total 1.050 dengan PPN 5% adalah 1.050 ÷ 1,05 = 1.000 sebelum PPN, jadi PPN-nya 50.
+1235|Berapa tarif PPN di negara-negara Arab?
+1236|UEA dan Oman 5%, Bahrain 10%, Mesir 14%, Arab Saudi 15%, Yordania 16% (pajak penjualan). Kuwait dan Qatar belum memiliki PPN. Tanyakan tarif khusus ke kantor pajak Anda.
+1237|Tambahkan PPN ke harga atau keluarkan dari total. UEA dan Oman 5%, Bahrain 10%, Mesir 14%, Arab Saudi 15%, atau tarif apa pun. Gratis, instan.
+1238|Kalkulator PPN: tambah atau keluarkan PPN, 5%, 14%, 15% | File Manager Toolkit
+1239|Faktur
+1240|Bahasa faktur
+1241|English + العربية
+1242|Nomor faktur
+1243|Mata uang
+1244|Tanggal
+1245|Jatuh tempo (opsional)
+1246|Dari (usaha Anda)
+1247|Nama usaha
+1248|Alamat
+1249|Nomor pajak (TRN)
+1250|Logo (opsional)
+1251|Ditagihkan kepada
+1252|Nama pelanggan
+1253|Nomor pajak pelanggan (opsional)
+1254|Item
+1255|+ Tambah item
+1256|Diskon (jumlah)
+1257|Catatan atau syarat pembayaran (opsional)
+1258|Unduh PDF
+1259|Faktur baru
+1260|Hapus semua
+1261|Unduh PDF membuka jendela cetak: pilih
+1262|Simpan sebagai PDF
+1263|. Data Anda disimpan di browser ini untuk lain kali, tidak pernah diunggah.
+1264|Cara memakai pembuat faktur
+1265|Isi data usaha dan pelanggan Anda
+1266|. Data Anda sendiri diingat untuk lain kali.
+1267|Tambahkan item
+1268|, diskon, dan tarif PPN. Total dan jumlah terbilang berubah saat Anda mengetik.
+1269|lalu pilih Simpan sebagai PDF di jendela cetak. Faktur baru pindah ke nomor berikutnya.
+1270|Apakah ini faktur pajak?
+1271|Jika tarif PPN di atas 0, judulnya menjadi "Faktur pajak" dengan nomor pajak Anda. Ini tidak terhubung ke sistem e-faktur seperti ZATCA di Arab Saudi atau ETA di Mesir, jadi gunakan di tempat yang menerima faktur cetak atau PDF.
+1272|Bisakah menulis total terbilang dalam bahasa Arab?
+1273|Ya. Total ditulis terbilang (tafqeet) dalam bahasa Arab, Inggris, atau keduanya, dengan mata uangnya, misalnya "فقط ألف وخمسون درهماً إماراتياً لا غير".
+1274|Apakah faktur saya diunggah?
+1275|Tidak. Semuanya tetap di browser Anda. Data usaha Anda disimpan di perangkat ini agar tidak perlu diketik lagi.
+1276|Buat faktur atau faktur pajak yang rapi dalam bahasa Inggris, Arab, atau keduanya, dengan PPN, diskon, logo, dan total terbilang (tafqeet). Simpan sebagai PDF. Gratis, tanpa daftar, tidak ada yang diunggah.
+1277|Pembuat faktur gratis: Arab dan Inggris, PPN, total terbilang | File Manager Toolkit
+1278|Kata sandi baru Anda
+1279|Kata sandi baru
+1280|Huruf besar (A–Z)
+1281|Huruf kecil (a–z)
+1282|Angka (0–9)
+1283|Simbol (!@#$…)
+1284|Hindari karakter yang mirip (O 0 l 1 I)
+1285|Kata sandi lainnya
+1286|Cara memakai pembuat kata sandi
+1287|Pilih panjangnya
+1288|: 16 atau lebih adalah pilihan bagus.
+1289|Pilih karakternya
+1290|: huruf besar dan kecil, angka, dan simbol.
+1291|kata sandinya, atau klik salah satu dari daftar di bawah. Tekan ↻ untuk yang baru.
+1292|Amankah membuat kata sandi di sini?
+1293|Ya. Kata sandi dibuat di browser Anda dengan crypto.getRandomValues, generator acak aman bawaan browser. Tidak pernah dikirim atau disimpan.
+1294|Seberapa panjang kata sandi seharusnya?
+1295|Minimal 12 karakter, dan 16 atau lebih untuk email dan perbankan. Panjang lebih penting daripada simbol.
+1296|Bagaimana cara mengingatnya?
+1297|Pakai pengelola kata sandi, seperti yang ada di browser atau ponsel Anda. Gunakan kata sandi berbeda untuk setiap situs.
+1298|Buat kata sandi kuat dan acak dengan huruf, angka, dan simbol, hingga 64 karakter. Dibuat di browser Anda dengan keacakan aman: tidak ada yang dikirim atau disimpan. Gratis.
+1299|Pembuat kata sandi: kata sandi kuat dan acak, gratis | File Manager Toolkit
+1300|kenaikan
+1301|penurunan
+1302|Anda bayar
+1303|Anda hemat
+1304|Lemah
+1305|Cukup
+1306|Sangat kuat
+1307|Deskripsi
+1308|Jml
+1309|Hapus item
+1310|Hapus semuanya, termasuk data usaha Anda?
+1311|Ubah huruf, rapikan, hitung kata dan karakter
+1312|→
+1313|Tautan, Wi-Fi, WhatsApp. Tidak pernah kedaluwarsa
+1314|Panjang, berat, luas, suhu, tanggal Hijriah
+1315|HURUF BESAR, huruf kecil, Title Case, perapian, serta penghitung kata dan karakter.
+1316|Panjang, berat, luas, volume, suhu, kecepatan, dan tanggal Hijriah dalam satu tempat.
+1317|Ubah huruf, rapikan spasi dan baris, serta hitung kata dan karakter.
+1318|Penghitung
+1319|Karakter dengan spasi
+1320|Bisakah menghitung kata dan karakter?
+1321|Ya. Penghitung menampilkan karakter dengan dan tanpa spasi, kata, kalimat, baris, dan waktu baca, dan berubah saat Anda mengetik.
+1322|Tanggal Hijriah
+1323|Konversi populer, dengan tabel siap pakai
+1324|Bisakah mengonversi tanggal Hijriah?
+1325|Ya. Buka tab Tanggal Hijriah untuk mengubah tanggal Masehi ke Hijriah atau sebaliknya, dengan tanggal hari ini di kedua kalender.
